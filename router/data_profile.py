@@ -7,7 +7,7 @@ import sys, os, csv, collections as C
 from dumpreader import rows
 
 DUMP = sys.argv[1]
-OUT = sys.argv[2] if len(sys.argv) > 2 else 'phase0_out'
+OUT = sys.argv[2] if len(sys.argv) > 2 else 'profile_out'
 os.makedirs(OUT, exist_ok=True)
 EXCLUDED_SLUGS = {'component-skus', 'uncategorized', 'store-displays'}
 L = []

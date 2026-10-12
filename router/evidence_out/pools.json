@@ -1,0 +1,2246 @@
+{
+ "min_support": 2,
+ "pools": {
+  "ACC SDG MIL LTHR MISC": {
+   "items": 4,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-chairs",
+     "support": 4,
+     "in_store": false
+    }
+   ]
+  },
+  "ACC SDG MIL PUR MISC": {
+   "items": 43,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "home-accents-accent-furniture",
+     "support": 30,
+     "in_store": true
+    },
+    {
+     "slug": "tables-storage-cabinets",
+     "support": 21,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 14,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-chairs",
+     "support": 14,
+     "in_store": false
+    },
+    {
+     "slug": "tables-accent-tables",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-storage",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "ACC SDG PUR DEC TABLEWARE": {
+   "items": 284,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "home-accents-vases-and-bottles",
+     "support": 175,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-sculptures",
+     "support": 42,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-bowls-and-trays",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-candles-and-candle-holders",
+     "support": 17,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-baskets-and-boxes",
+     "support": 13,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-home-accent-sets",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-canisters-and-jars",
+     "support": 6,
+     "in_store": true
+    }
+   ]
+  },
+  "ACC SDG PUR DEC WALL ART": {
+   "items": 208,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "wall-decor-wall-art",
+     "support": 115,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-mirrors",
+     "support": 41,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-wall-sculptures",
+     "support": 27,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-clocks",
+     "support": 14,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-furniture",
+     "support": 11,
+     "in_store": true
+    }
+   ]
+  },
+  "ACC SDG PUR FLOOR COVER": {
+   "items": 386,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "rugs-area-rugs",
+     "support": 386,
+     "in_store": true
+    },
+    {
+     "slug": "rugs-washable",
+     "support": 50,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-indoor-outdoor-rugs",
+     "support": 20,
+     "in_store": true
+    },
+    {
+     "slug": "rugs-indoor-outdoor-rugs",
+     "support": 20,
+     "in_store": true
+    }
+   ]
+  },
+  "ACC SDG PUR THRW/PIL/POUF": {
+   "items": 185,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "pillows-accent-pillows",
+     "support": 146,
+     "in_store": true
+    },
+    {
+     "slug": "blankets-and-throws-throws",
+     "support": 34,
+     "in_store": true
+    },
+    {
+     "slug": "blankets-and-throws-washable",
+     "support": 24,
+     "in_store": true
+    },
+    {
+     "slug": "pillows-washable-pillows",
+     "support": 21,
+     "in_store": true
+    },
+    {
+     "slug": "pillows-indoor-outdoor-pillows",
+     "support": 8,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-poufs",
+     "support": 5,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-outdoor-pillows",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "ACCESSORY SDG MISC": {
+   "items": 15,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 15,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-chairs",
+     "support": 15,
+     "in_store": false
+    }
+   ]
+  },
+  "ACCESSORY SDG PUR LAMPS": {
+   "items": 208,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "lighting-table-lamps",
+     "support": 172,
+     "in_store": true
+    },
+    {
+     "slug": "lighting-floor-lamps",
+     "support": 31,
+     "in_store": true
+    },
+    {
+     "slug": "lighting-lamp-sets",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "lighting-desk-lamps",
+     "support": 5,
+     "in_store": true
+    }
+   ]
+  },
+  "ACCESSORY SDG PUR MISC": {
+   "items": 204,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "home-accents-accent-furniture",
+     "support": 130,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 59,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-chairs",
+     "support": 59,
+     "in_store": false
+    },
+    {
+     "slug": "tables-storage-cabinets",
+     "support": 42,
+     "in_store": true
+    },
+    {
+     "slug": "tables-accent-tables",
+     "support": 41,
+     "in_store": true
+    },
+    {
+     "slug": "home-office-and-study-bookcases",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "tables-console-tables",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-benches",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "tables-coffee-tables",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-storage",
+     "support": 5,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 2,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "ACCESSORY SDG RTA PUR MIS": {
+   "items": 33,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "home-office-and-study-office-storage",
+     "support": 21,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-storage",
+     "support": 21,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-storage",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-furniture",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-wall-sculptures",
+     "support": 4,
+     "in_store": true
+    }
+   ]
+  },
+  "ADHESIVES ALL DIVISIONS": {
+   "items": 1,
+   "source": "none",
+   "parents": [],
+   "options": []
+  },
+  "BEDDING INNER SPRING": {
+   "items": 34,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-innerspring",
+     "support": 24,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-and-bases-by-type-hybrid",
+     "support": 10,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-queen",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-full",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-king",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-california-king",
+     "support": 5,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin-xl",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "BEDDING PUR FOUNDATION": {
+   "items": 37,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-foundations-and-frames",
+     "support": 19,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-and-bases-by-type-power-bases",
+     "support": 18,
+     "in_store": true
+    }
+   ]
+  },
+  "BEDDING PUR PILLOW & ACCE": {
+   "items": 41,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedding-accessories-mattress-protectors",
+     "support": 36,
+     "in_store": true
+    },
+    {
+     "slug": "bedding-accessories-bed-pillows",
+     "support": 4,
+     "in_store": true
+    }
+   ]
+  },
+  "BEDDING SDG DOM INNERSPRI": {
+   "items": 130,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-hybrid",
+     "support": 70,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-and-bases-by-type-innerspring",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-king",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-queen",
+     "support": 24,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-california-king",
+     "support": 22,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-full",
+     "support": 16,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin",
+     "support": 14,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin-xl",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-and-bases-by-type-memory-foam",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "BEDDING SDG DOM MEM FOAM": {
+   "items": 66,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-memory-foam",
+     "support": 58,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-california-king",
+     "support": 13,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin",
+     "support": 12,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-queen",
+     "support": 10,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-full",
+     "support": 10,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-king",
+     "support": 10,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin-xl",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "BEDDING SDG PUR FIBER KID": {
+   "items": 1,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "kids-bedding-mattress-pads-and-covers",
+     "support": 1,
+     "in_store": false
+    }
+   ]
+  },
+  "BEDDING SDG PUR FOUNDATION": {
+   "items": 21,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-foundations-and-frames",
+     "support": 20,
+     "in_store": true
+    }
+   ]
+  },
+  "BEDDING SDG PUR KIDS FURN": {
+   "items": 3,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "nursery-cribs",
+     "support": 2,
+     "in_store": false
+    }
+   ]
+  },
+  "BEDDING SDG PUR KIDS TOB": {
+   "items": 4,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "kids-bedding-sheets",
+     "support": 4,
+     "in_store": false
+    }
+   ]
+  },
+  "CASEGOOD HOMESTORE PROMO": {
+   "items": 10,
+   "source": "none",
+   "parents": [],
+   "options": []
+  },
+  "CASEGOOD PUR BEDROOM": {
+   "items": 6,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD PUR DINING": {
+   "items": 2,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "dining-furniture-dining-room-tables",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD PUR MIL BEDROOM": {
+   "items": 20,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": 2,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD PUR MIL DINING": {
+   "items": 4,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "dining-furniture-dining-room-chairs",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD SDG BEDROOM": {
+   "items": 969,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 126,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": 60,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": 60,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-mirrors",
+     "support": 51,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-headboards",
+     "support": 35,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD SDG PUR BEDROOM": {
+   "items": 421,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 53,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-beds",
+     "support": 15,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-headboards",
+     "support": 11,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-beds",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-bunk-beds",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-mirrored-dressers",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-mirrors",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD SDG PUR DINING": {
+   "items": 265,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bar-furniture-bar-stools",
+     "support": 76,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-counter-chairs",
+     "support": 63,
+     "in_store": true
+    },
+    {
+     "slug": "bar-furniture-counter-chairs",
+     "support": 61,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-chairs",
+     "support": 50,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-tables",
+     "support": 38,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-counter-tables",
+     "support": 24,
+     "in_store": true
+    },
+    {
+     "slug": "bar-furniture-counter-tables",
+     "support": 24,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dinette-sets",
+     "support": 22,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-benches",
+     "support": 19,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-storage",
+     "support": 14,
+     "in_store": true
+    },
+    {
+     "slug": "bar-furniture-bar-sets",
+     "support": 13,
+     "in_store": true
+    },
+    {
+     "slug": "kitchen-and-dining-room",
+     "support": 11,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-benches",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD SDG PUR METALBED": {
+   "items": 3,
+   "source": "parent_fallback",
+   "parents": [
+    "bedroom"
+   ],
+   "options": [
+    {
+     "slug": "bedroom-furniture-bedroom-benches",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-bedroom-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-beds",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-mirrored-dressers",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-storage",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-tv-stands-and-media-centers",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-vanities",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-sets",
+     "support": null,
+     "in_store": true
+    }
+   ]
+  },
+  "CASEGOOD\u00a0SDG YOUTH BEDRO": {
+   "items": 39,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 8,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-headboards",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": 3,
+     "in_store": true
+    },
+    {
+     "slug": "wall-decor-mirrors",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "CG SDG PUR MIL BEDROOM": {
+   "items": 296,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 47,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": 23,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-headboards",
+     "support": 2,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "CG SDG PUR MIL DINING": {
+   "items": 100,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "dining-furniture-dining-room-chairs",
+     "support": 30,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-storage",
+     "support": 18,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-tables",
+     "support": 15,
+     "in_store": true
+    },
+    {
+     "slug": "bar-furniture-bar-stools",
+     "support": 11,
+     "in_store": true
+    },
+    {
+     "slug": "kitchen-and-dining-room",
+     "support": 11,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-counter-chairs",
+     "support": 10,
+     "in_store": true
+    },
+    {
+     "slug": "bar-furniture-counter-chairs",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-benches",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "dining-furniture-dining-room-counter-tables",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "bar-furniture-counter-tables",
+     "support": 5,
+     "in_store": true
+    },
+    {
+     "slug": "home-accents-accent-furniture",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "CG SDG PUR RTA BEDROOM (I=PUR)": {
+   "items": 150,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": 33,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-beds",
+     "support": 22,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": 21,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-headboards",
+     "support": 19,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-beds",
+     "support": 12,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": 11,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG MIL LTHR RECLINER": {
+   "items": 31,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 13,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 9,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG MIL LTHR STATIONA": {
+   "items": 22,
+   "source": "parent_fallback",
+   "parents": [
+    "living-room"
+   ],
+   "options": [
+    {
+     "slug": "entertainment-mantels-and-fireplaces",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entertainment-tv-stands-and-media-centers",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-benches",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-storage",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "living-room-sets",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-lift-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-loveseats",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-loveseats",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sectional-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sectional-sleeper-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sectional-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sleeper-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-3-pack-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-accent-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-coffee-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-console-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-end-and-side-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-storage-cabinets",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-table-packs",
+     "support": null,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG MIL LTHR UPH": {
+   "items": 18,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 15,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sofas",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-loveseats",
+     "support": 9,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG PUR MIL UPH": {
+   "items": 131,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 67,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 30,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-loveseats",
+     "support": 19,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sofas",
+     "support": 18,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-lift-chairs",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG PUR RTA HOME OFFI": {
+   "items": 6,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "home-office-and-study-desks",
+     "support": 5,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG PUR RTA WALL&ENT": {
+   "items": 17,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "entertainment-tv-stands-and-media-centers",
+     "support": 12,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG PUR UPH": {
+   "items": 116,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 79,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 52,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sofas",
+     "support": 20,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-loveseats",
+     "support": 20,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-lift-chairs",
+     "support": 18,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG RECLINER": {
+   "items": 100,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 68,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 10,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG STATIONARY UPH": {
+   "items": 27,
+   "source": "parent_fallback",
+   "parents": [
+    "living-room"
+   ],
+   "options": [
+    {
+     "slug": "entertainment-mantels-and-fireplaces",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entertainment-tv-stands-and-media-centers",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-benches",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-storage",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "living-room-sets",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-lift-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-loveseats",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-loveseats",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sectional-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sectional-sleeper-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sectional-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sleeper-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sofas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-3-pack-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-accent-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-coffee-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-console-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-end-and-side-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-storage-cabinets",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "tables-table-packs",
+     "support": null,
+     "in_store": true
+    }
+   ]
+  },
+  "MOT SDG UPHOLSTRY": {
+   "items": 102,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-reclining-loveseats",
+     "support": 33,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-reclining-sofas",
+     "support": 33,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 22,
+     "in_store": true
+    }
+   ]
+  },
+  "MOTION PUR MIL UPH": {
+   "items": 3,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "MOTION SDG OCCASIONAL TBL": {
+   "items": 6,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "tables-end-and-side-tables",
+     "support": 3,
+     "in_store": true
+    },
+    {
+     "slug": "tables-coffee-tables",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "MOTION SDG PUR HOME OFFIC": {
+   "items": 34,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "home-office-and-study-desks",
+     "support": 12,
+     "in_store": true
+    },
+    {
+     "slug": "home-office-and-study-bookcases",
+     "support": 8,
+     "in_store": true
+    },
+    {
+     "slug": "home-office-and-study-office-chairs",
+     "support": 5,
+     "in_store": true
+    },
+    {
+     "slug": "home-office-and-study-office-storage",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "MOTION SDG PUR OCCASIONAL": {
+   "items": 123,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "tables-end-and-side-tables",
+     "support": 69,
+     "in_store": true
+    },
+    {
+     "slug": "tables-coffee-tables",
+     "support": 41,
+     "in_store": true
+    },
+    {
+     "slug": "tables-console-tables",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "tables-table-packs",
+     "support": 6,
+     "in_store": true
+    }
+   ]
+  },
+  "MOTION SDG PUR WALL & ENT": {
+   "items": 41,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "entertainment-tv-stands-and-media-centers",
+     "support": 27,
+     "in_store": true
+    }
+   ]
+  },
+  "MOTION SDG WALL & ENT": {
+   "items": 33,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "entertainment-tv-stands-and-media-centers",
+     "support": 21,
+     "in_store": true
+    },
+    {
+     "slug": "entertainment-mantels-and-fireplaces",
+     "support": 2,
+     "in_store": true
+    },
+    {
+     "slug": "entryway-furniture-benches",
+     "support": 2,
+     "in_store": true
+    },
+    {
+     "slug": "tables-storage-cabinets",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "OUTDOOR SDG PUR ACCESSOR": {
+   "items": 310,
+   "source": "parent_fallback",
+   "parents": [
+    "outdoor"
+   ],
+   "options": [
+    {
+     "slug": "outdoor-dining-bar-furniture",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-bar-stools",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-dining-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-dining-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-package",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-sectional",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-sets",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-firepits",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-heaters",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-indoor-outdoor-rugs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-outdoor-pillows",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-patio-umbrellas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-furniture-seating",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-furniture-tables",
+     "support": null,
+     "in_store": true
+    }
+   ]
+  },
+  "OUTDOOR SDG PUR FM LIVING": {
+   "items": 336,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "patio-furniture-seating",
+     "support": 134,
+     "in_store": true
+    },
+    {
+     "slug": "patio-furniture-tables",
+     "support": 77,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-dining-chairs",
+     "support": 26,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-patio-umbrellas",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-dining-tables",
+     "support": 17,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-firepits",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-bar-furniture",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-bar-stools",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-heaters",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "OUTDOOR SDG PUR MIL FM LI": {
+   "items": 17,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "patio-furniture-seating",
+     "support": 9,
+     "in_store": true
+    },
+    {
+     "slug": "patio-furniture-tables",
+     "support": 5,
+     "in_store": true
+    }
+   ]
+  },
+  "OUTDOOR SDG PUR RTA ACC": {
+   "items": 17,
+   "source": "parent_fallback",
+   "parents": [
+    "outdoor"
+   ],
+   "options": [
+    {
+     "slug": "outdoor-dining-bar-furniture",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-bar-stools",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-dining-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-dining-dining-tables",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-package",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-sectional",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "outdoor-sets",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-firepits",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-heaters",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-indoor-outdoor-rugs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-outdoor-pillows",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-accessories-patio-umbrellas",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-furniture-seating",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "patio-furniture-tables",
+     "support": null,
+     "in_store": true
+    }
+   ]
+  },
+  "OUTDOOR SDG PUR RTA F LIV": {
+   "items": 3,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "outdoor-dining-dining-chairs",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "PUR POP": {
+   "items": 9,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "patio-accessories-patio-umbrellas",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "REPLACEMENT MECHS & MATS": {
+   "items": 6,
+   "source": "none",
+   "parents": [],
+   "options": []
+  },
+  "RH BEDDING SDG DOM FOAM (D-MFG)": {
+   "items": 24,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-memory-foam",
+     "support": 24,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-queen",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-twin-xl",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-full",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-king",
+     "support": 4,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-by-size-california-king",
+     "support": 4,
+     "in_store": true
+    }
+   ]
+  },
+  "RH BEDDING SDG PUR ACCENT": {
+   "items": 176,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "bedding-accessories-sheets-and-pillowcases",
+     "support": 27,
+     "in_store": true
+    },
+    {
+     "slug": "bedding-accessories-bed-pillows",
+     "support": 25,
+     "in_store": true
+    },
+    {
+     "slug": "bedding-accessories-mattress-protectors",
+     "support": 20,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-and-bases-by-type-power-bases",
+     "support": 13,
+     "in_store": true
+    },
+    {
+     "slug": "kids-furniture-beds",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-beds",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "mattresses-and-bases-by-type-foundations-and-frames",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "bedding-accessories-duvet-sets",
+     "support": 6,
+     "in_store": true
+    }
+   ]
+  },
+  "RH BEDDING SDG PUR FOAM (I- PUR)": {
+   "items": 2,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "mattresses-and-bases-by-type-memory-foam",
+     "support": 2,
+     "in_store": true
+    }
+   ]
+  },
+  "STA SDG MIL PUR OCCASIONA": {
+   "items": 2,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "tables-coffee-tables",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT PUR REPLACEMENTS": {
+   "items": 202,
+   "source": "review_class",
+   "parents": [],
+   "options": []
+  },
+  "STAT SDG MIL LTHR MOTION": {
+   "items": 3,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG MIL LTHR UPH": {
+   "items": 107,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 16,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sofas",
+     "support": 15,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-loveseats",
+     "support": 14,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 11,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sleeper-sofas",
+     "support": 5,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG MOTION UPH": {
+   "items": 31,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 30,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG PUR MIL UPH": {
+   "items": 1,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG PUR OCCASIONAL": {
+   "items": 153,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "tables-end-and-side-tables",
+     "support": 50,
+     "in_store": true
+    },
+    {
+     "slug": "tables-coffee-tables",
+     "support": 48,
+     "in_store": true
+    },
+    {
+     "slug": "tables-table-packs",
+     "support": 33,
+     "in_store": true
+    },
+    {
+     "slug": "tables-console-tables",
+     "support": 20,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG PUR RTA UPH": {
+   "items": 1,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG PUR UPH": {
+   "items": 39,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-recliners",
+     "support": 7,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-power-reclining",
+     "support": 4,
+     "in_store": true
+    }
+   ]
+  },
+  "STAT SDG UPH": {
+   "items": 829,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 131,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sofas",
+     "support": 91,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 83,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-loveseats",
+     "support": 82,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sleeper-sofas",
+     "support": 41,
+     "in_store": true
+    }
+   ]
+  },
+  "STATIONARY MIL UPH": {
+   "items": 3,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "STATIONARY PUR UPH": {
+   "items": 3,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-sofas",
+     "support": 1,
+     "in_store": true
+    }
+   ]
+  },
+  "STATIONARY SDG MIL UPH": {
+   "items": 102,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 16,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 11,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-sofas",
+     "support": 6,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-loveseats",
+     "support": 6,
+     "in_store": true
+    }
+   ]
+  },
+  "STATIONARY UPH": {
+   "items": 16,
+   "source": "links",
+   "parents": [],
+   "options": [
+    {
+     "slug": "sofas-and-seating-ottomans",
+     "support": 3,
+     "in_store": true
+    },
+    {
+     "slug": "sofas-and-seating-living-room-chairs",
+     "support": 3,
+     "in_store": true
+    }
+   ]
+  },
+  "UHTG": {
+   "items": 3,
+   "source": "parent_fallback",
+   "parents": [
+    "bedroom"
+   ],
+   "options": [
+    {
+     "slug": "bedroom-furniture-bedroom-benches",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-bedroom-chairs",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-beds",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-dressers-and-chests",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-headboards",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-mirrored-dressers",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-nightstands",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-storage",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-tv-stands-and-media-centers",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-furniture-vanities",
+     "support": null,
+     "in_store": true
+    },
+    {
+     "slug": "bedroom-sets",
+     "support": null,
+     "in_store": true
+    }
+   ]
+  }
+ }
+}

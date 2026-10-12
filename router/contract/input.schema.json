@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouterInput",
+  "type": "object",
+  "required": ["vendor_id", "subject_type", "subject_uuid", "sku", "name"],
+  "additionalProperties": false,
+  "properties": {
+    "vendor_id":    {"type": "string", "minLength": 1},
+    "subject_type": {"enum": ["raw_item", "product"]},
+    "subject_uuid": {"type": "string", "minLength": 1},
+    "sku":          {"type": "string", "minLength": 1},
+    "name":         {"type": "string", "minLength": 1},
+    "description":  {"type": ["string", "null"]},
+    "item_type":    {"type": ["string", "null"]},
+    "item_class":   {"type": ["string", "null"]},
+    "item_code":    {"type": ["string", "null"]},
+    "vendor_category_path": {
+      "description": "Vendor's own category path, shallow to deep. Empty when the vendor gave none.",
+      "type": "array", "items": {"type": "string"}
+    }
+  }
+}

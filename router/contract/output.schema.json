@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RouterOutput",
+  "type": "object",
+  "required": ["outcome", "primary_slug", "stage", "rule", "confidence", "version", "content_hash"],
+  "additionalProperties": false,
+  "properties": {
+    "outcome":      {"enum": ["assigned", "review"]},
+    "primary_slug": {"type": ["string", "null"]},
+    "stage":        {"enum": ["reuse", "human", "rule", "model", "review"]},
+    "rule":         {"type": "string", "minLength": 1},
+    "confidence":   {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "version":      {"type": "string", "minLength": 1},
+    "content_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "review_reason":{"type": ["string", "null"]},
+    "candidates":   {
+      "type": ["array", "null"],
+      "items": {"type": "object", "required": ["slug"],
+                "properties": {"slug": {"type": "string"}, "p": {"type": ["number", "null"]}}}
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"outcome": {"const": "assigned"}}},
+     "then": {"properties": {"primary_slug": {"type": "string"}, "review_reason": {"type": "null"}}}},
+    {"if": {"properties": {"outcome": {"const": "review"}}},
+     "then": {"properties": {"primary_slug": {"type": "null"}, "review_reason": {"type": "string"}}}}
+  ]
+}

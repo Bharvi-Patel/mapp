@@ -1,0 +1,4 @@
+group,product_type,status,in_pim,products,example_sku
+"variation, parent HAS category (inherit)",product_type=1,status=1,not_in_pim,2668,6310214
+"variation, parent HAS category (inherit)",product_type=1,status=0,not_in_pim,72,M697 -12 Inch Hybrid RC 72497
+"parent/simple product, no category (router target)",product_type=0,status=1,not_in_pim,4,Greeley
