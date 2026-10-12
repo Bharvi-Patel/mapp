@@ -1,0 +1,44 @@
+vendor_id: ashley
+version: "0.1"
+
+# Source columns on pim_raw_items (from the RawItem model). item_code lives on pim_products, not raw items.
+field_map:
+  name: itemFriendlyDesc          # fall back to itemName when empty
+  description: itemDesc
+  item_type: itemType
+  item_class: itemClass
+  item_code: pim_products.item_code
+  vendor_category_path: TODO_confirm   # Ashley navigableCategories; via pim_raw_item_categories -> pim_categories.ashley_category. Confirm before Phase 4.
+
+settings:
+  trust_vendor_path: false
+  thresholds: null                # null = model answers always go to review until Phase 5 sets real values
+  model_spend_cap_per_batch: null
+
+excluded_slugs: [component-skus, uncategorized, store-displays]
+min_pool_support: 2
+
+# Package item_codes -> set category. Each row below matches where all of that code's products are
+# already linked today (checked on the dev data: 2,387 of 2,388 packages have exactly one set link).
+package_rules:
+  "Bedroom Package": bedroom-sets
+  "Dining Package": dining-room-sets
+  "Stationary Upholstery Package": living-room-sets
+  "Motion Upholstery Package": living-room-sets
+  "Occasional Table Package": living-room-sets
+  "Chair and Ottoman Package": living-room-sets
+  "Outdoor Seating Package": outdoor-sets
+  "Outdoor Dining Package": outdoor-sets
+  "Home Office Package": home-office-sets
+  "Foundation Package": mattresses-and-bedding-sets
+  # "Outdoor Package": 2 products linked to slug outdoor-package, not outdoor-sets. Decide before adding.
+# Known exception: 1 Bedroom Package product is linked to kids-furniture categories, not bedroom-sets.
+# The rule would send it to bedroom-sets; consider sending it to review.
+
+# Item classes whose items should never get model options (sent to review). Decision pending with the catalog owner.
+review_classes:
+  - STAT PUR REPLACEMENTS     # 202 replacement cushions (chaise/ottoman/seat); no category fits yet
+parent_fallback: true         # class linked only to a parent category -> offer that parent's leaf categories
+
+pools_file: evidence_out/pools.json      # leaf-only, min support 2 (build_evidence.py)
+vendor_map_file: evidence_out/vendor_map_reviewed.csv   # proposal only until the REVIEW column is filled

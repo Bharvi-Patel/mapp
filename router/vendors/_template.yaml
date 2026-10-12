@@ -1,0 +1,22 @@
+# Copy to vendors/<vendor_id>.yaml. Everything vendor- or store-specific lives here; the core reads only this.
+vendor_id: CHANGE_ME
+version: "0.1"
+
+field_map:                 # contract field -> source column/expression in this vendor's raw table
+  name: null
+  description: null
+  item_type: null
+  item_class: null
+  item_code: null
+  vendor_category_path: null   # how to build the ordered path list
+
+settings:
+  trust_vendor_path: false     # off until measured on this vendor (Phase 5)
+  thresholds: null             # per option-list-size bucket, set from the answer key in Phase 5
+  model_spend_cap_per_batch: null
+
+excluded_slugs: [component-skus, uncategorized, store-displays]
+min_pool_support: 2            # drop class->category pairs backed by fewer items
+package_rules: {}              # item_code -> set category slug
+pools_file: null               # data file, built in Phase 2
+vendor_map_file: null          # data file, reviewed in Phase 2
