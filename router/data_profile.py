@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 """Data profile for the product->category router. Re-runnable for any store dump.
 Usage: python data_profile.py DUMP.sql [OUT_DIR]
 Writes OUT_DIR/data_profile.md plus CSVs. Reads rows directly from a mysqldump file."""
