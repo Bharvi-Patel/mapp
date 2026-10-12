@@ -1,0 +1,162 @@
+id,uuid,slug,name,parent_slug,in_store
+1,09934134544747047602321001346462,entryway-furniture-benches,Benches,living-room-entryway-furniture,True
+2,45243054617815755320860394306610,entryway-furniture-storage,Storage,living-room-entryway-furniture,True
+3,53251544163080964120982945069014,entryway-furniture-tables,Tables,living-room-entryway-furniture,True
+4,39186684713133088070185622459418,bedding-accessories-duvet-sets,Duvet Sets,mattresses-and-bedding-bedding-accessories,True
+7,15571244687522421309918697352484,bedding-accessories-quilts-and-coverlets,Quilts and Coverlets,mattresses-and-bedding-bedding-accessories,True
+8,55582843727603311009928837973928,bedding-accessories-bed-pillows,Bed Pillows,mattresses-and-bedding-bedding-accessories,True
+9,97771114448096018994037474087326,mattresses-by-size-split-king,Split King,mattresses-and-bedding-mattresses-by-size,True
+10,51144748852594573190894982136671,patio-accessories-outdoor-pillows,Outdoor Pillows,outdoor-patio-accessories,True
+11,67641491825364399739070612167113,patio-furniture-tables,Tables,outdoor-patio-furniture,True
+12,97382369449884951840273936450067,outdoor-dining-dining-chairs,Dining Chairs,outdoor-outdoor-dining,True
+13,74632787456059915731441791253872,home-office-and-study-gaming,Gaming,home-office-home-office-and-study,True
+14,74877524075847242924177233875913,home-office-and-study-bookcases,Bookcases,home-office-home-office-and-study,True
+15,25439127481972873662672103296747,kids-furniture-tv-stands-and-media-centers,TV Stands and Media Centers,kids-and-nursery-kids-furniture,True
+16,42435232242294700059573756975056,kids-furniture-desks,Desks,kids-and-nursery-kids-furniture,True
+18,10298479163406878846869036047794,tables-storage-cabinets,Storage Cabinets,living-room-tables,True
+19,57138890274421581326456930675196,tables-accent-tables,Accent Tables,living-room-tables,True
+20,76596393492900781583348249866851,tables-coffee-tables,Coffee Tables,living-room-tables,True
+22,84759664097793750795572466872179,entertainment-tv-stands-and-media-centers,TV Stands and Media Centers,living-room-entertainment,True
+23,83666821174232859514940126097714,bedroom-furniture-mirrored-dressers,Mirrored Dressers,bedroom-bedroom-furniture,True
+24,37297054937970933042594242655925,patio-accessories-heaters,Heaters,outdoor-patio-accessories,True
+25,74804675574079981286434797833232,patio-furniture-seating,Seating,outdoor-patio-furniture,True
+26,52293690694761991253099797069731,home-office-and-study-desks,Desks,home-office-home-office-and-study,True
+27,65974445391348410681104764343172,kids-furniture-nightstands,Nightstands,kids-and-nursery-kids-furniture,True
+28,18080600481356182624133610384946,kids-furniture-headboards,Headboards,kids-and-nursery-kids-furniture,True
+29,90824819452046166601049296207444,kids-furniture-dressers-and-chests,Dressers and Chests,kids-and-nursery-kids-furniture,True
+30,26802310482654585439931868904748,kids-furniture-beds,Beds,kids-and-nursery-kids-furniture,True
+31,93383540488762520591263914795632,kids-bedding-comforters,Comforters,kids-and-nursery-kids-bedding,True
+32,53434086432699846905192412113921,home-accents-dining-accessories,Dining Accessories,rugs-and-decor-home-accents,True
+33,35999584495287891106553579134488,sofas-and-seating-sectional-sleeper-sofas,Sectional Sleeper Sofas,living-room-sofas-and-seating,True
+34,87097141970591792733440615337576,sofas-and-seating-loveseats,Loveseats,living-room-sofas-and-seating,True
+35,75625649175450379553693413909297,sofas-and-seating-sofas,Sofas,living-room-sofas-and-seating,True
+36,78653629477884317687233993269817,dining-furniture-dinette-sets,Dinette Sets,dining-room-dining-furniture,True
+37,31074649948760719266686108098872,dining-furniture-dining-storage,Dining Storage,dining-room-dining-furniture,True
+38,18093417418609304463648237161813,dining-furniture-dining-room-counter-tables,Dining Room Counter Tables,dining-room-dining-furniture,True
+39,53850443209252835749036865187294,dining-furniture-dining-room-chairs,Dining Room Chairs,dining-room-dining-furniture,True
+40,82491581934385734280452812295437,bar-furniture-bar-sets,Bar Sets,dining-room-bar-furniture,True
+41,75129545378389405699660531718332,bar-furniture-counter-tables,Counter Tables,dining-room-bar-furniture,True
+42,70202604442855174016087947383207,bar-furniture-bar-stools,Bar Stools,dining-room-bar-furniture,True
+44,22120424027957184536522395348364,bedroom-furniture-beds,Beds,bedroom-bedroom-furniture,True
+45,98775573429524706212498384950581,bedroom-furniture-vanities,Vanities,bedroom-bedroom-furniture,True
+46,50435344321806597671872862289821,bedroom-furniture-nightstands,Nightstands,bedroom-bedroom-furniture,True
+47,25622373541098562558084091718843,bedding-accessories-sheets-and-pillowcases,Sheets and Pillowcases,mattresses-and-bedding-bedding-accessories,True
+48,74673044659482167662486181616093,mattresses-by-size-full,Full,mattresses-and-bedding-mattresses-by-size,True
+51,87085584175955382216555786202094,patio-accessories-indoor-outdoor-rugs,Indoor/Outdoor Rugs,outdoor-patio-accessories,True
+53,26163552409087256844406366609007,outdoor-dining-dining-tables,Dining Tables,outdoor-outdoor-dining,True
+54,07684649446346244719114846327098,outdoor-dining-bar-stools,Bar Stools,outdoor-outdoor-dining,True
+56,99862922914914654866785730331858,home-office-and-study-office-storage,Office Storage,home-office-home-office-and-study,True
+57,03139549888106968691800954979887,home-office-and-study-office-chairs,Office Chairs,home-office-home-office-and-study,True
+60,56596671499786100450273510370893,nursery-beds,Beds,kids-and-nursery-nursery,True
+61,95577488499084620001132896983782,nursery-upholstery,Upholstery,kids-and-nursery-nursery,True
+62,93625932453876909513009887561521,nursery-storage,Storage,kids-and-nursery-nursery,True
+64,36316649134668117658121321966574,kids-furniture-vanities,Vanities,kids-and-nursery-kids-furniture,True
+65,95016538024546436900088117048798,kids-furniture-storage,Storage,kids-and-nursery-kids-furniture,True
+66,41410934735694440303748629027567,kids-furniture-bunk-beds,Bunk Beds,kids-and-nursery-kids-furniture,True
+68,01354537446900071604369377587696,kids-bedding-quilts,Quilts,kids-and-nursery-kids-bedding,True
+70,46211684870908540628195654204698,pets-bowls,Bowls,rugs-and-decor-pets,True
+72,62184940785228394607748188812350,dining-accessories-dinnerware,Dinnerware,rugs-and-decor-dining-accessories,True
+73,41590564873971027948309608776319,wall-decor-wall-sculptures,Wall Sculptures,rugs-and-decor-wall-decor,True
+74,88867247007712426657872075329833,home-accents-curtains-and-drapes,Curtains and Drapes,rugs-and-decor-home-accents,True
+75,60790694218091428490562551407519,bedroom-furniture-bedroom-chairs,Bedroom Chairs,bedroom-bedroom-furniture,True
+76,67344143494629976660874839951531,bedroom-furniture-dressers-and-chests,Dressers and Chests,bedroom-bedroom-furniture,True
+78,49084184494955020687323634225379,bedding-accessories-weighted-blankets,Weighted Blankets,mattresses-and-bedding-bedding-accessories,True
+80,84724778248894260649145758151490,mattresses-and-bases-by-type-power-bases,Power Bases,mattresses-and-bedding-mattresses-and-bases-by-type,True
+81,62059552140940782682872858134510,mattresses-by-size-twin-xl,Twin XL,mattresses-and-bedding-mattresses-by-size,True
+82,39973492428829308677043199991652,mattresses-by-size-queen,Queen,mattresses-and-bedding-mattresses-by-size,True
+83,57501285499482987146740234852665,mattresses-by-size-california-king,California King,mattresses-and-bedding-mattresses-by-size,True
+84,17299679645899039425000206013602,patio-accessories-patio-umbrellas,Patio Umbrellas,outdoor-patio-accessories,True
+85,48573475893505280748562458608921,patio-accessories-firepits,Firepits,outdoor-patio-accessories,True
+87,78672684419186358172546353743338,outdoor-dining-bar-furniture,Bar Furniture,outdoor-outdoor-dining,True
+89,64895704046921380404156309405583,kids-furniture-mirrored-dressers,Mirrored Dressers,kids-and-nursery-kids-furniture,True
+90,39017835462803189738832520206154,kids-bedding-throw-pillows,Throw Pillows,kids-and-nursery-kids-bedding,True
+92,86673131419385499606760522231343,pets-beds,Beds,rugs-and-decor-pets,True
+93,37031225445601112360374912254466,home-accents-home-accent-sets,Home Accent Sets,rugs-and-decor-home-accents,True
+94,57670484173827997943830196018669,home-accents-vases-and-bottles,Vases and Bottles,rugs-and-decor-home-accents,True
+95,56902558439806764246238958720360,home-accents-sculptures,Sculptures,rugs-and-decor-home-accents,True
+96,60080204478879680669606730042966,home-accents-picture-frames,Picture Frames,rugs-and-decor-home-accents,True
+97,55544824609122491251379539728898,home-accents-canisters-and-jars,Canisters and Jars,rugs-and-decor-home-accents,True
+99,14209439895288392579652114703768,tables-table-packs,Table Packs,living-room-tables,True
+100,10749846497462032215970261026232,tables-end-and-side-tables,End and Side Tables,living-room-tables,True
+101,35208582624256009631330143652378,tables-console-tables,Console Tables,living-room-tables,True
+102,96887594747724628194821545586349,tables-3-pack-tables,3-Pack Tables,living-room-tables,True
+103,66217440900410713579123487397861,entertainment-mantels-and-fireplaces,Mantels and Fireplaces,living-room-entertainment,True
+104,05333436409626504578606675176158,sofas-and-seating-lift-chairs,Lift Chairs,living-room-sofas-and-seating,True
+105,67686843962886776228855692960663,sofas-and-seating-ottomans,Ottomans,living-room-sofas-and-seating,True
+106,88716854367552457298613383169653,sofas-and-seating-reclining-loveseats,Reclining Loveseats,living-room-sofas-and-seating,True
+107,68125793874790898937089336103871,sofas-and-seating-recliners,Recliners,living-room-sofas-and-seating,True
+109,05071442810485672602123743453589,dining-furniture-dining-benches,Dining Benches,dining-room-dining-furniture,True
+110,23773445796688988730666906214600,dining-furniture-dining-room-tables,Dining Room Tables,dining-room-dining-furniture,True
+111,82791945943482581638188137900737,dining-furniture-dining-room-counter-chairs,Dining Room Counter Chairs,dining-room-dining-furniture,True
+113,86666102245099381742935105939502,bar-furniture-counter-chairs,Counter Chairs,dining-room-bar-furniture,True
+114,35129630748065927129336192740055,bar-furniture-bar-tables,Bar Tables,dining-room-bar-furniture,True
+116,24102854759810317615650497238112,bedroom-furniture-headboards,Headboards,bedroom-bedroom-furniture,True
+117,96690437904646048259574898974269,bedroom-furniture-tv-stands-and-media-centers,TV Stands and Media Centers,bedroom-bedroom-furniture,True
+118,46034179439040825533883952274339,bedroom-furniture-bedroom-benches,Bedroom Benches,bedroom-bedroom-furniture,True
+119,70164494072852932187252546403339,bedding-accessories-mattress-toppers,Mattress Toppers,mattresses-and-bedding-bedding-accessories,True
+120,27151522447253634718292426798305,bedding-accessories-mattress-protectors,Mattress Protectors,mattresses-and-bedding-bedding-accessories,True
+121,64412242942986259682954564633678,bedding-accessories-comforter-sets,Comforter Sets,mattresses-and-bedding-bedding-accessories,True
+122,97640290744415725931559919961597,mattresses-and-bases-by-type-foundations-and-frames,Foundations and Frames,mattresses-and-bedding-mattresses-and-bases-by-type,True
+123,52234963475850273623661797318933,mattresses-and-bases-by-type-memory-foam,Memory Foam,mattresses-and-bedding-mattresses-and-bases-by-type,True
+124,66455284919485581312463920506683,mattresses-and-bases-by-type-innerspring,Innerspring,mattresses-and-bedding-mattresses-and-bases-by-type,True
+125,08727394178972956042659499663748,mattresses-and-bases-by-type-hybrid,Hybrid,mattresses-and-bedding-mattresses-and-bases-by-type,True
+126,90461475422843178927393548583847,mattresses-by-size-twin,Twin,mattresses-and-bedding-mattresses-by-size,True
+127,57467964692292804541565366560313,mattresses-by-size-split-california-king,Split California King,mattresses-and-bedding-mattresses-by-size,True
+128,78615532487826037914773142440131,mattresses-by-size-king,King,mattresses-and-bedding-mattresses-by-size,True
+129,26834357813471629298892132170571,pets-crates,Crates,rugs-and-decor-pets,True
+130,06804222436846645392278791909795,dining-accessories-serveware,Serveware,rugs-and-decor-dining-accessories,True
+132,13652242843868864376666299732487,wall-decor-mirrors,Mirrors,rugs-and-decor-wall-decor,True
+133,81994124878162196860134555723620,wall-decor-clocks,Clocks,rugs-and-decor-wall-decor,True
+134,23120232147905687548731587393300,wall-decor-wall-art,Wall Art,rugs-and-decor-wall-decor,True
+136,43839844261001292087146125459535,home-accents-poufs,Poufs,rugs-and-decor-home-accents,True
+137,07552100482968753979868538312404,home-accents-storage-and-organization,Storage and Organization,rugs-and-decor-home-accents,True
+138,64759936574396710366602063691665,home-accents-stools,Stools,rugs-and-decor-home-accents,True
+139,97453509407940206036081383555871,home-accents-accent-furniture,Accent Furniture,rugs-and-decor-home-accents,True
+140,76521310423086292602522328418912,home-accents-floral-and-greenary,Floral and Greenary,rugs-and-decor-home-accents,True
+141,07526400465684857293596018124513,home-accents-candles-and-candle-holders,Candles and Candle Holders,rugs-and-decor-home-accents,True
+142,34365233421979190511544930893636,home-accents-baskets-and-boxes,Baskets and Boxes,rugs-and-decor-home-accents,True
+143,38109493452946508677087591537763,pillows-accent-pillows,Accent Pillows,rugs-and-decor-pillows,True
+144,12747088432345268155398203518890,sofas-and-seating-sectional-sofas,Sectional Sofas,living-room-sofas-and-seating,True
+145,19265940086568662083349164781055,home-accents-bowls-and-trays,Bowls and Trays,rugs-and-decor-home-accents,True
+147,06096340749161795713971353201304,rugs-indoor-outdoor-rugs,Indoor/Outdoor Rugs,rugs-and-decor-rugs,True
+148,19226548828551514001070883219508,rugs-runner-rugs,Runner Rugs,rugs-and-decor-rugs,True
+149,38469974818581879225374760073208,rugs-accent-rugs,Accent Rugs,rugs-and-decor-rugs,True
+150,98391500845497347242650330136955,lighting-lamp-sets,Lamp Sets,rugs-and-decor-lighting,True
+151,64984944248446249531413051497411,blankets-and-throws-washable,Washable,rugs-and-decor-blankets-and-throws,True
+152,29120480564339618127417347449189,blankets-and-throws-throws,Throws,rugs-and-decor-blankets-and-throws,True
+153,99620881784321108031678364990159,blankets-and-throws-blankets,Blankets,rugs-and-decor-blankets-and-throws,True
+154,11880074382062946091116062383595,pillows-indoor-outdoor-pillows,Indoor/Outdoor Pillows,rugs-and-decor-pillows,True
+155,68384440129320060750658695622424,pillows-washable-pillows,Washable Pillows,rugs-and-decor-pillows,True
+157,97518274419339563332347148816775,rugs-washable,Washable,rugs-and-decor-rugs,True
+158,58859522947884136483176516231705,component-skus-home-office,Home Office,component-skus,True
+159,33119947864406572570390362353912,component-skus-bedroom,Bedroom,component-skus,True
+160,35580204245080238260221902657012,rugs-area-rugs,Area Rugs,rugs-and-decor-rugs,True
+162,39775524408363246287137293686177,lighting-pendants,Pendants,rugs-and-decor-lighting,True
+163,87454342620112925686802151055726,lighting-chandeliers,Chandeliers,rugs-and-decor-lighting,True
+164,77946334373006033373236472684783,lighting-wall-lights,Wall Lights,rugs-and-decor-lighting,True
+165,26082761942766899480295829962856,lighting-desk-lamps,Desk Lamps,rugs-and-decor-lighting,True
+166,65260445140105576587787789415865,lighting-table-lamps,Table Lamps,rugs-and-decor-lighting,True
+168,19306273242656490727536722239315,component-skus-outdoor,Outdoor,component-skus,True
+171,05302562143108593970550476902364,sofas-and-seating-living-room-chairs,Living Room Chairs,living-room-sofas-and-seating,True
+172,03072344055245320861080585524576,sofas-and-seating-reclining-sectional-sofas,Reclining Sectional Sofas,living-room-sofas-and-seating,True
+173,77040046994371051162255150244427,sofas-and-seating-reclining-sofas,Reclining Sofas,living-room-sofas-and-seating,True
+174,76636341779526457142243693078976,sofas-and-seating-power-reclining,Power Reclining,living-room-sofas-and-seating,True
+175,80875184675280887376736203072610,sofas-and-seating-sleeper-sofas,Sleeper Sofas,living-room-sofas-and-seating,True
+177,40147344813849849252892866849717,bedroom-furniture-storage,Storage,bedroom-bedroom-furniture,True
+178,18056534966213938898071089768362,lighting-floor-lamps,Floor Lamps,rugs-and-decor-lighting,True
+181,34981462647523908950451129557694,component-skus-kitchen-and-dining-room,Kitchen and Dining Room,component-skus,True
+182,41206428824424477164172473897923,component-skus-living-room,Living Room,component-skus,True
+183,bc14896607e14291afd1c1172df6dcd7,kitchen-and-dining-room,Kitchen and Dining Room,,True
+184,f18bd28d57534e20995f175a16d80dca,living-room-sets,Living Room Sets,living-room,True
+185,2845da9db1604860b928c258fd2174cb,bedroom-sets,Bedroom Sets,bedroom,True
+186,02742476a6634495b61971c613998ae6,dining-room-sets,Dining Room Sets,dining-room,True
+188,b68444013b5346c9baffbc5269ccbb3f,outdoor-sectional,Outdoor Sectional,outdoor,True
+189,71867a8a316f495ca074c6bcae63135b,home-office-sets,Home Office Sets,home-office,True
+190,ce19d1185c8d4a698dfb8b4f046f0476,rugs-and-decor-sets,Rugs and Decor Sets,rugs-and-decor-rugs,True
+191,7b10594b541b477e8ae10f80f01d31d4,outdoor-sets,Outdoor Sets,outdoor,True
+192,c10f31e73a934ce4b88bcf26f74a882d,mattresses-and-bedding-sets,Mattresses and Bedding Sets,mattresses-and-bedding,True
+193,395d029919804f39a68c172f1eb44260,outdoor-package,Outdoor Package,outdoor,True
+194,cf863bddcae34563b10d7bdbe3e67aa0,home-accents-accent-chairs,Accent Chairs,rugs-and-decor-home-accents,False
+195,89522a084bcd4f808359fb0749bc5d4a,nursery-cribs,Cribs,kids-and-nursery-nursery,False
+196,2e2afb44917d442db78d39170676c587,kids-bedding-mattress-pads-and-covers,Mattress Pads and Covers,kids-and-nursery-kids-bedding,False
+197,929b927885b8438aa5c1bed8403d4fa2,kids-bedding-sheets,Sheets,kids-and-nursery-kids-bedding,False
