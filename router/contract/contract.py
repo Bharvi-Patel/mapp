@@ -18,6 +18,7 @@ REVIEW_REASONS = (
     'not_in_store',          # exists in master but not synced to the target store
     'contradiction',         # vendor path disagrees with the product name/type
     'no_pool',               # item class has no pool and the all-categories fallback is off
+    'review_class',          # item class is configured as review-only (no category fits yet)
 )
 
 @dataclass
