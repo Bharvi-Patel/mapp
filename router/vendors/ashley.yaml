@@ -8,7 +8,9 @@ field_map:
   item_type: itemType
   item_class: itemClass
   item_code: pim_products.item_code
-  vendor_category_path: TODO_confirm   # Ashley navigableCategories; via pim_raw_item_categories -> pim_categories.ashley_category. Confirm before Phase 4.
+  vendor_category_path: navigableCategories   # API field: list of cumulative ' - ' paths, e.g. ['Bedroom', 'Bedroom - Bedroom Furniture', 'Bedroom - Bedroom Furniture - Beds'].
+  # Not stored on pim_raw_items; fetch_navcats.py exports it. cascade.nav_code turns a path into the ashley_category code
+  # (uppercase, drop spaces and hyphens: BEDROOMBEDROOMFURNITUREBEDS). ['Uncategorized'] = no vendor category.
 
 settings:
   trust_vendor_path: false
@@ -16,6 +18,10 @@ settings:
   model_spend_cap_per_batch: null
 
 excluded_slugs: [component-skus, uncategorized, store-displays]
+# Also excluded: every slug starting with these. The component-skus-* leaves (bedroom, living-room, outdoor, ...) hold parts
+# such as footboards, rails, corner chairs and cushions. On the real navigableCategories 22 of 28 wrong exact-path
+# assignments went there, while the key places these products in beds, headboards, sofas and so on.
+excluded_slug_prefixes: [component-skus-]
 min_pool_support: 2
 
 # Package item_codes -> set category. Each row below matches where all of that code's products are

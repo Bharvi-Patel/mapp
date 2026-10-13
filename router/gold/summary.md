@@ -3,9 +3,9 @@
 | status | rows |
 |---|---|
 | excluded | 1 |
-| gold | 115 |
-| gold_flagged | 44 |
-| gold_ruled | 3 |
+| gold | 112 |
+| gold_flagged | 40 |
+| gold_ruled | 10 |
 | hold_not_in_store | 3 |
 | rule_handled | 53 |
 

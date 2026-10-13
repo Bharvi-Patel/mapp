@@ -72,3 +72,55 @@ def test_model_outcomes():
 def test_threshold_lookup():
     c = cfg(); c['settings']['thresholds'] = {'3': 0.8, '8': 0.85, '999': 0.9}
     assert [X.threshold_for(c, n) for n in (2, 5, 20)] == [0.8, 0.85, 0.9]
+# ---- real Ashley navigableCategories -> codes
+def test_nav_code_matches_stored_code_shape():
+    assert X.nav_code('Bedroom - Bedroom Furniture - Beds') == 'BEDROOMBEDROOMFURNITUREBEDS'
+    assert X.nav_code('Rugs and Decor - Rugs - Indoor/Outdoor Rugs') == 'RUGSANDDECORRUGSINDOOR/OUTDOORRUGS'   # slash kept
+    assert X.nav_code('Living Room - Tables - 3-Pack Tables') == 'LIVINGROOMTABLES3PACKTABLES'                  # inner hyphen dropped
+
+def test_nav_codes_deepest_first_dedupes_and_drops_uncategorized():
+    nav = ['Bedroom', 'Bedroom - Bedroom Furniture', 'Bedroom - Bedroom Furniture - Beds']
+    assert X.nav_codes(nav) == ['BEDROOMBEDROOMFURNITUREBEDS', 'BEDROOMBEDROOMFURNITURE', 'BEDROOM']
+    assert X.nav_codes(['Uncategorized']) == []
+    assert X.nav_codes('["Bedroom"]') == ['BEDROOM']          # JSON text from a CSV cell
+    assert X.nav_codes(None) == []
+
+def test_real_codes_hit_vendor_map_then_leaf_lookup():
+    r = res(); r.cfg['settings']['trust_vendor_path'] = True
+    r.vendor_map = {'BEDROOMBEDROOMFURNITUREBEDS': 'sofas'}
+    assert route(inp(vendor_category_path=X.nav_codes(['Bedroom - Bedroom Furniture - Beds'])), r).rule == 'vendor_map'
+    r2 = res(); r2.cfg['settings']['trust_vendor_path'] = True
+    r2.code_slug = {'RUGSANDDECORRUGSAREARUGS': 'rugs-area-rugs'}      # not in the accepted map: step 6 resolves it by code
+    o = route(inp(vendor_category_path=['RUGSANDDECORRUGSAREARUGS']), r2)
+    assert (o.outcome, o.primary_slug, o.rule) == ('assigned', 'rugs-area-rugs', 'vendor_path_exact')
+
+# ---- children of an excluded parent are excluded too
+def test_excluded_target_in_vendor_map_is_skipped_not_assigned():
+    r = res(); r.cfg['settings']['trust_vendor_path'] = True
+    r.excluded = r.excluded | {'comp-bedroom'}
+    r.vendor_map = {'COMPBEDROOM': 'comp-bedroom', 'OKCODE': 'sofas'}
+    o = route(inp(vendor_category_path=['COMPBEDROOM', 'OKCODE']), r)       # first code is excluded -> next one is used
+    assert (o.outcome, o.primary_slug, o.rule) == ('assigned', 'sofas', 'vendor_map')
+
+def test_excluded_only_vendor_leaf_falls_through_to_class_pool():
+    r = res(); r.cfg['settings']['trust_vendor_path'] = True
+    r.excluded = r.excluded | {'comp-bedroom'}; r.leaf = r.leaf | {'comp-bedroom'}; r.store = r.store | {'comp-bedroom'}
+    r.code_slug = {'COMPBEDROOM': 'comp-bedroom'}
+    o = route(inp(vendor_category_path=['COMPBEDROOM']), r)
+    assert o.outcome == 'review' and o.review_reason == 'no_rule_no_model'   # no wrong assignment; the pool offers sofas, ottomans
+
+def test_undecided_why_classifies_the_vendor_path():
+    r = res(); r.excluded = r.excluded | {'comp'}; r.leaf = r.leaf | {'comp'}; r.store = r.store | {'comp'}
+    r.code_slug = {'C1': 'comp', 'S1': 'sofas', 'O1': 'ottomans', 'N1': 'nursery-cribs'}
+    why = lambda path: X.undecided_why(inp(vendor_category_path=path), r)
+    assert why([]) == 'no_vendor_path'
+    assert why(['PARENTONLY']) == 'path_has_no_leaf'
+    assert why(['C1']) == 'component_or_excluded_only'
+    assert why(['S1', 'O1']) == 'several_leaves'
+    assert why(['N1']) == 'leaf_not_in_store'
+    assert why(['S1']) == 'one_leaf_but_not_assigned'
+
+def test_usable_leaves_keeps_path_order_and_drops_excluded_and_unknown():
+    r = res(); r.excluded = r.excluded | {'comp'}; r.leaf = r.leaf | {'comp'}; r.store = r.store | {'comp'}
+    r.code_slug = {'C1': 'comp', 'S1': 'sofas', 'O1': 'ottomans'}
+    assert X.usable_leaves(inp(vendor_category_path=['O1', 'C1', 'PARENT', 'S1', 'O1']), r) == ['ottomans', 'sofas']
