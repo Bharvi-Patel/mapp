@@ -26,13 +26,13 @@ T0024,A2900026,Kurthorne Indoor/Outdoor Vase,home-accents-vases-and-bottles,,hom
 T0025,R408700,Jaiminson Extra Large Rug,rugs-area-rugs,,rugs-area-rugs,,gold,rugs-area-rugs,,
 T0026,100-518,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0027,100-632,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
-T0028,P052-970,Midnight Mountain Freestanding Fireplace,entertainment-mantels-and-fireplaces,,entertainment-mantels-and-fireplaces,,gold,entertainment-mantels-and-fireplaces,,
+T0028,P052-970,Midnight Mountain Freestanding Fireplace,entertainment-mantels-and-fireplaces,,entertainment-mantels-and-fireplaces,,gold_ruled,patio-accessories-firepits,ruling,Ashley's own category and the human spot-check agree; the labelers were wrong
 T0029,D773-32,Havonplane Counter Height Dining Extension Table,dining-furniture-dining-room-counter-tables,Y,dining-furniture-dining-room-counter-tables,Y,gold_flagged,dining-furniture-dining-room-counter-tables,,
 T0030,PCB1170-36,Makidern Bedroom Mirror,wall-decor-mirrors,,wall-decor-mirrors,,gold,wall-decor-mirrors,,
 T0031,2420425,SimpleJoy Recliner,sofas-and-seating-recliners,,sofas-and-seating-recliners,,gold,sofas-and-seating-recliners,,
 T0032,R407712,Lisgrove 5' x 7' Area Rug,rugs-area-rugs,,rugs-area-rugs,,gold,rugs-area-rugs,,
 T0033,PC5680335,Clearbrooke Loveseat,sofas-and-seating-loveseats,,sofas-and-seating-loveseats,,gold,sofas-and-seating-loveseats,,
-T0034,B1199-53,Cielden Twin Panel Headboard,bedroom-furniture-headboards,,bedroom-furniture-headboards,,gold,bedroom-furniture-headboards,,
+T0034,B1199-53,Cielden Twin Panel Headboard,bedroom-furniture-headboards,,bedroom-furniture-headboards,,gold_ruled,kids-furniture-headboards,ruling,Ashley's own category; owner chose to follow the vendor path (spot-check said bedroom-furniture-headboards)
 T0035,A8010417,Ozias Accent Mirror,wall-decor-mirrors,,wall-decor-mirrors,,gold,wall-decor-mirrors,,
 T0036,100-447,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0037,100-501,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
@@ -59,7 +59,7 @@ T0057,5950535,Stonemeade Loveseat,sofas-and-seating-loveseats,,sofas-and-seating
 T0058,R407621,"Empriss 7'8"" x 10' Area Rug",rugs-area-rugs,,rugs-area-rugs,,gold,rugs-area-rugs,,
 T0059,7179638,Twin Harbor Sofa,sofas-and-seating-sofas,,sofas-and-seating-sofas,,gold,sofas-and-seating-sofas,,
 T0060,R407861,"Deenbury 7'8"" x 10' Area Rug",rugs-area-rugs,,rugs-area-rugs,,gold,rugs-area-rugs,,
-T0061,D394-425,Skempton Dining Table and Chairs (Set of 7),dining-room-sets,,dining-room-sets,Y,gold_flagged,dining-room-sets,,
+T0061,D394-425,Skempton Dining Table and Chairs (Set of 7),dining-room-sets,,dining-room-sets,Y,gold_ruled,dining-furniture-dinette-sets,ruling,Ashley's own category; owner chose to follow the vendor path
 T0062,M12041,Dreamcloud Classic Memory Foam King Mattress,mattresses-by-size-king,Y,mattresses-by-size-king,Y,gold_flagged,mattresses-by-size-king,,
 T0063,A1001004P,Rowcher Pillow,pillows-accent-pillows,,pillows-accent-pillows,,gold,pillows-accent-pillows,,
 T0064,R407051,Hessland 8' x 10' Washable Rug,rugs-washable,,rugs-washable,,gold,rugs-washable,,
@@ -99,7 +99,7 @@ T0097,100-84,StoreDisplay Queen Display Mattress/Box,mattresses-by-size-queen,Y,
 T0098,A1000866,Gariland Pillow (Set of 4),pillows-accent-pillows,,pillows-accent-pillows,,gold,pillows-accent-pillows,,
 T0099,R408830,Valenmore Extra Large Rug,rugs-area-rugs,,rugs-area-rugs,,gold,rugs-area-rugs,,
 T0100,PCD843-60,Radkin Dining Server,dining-furniture-dining-storage,,dining-furniture-dining-storage,,gold,dining-furniture-dining-storage,,
-T0101,A8010380,Evesen Floor Standing Mirror/Storage,wall-decor-mirrors,Y,wall-decor-mirrors,Y,gold_flagged,wall-decor-mirrors,,
+T0101,A8010380,Evesen Floor Standing Mirror/Storage,wall-decor-mirrors,Y,wall-decor-mirrors,Y,gold_ruled,home-accents-accent-furniture,ruling,Ashley's own category; owner chose to follow the vendor path (spot-check said wall-decor-mirrors; marked unsure)
 T0102,100-499,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0103,K61017,Galileo Convertible Crib,nursery-cribs,,nursery-cribs,,hold_not_in_store,nursery-cribs,,category not in the store yet
 T0104,D858-60,Ridgester Dining Server,dining-furniture-dining-storage,,dining-furniture-dining-storage,,gold,dining-furniture-dining-storage,,
@@ -118,7 +118,7 @@ T0116,A2000722,Heddford Tray,home-accents-bowls-and-trays,,home-accents-bowls-an
 T0117,100-12,StoreDisplay Queen Memory Foam Mattress,mattresses-by-size-queen,Y,mattresses-by-size-queen,Y,rule_handled,store-displays,sku_prefix:100-,
 T0118,8721438,Altari Sofa,sofas-and-seating-sofas,,sofas-and-seating-sofas,,gold,sofas-and-seating-sofas,,
 T0119,100-537,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
-T0120,EB1864-155,Socalle Twin Panel Headboard,bedroom-furniture-headboards,,bedroom-furniture-headboards,,gold,bedroom-furniture-headboards,,
+T0120,EB1864-155,Socalle Twin Panel Headboard,bedroom-furniture-headboards,,bedroom-furniture-headboards,,gold_ruled,kids-furniture-headboards,ruling,Ashley's own category; owner chose to follow the vendor path
 T0121,100-504,StoreDisplay Ottoman Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0122,100-2,StoreDisplay Hardware Kit (5/CN),__none__,,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0123,A2000795,Edurton Tray (Set of 2),home-accents-bowls-and-trays,,home-accents-bowls-and-trays,,gold,home-accents-bowls-and-trays,,
@@ -142,7 +142,7 @@ T0140,A1001084,Gayelery Throw (Set of 3),blankets-and-throws-throws,,blankets-an
 T0141,A2000538V,Taylow Indoor/Outdoor Vase,home-accents-vases-and-bottles,,home-accents-vases-and-bottles,,gold,home-accents-vases-and-bottles,,
 T0142,100-17,StoreDisplay Queen Metal Bedding Fixture,__none__,,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0143,100-465,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
-T0144,PCP373-601A,Orchard Beach Outdoor Arm Chair with Cushion (Set of 4),patio-furniture-seating,Y,patio-furniture-seating,Y,gold_flagged,patio-furniture-seating,,
+T0144,PCP373-601A,Orchard Beach Outdoor Arm Chair with Cushion (Set of 4),patio-furniture-seating,Y,patio-furniture-seating,Y,gold_ruled,outdoor-dining-dining-chairs,ruling,Ashley's own category; owner chose to follow the vendor path
 T0145,D974-35,Cabalynn Dining Extension Table,dining-furniture-dining-room-tables,,dining-furniture-dining-room-tables,,gold,dining-furniture-dining-room-tables,,
 T0146,B1190-72,Gerridan King Panel Headboard/Footboard,bedroom-furniture-headboards,Y,bedroom-furniture-headboards,,gold_flagged,bedroom-furniture-headboards,,
 T0147,B1190-36,Gerridan Bedroom Mirror,wall-decor-mirrors,,wall-decor-mirrors,,gold,wall-decor-mirrors,,
@@ -186,7 +186,7 @@ T0184,B1013-58,Danziar King Panel Headboard,bedroom-furniture-headboards,,bedroo
 T0185,R408541,Torinette Large Rug,rugs-area-rugs,,rugs-area-rugs,,gold,rugs-area-rugs,,
 T0186,100-400,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0187,A8000337,Brunonia Wall Art,wall-decor-wall-art,,wall-decor-wall-art,,gold,wall-decor-wall-art,,
-T0188,D396-325,Gesthaven Dining Table with 4 Chairs and Bench (Set of 6),dining-room-sets,,dining-room-sets,Y,gold_flagged,dining-room-sets,,
+T0188,D396-325,Gesthaven Dining Table with 4 Chairs and Bench (Set of 6),dining-room-sets,,dining-room-sets,Y,gold_ruled,dining-furniture-dinette-sets,ruling,Ashley's own category; owner chose to follow the vendor path (spot-check said dining-room-sets)
 T0189,A8000467,Harlandale Wall Art,wall-decor-wall-art,,wall-decor-wall-art,,gold,wall-decor-wall-art,,
 T0190,100-578,StoreDisplay Chaise Cushion,__none__,Y,__none__,,rule_handled,store-displays,sku_prefix:100-,
 T0191,PC6950739,Bridgepoint Queen Sofa Sleeper,sofas-and-seating-sleeper-sofas,,sofas-and-seating-sleeper-sofas,,gold,sofas-and-seating-sleeper-sofas,,
