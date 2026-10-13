@@ -83,6 +83,27 @@ def usable_leaves(inp, res):
     slugs = dict.fromkeys(res.code_slug.get(c, c) for c in (inp.vendor_category_path or []))
     return [x for x in slugs if x in res.leaf and x in res.store and x not in res.excluded]
 
+_STOP = {'and', 'by', 'the', 'of', 'a', 'type', 'size', 'set', 'sets'}
+def _words(text):
+    return {w[:-1] if len(w) > 3 and w.endswith('s') else w
+            for w in re.findall(r'[a-z]+', (text or '').lower()) if w not in _STOP}
+
+def pick_by_name(name, leaves):
+    """Tie-break among several vendor-path leaves: the leaf whose own words (those not shared by every
+    candidate) appear most in the product name wins. Fewer unmatched leaf words breaks a tie.
+    Returns None when there is no clear winner (the row then stays undecided)."""
+    if len(leaves) < 2: return None
+    lw = {s: _words(s.replace('-', ' ')) for s in leaves}
+    shared = set.intersection(*lw.values())
+    nw = _words(name)
+    scored = []
+    for s in leaves:
+        own = lw[s] - shared
+        scored.append(((len(own & nw), -len(own - nw)), s))
+    scored.sort(reverse=True)
+    if scored[0][0][0] < 1 or scored[0][0] == scored[1][0]: return None
+    return scored[0][1]
+
 def undecided_why(inp, res):
     """Why the vendor-path rules had no answer for this item (diagnostic only; the cascade does not use it)."""
     slugs = list(dict.fromkeys(res.code_slug.get(c, c) for c in (inp.vendor_category_path or [])))
@@ -123,6 +144,11 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
         return assign(slug, 'rule', f'package:{inp.item_code}', RULE_CONF['package'], [slug], exempt=[slug])
     if (inp.item_class or '').strip() in (cfg.get('review_classes') or []):                    # 4
         return review('review_class', stage='review', rule='review_class')
+    cr = cfg.get('component_rule')                                                           # 4b: Component SKUs follow Ashley's own parts category
+    if trust and cr and (inp.item_type or '') == cr['item_type']:
+        comp = [x for x in dict.fromkeys(res.code_slug.get(c, c) for c in (inp.vendor_category_path or []))
+                if x.startswith(cr['slug_prefix']) and x in res.leaf and x in res.store and x not in res.inactive]
+        if comp: return assign(comp[0], 'rule', 'component_sku', RULE_CONF['vendor_path'], [comp[0]], exempt=[comp[0]])
     if trust:
         for code in (inp.vendor_category_path or []):                                        # 5
             if code in res.vendor_map and res.vendor_map[code] not in res.excluded:    # excluded targets are skipped, not assigned
@@ -135,6 +161,9 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
                 if slug.startswith(c['slug_prefix']) and re.search(c['name_pattern'], inp.name or '', re.I):
                     return review('contradiction', [{'slug': slug}], stage='rule', rule='vendor_path_exact')
             return assign(slug, 'rule', 'vendor_path_exact', RULE_CONF['vendor_path'], res.leaf)
+        if len(leaves) >= 2 and cfg['settings'].get('name_match_tiebreak'):                  # 6b (off unless enabled in the vendor config)
+            slug = pick_by_name(inp.name, leaves)
+            if slug: return assign(slug, 'rule', 'path_leaf_name_match', RULE_CONF['vendor_path'], res.leaf)
     options, why = options_for(inp, res, trust)                                              # 7
     if not options: return review('no_pool')
     if model is None:
@@ -203,7 +232,7 @@ def inputs_from_dump(dump, skus, vendor_id, navcats=None):
         if r['raw_item_id'] in uu and code.get(r['product_id']): icode.setdefault(uu[r['raw_item_id']], code[r['product_id']])
     out = {}
     for sku, r in raw.items():
-        out[sku] = RouterInput(vendor_id, 'raw_item', r['uuid'], sku, (r['itemFriendlyDesc'] or r['itemName'] or '').strip(),
+        out[sku] = RouterInput(vendor_id, 'raw_item', r['uuid'], sku, (r['itemName'] or r['itemFriendlyDesc'] or '').strip(),
                                r['itemDesc'], r['itemType'], (r['itemClass'] or '').strip(), icode.get(sku), (navcats[sku] if navcats and sku in navcats else path.get(sku, [])))
     return out
 
@@ -215,10 +244,20 @@ def evaluate(args):
     navcats = load_navcats(args.navcats) if args.navcats else None
     inputs = inputs_from_dump(args.dump, {r['sku'] for r in gold}, cfg['vendor_id'], navcats)
     trust = args.trust_vendor_path; rowsout = []
+    model = None
+    if args.use_model:
+        import model_step as MS
+        cap = args.max_model_calls or cfg['settings'].get('model_spend_cap_per_batch')
+        cache = os.path.join(HERE, 'reports', 'model_cache.json')
+        if args.provider == 'openai-compat':
+            if not (args.base_url and args.model_name): raise SystemExit('--provider openai-compat needs --base-url and --model-name')
+            model = MS.OpenAICompatModel(args.model_name, args.base_url, max_calls=cap, cache_path=cache)
+        else:
+            model = MS.LLMModel(model=args.model_name or MS.DEFAULT_MODEL, max_calls=cap, cache_path=cache)
     for g in gold:
         inp = inputs.get(g['sku'])
         if not inp: continue
-        out = route(inp, res, None, trust)
+        out = route(inp, res, model, trust)
         opts, why = options_for(inp, res, trust)
         key = g['gold_slug']
         rowsout.append(dict(row_id=g['row_id'], name=g['name'][:40], gold=key, outcome=out.outcome, stage=out.stage, rule=out.rule,
@@ -226,16 +265,38 @@ def evaluate(args):
                             gold_in_options=(key in opts) if key != "__none__" else '', correct=(out.primary_slug == key),
                             item_type=inp.item_type or '', item_class=inp.item_class or '',
                             undecided_why=undecided_why(inp, res) if out.outcome == 'review' else '',
+                            model_pick=(out.candidates[0]['slug'] if out.stage == 'model' and out.candidates else (out.primary_slug if out.stage == 'model' else '')),
+                            model_conf=(out.candidates[0].get('p', '') if out.stage == 'model' and out.candidates else ''),
                             vendor_path=' | '.join(inp.vendor_category_path or []),
                             path_leaves=' | '.join(usable_leaves(inp, res))))
     L = [f'# Cascade evaluation (trust_vendor_path={trust}, unreviewed_map={args.unreviewed_map}, model step off)', '',
          f'Rows scored: {len(rowsout)} of {len(gold)} answer-key rows ({len(gold) - len(rowsout)} had no raw item in the dump)', '']
-    asg = [r for r in rowsout if r['outcome'] == 'assigned']
+    comp_rows = [r for r in rowsout if r['rule'] == 'component_sku' and r['outcome'] == 'assigned']
+    asg = [r for r in rowsout if r['outcome'] == 'assigned' and r['rule'] != 'component_sku']
     L += ['## Decided by rules (assigned)', '', '| rule | decided | correct | precision |', '|---|---|---|---|']
     for rule in sorted({r['rule'] for r in asg}):
         g = [r for r in asg if r['rule'] == rule]; k = sum(r['correct'] for r in g)
         L.append(f'| {rule} | {len(g)} | {k} | {k / len(g):.1%} |')
     if asg: L.append(f'| **all rules** | {len(asg)} | {sum(r["correct"] for r in asg)} | {sum(r["correct"] for r in asg) / len(asg):.1%} |')
+    gl = cfg['settings'].get('go_live') or {}
+    target, min_rows = float(gl.get('precision_target', 0.99)), int(gl.get('min_rows', 30))
+    def wilson_low(k, n, z=1.96):
+        if not n: return 0.0
+        p = k / n; d = 1 + z * z / n
+        return (p + z * z / (2 * n) - z * ((p * (1 - p) + z * z / (4 * n)) / n) ** 0.5) / d
+    if asg:
+        L += ['', f'## Go-live check (target precision {target:.0%}, at least {min_rows} gold rows)', '',
+              '| rule | rows | precision | 95% lower bound | verdict |', '|---|---|---|---|---|']
+        for rule in sorted({r['rule'] for r in asg}):
+            g = [r for r in asg if r['rule'] == rule]; k = sum(r['correct'] for r in g); n = len(g)
+            v = 'shadow only: too few gold rows' if n < min_rows else ('ok to enable' if k / n >= target else 'below target')
+            L.append(f'| {rule} | {n} | {k / n:.1%} | {wilson_low(k, n):.1%} | {v} |')
+        L += ['', 'The lower bound is the plain-statistics floor on true precision given only these rows. A rule can pass the target here and still have a lower bound under it; the labeled rows are also the ones the rules were tuned on, so treat precision as optimistic.']
+    if comp_rows:
+        L += ['', '## Components (decision A: follow Ashley\'s component-skus-* category)', '',
+              f'{len(comp_rows)} Component rows assigned by rule component_sku. Not scored against the key: the key labels them with real categories, by design.',
+              f'The key says "no category" for {sum(r["gold"] == "__none__" for r in comp_rows)} of them (check those).']
+        for slug, n in sorted(C.Counter(r['slug'] for r in comp_rows).items()): L.append(f'- {slug}: {n}')
     rev = [r for r in rowsout if r['outcome'] == 'review']
     L += ['', f'## Not decided: {len(rev)}', '', '| reason | rows | of which the key says "no category" |', '|---|---|---|']
     for reason in sorted({r['reason'] for r in rev}):
@@ -262,8 +323,20 @@ def evaluate(args):
               f'Options offered: {dict(sizes)}']
         miss = [r for r in mb if r['gold_in_options'] is not True]
         for r in miss[:10]: L.append(f"- missing: {r['row_id']} {r['name']} | key={r['gold']} | {r['n_options']} options from {r['options_from']}")
+    mp = [r for r in rowsout if r['stage'] == 'model' and r['model_pick'] and r['gold'] != '__none__']
+    if args.use_model:
+        L += ['', '## Model picks (step 8; thresholds are null, so every pick goes to review)', '',
+              f'{len(mp)} rows with a model pick and a real key answer; {sum(r["model_pick"] == r["gold"] for r in mp)} match the key.']
+        if mp:
+            L += ['', '| stated confidence | picks | match the key |', '|---|---|---|']
+            for lo, hi in ((0, .7), (.7, .85), (.85, .95), (.95, 1.01)):
+                g = [r for r in mp if r['model_conf'] != '' and lo <= float(r['model_conf']) < hi]
+                if g: L.append(f"| {lo:.2f} to {min(hi, 1):.2f} | {len(g)} | {sum(r['model_pick'] == r['gold'] for r in g)} |")
+        if len(mp) < 30: L += ['', f'Only {len(mp)} rows: too few to set a threshold (Phase 5 needs about 30 to 50).']
+        L += [f'Model calls this run: {model.calls}']
+        if model.errors: L += ['', f'**Model errors (rows sent to review): {model.errors}**', f'First error: {model.first_error}']
     os.makedirs(os.path.join(HERE, 'reports'), exist_ok=True)
-    tag = ('trust' if trust else 'independent') + ('_unreviewed_map' if args.unreviewed_map else '') + ('_navcats' if args.navcats else '')
+    tag = ('trust' if trust else 'independent') + ('_unreviewed_map' if args.unreviewed_map else '') + ('_navcats' if args.navcats else '') + ('_model' if args.use_model else '')
     with open(os.path.join(HERE, 'reports', f'cascade_eval_{tag}.md'), 'w', encoding='utf-8') as f: f.write('\n'.join(L) + '\n')
     with open(os.path.join(HERE, 'reports', f'cascade_eval_{tag}_rows.csv'), 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(rowsout[0])); w.writeheader(); w.writerows(rowsout)
@@ -277,6 +350,11 @@ def main():
     e.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
     e.add_argument('--navcats', help='CSV from fetch_navcats.py (sku, navigableCategories); uses real Ashley paths')
     e.add_argument('--trust-vendor-path', action='store_true'); e.add_argument('--unreviewed-map', action='store_true')
+    e.add_argument('--use-model', action='store_true', help='run step 8 (needs ANTHROPIC_API_KEY); picks go to review while thresholds are null')
+    e.add_argument('--max-model-calls', type=int, default=None)
+    e.add_argument('--provider', choices=['anthropic', 'openai-compat'], default='anthropic')
+    e.add_argument('--model-name', default=None, help='model id (openai-compat: e.g. ministral-3:14b on Ollama, mistralai/ministral-14b-2512 on OpenRouter)')
+    e.add_argument('--base-url', default=None, help='openai-compat only, e.g. http://localhost:11434/v1')
     a = ap.parse_args(); {'eval': evaluate}[a.cmd](a)
 
 if __name__ == '__main__': main()

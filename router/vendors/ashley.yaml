@@ -14,6 +14,7 @@ field_map:
 
 settings:
   trust_vendor_path: false
+  name_match_tiebreak: true
   thresholds: null                # null = model answers always go to review until Phase 5 sets real values
   model_spend_cap_per_batch: null
 
@@ -22,6 +23,7 @@ excluded_slugs: [component-skus, uncategorized, store-displays]
 # such as footboards, rails, corner chairs and cushions. On the real navigableCategories 22 of 28 wrong exact-path
 # assignments went there, while the key places these products in beds, headboards, sofas and so on.
 excluded_slug_prefixes: [component-skus-]
+component_rule: {item_type: Component, slug_prefix: component-skus-}
 min_pool_support: 2
 
 # Package item_codes -> set category. Each row below matches where all of that code's products are

@@ -124,3 +124,26 @@ def test_usable_leaves_keeps_path_order_and_drops_excluded_and_unknown():
     r = res(); r.excluded = r.excluded | {'comp'}; r.leaf = r.leaf | {'comp'}; r.store = r.store | {'comp'}
     r.code_slug = {'C1': 'comp', 'S1': 'sofas', 'O1': 'ottomans'}
     assert X.usable_leaves(inp(vendor_category_path=['O1', 'C1', 'PARENT', 'S1', 'O1']), r) == ['ottomans', 'sofas']
+
+def test_pick_by_name_patterns():
+    from cascade import pick_by_name
+    assert pick_by_name('Anniversary Edition Plush Twin Mattress',
+                        ['mattresses-and-bases-by-type-innerspring', 'mattresses-by-size-twin']) == 'mattresses-by-size-twin'
+    assert pick_by_name('Hessland 8 x 10 Washable Rug', ['rugs-area-rugs', 'rugs-washable']) == 'rugs-washable'
+    assert pick_by_name('Dushland Indoor/Outdoor Large Rug',
+                        ['patio-accessories-indoor-outdoor-rugs', 'rugs-indoor-outdoor-rugs', 'rugs-area-rugs']) == 'rugs-indoor-outdoor-rugs'
+    assert pick_by_name('Plain Thing', ['a-one', 'b-two']) is None      # no clear winner stays undecided
+    assert pick_by_name('x', ['only-one']) is None
+
+
+def test_component_rule_assigns_the_parts_category_only_for_components():
+    c = cfg(component_rule={'item_type': 'Component', 'slug_prefix': 'component-skus-'})
+    leaf = LEAF | {'component-skus-bedroom'}
+    r = Resources(c, leaf, leaf - {'nursery-cribs'} | {'store-displays'}, {'store-displays'}, {'store-displays', 'component-skus-bedroom'},
+                  {}, {}, MemoryStore())
+    p = ['component-skus-bedroom', 'component-skus']
+    o = route(inp(item_type='Component', vendor_category_path=p), r, None, True)
+    assert (o.outcome, o.primary_slug, o.rule) == ('assigned', 'component-skus-bedroom', 'component_sku')
+    assert route(inp(item_type='Item', vendor_category_path=p), r, None, True).outcome == 'review'      # not a Component
+    assert route(inp(item_type='Component', vendor_category_path=p), r, None, False).outcome == 'review'   # vendor path not trusted
+    assert route(inp(item_type='Component', vendor_category_path=['component-skus']), r, None, True).outcome == 'review'   # parent only
