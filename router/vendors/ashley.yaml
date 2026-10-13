@@ -42,3 +42,22 @@ parent_fallback: true         # class linked only to a parent category -> offer 
 
 pools_file: evidence_out/pools.json      # leaf-only, min support 2 (build_evidence.py)
 vendor_map_file: evidence_out/vendor_map_reviewed.csv   # proposal only until the REVIEW column is filled
+# --- Routing / answer-key rulings (settled on the 219-row test set) ---
+# SKU-prefix rules run before everything else. StoreDisplay items (fixtures, display mattresses,
+# replacement cushions) are hidden by design: store-displays is a disabled category, the 3 such
+# products in the store sit in it, and a live-site search for "StoreDisplay" shows nothing.
+# A rule target may be an excluded slug; excluded_slugs only limits what the model is offered.
+sku_prefix_rules:
+  "100-": store-displays
+
+# When the two labelers split between two placements, prefer the first. A product keeps its other
+# placements anyway, so this only picks the primary. A pattern ending in "-" matches a slug prefix.
+tie_prefer:
+  - {prefer: mattresses-by-size-, over: mattresses-and-bases-by-type-}
+  - {prefer: dining-furniture-dining-room-counter-tables, over: bar-furniture-counter-tables}
+
+# Cascade settings. thresholds: null = fail closed (model picks always go to review) until Phase 5 sets them;
+# later a map of option-count upper bound -> minimum confidence, e.g. {3: 0.80, 8: 0.85, 999: 0.90}.
+# contradictions: a vendor-path category is rejected when the product name says otherwise.
+#   - {slug_prefix: "rugs-", name_pattern: "\\b(pillow|throw|blanket)\\b"}
+contradictions: []
