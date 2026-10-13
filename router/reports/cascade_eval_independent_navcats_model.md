@@ -1,0 +1,56 @@
+# Cascade evaluation (trust_vendor_path=False, unreviewed_map=False, model step off)
+
+Rows scored: 215 of 215 answer-key rows (0 had no raw item in the dump)
+
+## Decided by rules (assigned)
+
+| rule | decided | correct | precision |
+|---|---|---|---|
+| sku_prefix:100- | 53 | 53 | 100.0% |
+| **all rules** | 53 | 53 | 100.0% |
+
+## Go-live check (target precision 99%, at least 30 gold rows)
+
+| rule | rows | precision | 95% lower bound | verdict |
+|---|---|---|---|---|
+| sku_prefix:100- | 53 | 100.0% | 93.2% | ok to enable |
+
+The lower bound is the plain-statistics floor on true precision given only these rows. A rule can pass the target here and still have a lower bound under it; the labeled rows are also the ones the rules were tuned on, so treat precision as optimistic.
+
+## Not decided: 162
+
+| reason | rows | of which the key says "no category" |
+|---|---|---|
+| below_threshold | 63 | 0 |
+| none_of_these | 2 | 0 |
+| not_offered | 97 | 6 |
+
+## Why the rules left them undecided
+
+| why | itemType | rows | key says "no category" | key answer is among the options |
+|---|---|---|---|---|
+| one_leaf_but_not_assigned | Item | 110 | 0 | 110 of 110 |
+| component_or_excluded_only | Component | 20 | 0 | 12 of 20 |
+| several_leaves | Item | 18 | 0 | 18 of 18 |
+| path_has_no_leaf | Component | 6 | 5 | 0 of 1 |
+| no_vendor_path | Item | 6 | 0 | 6 of 6 |
+| no_vendor_path | Component | 1 | 0 | 1 of 1 |
+| component_or_excluded_only | Item | 1 | 1 | 0 of 0 |
+
+## Could a tie-break rule pick among several path leaves?
+
+18 rows. Key is among the path leaves for 18. If the rule always took:
+- the first leaf (deepest path first): 5 correct
+- the last leaf: 12 correct
+
+## Model picks (step 8; thresholds are null, so every pick goes to review)
+
+63 rows with a model pick and a real key answer; 50 match the key.
+
+| stated confidence | picks | match the key |
+|---|---|---|
+| 0.95 to 1.00 | 63 | 50 |
+Model calls this run: 5
+
+**Model errors (rows sent to review): {'api:RuntimeError': 1}**
+First error: api:RuntimeError: HTTP 429 from https://api.mistral.ai/v1: {"object":"error","message":"Not enough capacity available for this request, please retry later.","type":"backend_out_of_capacity","param":null,"code":"3505","raw_status_code":429}
