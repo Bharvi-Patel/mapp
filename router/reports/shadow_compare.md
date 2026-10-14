@@ -2,7 +2,7 @@
 
 | rule | already linked | would add a category | product has no links | no product |
 |---|---|---|---|---|
-| component_sku | 0 | 0 | 0 | 20 |
-| path_leaf_name_match | 0 | 0 | 0 | 15 |
-| sku_prefix:100- | 0 | 0 | 0 | 53 |
-| vendor_path_exact | 0 | 0 | 0 | 110 |
+| component_sku | 0 | 1670 | 0 | 465 |
+| path_leaf_name_match | 202 | 158 | 0 | 217 |
+| sku_prefix:100- | 3 | 0 | 0 | 224 |
+| vendor_path_exact | 1708 | 1167 | 0 | 924 |
