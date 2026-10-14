@@ -21,11 +21,18 @@ SYSTEM = (
     "Confidence is how sure you are that the choice is what a careful merchandiser would pick."
 )
 
-def build_prompt(inp, options):
+def _matching(options, pattern):
+    return [o for o in options if (o.startswith(pattern) if pattern.endswith('-') else o == pattern)]
+
+def build_prompt(inp, options, tie_prefer=None):
     desc = (inp.description or '').strip().replace('\n', ' ')[:600]
     lines = [f'Product name: {inp.name}', f'Description: {desc}', f'Item type: {inp.item_type}', f'Item class: {inp.item_class}', '',
              'Categories (choose one slug exactly as written):']
     lines += [f'- {s}' for s in options]
+    for t in tie_prefer or []:                       # the vendor config's documented placement policy, only when it applies to these options
+        a, b = _matching(options, t['prefer']), _matching(options, t['over'])
+        if a and b:
+            lines.append(f"Policy: when a category starting with or equal to '{t['prefer']}' and one for '{t['over']}' both fit, choose the first kind.")
     return '\n'.join(lines)
 
 def parse_answer(text):
@@ -42,10 +49,11 @@ def parse_answer(text):
 
 class LLMModel:
     """client: anything with .messages.create(model, max_tokens, system, messages) like the Anthropic SDK client."""
-    def __init__(self, client=None, model=DEFAULT_MODEL, max_calls=None, cache_path=None):
+    def __init__(self, client=None, model=DEFAULT_MODEL, max_calls=None, cache_path=None, tie_prefer=None):
         if client is None and type(self) is LLMModel:
             import anthropic; client = anthropic.Anthropic()          # reads ANTHROPIC_API_KEY
         self.client, self.model, self.max_calls = client, model, max_calls
+        self.tie_prefer = tie_prefer
         self.calls = 0; self.cache_path = cache_path
         self.errors = {}; self.first_error = None            # kind -> count; first full message, so failures are never silent
         self.cache = json.load(open(cache_path, encoding='utf-8')) if cache_path and os.path.exists(cache_path) else {}
@@ -58,10 +66,11 @@ class LLMModel:
     def _key(self, prompt): return hashlib.sha256((self.model + '\n' + prompt).encode()).hexdigest()
 
     def classify(self, inp, options):
-        prompt = build_prompt(inp, options); k = self._key(prompt)
+        prompt = build_prompt(inp, options, self.tie_prefer); k = self._key(prompt)
         if k in self.cache: text = self.cache[k]
         else:
             if self.max_calls is not None and self.calls >= self.max_calls:      # spend cap: stop calling, send the rest to review
+                self.errors['spend_cap'] = self.errors.get('spend_cap', 0) + 1
                 return {'choice': None, 'probabilities': {}, 'error': 'spend_cap'}
             try:
                 text = self._complete(prompt)
@@ -83,8 +92,9 @@ class OpenAICompatModel(LLMModel):
     """Any server that speaks the OpenAI chat-completions format: Ollama (http://localhost:11434/v1), OpenRouter
     (https://openrouter.ai/api/v1), Mistral (https://api.mistral.ai/v1), Groq, and others. Same prompt, parsing, cache,
     call cap and fail-closed behavior as LLMModel. No extra packages needed."""
-    def __init__(self, model, base_url, api_key=None, max_calls=None, cache_path=None, timeout=60):
-        super().__init__(client=object(), model=model, max_calls=max_calls, cache_path=cache_path)
+    def __init__(self, model, base_url, api_key=None, max_calls=None, cache_path=None, timeout=60, min_interval=1.2, tie_prefer=None):
+        super().__init__(client=object(), model=model, max_calls=max_calls, cache_path=cache_path, tie_prefer=tie_prefer)
+        self.min_interval, self._last = min_interval, 0.0     # seconds between calls: stays under per-second rate limits
         self.base_url, self.api_key, self.timeout = base_url.rstrip('/'), api_key or os.environ.get('ROUTER_API_KEY', ''), timeout
 
     def _complete(self, prompt):
@@ -94,8 +104,14 @@ class OpenAICompatModel(LLMModel):
         headers = {'Content-Type': 'application/json'}
         if self.api_key: headers['Authorization'] = 'Bearer ' + self.api_key
         req = urllib.request.Request(self.base_url + '/chat/completions', data=body, headers=headers)
-        try:
-            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
-                return json.loads(resp.read().decode())['choices'][0]['message']['content'] or ''
-        except urllib.error.HTTPError as e:
-            raise RuntimeError(f'HTTP {e.code} from {self.base_url}: ' + e.read().decode(errors='replace')[:300]) from None
+        import time
+        gap = self.min_interval - (time.time() - self._last)
+        if gap > 0: time.sleep(gap)
+        self._last = time.time()
+        for attempt, wait in enumerate((5, 15, 30, 60, None)):                      # 429 / 5xx are usually temporary: retry, then give up
+            try:
+                with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                    return json.loads(resp.read().decode())['choices'][0]['message']['content'] or ''
+            except urllib.error.HTTPError as e:
+                if e.code in (429, 500, 502, 503, 504) and wait is not None: time.sleep(wait); continue
+                raise RuntimeError(f'HTTP {e.code} from {self.base_url}: ' + e.read().decode(errors='replace')[:300]) from None

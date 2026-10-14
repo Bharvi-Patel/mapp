@@ -21,9 +21,8 @@ The lower bound is the plain-statistics floor on true precision given only these
 
 | reason | rows | of which the key says "no category" |
 |---|---|---|
-| below_threshold | 63 | 0 |
+| below_threshold | 160 | 6 |
 | none_of_these | 2 | 0 |
-| not_offered | 97 | 6 |
 
 ## Why the rules left them undecided
 
@@ -45,12 +44,10 @@ The lower bound is the plain-statistics floor on true precision given only these
 
 ## Model picks (step 8; thresholds are null, so every pick goes to review)
 
-63 rows with a model pick and a real key answer; 50 match the key.
+154 rows with a model pick and a real key answer; 130 match the key.
+Excluding Component rows (decision A routes those by rule when the vendor path is trusted): 118 of 133 match the key.
 
 | stated confidence | picks | match the key |
 |---|---|---|
-| 0.95 to 1.00 | 63 | 50 |
-Model calls this run: 5
-
-**Model errors (rows sent to review): {'api:RuntimeError': 1}**
-First error: api:RuntimeError: HTTP 429 from https://api.mistral.ai/v1: {"object":"error","message":"Not enough capacity available for this request, please retry later.","type":"backend_out_of_capacity","param":null,"code":"3505","raw_status_code":429}
+| 0.95 to 1.00 | 154 | 130 |
+Model calls this run: 29

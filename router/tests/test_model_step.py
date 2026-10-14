@@ -82,3 +82,30 @@ def test_errors_are_counted_and_first_message_kept():
     assert m.errors == {'api:RuntimeError': 2} and 'down' in m.first_error
     m2 = LLMModel(client=Client('???')); m2.classify(inp(), ['x'])
     assert m2.errors == {'unparsable': 1} and '???' in m2.first_error
+
+
+def test_openai_compat_retries_a_429_then_succeeds(monkeypatch):
+    import io, json, urllib.request, urllib.error, time
+    calls = []
+    class Resp(io.BytesIO):
+        def __enter__(self): return self
+        def __exit__(self, *a): pass
+    def fake(req, timeout=None):
+        calls.append(1)
+        if len(calls) < 3: raise urllib.error.HTTPError('u', 429, 'busy', {}, io.BytesIO(b'{}'))
+        return Resp(json.dumps({'choices': [{'message': {'content': '{"choice": "a", "confidence": 0.9}'}}]}).encode())
+    monkeypatch.setattr(urllib.request, 'urlopen', fake); monkeypatch.setattr(time, 'sleep', lambda s: None)
+    m = M.OpenAICompatModel('m', 'http://x/v1')
+    assert m.classify(inp(), ['a'])['choice'] == 'a' and len(calls) == 3 and not m.errors
+
+def test_spend_cap_is_counted():
+    m = LLMModel(client=Client('{"choice": "a", "confidence": 0.9}'), max_calls=0)
+    m.classify(inp(), ['a']); assert m.errors == {'spend_cap': 1}
+
+
+def test_policy_line_only_when_both_kinds_are_offered():
+    tp = [{'prefer': 'mattresses-by-size-', 'over': 'mattresses-and-bases-by-type-'}]
+    both = build_prompt(inp(), ['mattresses-by-size-full', 'mattresses-and-bases-by-type-hybrid'], tp)
+    assert 'Policy:' in both and "mattresses-by-size-" in both
+    assert 'Policy:' not in build_prompt(inp(), ['mattresses-by-size-full', 'rugs-area-rugs'], tp)
+    assert build_prompt(inp(), ['a', 'b'], tp) == build_prompt(inp(), ['a', 'b'])      # unrelated rows keep the same prompt (and cache)
