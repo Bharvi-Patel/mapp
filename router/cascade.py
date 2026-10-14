@@ -362,7 +362,15 @@ def shadow(args):
     gold = [r for r in _csv_any(os.path.join(HERE, 'gold', 'gold.csv'))
             if r['status'] in ('gold', 'gold_flagged', 'gold_ruled', 'rule_handled')]
     navcats = load_navcats(args.navcats) if args.navcats else None
-    inputs = list(inputs_from_dump(args.dump, {r['sku'] for r in gold}, cfg['vendor_id'], navcats).values())
+    if args.skus:                                   # a text file, one SKU per line
+        wanted = {l.strip() for l in open(args.skus, encoding='utf-8') if l.strip()}
+    elif args.all:                                  # every non-deleted raw item in the dump
+        from dumpreader import rows
+        wanted = {r['sku'] for r in rows(args.dump, 'pim_raw_items') if not r['is_deleted'] and r['sku']}
+    else:
+        wanted = {r['sku'] for r in gold}           # default: the answer-key SKUs only
+    inputs = list(inputs_from_dump(args.dump, wanted, cfg['vendor_id'], navcats).values())
+    print(f'shadow: routing {len(inputs)} of {len(wanted)} requested SKUs')
     if args.db.startswith('sqlite:'):
         import sqlite3
         conn = sqlite3.connect(args.db[7:]); conn.executescript(SQLITE_DDL); st = SqlDecisionStore(conn, '?')
@@ -423,6 +431,8 @@ def main():
     s.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
     s.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
     s.add_argument('--navcats'); s.add_argument('--trust-vendor-path', action='store_true')
+    s.add_argument('--all', action='store_true', help='route every product in the dump, not just the answer-key SKUs')
+    s.add_argument('--skus', help='text file with one SKU per line (e.g. test_sku.txt)')
     s.add_argument('--db', required=True, help='sqlite:reports/shadow.db  or  mysql://user:pass@host/dbname')
     k = sub.add_parser('compare')
     k.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
