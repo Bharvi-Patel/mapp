@@ -251,9 +251,9 @@ def evaluate(args):
         cache = os.path.join(HERE, 'reports', 'model_cache.json')
         if args.provider == 'openai-compat':
             if not (args.base_url and args.model_name): raise SystemExit('--provider openai-compat needs --base-url and --model-name')
-            model = MS.OpenAICompatModel(args.model_name, args.base_url, max_calls=cap, cache_path=cache)
+            model = MS.OpenAICompatModel(args.model_name, args.base_url, max_calls=cap, cache_path=cache, min_interval=args.pause_seconds, tie_prefer=cfg.get('tie_prefer'))
         else:
-            model = MS.LLMModel(model=args.model_name or MS.DEFAULT_MODEL, max_calls=cap, cache_path=cache)
+            model = MS.LLMModel(model=args.model_name or MS.DEFAULT_MODEL, max_calls=cap, cache_path=cache, tie_prefer=cfg.get('tie_prefer'))
     for g in gold:
         inp = inputs.get(g['sku'])
         if not inp: continue
@@ -327,6 +327,8 @@ def evaluate(args):
     if args.use_model:
         L += ['', '## Model picks (step 8; thresholds are null, so every pick goes to review)', '',
               f'{len(mp)} rows with a model pick and a real key answer; {sum(r["model_pick"] == r["gold"] for r in mp)} match the key.']
+        mpi = [r for r in mp if r['item_type'] != 'Component']
+        L.append(f'Excluding Component rows (decision A routes those by rule when the vendor path is trusted): {sum(r["model_pick"] == r["gold"] for r in mpi)} of {len(mpi)} match the key.')
         if mp:
             L += ['', '| stated confidence | picks | match the key |', '|---|---|---|']
             for lo, hi in ((0, .7), (.7, .85), (.85, .95), (.95, 1.01)):
@@ -342,6 +344,67 @@ def evaluate(args):
         w = csv.DictWriter(f, fieldnames=list(rowsout[0])); w.writeheader(); w.writerows(rowsout)
     print('\n'.join(L))
 
+SQLITE_DDL = """
+CREATE TABLE IF NOT EXISTS router_decisions (id INTEGER PRIMARY KEY AUTOINCREMENT, vendor_id TEXT, subject_type TEXT, subject_uuid TEXT, sku TEXT,
+  content_hash TEXT, primary_slug TEXT, outcome TEXT, stage TEXT, rule TEXT, confidence REAL, version TEXT, decided_by TEXT DEFAULT 'system',
+  status TEXT DEFAULT 'shadow', candidates TEXT, invalidated_reason TEXT);
+CREATE TABLE IF NOT EXISTS router_review_queue (id INTEGER PRIMARY KEY AUTOINCREMENT, vendor_id TEXT, subject_type TEXT, subject_uuid TEXT, sku TEXT,
+  content_hash TEXT, reason TEXT, candidates TEXT, decision_id INTEGER, status TEXT DEFAULT 'open');
+"""
+
+def shadow(args):
+    """Record what the router WOULD do, into router_decisions (status 'shadow'). Applies nothing.
+    --db sqlite:reports/shadow.db  : local trial file, no MySQL needed.
+    --db mysql://user:pass@host/dbname : the real tables from contract/schema.sql (needs: pip install pymysql)."""
+    from decision_store import SqlDecisionStore, run_shadow
+    cfg = K.load_vendor_config(args.vendor)
+    res = resources_from_dump(cfg, args.dump, False)
+    gold = [r for r in _csv_any(os.path.join(HERE, 'gold', 'gold.csv'))
+            if r['status'] in ('gold', 'gold_flagged', 'gold_ruled', 'rule_handled')]
+    navcats = load_navcats(args.navcats) if args.navcats else None
+    inputs = list(inputs_from_dump(args.dump, {r['sku'] for r in gold}, cfg['vendor_id'], navcats).values())
+    if args.db.startswith('sqlite:'):
+        import sqlite3
+        conn = sqlite3.connect(args.db[7:]); conn.executescript(SQLITE_DDL); st = SqlDecisionStore(conn, '?')
+    elif args.db.startswith('mysql://'):
+        import pymysql, urllib.parse as U
+        u = U.urlparse(args.db)
+        conn = pymysql.connect(host=u.hostname, port=u.port or 3306, user=U.unquote(u.username or ''), password=U.unquote(u.password or ''), database=u.path.lstrip('/'))
+        st = SqlDecisionStore(conn, '%s')
+    else: raise SystemExit('--db must start with sqlite: or mysql://')
+    n = run_shadow(inputs, lambda i: route(i, res, None, args.trust_vendor_path), st)
+    print(f'shadow run: {len(inputs)} items, {n["assigned"]} assigned, {n["review"]} to review. Nothing was applied.')
+    for rule, outcome, k in st.counts_by_rule(cfg['vendor_id'], str(cfg['version'])): print(f'  {rule:28s} {outcome:9s} {k}')
+
+def compare(args):
+    """Shadow decisions vs the product's current category links in the dump. Read-only. Says where the router's pick
+    is already one of the product's categories and where applying it would add something new."""
+    import sqlite3
+    from dumpreader import rows
+    cfg = K.load_vendor_config(args.vendor)
+    conn = sqlite3.connect(args.db[7:])
+    dec = conn.execute("SELECT sku, subject_uuid, primary_slug, rule FROM router_decisions WHERE status='shadow' AND outcome='assigned' AND vendor_id=?", (cfg['vendor_id'],)).fetchall()
+    slug = {r['uuid']: r['slug'] for r in rows(args.dump, 'pim_categories')}
+    prod_of = {}
+    for r in rows(args.dump, 'pim_product_raw_items'): prod_of.setdefault(r['raw_item_id'], r['product_id'])
+    links = C.defaultdict(set)
+    for r in rows(args.dump, 'pim_product_categories'):
+        if r['category_id'] in slug: links[r['product_id']].add(slug[r['category_id']])
+    out, by = [], C.defaultdict(C.Counter)
+    for sku, uuid, pick, rule in dec:
+        p = prod_of.get(uuid); cur = links.get(p, set()) if p else set()
+        state = 'no_product' if not p else ('already_linked' if pick in cur else ('product_has_no_links' if not cur else 'would_add'))
+        by[rule][state] += 1; out.append(dict(sku=sku, rule=rule, pick=pick, state=state, current=' | '.join(sorted(cur))))
+    L = ['# Shadow decisions vs current category links (read-only)', '',
+         '| rule | already linked | would add a category | product has no links | no product |', '|---|---|---|---|---|']
+    for rule, cn in sorted(by.items()):
+        L.append(f"| {rule} | {cn['already_linked']} | {cn['would_add']} | {cn['product_has_no_links']} | {cn['no_product']} |")
+    os.makedirs(os.path.join(HERE, 'reports'), exist_ok=True)
+    with open(os.path.join(HERE, 'reports', 'shadow_compare.md'), 'w', encoding='utf-8') as f: f.write('\n'.join(L) + '\n')
+    with open(os.path.join(HERE, 'reports', 'shadow_compare_rows.csv'), 'w', encoding='utf-8', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=['sku', 'rule', 'pick', 'state', 'current']); w.writeheader(); w.writerows(out)
+    print('\n'.join(L))
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest='cmd', required=True)
@@ -354,7 +417,17 @@ def main():
     e.add_argument('--max-model-calls', type=int, default=None)
     e.add_argument('--provider', choices=['anthropic', 'openai-compat'], default='anthropic')
     e.add_argument('--model-name', default=None, help='model id (openai-compat: e.g. ministral-3:14b on Ollama, mistralai/ministral-14b-2512 on OpenRouter)')
+    e.add_argument('--pause-seconds', type=float, default=1.2, help='openai-compat: minimum gap between calls (raise it if you see HTTP 429 rate limits)')
     e.add_argument('--base-url', default=None, help='openai-compat only, e.g. http://localhost:11434/v1')
-    a = ap.parse_args(); {'eval': evaluate}[a.cmd](a)
+    s = sub.add_parser('shadow')
+    s.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
+    s.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
+    s.add_argument('--navcats'); s.add_argument('--trust-vendor-path', action='store_true')
+    s.add_argument('--db', required=True, help='sqlite:reports/shadow.db  or  mysql://user:pass@host/dbname')
+    k = sub.add_parser('compare')
+    k.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
+    k.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
+    k.add_argument('--db', required=True, help='sqlite:reports/shadow.db (the file shadow wrote)')
+    a = ap.parse_args(); {'eval': evaluate, 'shadow': shadow, 'compare': compare}[a.cmd](a)
 
 if __name__ == '__main__': main()
