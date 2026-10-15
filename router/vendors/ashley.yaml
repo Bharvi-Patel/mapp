@@ -23,7 +23,7 @@ excluded_slugs: [component-skus, uncategorized, store-displays]
 # such as footboards, rails, corner chairs and cushions. On the real navigableCategories 22 of 28 wrong exact-path
 # assignments went there, while the key places these products in beds, headboards, sofas and so on.
 excluded_slug_prefixes: [component-skus-]
-component_rule: {item_type: Component, slug_prefix: component-skus-}
+component_rule: {item_type: Component, slug_prefix: component-skus-, items_with_only_component_path: true}
 min_pool_support: 2
 
 # Package item_codes -> set category. Each row below matches where all of that code's products are
