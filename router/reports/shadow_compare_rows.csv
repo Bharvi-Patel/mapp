@@ -5,6 +5,7 @@ B128-74,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B128-62,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B128-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 B128-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
+B100-66,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B070-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 R402921,vendor_path_exact,rugs-area-rugs,no_product,
 2780148,component_sku,component-skus-living-room,would_add,living-room-sets
@@ -69,6 +70,7 @@ W647-60,vendor_path_exact,entertainment-tv-stands-and-media-centers,already_link
 W446-27,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 W267-27,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 W267-24,component_sku,component-skus-living-room,would_add,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
+W100-02,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 L318924,path_leaf_name_match,lighting-table-lamps,already_linked,lighting-lamp-sets | lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
 A1000480P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 L734251,vendor_path_exact,lighting-floor-lamps,already_linked,lighting-floor-lamps | rugs-and-decor | rugs-and-decor-lighting
@@ -107,6 +109,8 @@ L100074,vendor_path_exact,lighting-table-lamps,would_add,rugs-and-decor-sets
 M72621,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
 B221-57,vendor_path_exact,bedroom-furniture-headboards,would_add,bedroom-sets
 B221-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
+B100-31,component_sku,component-skus-bedroom,would_add,bedroom-sets
+B100-21,component_sku,component-skus-bedroom,would_add,bedroom-sets
 R402922,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R402721,vendor_path_exact,rugs-area-rugs,no_product,
 B446-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -288,6 +292,7 @@ D440-52,path_leaf_name_match,dining-furniture-dining-room-counter-tables,would_a
 D384-325,vendor_path_exact,dining-furniture-dinette-sets,already_linked,dining-furniture-dinette-sets | dining-room | dining-room-dining-furniture
 9860688,vendor_path_exact,sofas-and-seating-reclining-sofas,would_add,living-room-sets
 W446-24,vendor_path_exact,entertainment-tv-stands-and-media-centers,already_linked,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
+W100-22,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 L431414,vendor_path_exact,lighting-table-lamps,would_add,rugs-and-decor-sets
 L430324,vendor_path_exact,lighting-table-lamps,would_add,rugs-and-decor-sets
 100-87,sku_prefix:100-,store-displays,no_product,
@@ -350,6 +355,7 @@ B440-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroo
 B267-177,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-196,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-174,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA50-2,component_sku,component-skus-outdoor,no_product,
 B280-681,vendor_path_exact,bedroom-furniture-beds,no_product,
 T103-213,vendor_path_exact,tables-table-packs,would_add,living-room-sets
 B181-87,vendor_path_exact,kids-furniture-headboards,would_add,bedroom-sets
@@ -384,6 +390,8 @@ M69631,path_leaf_name_match,mattresses-by-size-queen,no_product,
 M69611,path_leaf_name_match,mattresses-by-size-twin,would_add,bedroom-sets
 M69531,path_leaf_name_match,mattresses-by-size-queen,no_product,
 M69511,path_leaf_name_match,mattresses-by-size-twin,no_product,
+PA50-1,component_sku,component-skus-outdoor,no_product,
+PA30-1,component_sku,component-skus-outdoor,no_product,
 B267-99,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-97,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
@@ -518,6 +526,7 @@ M69641,path_leaf_name_match,mattresses-by-size-king,no_product,
 M69621,path_leaf_name_match,mattresses-by-size-full,would_add,bedroom-sets
 M69541,path_leaf_name_match,mattresses-by-size-king,no_product,
 M69521,path_leaf_name_match,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
+PA40-1,component_sku,component-skus-outdoor,no_product,
 B267-98,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-94,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
@@ -629,6 +638,7 @@ A3000003,vendor_path_exact,sofas-and-seating-living-room-chairs,already_linked,l
 1080229,vendor_path_exact,sofas-and-seating-recliners,no_product,
 1030125,vendor_path_exact,sofas-and-seating-recliners,no_product,
 PA801-011,component_sku,component-skus-outdoor,no_product,
+PA801-002,component_sku,component-skus-outdoor,no_product,
 PA801-001,component_sku,component-skus-outdoor,no_product,
 PA750-003,component_sku,component-skus-outdoor,no_product,
 D546-60,vendor_path_exact,dining-furniture-dining-storage,would_add,dining-room-sets
@@ -821,6 +831,7 @@ PA455-001,component_sku,component-skus-outdoor,no_product,
 R404441,vendor_path_exact,rugs-area-rugs,no_product,
 A3000202,vendor_path_exact,sofas-and-seating-living-room-chairs,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-living-room-chairs
 L235634,vendor_path_exact,lighting-table-lamps,would_add,rugs-and-decor-sets
+9330317,component_sku,component-skus-living-room,would_add,living-room
 100-427,sku_prefix:100-,store-displays,no_product,
 100-422,sku_prefix:100-,store-displays,no_product,
 100-420,sku_prefix:100-,store-displays,no_product,
@@ -923,8 +934,11 @@ T776-1,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 T814-1,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 5520357,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 R403462,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
+W100-121,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
+W100-101,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 B742-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 5520358,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
+W100-12,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 L329011,vendor_path_exact,lighting-floor-lamps,already_linked,lighting-floor-lamps | rugs-and-decor | rugs-and-decor-lighting
 B743-56S,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B743-197,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1288,6 +1302,7 @@ PA459-011,component_sku,component-skus-outdoor,no_product,
 PA458-011,component_sku,component-skus-outdoor,no_product,
 B267-197,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B267-176,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA359-002,component_sku,component-skus-outdoor,no_product,
 1170238,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 1170214,vendor_path_exact,sofas-and-seating-ottomans,would_add,living-room-sets
 B742-87,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1345,6 +1360,7 @@ PA458-012,component_sku,component-skus-outdoor,no_product,
 PA345-003,component_sku,component-skus-outdoor,no_product,
 B267-178,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B440-67N,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA358-002,component_sku,component-skus-outdoor,no_product,
 EB2712-255,component_sku,component-skus-bedroom,no_product,
 M52511,vendor_path_exact,mattresses-by-size-twin,would_add,bedroom-sets
 100-535,sku_prefix:100-,store-displays,no_product,
@@ -1559,6 +1575,12 @@ B685-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroo
 3140335,vendor_path_exact,sofas-and-seating-loveseats,would_add,living-room-sets
 3100538,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 3100535,vendor_path_exact,sofas-and-seating-loveseats,would_add,living-room-sets
+PA507-011,component_sku,component-skus-outdoor,no_product,
+PA507-001,component_sku,component-skus-outdoor,no_product,
+PA439-013,component_sku,component-skus-outdoor,no_product,
+PA390-022,component_sku,component-skus-outdoor,no_product,
+PA390-002,component_sku,component-skus-outdoor,no_product,
+PA349-022,component_sku,component-skus-outdoor,no_product,
 D615-124,path_leaf_name_match,bar-furniture-bar-stools,would_add,dining-room-sets
 100-539,sku_prefix:100-,store-displays,no_product,
 B1290-98,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1584,7 +1606,17 @@ T789-4,vendor_path_exact,tables-console-tables,would_add,living-room-sets
 3310420,vendor_path_exact,sofas-and-seating-living-room-chairs,would_add,living-room-sets
 3140338,vendor_path_exact,sofas-and-seating-sofas,would_add,bedroom-sets
 3140308,vendor_path_exact,sofas-and-seating-ottomans,would_add,bedroom-sets
+PA660-001,component_sku,component-skus-outdoor,no_product,
+PA507-003,component_sku,component-skus-outdoor,no_product,
+PA505-002,component_sku,component-skus-outdoor,no_product,
+PA399-002,component_sku,component-skus-outdoor,no_product,
+PA390-012,component_sku,component-skus-outdoor,no_product,
+PA390-001,component_sku,component-skus-outdoor,no_product,
+PA518-022,component_sku,component-skus-outdoor,no_product,
+PA518-012,component_sku,component-skus-outdoor,no_product,
+PA439-001,component_sku,component-skus-outdoor,no_product,
 P008-703,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
+PA349-023,component_sku,component-skus-outdoor,no_product,
 B1290-44,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 T300-617,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room | living-room-tables | tables-end-and-side-tables
 T300-117,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room | living-room-tables | tables-end-and-side-tables
@@ -1595,6 +1627,7 @@ T789-2,vendor_path_exact,tables-end-and-side-tables,would_add,living-room-sets
 T779-3,vendor_path_exact,tables-end-and-side-tables,would_add,living-room-sets
 T770-1,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 B685-94,component_sku,component-skus-bedroom,would_add,bedroom-sets
+B685-58,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 B685-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B685-36,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B680-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
@@ -1607,6 +1640,9 @@ D194-15,vendor_path_exact,dining-furniture-dining-room-tables,would_add,dining-r
 3690249,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-sectional-sofas
 3690225,vendor_path_exact,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners
 D615-424,path_leaf_name_match,bar-furniture-bar-stools,would_add,dining-room-sets
+PA660-013,component_sku,component-skus-outdoor,no_product,
+PA439-011,component_sku,component-skus-outdoor,no_product,
+PA349-032,component_sku,component-skus-outdoor,no_product,
 D615-324,path_leaf_name_match,bar-furniture-bar-stools,would_add,dining-room-sets
 4060539,vendor_path_exact,sofas-and-seating-sleeper-sofas,would_add,living-room-sets
 3100583,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sleeper-sofas
@@ -1650,6 +1686,12 @@ U4380898,path_leaf_name_match,sofas-and-seating-recliners,would_add,living-room-
 3690250,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-sectional-sofas
 3690248,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-sectional-sofas
 D615-224,path_leaf_name_match,bar-furniture-bar-stools,would_add,dining-room-sets
+PA660-002,component_sku,component-skus-outdoor,no_product,
+PA507-002,component_sku,component-skus-outdoor,no_product,
+PA439-022,component_sku,component-skus-outdoor,no_product,
+PA390-032,component_sku,component-skus-outdoor,no_product,
+PA390-003,component_sku,component-skus-outdoor,no_product,
+PA187-002,component_sku,component-skus-outdoor,no_product,
 B1290-99,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1290-36,vendor_path_exact,wall-decor-mirrors,would_add,bedroom-sets
 D615-35,vendor_path_exact,dining-furniture-dining-room-tables,would_add,dining-room-sets
@@ -1664,6 +1706,7 @@ EB3929-245,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linke
 T789-1,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 T779-1,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 B685-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
+B685-57,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B685-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 B680-97,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B680-58,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
@@ -1681,7 +1724,14 @@ D194-01,vendor_path_exact,dining-furniture-dining-room-chairs,would_add,dining-r
 3550467,component_sku,component-skus-living-room,would_add,living-room-sets
 3550417,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 U4380887,path_leaf_name_match,sofas-and-seating-power-reclining,would_add,living-room-sets
+PA660-003,component_sku,component-skus-outdoor,no_product,
+PA507-012,component_sku,component-skus-outdoor,no_product,
+PA505-003,component_sku,component-skus-outdoor,no_product,
+PA439-012,component_sku,component-skus-outdoor,no_product,
+PA390-011,component_sku,component-skus-outdoor,no_product,
 P008-898,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
+PA349-033,component_sku,component-skus-outdoor,no_product,
+PA349-011,component_sku,component-skus-outdoor,no_product,
 B1290-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
 B1290-72,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1290-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
@@ -1794,7 +1844,9 @@ B687-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B687-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B687-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 B687-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
+B685-87,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B685-84,component_sku,component-skus-bedroom,would_add,bedroom-sets
+B685-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B680-87,vendor_path_exact,kids-furniture-headboards,would_add,bedroom-sets
 B680-84,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B680-52,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1823,6 +1875,11 @@ EB9630-84,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids
 EB9630-52,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
 EB9630-261,component_sku,component-skus-bedroom,would_add,bedroom-sets
 M52112,vendor_path_exact,bedding-accessories-bed-pillows,already_linked,bedding-accessories-bed-pillows | mattresses-and-bedding | mattresses-and-bedding-bedding-accessories
+PA465-012,component_sku,component-skus-outdoor,no_product,
+PA660-012,component_sku,component-skus-outdoor,no_product,
+PA784-011,component_sku,component-skus-outdoor,no_product,
+PA784-002,component_sku,component-skus-outdoor,no_product,
+PA465-022,component_sku,component-skus-outdoor,no_product,
 P798-821,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
 P798-702,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
 P798-625,vendor_path_exact,outdoor-dining-dining-tables,already_linked,outdoor | outdoor-dining-dining-tables | outdoor-outdoor-dining
@@ -1831,6 +1888,9 @@ P564-838,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outd
 P564-821,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
 P560-838,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
 P560-835,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
+PA465-011,component_sku,component-skus-outdoor,no_product,
+PA465-002,component_sku,component-skus-outdoor,no_product,
+PA335-003,component_sku,component-skus-outdoor,no_product,
 M42551,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 5740408,vendor_path_exact,sofas-and-seating-ottomans,would_add,living-room-sets
 M40631,path_leaf_name_match,mattresses-by-size-queen,no_product,
@@ -1875,6 +1935,8 @@ D546-23B,component_sku,component-skus-kitchen-and-dining-room,would_add,dining-r
 100-561,sku_prefix:100-,store-displays,no_product,
 100-559,sku_prefix:100-,store-displays,no_product,
 EB9630-260,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
+PA297-001,component_sku,component-skus-outdoor,no_product,
+PA160-003,component_sku,component-skus-outdoor,no_product,
 A2000608V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A1000987T,vendor_path_exact,blankets-and-throws-throws,already_linked,blankets-and-throws-throws | rugs-and-decor | rugs-and-decor-blankets-and-throws
 L235694,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
@@ -1931,6 +1993,10 @@ EB9630-245,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bed
 H3929-134,vendor_path_exact,home-office-and-study-desks,already_linked,home-office | home-office-and-study-desks | home-office-home-office-and-study
 H3929-34R,component_sku,component-skus-home-office,would_add,home-office | home-office-and-study-desks | home-office-home-office-and-study
 M52110,vendor_path_exact,bedding-accessories-bed-pillows,already_linked,bedding-accessories-bed-pillows | mattresses-and-bedding | mattresses-and-bedding-bedding-accessories
+PA335-002,component_sku,component-skus-outdoor,no_product,
+PA297-023,component_sku,component-skus-outdoor,no_product,
+PA297-013,component_sku,component-skus-outdoor,no_product,
+PA297-003,component_sku,component-skus-outdoor,no_product,
 A2900002V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 T731-7,vendor_path_exact,tables-end-and-side-tables,would_add,living-room-sets
 T402-13,vendor_path_exact,tables-table-packs,already_linked,living-room | living-room-tables | tables-table-packs
@@ -1942,6 +2008,7 @@ D974-35,vendor_path_exact,dining-furniture-dining-room-tables,would_add,dining-r
 L204514,path_leaf_name_match,lighting-table-lamps,already_linked,lighting-lamp-sets | lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
 L235684,vendor_path_exact,lighting-table-lamps,would_add,rugs-and-decor-sets
 100-550,sku_prefix:100-,store-displays,no_product,
+PA297-002,component_sku,component-skus-outdoor,no_product,
 A2900001V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A2000607V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A1000974P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
@@ -1951,10 +2018,20 @@ B974-58,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B974-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B974-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 L177974,path_leaf_name_match,lighting-table-lamps,already_linked,lighting-lamp-sets | lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
+PA784-022,component_sku,component-skus-outdoor,no_product,
+PA160-003S,component_sku,component-skus-outdoor,no_product,
+PA784-012,component_sku,component-skus-outdoor,no_product,
+PA784-003,component_sku,component-skus-outdoor,no_product,
+PA784-001,component_sku,component-skus-outdoor,no_product,
+PA335-001,component_sku,component-skus-outdoor,no_product,
 D546-224,path_leaf_name_match,bar-furniture-bar-stools,would_add,dining-room-sets
 T974-1,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 T393-13,vendor_path_exact,tables-table-packs,already_linked,living-room | living-room-tables | tables-table-packs
 L430824,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
+PA465-013,component_sku,component-skus-outdoor,no_product,
+PA465-003,component_sku,component-skus-outdoor,no_product,
+PA465-001,component_sku,component-skus-outdoor,no_product,
+PA791-042,component_sku,component-skus-outdoor,no_product,
 R406132,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R406072,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 D394-423,vendor_path_exact,bar-furniture-bar-sets,already_linked,bar-furniture-bar-sets | dining-room | dining-room-bar-furniture
@@ -2013,6 +2090,14 @@ U2710515,path_leaf_name_match,sofas-and-seating-power-reclining,would_add,living
 2640438,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 9400425,vendor_path_exact,sofas-and-seating-recliners,would_add,living-room-sets
 5530583,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sleeper-sofas
+PA798-012,component_sku,component-skus-outdoor,no_product,
+PA798-003,component_sku,component-skus-outdoor,no_product,
+PA798-002,component_sku,component-skus-outdoor,no_product,
+PA564-032,component_sku,component-skus-outdoor,no_product,
+PA564-011,component_sku,component-skus-outdoor,no_product,
+PA564-002,component_sku,component-skus-outdoor,no_product,
+PA560-011,component_sku,component-skus-outdoor,no_product,
+PA560-001,component_sku,component-skus-outdoor,no_product,
 B2589-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B2588-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 T235-13,vendor_path_exact,tables-table-packs,already_linked,living-room | living-room-tables | tables-table-packs
@@ -2090,6 +2175,14 @@ B3788-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedro
 B3788-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3788-71,component_sku,component-skus-bedroom,would_add,bedroom-sets
 5530383,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sleeper-sofas
+PA798-022,component_sku,component-skus-outdoor,no_product,
+PA798-011,component_sku,component-skus-outdoor,no_product,
+PA798-001,component_sku,component-skus-outdoor,no_product,
+PA564-012,component_sku,component-skus-outdoor,no_product,
+PA564-003,component_sku,component-skus-outdoor,no_product,
+PA564-001,component_sku,component-skus-outdoor,no_product,
+PA560-003,component_sku,component-skus-outdoor,no_product,
+PA560-002,component_sku,component-skus-outdoor,no_product,
 B1013-36,vendor_path_exact,wall-decor-mirrors,would_add,bedroom-sets
 M52112P,vendor_path_exact,bedding-accessories-bed-pillows,already_linked,bedding-accessories-bed-pillows | mattresses-and-bedding | mattresses-and-bedding-bedding-accessories
 3730739,vendor_path_exact,sofas-and-seating-sleeper-sofas,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas
@@ -2128,6 +2221,7 @@ B1013-345,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedr
 2050216,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2050203,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2050202,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
+PA792-001,component_sku,component-skus-outdoor,no_product,
 A1900009P,path_leaf_name_match,pillows-indoor-outdoor-pillows,already_linked,pillows-accent-pillows | pillows-indoor-outdoor-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1900001P,path_leaf_name_match,pillows-indoor-outdoor-pillows,already_linked,pillows-accent-pillows | pillows-indoor-outdoor-pillows | rugs-and-decor | rugs-and-decor-pillows
 A2900011V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
@@ -2201,6 +2295,9 @@ D947-81,component_sku,component-skus-kitchen-and-dining-room,would_add,dining-ro
 D773-09,path_leaf_name_match,dining-furniture-dining-room-counter-chairs,would_add,dining-room-sets
 D642-124,path_leaf_name_match,bar-furniture-counter-chairs,would_add,dining-room-sets
 D634-35,vendor_path_exact,dining-furniture-dining-room-tables,would_add,dining-room-sets
+PA792-032,component_sku,component-skus-outdoor,no_product,
+PA792-013,component_sku,component-skus-outdoor,no_product,
+PA792-003,component_sku,component-skus-outdoor,no_product,
 A1900005P,path_leaf_name_match,pillows-indoor-outdoor-pillows,already_linked,pillows-accent-pillows | pillows-indoor-outdoor-pillows | rugs-and-decor | rugs-and-decor-pillows
 A2000652S,vendor_path_exact,home-accents-sculptures,already_linked,home-accents-sculptures | rugs-and-decor | rugs-and-decor-home-accents
 A1001043P,vendor_path_exact,pillows-accent-pillows,no_product,
@@ -2286,6 +2383,10 @@ EB2444-113,vendor_path_exact,bedroom-furniture-beds,already_linked,bedroom | bed
 EB1866-231,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests
 EB1866-157,vendor_path_exact,bedroom-furniture-headboards,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
 EB1866-112,vendor_path_exact,kids-furniture-beds,already_linked,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
+PA792-022,component_sku,component-skus-outdoor,no_product,
+PA792-012,component_sku,component-skus-outdoor,no_product,
+PA792-011,component_sku,component-skus-outdoor,no_product,
+PA792-002,component_sku,component-skus-outdoor,no_product,
 A2900010V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A1001050P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001035P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
@@ -3312,6 +3413,22 @@ M15X972,vendor_path_exact,kids-furniture-beds,no_product,
 M15X242,vendor_path_exact,bedroom-furniture-beds,no_product,
 M15X232,vendor_path_exact,bedroom-furniture-beds,no_product,
 M15X122,vendor_path_exact,kids-furniture-beds,no_product,
+PA711-003,component_sku,component-skus-outdoor,no_product,
+PA711-002,component_sku,component-skus-outdoor,no_product,
+PA704-012,component_sku,component-skus-outdoor,no_product,
+PA704-003,component_sku,component-skus-outdoor,no_product,
+PA704-002,component_sku,component-skus-outdoor,no_product,
+PA704-001,component_sku,component-skus-outdoor,no_product,
+PA701-003,component_sku,component-skus-outdoor,no_product,
+PA701-001,component_sku,component-skus-outdoor,no_product,
+PA671-042,component_sku,component-skus-outdoor,no_product,
+PA671-033,component_sku,component-skus-outdoor,no_product,
+PA671-023,component_sku,component-skus-outdoor,no_product,
+PA671-011,component_sku,component-skus-outdoor,no_product,
+PA671-002,component_sku,component-skus-outdoor,no_product,
+PA572-022,component_sku,component-skus-outdoor,no_product,
+PA572-012,component_sku,component-skus-outdoor,no_product,
+PA572-003,component_sku,component-skus-outdoor,no_product,
 100-17,sku_prefix:100-,store-displays,already_linked,store-displays
 M51821,path_leaf_name_match,mattresses-by-size-full,no_product,
 M51831,path_leaf_name_match,mattresses-by-size-queen,no_product,
@@ -3323,6 +3440,21 @@ M75X32,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_
 M74X42,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M74X22,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M74X12,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
+PA711-011,component_sku,component-skus-outdoor,no_product,
+PA711-001,component_sku,component-skus-outdoor,no_product,
+PA704-013,component_sku,component-skus-outdoor,no_product,
+PA704-011,component_sku,component-skus-outdoor,no_product,
+PA701-011,component_sku,component-skus-outdoor,no_product,
+PA701-002,component_sku,component-skus-outdoor,no_product,
+PA671-032,component_sku,component-skus-outdoor,no_product,
+PA671-022,component_sku,component-skus-outdoor,no_product,
+PA671-013,component_sku,component-skus-outdoor,no_product,
+PA671-012,component_sku,component-skus-outdoor,no_product,
+PA671-003,component_sku,component-skus-outdoor,no_product,
+PA671-001,component_sku,component-skus-outdoor,no_product,
+PA572-011,component_sku,component-skus-outdoor,no_product,
+PA572-002,component_sku,component-skus-outdoor,no_product,
+PA572-001,component_sku,component-skus-outdoor,no_product,
 100-18,sku_prefix:100-,store-displays,already_linked,store-displays
 M1X1472,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
 M1X1272,vendor_path_exact,mattresses-and-bases-by-type-power-bases,already_linked,mattresses-and-bases-by-type-power-bases | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
@@ -3562,6 +3694,7 @@ PC4850434,component_sku,component-skus-living-room,would_add,living-room | livin
 PCD581-26B,component_sku,component-skus-kitchen-and-dining-room,would_add,dining-room-sets
 M11X072,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M11X032,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
+PA711-023,component_sku,component-skus-outdoor,no_product,
 B139-71,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B139-35,vendor_path_exact,wall-decor-mirrors,would_add,bedroom-sets
 B139-186,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -3599,6 +3732,7 @@ PC4850416,component_sku,component-skus-living-room,would_add,living-room | livin
 PCD581-01,vendor_path_exact,dining-furniture-dining-room-chairs,would_add,dining-room-sets
 M11X052,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M11X022,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
+PA711-013,component_sku,component-skus-outdoor,no_product,
 M1B0271P,vendor_path_exact,bedding-accessories-mattress-protectors,no_product,
 M1B0251P,vendor_path_exact,bedding-accessories-mattress-protectors,no_product,
 M1B0231P,vendor_path_exact,bedding-accessories-mattress-protectors,no_product,
@@ -3621,6 +3755,8 @@ PC5300525,vendor_path_exact,sofas-and-seating-recliners,already_linked,living-ro
 M11711,path_leaf_name_match,mattresses-by-size-twin,no_product,
 M11X042,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M11X012,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
+PA711-022,component_sku,component-skus-outdoor,no_product,
+PA711-012,component_sku,component-skus-outdoor,no_product,
 B3789-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
 B3789-72,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-36,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -3689,6 +3825,7 @@ A4000680,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-a
 A3000737,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 A8010389,vendor_path_exact,wall-decor-clocks,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-clocks
 A8010354,vendor_path_exact,wall-decor-mirrors,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors
+W100-703,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 T671-6,vendor_path_exact,tables-end-and-side-tables,would_add,living-room-sets
 T655-3,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room | living-room-tables | tables-end-and-side-tables
 T623-8,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
@@ -3698,10 +3835,19 @@ PCD857-60,vendor_path_exact,dining-furniture-dining-storage,already_linked,dinin
 B947-168,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 B947-163,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 B947-150,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
+PA791-052,component_sku,component-skus-outdoor,no_product,
+PA791-023,component_sku,component-skus-outdoor,no_product,
+PA798-032,component_sku,component-skus-outdoor,no_product,
+PA711-032,component_sku,component-skus-outdoor,no_product,
+PA695-013,component_sku,component-skus-outdoor,no_product,
 B3789-97,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
+PA695-003,component_sku,component-skus-outdoor,no_product,
+PA695-001,component_sku,component-skus-outdoor,no_product,
+PA490-023,component_sku,component-skus-outdoor,no_product,
+PA490-002,component_sku,component-skus-outdoor,no_product,
 PCU6450615,path_leaf_name_match,sofas-and-seating-power-reclining,would_add,living-room-sets
 PCU6450613,path_leaf_name_match,sofas-and-seating-recliners,would_add,living-room-sets
 PCU6260613,path_leaf_name_match,sofas-and-seating-recliners,no_product,
@@ -3776,9 +3922,15 @@ PCB779-76,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB779-58,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB779-56,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB779-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
+PCB3367-94,component_sku,component-skus-bedroom,would_add,bedroom
+M1X1102B,component_sku,component-skus-bedroom,no_product,
 B3789-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-71,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
+PA792-042,component_sku,component-skus-outdoor,no_product,
+PA695-002,component_sku,component-skus-outdoor,no_product,
+PA490-013,component_sku,component-skus-outdoor,no_product,
+PA490-001,component_sku,component-skus-outdoor,no_product,
 A2000785,vendor_path_exact,home-accents-sculptures,already_linked,home-accents-sculptures | rugs-and-decor | rugs-and-decor-home-accents
 B849-57,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B849-54S,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -3786,6 +3938,9 @@ PCB779-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB779-36,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB779-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 PCB3367-72,vendor_path_exact,kids-furniture-beds,would_add,bedroom-sets
+PA792-023,component_sku,component-skus-outdoor,no_product,
+PA701-012,component_sku,component-skus-outdoor,no_product,
+PA695-012,component_sku,component-skus-outdoor,no_product,
 M75X52,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M75X62,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 PCB1566-87,vendor_path_exact,kids-furniture-headboards,would_add,bedroom-sets
@@ -3821,6 +3976,7 @@ PCB3367-345,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_link
 PC6170217,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 PC6170208,vendor_path_exact,sofas-and-seating-ottomans,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-ottomans
 6140566,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
+6140508,component_sku,component-skus-living-room,would_add,living-room
 6130564,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 6130517,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 5980338,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
@@ -3876,8 +4032,13 @@ PCB779-74,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB779-57,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-55,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA711-033,component_sku,component-skus-outdoor,no_product,
+PA490-003,component_sku,component-skus-outdoor,no_product,
+PA275-003,component_sku,component-skus-outdoor,no_product,
+PA275-001,component_sku,component-skus-outdoor,no_product,
 M74X62,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M74X52,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
+PA275-002,component_sku,component-skus-outdoor,no_product,
 PC5590339,vendor_path_exact,sofas-and-seating-sleeper-sofas,no_product,
 PC5590338,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 B697-299,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
@@ -4903,6 +5064,7 @@ PCP228-124,vendor_path_exact,outdoor-dining-bar-stools,already_linked,outdoor | 
 PCP227-124,vendor_path_exact,outdoor-dining-bar-stools,already_linked,outdoor | outdoor-dining-bar-stools | outdoor-outdoor-dining
 PCP803-898,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
 PCP803-820,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
+PA790-042,component_sku,component-skus-outdoor,no_product,
 PCP790-702,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
 7179638,vendor_path_exact,sofas-and-seating-sofas,no_product,
 7179535,vendor_path_exact,sofas-and-seating-loveseats,no_product,
@@ -4917,6 +5079,8 @@ PCP760-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | out
 PCP610-846,component_sku,component-skus-outdoor,would_add,outdoor | outdoor-patio-furniture | patio-furniture-seating
 PCP610-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
 6339894,vendor_path_exact,sofas-and-seating-reclining-loveseats,no_product,
+PA790-013,component_sku,component-skus-outdoor,no_product,
+PA790-003,component_sku,component-skus-outdoor,no_product,
 PCP790-854,component_sku,component-skus-outdoor,would_add,outdoor | outdoor-patio-furniture | patio-furniture-seating
 PCP790-846,component_sku,component-skus-outdoor,would_add,outdoor | outdoor-patio-furniture | patio-furniture-seating
 PCP790-825,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
@@ -4946,12 +5110,20 @@ PCP610-821,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | ou
 5659935,vendor_path_exact,sofas-and-seating-loveseats,no_product,
 PCU1070046A,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 PCB1108-71,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA790-032,component_sku,component-skus-outdoor,no_product,
+PA790-023,component_sku,component-skus-outdoor,no_product,
+PA790-012,component_sku,component-skus-outdoor,no_product,
+PA790-002,component_sku,component-skus-outdoor,no_product,
+PA790-001,component_sku,component-skus-outdoor,no_product,
 100-68,sku_prefix:100-,store-displays,already_linked,store-displays
 PCP790-773,vendor_path_exact,patio-accessories-firepits,already_linked,outdoor | outdoor-patio-accessories | patio-accessories-firepits
 PCP790-601,vendor_path_exact,outdoor-dining-dining-chairs,already_linked,outdoor | outdoor-dining-dining-chairs | outdoor-outdoor-dining
 100-649,sku_prefix:100-,store-displays,no_product,
 7179538,vendor_path_exact,sofas-and-seating-sofas,no_product,
 PA801-032,component_sku,component-skus-outdoor,no_product,
+PA604-032,component_sku,component-skus-outdoor,no_product,
+PA604-001,component_sku,component-skus-outdoor,no_product,
+PA310-002,component_sku,component-skus-outdoor,no_product,
 PCB2721-87,component_sku,component-skus-bedroom,no_product,
 PCP587-602A,vendor_path_exact,outdoor-dining-dining-chairs,already_linked,outdoor | outdoor-dining-dining-chairs | outdoor-outdoor-dining
 PCP513-081,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
@@ -4976,6 +5148,9 @@ PCP803-702,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | out
 PCP803-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
 6339889,path_leaf_name_match,sofas-and-seating-power-reclining,no_product,
 PA801-023,component_sku,component-skus-outdoor,no_product,
+PA604-012,component_sku,component-skus-outdoor,no_product,
+PA604-003,component_sku,component-skus-outdoor,no_product,
+PA310-003,component_sku,component-skus-outdoor,no_product,
 PCB2721-86,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
 H742-34,vendor_path_exact,home-office-and-study-desks,already_linked,home-office | home-office-and-study-desks | home-office-home-office-and-study
 PCP115-820,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
@@ -4989,6 +5164,9 @@ PCP610-702,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | out
 6339825,vendor_path_exact,sofas-and-seating-recliners,no_product,
 5659938,vendor_path_exact,sofas-and-seating-sofas,no_product,
 PCB1108-72,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA790-052,component_sku,component-skus-outdoor,no_product,
+PA790-022,component_sku,component-skus-outdoor,no_product,
+PA790-011,component_sku,component-skus-outdoor,no_product,
 PCP790-851,component_sku,component-skus-outdoor,would_add,outdoor | outdoor-patio-furniture | patio-furniture-seating
 PCP790-838,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
 PCP790-835,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-seating
@@ -4997,6 +5175,8 @@ PCP790-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | out
 PCP790-625,vendor_path_exact,outdoor-dining-dining-tables,already_linked,outdoor | outdoor-dining-dining-tables | outdoor-outdoor-dining
 PCP790-600,vendor_path_exact,outdoor-dining-dining-chairs,already_linked,outdoor | outdoor-dining-dining-chairs | outdoor-outdoor-dining
 PA801-013,component_sku,component-skus-outdoor,no_product,
+PA604-022,component_sku,component-skus-outdoor,no_product,
+PA604-002,component_sku,component-skus-outdoor,no_product,
 PCP428-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
 PCP418-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
 PCP418-601,vendor_path_exact,outdoor-dining-dining-chairs,already_linked,outdoor | outdoor-dining-dining-chairs | outdoor-outdoor-dining
@@ -5047,6 +5227,9 @@ PCB1171-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,no_product,
 PCB1170-97,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB1170-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-58,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
+PA391-002,component_sku,component-skus-outdoor,no_product,
+PA383-002,component_sku,component-skus-outdoor,no_product,
+PA373-002,component_sku,component-skus-outdoor,no_product,
 PCB1170-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-52,component_sku,component-skus-bedroom,would_add,bedroom-sets
 M33271,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
@@ -5104,6 +5287,11 @@ PCB1580-64,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-60,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-56S,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB1170-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
+PA391-003,component_sku,component-skus-outdoor,no_product,
+PA391-001,component_sku,component-skus-outdoor,no_product,
+PA383-012,component_sku,component-skus-outdoor,no_product,
+PA383-001,component_sku,component-skus-outdoor,no_product,
+PA321-002,component_sku,component-skus-outdoor,no_product,
 100-23,sku_prefix:100-,store-displays,no_product,
 6590777,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 6590758,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
@@ -5143,6 +5331,8 @@ T190-217,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room
 PCD651-124,path_leaf_name_match,bar-furniture-counter-chairs,would_add,dining-room-sets
 D596-09,path_leaf_name_match,dining-furniture-dining-room-counter-chairs,already_linked,bar-furniture-counter-chairs | dining-furniture-dining-benches | dining-furniture-dining-room-counter-chairs | dining-room | dining-room-bar-furniture | dining-room-dining-furniture
 PCB1170-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PA383-013,component_sku,component-skus-outdoor,no_product,
+PA383-003,component_sku,component-skus-outdoor,no_product,
 6590779,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 6590760,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 6590746,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
@@ -5280,6 +5470,7 @@ A8000511,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | r
 9210316S,component_sku,component-skus-living-room,no_product,
 9210217S,component_sku,component-skus-living-room,no_product,
 PC8680415P,path_leaf_name_match,sofas-and-seating-power-reclining,no_product,
+PC8430451,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 A1001179,vendor_path_exact,blankets-and-throws-throws,already_linked,blankets-and-throws-throws | rugs-and-decor | rugs-and-decor-blankets-and-throws
 PCB2844-97,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB2844-92,vendor_path_exact,bedroom-furniture-nightstands,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands
@@ -5297,6 +5488,7 @@ PCB2844-36,vendor_path_exact,wall-decor-mirrors,would_add,bedroom-sets
 6820777,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 B1045-97,component_sku,component-skus-living-room,no_product,
 PCB3167-97,component_sku,component-skus-bedroom,no_product,
+PCB3167-58,component_sku,component-skus-bedroom,no_product,
 PCB3167-56,component_sku,component-skus-bedroom,no_product,
 PCB3167-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,no_product,
 PC6600477,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
@@ -5315,6 +5507,23 @@ PCD403-15,vendor_path_exact,dining-furniture-dining-room-tables,no_product,
 PCD403-124,path_leaf_name_match,dining-furniture-dining-room-counter-chairs,no_product,
 D863-60,vendor_path_exact,dining-furniture-dining-storage,already_linked,dining-furniture-dining-storage | dining-room | dining-room-dining-furniture
 D863-35,vendor_path_exact,dining-furniture-dining-room-tables,would_add,dining-room-sets
+PA803-001,component_sku,component-skus-outdoor,no_product,
+PA760-003,component_sku,component-skus-outdoor,no_product,
+PA760-001,component_sku,component-skus-outdoor,no_product,
+PA610-022,component_sku,component-skus-outdoor,no_product,
+PA610-012,component_sku,component-skus-outdoor,no_product,
+PA610-003,component_sku,component-skus-outdoor,no_product,
+PA610-001,component_sku,component-skus-outdoor,no_product,
+PA587-022,component_sku,component-skus-outdoor,no_product,
+PA587-012,component_sku,component-skus-outdoor,no_product,
+PA587-011,component_sku,component-skus-outdoor,no_product,
+PA513-002,component_sku,component-skus-outdoor,no_product,
+PA510-011,component_sku,component-skus-outdoor,no_product,
+PA510-003,component_sku,component-skus-outdoor,no_product,
+PA503-012,component_sku,component-skus-outdoor,no_product,
+PA503-002,component_sku,component-skus-outdoor,no_product,
+PA428-011,component_sku,component-skus-outdoor,no_product,
+PA391-013,component_sku,component-skus-outdoor,no_product,
 L734412,vendor_path_exact,lighting-desk-lamps,already_linked,lighting-desk-lamps | rugs-and-decor | rugs-and-decor-lighting
 A2000913,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A2000909,vendor_path_exact,home-accents-canisters-and-jars,already_linked,home-accents-canisters-and-jars | rugs-and-decor | rugs-and-decor-home-accents
@@ -5339,6 +5548,7 @@ PC8240712,path_leaf_name_match,sofas-and-seating-recliners,no_product,
 9210317S,component_sku,component-skus-living-room,no_product,
 9210216S,component_sku,component-skus-living-room,no_product,
 PC8680315P,path_leaf_name_match,sofas-and-seating-power-reclining,no_product,
+PC8430431,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 A1001178,vendor_path_exact,blankets-and-throws-throws,already_linked,blankets-and-throws-throws | blankets-and-throws-washable | rugs-and-decor | rugs-and-decor-blankets-and-throws
 PCB2844-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB2844-95,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
@@ -5430,6 +5640,17 @@ B863-56S,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroo
 D863-01,vendor_path_exact,dining-furniture-dining-room-chairs,would_add,dining-room-sets
 PCD843-02,vendor_path_exact,dining-furniture-dining-room-chairs,no_product,
 100-23S,sku_prefix:100-,store-displays,no_product,
+PA803-002,component_sku,component-skus-outdoor,no_product,
+PA587-002,component_sku,component-skus-outdoor,no_product,
+PA513-003,component_sku,component-skus-outdoor,no_product,
+PA513-001,component_sku,component-skus-outdoor,no_product,
+PA510-001,component_sku,component-skus-outdoor,no_product,
+PA503-003,component_sku,component-skus-outdoor,no_product,
+PA422-011,component_sku,component-skus-outdoor,no_product,
+PA422-002,component_sku,component-skus-outdoor,no_product,
+PA418-012,component_sku,component-skus-outdoor,no_product,
+PA418-002,component_sku,component-skus-outdoor,no_product,
+PA391-012,component_sku,component-skus-outdoor,no_product,
 PCU1370015A,path_leaf_name_match,sofas-and-seating-power-reclining,no_product,
 PCU1370013A,path_leaf_name_match,sofas-and-seating-recliners,no_product,
 PCU1350113,path_leaf_name_match,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-recliners
@@ -5527,6 +5748,7 @@ B1045-92,vendor_path_exact,bedroom-furniture-nightstands,already_linked,bedroom 
 B1045-57,component_sku,component-skus-living-room,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 B1045-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers
 PCB3167-95,component_sku,component-skus-bedroom,no_product,
+PCB3167-57,component_sku,component-skus-bedroom,no_product,
 PCB3167-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,no_product,
 T602-00,vendor_path_exact,tables-coffee-tables,already_linked,living-room | living-room-tables | tables-coffee-tables
 T563-6,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room | living-room-tables | tables-end-and-side-tables
@@ -5563,13 +5785,38 @@ D634-113,vendor_path_exact,dining-furniture-dinette-sets,already_linked,dining-f
 PCB620-78,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB620-77,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB620-76,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
+PA803-011,component_sku,component-skus-outdoor,no_product,
+PA803-003,component_sku,component-skus-outdoor,no_product,
+PA760-011,component_sku,component-skus-outdoor,no_product,
+PA760-002,component_sku,component-skus-outdoor,no_product,
+PA610-023,component_sku,component-skus-outdoor,no_product,
+PA610-013,component_sku,component-skus-outdoor,no_product,
+PA610-011,component_sku,component-skus-outdoor,no_product,
+PA610-002,component_sku,component-skus-outdoor,no_product,
+PA587-032,component_sku,component-skus-outdoor,no_product,
+PA587-013,component_sku,component-skus-outdoor,no_product,
+PA587-003,component_sku,component-skus-outdoor,no_product,
+PA587-001,component_sku,component-skus-outdoor,no_product,
+PA510-002,component_sku,component-skus-outdoor,no_product,
+PA503-011,component_sku,component-skus-outdoor,no_product,
+PA503-001,component_sku,component-skus-outdoor,no_product,
+PA428-003,component_sku,component-skus-outdoor,no_product,
+PA428-002,component_sku,component-skus-outdoor,no_product,
+PA428-001,component_sku,component-skus-outdoor,no_product,
+PA422-003,component_sku,component-skus-outdoor,no_product,
+PA422-001,component_sku,component-skus-outdoor,no_product,
+PA418-003,component_sku,component-skus-outdoor,no_product,
+PA418-001,component_sku,component-skus-outdoor,no_product,
+PA391-022,component_sku,component-skus-outdoor,no_product,
 A1001180,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 PC8680515P,path_leaf_name_match,sofas-and-seating-power-reclining,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-recliners
 PCB1120-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1120-55,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PCB1119-87,component_sku,component-skus-bedroom,no_product,
 PCB1119-84,component_sku,component-skus-bedroom,no_product,
 PCB1119-83,component_sku,component-skus-bedroom,no_product,
 PCB1119-52,component_sku,component-skus-bedroom,no_product,
+PCB1118-85,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1118-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1118-55,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1118-52,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -5649,8 +5896,10 @@ PCD843-03A,vendor_path_exact,dining-furniture-dining-room-chairs,no_product,
 PCB1120-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1120-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1119-86,component_sku,component-skus-bedroom,no_product,
+PCB1119-53,component_sku,component-skus-bedroom,no_product,
 PCB1118-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1118-84,component_sku,component-skus-bedroom,would_add,bedroom-sets
+PCB1118-63,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1118-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1116-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 R407911,path_leaf_name_match,rugs-washable,no_product,
@@ -6470,6 +6719,26 @@ M11X542B,component_sku,component-skus-bedroom,no_product,
 M11X532A,component_sku,component-skus-bedroom,no_product,
 M11X522B,component_sku,component-skus-bedroom,no_product,
 M11X522A,component_sku,component-skus-bedroom,no_product,
+PA801-052,component_sku,component-skus-outdoor,no_product,
+PA612-032,component_sku,component-skus-outdoor,no_product,
+PA612-012,component_sku,component-skus-outdoor,no_product,
+PA612-003,component_sku,component-skus-outdoor,no_product,
+PA612-001,component_sku,component-skus-outdoor,no_product,
+PA602-003,component_sku,component-skus-outdoor,no_product,
+PA602-001,component_sku,component-skus-outdoor,no_product,
+PA355-002,component_sku,component-skus-outdoor,no_product,
+PA801-042,component_sku,component-skus-outdoor,no_product,
+PA801-021,component_sku,component-skus-outdoor,no_product,
+PA612-022,component_sku,component-skus-outdoor,no_product,
+PA612-013,component_sku,component-skus-outdoor,no_product,
+PA612-011,component_sku,component-skus-outdoor,no_product,
+PA612-002,component_sku,component-skus-outdoor,no_product,
+PA602-011,component_sku,component-skus-outdoor,no_product,
+PA602-002,component_sku,component-skus-outdoor,no_product,
+PA355-003,component_sku,component-skus-outdoor,no_product,
+PA355-001,component_sku,component-skus-outdoor,no_product,
+PA352-003,component_sku,component-skus-outdoor,no_product,
+PA352-002,component_sku,component-skus-outdoor,no_product,
 M31421,vendor_path_exact,mattresses-and-bases-by-type-hybrid,no_product,
 M31221,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
 M31321,vendor_path_exact,mattresses-and-bases-by-type-hybrid,no_product,
@@ -6688,6 +6957,7 @@ PCP790-820,vendor_path_exact,patio-furniture-seating,no_product,
 PC8881142,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 PC8881242,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 PC8881042,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
+30143,component_sku,component-skus-bedroom,no_product,
 M42241,path_leaf_name_match,mattresses-by-size-king,no_product,
 M42211,path_leaf_name_match,mattresses-by-size-twin,no_product,
 M42151,path_leaf_name_match,mattresses-by-size-california-king,no_product,

@@ -145,7 +145,12 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
     if (inp.item_class or '').strip() in (cfg.get('review_classes') or []):                    # 4
         return review('review_class', stage='review', rule='review_class')
     cr = cfg.get('component_rule')                                                           # 4b: Component SKUs follow Ashley's own parts category
-    if trust and cr and (inp.item_type or '') == cr['item_type']:
+    
+    comp_only = False                  # an Item (not a Component) whose Ashley path leads only to excluded leaves, e.g. component-skus-*
+    if trust and cr and (inp.item_type or '') != cr['item_type'] and cr.get('items_with_only_component_path'):
+        _lv = [x for x in dict.fromkeys(res.code_slug.get(c, c) for c in (inp.vendor_category_path or [])) if x in res.leaf]
+        comp_only = bool(_lv) and all(x in res.excluded for x in _lv)
+    if trust and cr and ((inp.item_type or '') == cr['item_type'] or comp_only):
         comp = [x for x in dict.fromkeys(res.code_slug.get(c, c) for c in (inp.vendor_category_path or []))
                 if x.startswith(cr['slug_prefix']) and x in res.leaf and x in res.store and x not in res.inactive]
         if comp: return assign(comp[0], 'rule', 'component_sku', RULE_CONF['vendor_path'], [comp[0]], exempt=[comp[0]])
