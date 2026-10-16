@@ -24,7 +24,7 @@ from contract import RouterInput, RouterOutput
 
 NONE_OF_THESE = '__none_of_these__'
 MODEL_CAP = 0.95            # a model never outranks a rule
-RULE_CONF = {'reuse': 1.0, 'human': 1.0, 'sku_prefix': 1.0, 'package': 0.99, 'vendor_map': 0.98, 'vendor_path': 0.95}
+RULE_CONF = {'reuse': 1.0, 'human': 1.0, 'sku_prefix': 1.0, 'package': 0.99, 'vendor_map': 0.98, 'vendor_path': 0.95, 'item_class': 0.96, 'name_rule': 0.95}
 
 def nav_code(path):
     """One Ashley navigableCategories entry -> the ashley_category code stored in pim_vendor_categories.
@@ -60,6 +60,7 @@ class Resources:
     vendor_map: dict = field(default_factory=dict)   # vendor category code -> slug (accepted rows only)
     decisions: object = None
     code_slug: dict = field(default_factory=dict)    # vendor category code -> slug, every matched LEAF row (lets step 6 read real codes)
+    item_class_map: dict = field(default_factory=dict)
 
 def threshold_for(cfg, n_options):
     t = cfg['settings'].get('thresholds')
@@ -144,6 +145,12 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
         return assign(slug, 'rule', f'package:{inp.item_code}', RULE_CONF['package'], [slug], exempt=[slug])
     if (inp.item_class or '').strip() in (cfg.get('review_classes') or []):                    # 4
         return review('review_class', stage='review', rule='review_class')
+    for nr in (cfg.get('name_rules') or []):                                                 # 4a: product name states the answer, e.g. '<size> Mattress'
+        m = re.search(nr['pattern'], inp.name or '', re.I)
+        if m:
+            slug = nr['template'].format(**{k: re.sub(r'\s+', '-', v.lower()) for k, v in m.groupdict().items() if v})
+            if slug in res.leaf and slug in res.store and slug not in res.excluded and slug not in res.inactive:
+                return assign(slug, 'rule', 'name_rule', RULE_CONF['name_rule'], res.leaf)
     cr = cfg.get('component_rule')                                                           # 4b: Component SKUs follow Ashley's own parts category
     
     comp_only = False                  # an Item (not a Component) whose Ashley path leads only to excluded leaves, e.g. component-skus-*
@@ -169,6 +176,9 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
         if len(leaves) >= 2 and cfg['settings'].get('name_match_tiebreak'):                  # 6b (off unless enabled in the vendor config)
             slug = pick_by_name(inp.name, leaves)
             if slug: return assign(slug, 'rule', 'path_leaf_name_match', RULE_CONF['vendor_path'], res.leaf)
+        icm = res.item_class_map.get((inp.item_class or '').strip())
+    if icm and icm in res.leaf and icm in res.store and icm not in res.excluded and icm not in res.inactive:
+        return assign(icm, 'rule', 'item_class_map', RULE_CONF['item_class'], res.leaf)
     options, why = options_for(inp, res, trust)                                              # 7
     if not options: return review('no_pool')
     if model is None:
@@ -216,7 +226,10 @@ def resources_from_dump(cfg, dump, unreviewed_map=False):
         if rv.upper() == 'N': continue
         if rv.upper() == 'Y' or (not rv and unreviewed_map and r.get('status') == 'match' and r.get('leaf_or_parent') == 'LEAF'): vmap[r['ashley_category']] = slug
         elif rv and rv.upper() != 'Y': vmap[r['ashley_category']] = rv
-    return Resources(cfg, leaf, store, inactive, excluded, pools, vmap, MemoryStore(), cmap)
+        icm = {}
+    if cfg.get('item_class_map_file') and os.path.exists(os.path.join(HERE, cfg['item_class_map_file'])):
+        icm = {r['item_class'].strip(): r['slug'] for r in _csv_any(os.path.join(HERE, cfg['item_class_map_file'])) if r.get('slug')}
+    return Resources(cfg, leaf, store, inactive, excluded, pools, vmap, MemoryStore(), cmap, icm)
 
 def inputs_from_dump(dump, skus, vendor_id, navcats=None):
     """RouterInputs for raw items by SKU. vendor_category_path = the real navigableCategories codes when navcats

@@ -50,6 +50,7 @@ parent_fallback: true         # class linked only to a parent category -> offer 
 
 pools_file: evidence_out/pools.json      # leaf-only, min support 2 (build_evidence.py)
 vendor_map_file: evidence_out/vendor_map_reviewed.csv   # proposal only until the REVIEW column is filled
+item_class_map_file: evidence_out/item_class_map.csv
 # --- Routing / answer-key rulings (settled on the 219-row test set) ---
 # SKU-prefix rules run before everything else. StoreDisplay items (fixtures, display mattresses,
 # replacement cushions) are hidden by design: store-displays is a disabled category, the 3 such
@@ -69,3 +70,6 @@ tie_prefer:
 # contradictions: a vendor-path category is rejected when the product name says otherwise.
 #   - {slug_prefix: "rugs-", name_pattern: "\\b(pillow|throw|blanket)\\b"}
 contradictions: []
+name_rules:
+  - pattern: '\b(?P<size>split california king|split king|california king|twin xl|twin|full|queen|king)\s+mattress\s*$'
+    template: 'mattresses-by-size-{size}'

@@ -1,3 +1,7 @@
 sku,rule,router_pick,golden_accept
 A3000325,vendor_path_exact,sofas-and-seating-living-room-chairs,home-accents-accent-furniture
 B822-01,vendor_path_exact,bedroom-furniture-bedroom-benches,bedroom-furniture-bedroom-chairs
+M33021,name_rule,mattresses-by-size-full,mattresses-and-bases-by-type-hybrid
+M33031,name_rule,mattresses-by-size-queen,mattresses-and-bases-by-type-hybrid
+M33121,name_rule,mattresses-by-size-full,mattresses-and-bases-by-type-hybrid
+M33131,name_rule,mattresses-by-size-queen,mattresses-and-bases-by-type-hybrid

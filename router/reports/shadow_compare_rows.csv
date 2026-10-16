@@ -1173,8 +1173,8 @@ A3000333,vendor_path_exact,sofas-and-seating-ottomans,already_linked,living-room
 M78X92,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M78X42,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M78X22,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
-M58911,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M58711,vendor_path_exact,mattresses-by-size-twin,no_product,
+M58911,name_rule,mattresses-by-size-twin,no_product,
+M58711,name_rule,mattresses-by-size-twin,no_product,
 P210-124,vendor_path_exact,outdoor-dining-bar-stools,would_add,outdoor-sets
 1000616,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 P009-703,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdoor-patio-furniture | patio-furniture-tables
@@ -1213,14 +1213,14 @@ A3000326,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 M78X72,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M78X32,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M78X12,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,already_linked,mattresses-and-bases-by-type-foundations-and-frames | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M59021,vendor_path_exact,mattresses-by-size-full,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
-M58921,path_leaf_name_match,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
-M58751,vendor_path_exact,mattresses-by-size-california-king,no_product,
-M58741,vendor_path_exact,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
-M58721,vendor_path_exact,mattresses-by-size-full,would_add,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
-M59351,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M59311,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
-M59151,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M59021,name_rule,mattresses-by-size-full,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
+M58921,name_rule,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
+M58751,name_rule,mattresses-by-size-california-king,no_product,
+M58741,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M58721,name_rule,mattresses-by-size-full,would_add,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M59351,name_rule,mattresses-by-size-california-king,no_product,
+M59311,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M59151,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 1000677,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 1000665,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 1000664,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
@@ -1265,6 +1265,7 @@ B070-72,component_sku,component-skus-bedroom,would_add,bedroom-sets
 A1000994P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 100-523,sku_prefix:100-,store-displays,no_product,
 100-520,sku_prefix:100-,store-displays,no_product,
+R405052,item_class_map,rugs-area-rugs,already_linked,outdoor | outdoor-patio-accessories | patio-accessories-indoor-outdoor-rugs | rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-indoor-outdoor-rugs
 B2640-87,vendor_path_exact,kids-furniture-headboards,would_add,bedroom-sets
 B2640-84,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B2640-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1281,7 +1282,7 @@ PA345-002,component_sku,component-skus-outdoor,no_product,
 EB2712-256,component_sku,component-skus-bedroom,no_product,
 100-34,sku_prefix:100-,store-displays,no_product,
 A1001004P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
-M50551,path_leaf_name_match,mattresses-by-size-california-king,no_product,
+M50551,name_rule,mattresses-by-size-california-king,no_product,
 B1050-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1050-60,component_sku,component-skus-bedroom,would_add,bedroom-sets
 EB2320-291,vendor_path_exact,bedroom-furniture-nightstands,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands
@@ -1362,15 +1363,15 @@ B267-178,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B440-67N,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PA358-002,component_sku,component-skus-outdoor,no_product,
 EB2712-255,component_sku,component-skus-bedroom,no_product,
-M52511,vendor_path_exact,mattresses-by-size-twin,would_add,bedroom-sets
+M52511,name_rule,mattresses-by-size-twin,would_add,bedroom-sets
 100-535,sku_prefix:100-,store-displays,no_product,
 A2000514,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 H020-110,vendor_path_exact,home-office-and-study-desks,no_product,
 A2000510,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 H777-46,vendor_path_exact,home-office-and-study-office-storage,already_linked,home-office | home-office-and-study-office-storage | home-office-home-office-and-study
 A2000489,vendor_path_exact,home-accents-baskets-and-boxes,no_product,
-M50851,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M50751,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M50851,name_rule,mattresses-by-size-california-king,no_product,
+M50751,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 PA458-002,component_sku,component-skus-outdoor,no_product,
 EB2712-257,component_sku,component-skus-bedroom,no_product,
 D508-130,vendor_path_exact,bar-furniture-bar-stools,would_add,dining-room-sets
@@ -1381,7 +1382,7 @@ B742-45,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroo
 B742-22,vendor_path_exact,bedroom-furniture-vanities,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-vanities
 B742-183,component_sku,component-skus-bedroom,would_add,bedroom-sets
 100-536,sku_prefix:100-,store-displays,no_product,
-M52521,vendor_path_exact,mattresses-by-size-full,no_product,
+M52521,name_rule,mattresses-by-size-full,no_product,
 EB1811-245,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests
 EW0446-268,vendor_path_exact,entertainment-tv-stands-and-media-centers,already_linked,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 EW0440-268,vendor_path_exact,entertainment-tv-stands-and-media-centers,already_linked,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
@@ -1395,10 +1396,10 @@ A2000511,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-ac
 A2000491,vendor_path_exact,home-accents-baskets-and-boxes,no_product,
 A2000488,vendor_path_exact,home-accents-baskets-and-boxes,no_product,
 A2000486,vendor_path_exact,home-accents-baskets-and-boxes,no_product,
-M50841,path_leaf_name_match,mattresses-by-size-king,no_product,
-M50771,path_leaf_name_match,mattresses-by-size-twin-xl,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
-M50571,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M50541,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
+M50841,name_rule,mattresses-by-size-king,no_product,
+M50771,name_rule,mattresses-by-size-twin-xl,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
+M50571,name_rule,mattresses-by-size-twin-xl,no_product,
+M50541,name_rule,mattresses-by-size-king,no_product,
 B786-97,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B786-58,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B786-56,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1434,7 +1435,7 @@ B1050-56S,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1050-54S,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1050-36,vendor_path_exact,wall-decor-mirrors,would_add,bedroom-sets
 B1050-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
-M52541,vendor_path_exact,mattresses-by-size-king,no_product,
+M52541,name_rule,mattresses-by-size-king,no_product,
 EB4121-291,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
 EB3660-231,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 A1000962P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
@@ -1442,9 +1443,10 @@ A1000868P,vendor_path_exact,pillows-accent-pillows,no_product,
 A1000866P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 W996-78,vendor_path_exact,entertainment-tv-stands-and-media-centers,already_linked,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 D984-01A,vendor_path_exact,dining-furniture-dining-room-chairs,would_add,dining-room-sets
-M50871,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M50831,path_leaf_name_match,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M50531,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M50871,name_rule,mattresses-by-size-twin-xl,no_product,
+M50831,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M50741,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M50531,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 1830464,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 1830417,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 B742-50,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -1460,7 +1462,7 @@ B742-25,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom
 B1050-57,vendor_path_exact,bedroom-furniture-headboards,would_add,bedroom-sets
 B1050-56,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1050-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
-M52531,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M52531,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 EB3660-245,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests
 EB4121-231,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 A1000956P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
@@ -1533,8 +1535,8 @@ P323-635,vendor_path_exact,outdoor-dining-dining-tables,already_linked,outdoor |
 2110446,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 100-2,sku_prefix:100-,store-displays,no_product,
 A3000325,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
-M50941,vendor_path_exact,mattresses-by-size-king,no_product,
-M50911,vendor_path_exact,mattresses-by-size-twin,no_product,
+M50941,name_rule,mattresses-by-size-king,no_product,
+M50911,name_rule,mattresses-by-size-twin,no_product,
 A1000929P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1000925P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1000918P,vendor_path_exact,pillows-accent-pillows,no_product,
@@ -1560,8 +1562,8 @@ A4000540,vendor_path_exact,home-accents-accent-furniture,already_linked,home-acc
 2110417,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2110416,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 B786-92,vendor_path_exact,bedroom-furniture-nightstands,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands
-M50931,vendor_path_exact,mattresses-by-size-queen,no_product,
-M50921,vendor_path_exact,mattresses-by-size-full,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
+M50931,name_rule,mattresses-by-size-queen,no_product,
+M50921,name_rule,mattresses-by-size-full,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
 A1000927P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1000926P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1000917P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
@@ -1891,13 +1893,13 @@ P560-835,vendor_path_exact,patio-furniture-seating,already_linked,outdoor | outd
 PA465-011,component_sku,component-skus-outdoor,no_product,
 PA465-002,component_sku,component-skus-outdoor,no_product,
 PA335-003,component_sku,component-skus-outdoor,no_product,
-M42551,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M42551,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 5740408,vendor_path_exact,sofas-and-seating-ottomans,would_add,living-room-sets
-M40631,path_leaf_name_match,mattresses-by-size-queen,no_product,
+M40631,name_rule,mattresses-by-size-queen,no_product,
 M8X242,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
 M8X222,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
-M42751,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M42611,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M42751,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M42611,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
 T731-9,vendor_path_exact,tables-coffee-tables,would_add,living-room-sets
 EB9630-287,vendor_path_exact,kids-furniture-headboards,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
 EB9630-253,vendor_path_exact,kids-furniture-headboards,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
@@ -1941,7 +1943,7 @@ A2000608V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-a
 A1000987T,vendor_path_exact,blankets-and-throws-throws,already_linked,blankets-and-throws-throws | rugs-and-decor | rugs-and-decor-blankets-and-throws
 L235694,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
 5760439,vendor_path_exact,sofas-and-seating-sleeper-sofas,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas
-M40621,path_leaf_name_match,mattresses-by-size-full,no_product,
+M40621,name_rule,mattresses-by-size-full,no_product,
 R406131,vendor_path_exact,rugs-area-rugs,no_product,
 T974-2,vendor_path_exact,tables-end-and-side-tables,would_add,living-room-sets
 W402-68,vendor_path_exact,entertainment-tv-stands-and-media-centers,already_linked,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
@@ -1978,9 +1980,9 @@ P560-701,vendor_path_exact,patio-furniture-tables,already_linked,outdoor | outdo
 M8X272,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
 M8X252,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
 M8X232,vendor_path_exact,mattresses-and-bases-by-type-power-bases,already_linked,mattresses-and-bases-by-type-power-bases | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M42651,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M42621,path_leaf_name_match,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
-M42511,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M42651,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M42621,name_rule,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
+M42511,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
 B974-95,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B974-74,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B974-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests
@@ -2012,7 +2014,7 @@ PA297-002,component_sku,component-skus-outdoor,no_product,
 A2900001V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A2000607V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A1000974P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
-M40611,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M40611,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
 B974-77,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B974-58,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B974-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -2054,9 +2056,9 @@ M52110P,vendor_path_exact,bedding-accessories-bed-pillows,already_linked,bedding
 M8X352,vendor_path_exact,mattresses-and-bases-by-type-power-bases,already_linked,mattresses-and-bases-by-type-power-bases | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
 M8X332,vendor_path_exact,mattresses-and-bases-by-type-power-bases,already_linked,mattresses-and-bases-by-type-power-bases | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
 M43021,path_leaf_name_match,mattresses-by-size-full,no_product,
-M41241,path_leaf_name_match,mattresses-by-size-king,no_product,
-M41151,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M41121,path_leaf_name_match,mattresses-by-size-full,no_product,
+M41241,name_rule,mattresses-by-size-king,no_product,
+M41151,name_rule,mattresses-by-size-california-king,no_product,
+M41121,name_rule,mattresses-by-size-full,no_product,
 B2587-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 100-581,sku_prefix:100-,store-displays,no_product,
 P792-821,vendor_path_exact,patio-furniture-seating,would_add,outdoor-sets
@@ -2076,8 +2078,8 @@ B3788-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
 B3788-55,component_sku,component-skus-bedroom,would_add,bedroom-sets
 M43121,path_leaf_name_match,mattresses-by-size-full,no_product,
 M43011,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
-M41211,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M41141,path_leaf_name_match,mattresses-by-size-king,no_product,
+M41211,name_rule,mattresses-by-size-twin,no_product,
+M41141,name_rule,mattresses-by-size-king,no_product,
 B1013-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
 5530567,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 5530516,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
@@ -2135,8 +2137,8 @@ EB3929-231,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linke
 5530510,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sleeper-sofas
 5530310,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sleeper-sofas
 M43111,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
-M41221,path_leaf_name_match,mattresses-by-size-full,no_product,
-M41131,path_leaf_name_match,mattresses-by-size-queen,no_product,
+M41221,name_rule,mattresses-by-size-full,no_product,
+M41131,name_rule,mattresses-by-size-queen,no_product,
 B1013-58,vendor_path_exact,bedroom-furniture-headboards,would_add,bedroom-sets
 B1013-57,vendor_path_exact,bedroom-furniture-headboards,would_add,bedroom-sets
 B1013-54,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -2186,10 +2188,10 @@ PA560-002,component_sku,component-skus-outdoor,no_product,
 B1013-36,vendor_path_exact,wall-decor-mirrors,would_add,bedroom-sets
 M52112P,vendor_path_exact,bedding-accessories-bed-pillows,already_linked,bedding-accessories-bed-pillows | mattresses-and-bedding | mattresses-and-bedding-bedding-accessories
 3730739,vendor_path_exact,sofas-and-seating-sleeper-sofas,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas
-M41071,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M41041,path_leaf_name_match,mattresses-by-size-king,no_product,
-M41021,path_leaf_name_match,mattresses-by-size-full,no_product,
-M41011,path_leaf_name_match,mattresses-by-size-twin,no_product,
+M41071,name_rule,mattresses-by-size-twin-xl,no_product,
+M41041,name_rule,mattresses-by-size-king,no_product,
+M41021,name_rule,mattresses-by-size-full,no_product,
+M41011,name_rule,mattresses-by-size-twin,no_product,
 100-583,sku_prefix:100-,store-displays,no_product,
 B1013-95,component_sku,component-skus-bedroom,would_add,bedroom-sets
 3730735,vendor_path_exact,sofas-and-seating-loveseats,would_add,living-room-sets
@@ -2207,12 +2209,12 @@ P792-601,vendor_path_exact,outdoor-dining-dining-chairs,would_add,outdoor-sets
 2590315,vendor_path_exact,sofas-and-seating-living-room-chairs,would_add,living-room-sets
 2510208,vendor_path_exact,sofas-and-seating-ottomans,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-ottomans
 2510256,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
-M41251,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M41231,path_leaf_name_match,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M41171,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M41111,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
-M41051,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M41031,path_leaf_name_match,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M41251,name_rule,mattresses-by-size-california-king,no_product,
+M41231,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M41171,name_rule,mattresses-by-size-twin-xl,no_product,
+M41111,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M41051,name_rule,mattresses-by-size-california-king,no_product,
+M41031,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 W2721-24,component_sku,component-skus-living-room,would_add,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment
 B1013-56,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B1013-345,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
@@ -2264,10 +2266,11 @@ A1001043,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-
 A1001040,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 P792-773,vendor_path_exact,patio-accessories-firepits,would_add,outdoor-package
 T922-2,vendor_path_exact,tables-end-and-side-tables,would_add,living-room-sets
-M44531,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M43751,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M43731,path_leaf_name_match,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M43641,path_leaf_name_match,mattresses-by-size-king,no_product,
+M44531,name_rule,mattresses-by-size-queen,no_product,
+M43751,name_rule,mattresses-by-size-california-king,no_product,
+M43731,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M43641,name_rule,mattresses-by-size-king,no_product,
+R900061,item_class_map,rugs-area-rugs,no_product,
 A1001046,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001038,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001036,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
@@ -2346,8 +2349,8 @@ EB2444-231,vendor_path_exact,bedroom-furniture-dressers-and-chests,already_linke
 EB2444-156,vendor_path_exact,kids-furniture-headboards,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 A1001046P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 100-586,sku_prefix:100-,store-displays,no_product,
-M44521,path_leaf_name_match,mattresses-by-size-full,would_add,bedroom-sets
-M43631,path_leaf_name_match,mattresses-by-size-queen,no_product,
+M44521,name_rule,mattresses-by-size-full,would_add,bedroom-sets
+M43631,name_rule,mattresses-by-size-queen,no_product,
 A4000630,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables
 A4000623,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables
 A4000612,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables
@@ -2390,10 +2393,10 @@ PA792-002,component_sku,component-skus-outdoor,no_product,
 A2900010V,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A1001050P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001035P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
-M44541,path_leaf_name_match,mattresses-by-size-king,no_product,
-M44511,path_leaf_name_match,mattresses-by-size-twin,would_add,bedroom-sets
-M43651,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M43621,path_leaf_name_match,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
+M44541,name_rule,mattresses-by-size-king,no_product,
+M44511,name_rule,mattresses-by-size-twin,would_add,bedroom-sets
+M43651,name_rule,mattresses-by-size-california-king,no_product,
+M43621,name_rule,mattresses-by-size-full,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full
 100-55,sku_prefix:100-,store-displays,no_product,
 100-54,sku_prefix:100-,store-displays,no_product,
 A4000633,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables
@@ -3060,12 +3063,12 @@ B2310-89,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B2310-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B2310-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B2310-50,component_sku,component-skus-bedroom,would_add,bedroom-sets
-M52441,vendor_path_exact,mattresses-by-size-king,no_product,
-M52351,vendor_path_exact,mattresses-by-size-california-king,no_product,
-M52331,vendor_path_exact,mattresses-by-size-queen,no_product,
-M52251,vendor_path_exact,mattresses-by-size-california-king,no_product,
-M52241,vendor_path_exact,mattresses-by-size-king,no_product,
-M52231,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M52441,name_rule,mattresses-by-size-king,no_product,
+M52351,name_rule,mattresses-by-size-california-king,no_product,
+M52331,name_rule,mattresses-by-size-queen,no_product,
+M52251,name_rule,mattresses-by-size-california-king,no_product,
+M52241,name_rule,mattresses-by-size-king,no_product,
+M52231,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 1700438,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 1700425,vendor_path_exact,sofas-and-seating-recliners,would_add,living-room-sets
 1700325,vendor_path_exact,sofas-and-seating-recliners,would_add,living-room-sets
@@ -3117,9 +3120,9 @@ B2310-84S,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B2310-84,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 B2310-53,vendor_path_exact,kids-furniture-headboards,would_add,bedroom-sets
 B2310-52,component_sku,component-skus-bedroom,would_add,bedroom-sets
-M52451,vendor_path_exact,mattresses-by-size-california-king,no_product,
-M52431,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M52341,vendor_path_exact,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M52451,name_rule,mattresses-by-size-california-king,no_product,
+M52431,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M52341,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
 1700435,vendor_path_exact,sofas-and-seating-loveseats,would_add,living-room-sets
 1700335,vendor_path_exact,sofas-and-seating-loveseats,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-loveseats
 1700338,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
@@ -3198,7 +3201,7 @@ P671-625,vendor_path_exact,outdoor-dining-dining-tables,already_linked,outdoor |
 9212161,vendor_path_exact,sofas-and-seating-recliners,would_add,living-room-sets
 9212127,component_sku,component-skus-living-room,would_add,living-room-sets
 9212108,vendor_path_exact,sofas-and-seating-ottomans,would_add,living-room-sets
-M43841,vendor_path_exact,mattresses-by-size-king,no_product,
+M43841,name_rule,mattresses-by-size-king,no_product,
 U1310098,path_leaf_name_match,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-recliners
 T821-2,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room | living-room-tables | tables-end-and-side-tables
 T690-2,vendor_path_exact,tables-end-and-side-tables,already_linked,living-room | living-room-tables | tables-end-and-side-tables
@@ -3242,7 +3245,7 @@ A8000428,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | r
 2090416,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2090411,vendor_path_exact,sofas-and-seating-ottomans,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-ottomans
 2090403,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
-M43831,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M43831,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 2110415,vendor_path_exact,sofas-and-seating-living-room-chairs,would_add,living-room-sets
 R406982,path_leaf_name_match,rugs-washable,no_product,
 T567-1,vendor_path_exact,tables-coffee-tables,already_linked,living-room | living-room-tables | tables-coffee-tables
@@ -3430,12 +3433,12 @@ PA572-022,component_sku,component-skus-outdoor,no_product,
 PA572-012,component_sku,component-skus-outdoor,no_product,
 PA572-003,component_sku,component-skus-outdoor,no_product,
 100-17,sku_prefix:100-,store-displays,already_linked,store-displays
-M51821,path_leaf_name_match,mattresses-by-size-full,no_product,
-M51831,path_leaf_name_match,mattresses-by-size-queen,no_product,
+M51821,name_rule,mattresses-by-size-full,no_product,
+M51831,name_rule,mattresses-by-size-queen,no_product,
 M75X42,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M75X12,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 100-604,sku_prefix:100-,store-displays,no_product,
-M51841,path_leaf_name_match,mattresses-by-size-king,no_product,
+M51841,name_rule,mattresses-by-size-king,no_product,
 M75X32,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M74X42,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M74X22,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
@@ -3473,7 +3476,7 @@ M15X112,vendor_path_exact,kids-furniture-beds,no_product,
 T313-12,vendor_path_exact,tables-table-packs,already_linked,living-room | living-room-tables | tables-table-packs
 2430539,vendor_path_exact,sofas-and-seating-sleeper-sofas,would_add,living-room-sets
 100-603,sku_prefix:100-,store-displays,no_product,
-M51811,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M51811,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
 M75X22,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M74X32,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 2520714,vendor_path_exact,sofas-and-seating-ottomans,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-ottomans
@@ -3487,9 +3490,9 @@ PCB3370-92,vendor_path_exact,bedroom-furniture-nightstands,already_linked,bedroo
 PCB3370-57,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB401-82,vendor_path_exact,bedroom-furniture-beds,already_linked,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 5550339,vendor_path_exact,sofas-and-seating-sleeper-sofas,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas
-M49751,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M49731,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M49641,path_leaf_name_match,mattresses-by-size-king,no_product,
+M49751,name_rule,mattresses-by-size-california-king,no_product,
+M49731,name_rule,mattresses-by-size-queen,no_product,
+M49641,name_rule,mattresses-by-size-king,no_product,
 PCB2405-83,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB2405-50,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
 PCB2108-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -3501,9 +3504,9 @@ PCB3370-96,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB3370-61,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB3370-56S,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 4860268,vendor_path_exact,sofas-and-seating-sleeper-sofas,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas
-M49741,path_leaf_name_match,mattresses-by-size-king,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
-M49651,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M49631,path_leaf_name_match,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M49741,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M49651,name_rule,mattresses-by-size-california-king,no_product,
+M49631,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 PCB2405-86,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB3370-58,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB3370-56,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
@@ -3647,7 +3650,7 @@ PC5260525,vendor_path_exact,sofas-and-seating-recliners,no_product,
 PC5260425,vendor_path_exact,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners
 PC4850417,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 PCD581-13,path_leaf_name_match,dining-furniture-dining-room-counter-tables,would_add,dining-room-sets
-M11721,path_leaf_name_match,mattresses-by-size-full,no_product,
+M11721,name_rule,mattresses-by-size-full,no_product,
 PCB2108-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 A2000726,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A2000724,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
@@ -3752,11 +3755,19 @@ B602-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroo
 PC4980213,path_leaf_name_match,sofas-and-seating-recliners,would_add,living-room-sets
 PC5330625,vendor_path_exact,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners
 PC5300525,vendor_path_exact,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners
-M11711,path_leaf_name_match,mattresses-by-size-twin,no_product,
+M11711,name_rule,mattresses-by-size-twin,no_product,
 M11X042,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 M11X012,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 PA711-022,component_sku,component-skus-outdoor,no_product,
 PA711-012,component_sku,component-skus-outdoor,no_product,
+M12211,name_rule,mattresses-by-size-twin,no_product,
+M12131,name_rule,mattresses-by-size-queen,no_product,
+M12071,name_rule,mattresses-by-size-twin-xl,no_product,
+M12021,name_rule,mattresses-by-size-full,no_product,
+M12371,name_rule,mattresses-by-size-twin-xl,no_product,
+M12331,name_rule,mattresses-by-size-queen,no_product,
+M12311,name_rule,mattresses-by-size-twin,no_product,
+M12241,name_rule,mattresses-by-size-king,no_product,
 B3789-92,vendor_path_exact,bedroom-furniture-nightstands,would_add,bedroom-sets
 B3789-72,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-36,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -3924,6 +3935,13 @@ PCB779-56,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedro
 PCB779-46,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
 PCB3367-94,component_sku,component-skus-bedroom,would_add,bedroom
 M1X1102B,component_sku,component-skus-bedroom,no_product,
+M12221,name_rule,mattresses-by-size-full,no_product,
+M12151,name_rule,mattresses-by-size-california-king,no_product,
+M12121,name_rule,mattresses-by-size-full,no_product,
+M12051,name_rule,mattresses-by-size-california-king,no_product,
+M12031,name_rule,mattresses-by-size-queen,no_product,
+M12351,name_rule,mattresses-by-size-california-king,no_product,
+M12321,name_rule,mattresses-by-size-full,no_product,
 B3789-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-71,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-31,vendor_path_exact,bedroom-furniture-dressers-and-chests,would_add,bedroom-sets
@@ -4030,6 +4048,8 @@ PCB779-94,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedro
 PCB779-78,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 PCB779-74,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB779-57,component_sku,component-skus-bedroom,would_add,bedroom-sets
+M12271,name_rule,mattresses-by-size-twin-xl,no_product,
+M12231,name_rule,mattresses-by-size-queen,no_product,
 B3789-55,component_sku,component-skus-bedroom,would_add,bedroom-sets
 B3789-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PA711-033,component_sku,component-skus-outdoor,no_product,
@@ -4037,6 +4057,13 @@ PA490-003,component_sku,component-skus-outdoor,no_product,
 PA275-003,component_sku,component-skus-outdoor,no_product,
 PA275-001,component_sku,component-skus-outdoor,no_product,
 M74X62,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
+M12171,name_rule,mattresses-by-size-twin-xl,no_product,
+M12141,name_rule,mattresses-by-size-king,no_product,
+M12111,name_rule,mattresses-by-size-twin,no_product,
+M12041,name_rule,mattresses-by-size-king,no_product,
+M12011,name_rule,mattresses-by-size-twin,no_product,
+M12341,name_rule,mattresses-by-size-king,no_product,
+M12251,name_rule,mattresses-by-size-california-king,no_product,
 M74X52,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames,no_product,
 PA275-002,component_sku,component-skus-outdoor,no_product,
 PC5590339,vendor_path_exact,sofas-and-seating-sleeper-sofas,no_product,
@@ -4047,17 +4074,17 @@ B697-174,component_sku,component-skus-bedroom,would_add,bedroom-sets
 M5X592,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
 M5X392,vendor_path_exact,mattresses-and-bases-by-type-power-bases,no_product,
 100-605,sku_prefix:100-,store-displays,no_product,
-M20451,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M20421,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20351,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M20321,path_leaf_name_match,mattresses-by-size-full,no_product,
-M20311,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M20251,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M20221,path_leaf_name_match,mattresses-by-size-full,no_product,
-M20151,path_leaf_name_match,mattresses-by-size-california-king,no_product,
+M20451,name_rule,mattresses-by-size-california-king,no_product,
+M20421,name_rule,mattresses-by-size-full,no_product,
+M20351,name_rule,mattresses-by-size-california-king,no_product,
+M20321,name_rule,mattresses-by-size-full,no_product,
+M20311,name_rule,mattresses-by-size-twin,no_product,
+M20251,name_rule,mattresses-by-size-california-king,no_product,
+M20221,name_rule,mattresses-by-size-full,no_product,
+M20151,name_rule,mattresses-by-size-california-king,no_product,
 A1001105P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001102P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
-M20121,path_leaf_name_match,mattresses-by-size-full,no_product,
+M20121,name_rule,mattresses-by-size-full,no_product,
 100-606,sku_prefix:100-,store-displays,no_product,
 9810408,vendor_path_exact,sofas-and-seating-ottomans,would_add,living-room-sets
 9810477,component_sku,component-skus-living-room,would_add,living-room-sets
@@ -4081,30 +4108,30 @@ A3000738,path_leaf_name_match,sofas-and-seating-recliners,no_product,
 PC5910677,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 PC5910664,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 PC5910646,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
-M20741,path_leaf_name_match,mattresses-by-size-king,no_product,
-M20731,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M20641,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20631,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20621,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20611,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20541,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20521,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20511,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20441,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20431,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,no_product,
-M20411,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
-M20341,path_leaf_name_match,mattresses-by-size-king,no_product,
-M20331,path_leaf_name_match,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M20741,name_rule,mattresses-by-size-king,no_product,
+M20731,name_rule,mattresses-by-size-queen,no_product,
+M20641,name_rule,mattresses-by-size-king,no_product,
+M20631,name_rule,mattresses-by-size-queen,no_product,
+M20621,name_rule,mattresses-by-size-full,no_product,
+M20611,name_rule,mattresses-by-size-twin,no_product,
+M20541,name_rule,mattresses-by-size-king,no_product,
+M20521,name_rule,mattresses-by-size-full,no_product,
+M20511,name_rule,mattresses-by-size-twin,no_product,
+M20441,name_rule,mattresses-by-size-king,no_product,
+M20431,name_rule,mattresses-by-size-queen,no_product,
+M20411,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M20341,name_rule,mattresses-by-size-king,no_product,
+M20331,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 A8000459,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-art
-M20241,path_leaf_name_match,mattresses-by-size-king,no_product,
-M20231,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M20211,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
-M20141,path_leaf_name_match,mattresses-by-size-king,no_product,
+M20241,name_rule,mattresses-by-size-king,no_product,
+M20231,name_rule,mattresses-by-size-queen,no_product,
+M20211,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M20141,name_rule,mattresses-by-size-king,no_product,
 A1001104P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001103P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
 A1001100P,vendor_path_exact,pillows-accent-pillows,already_linked,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows
-M20131,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M20111,path_leaf_name_match,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
+M20131,name_rule,mattresses-by-size-queen,no_product,
+M20111,name_rule,mattresses-by-size-twin,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin
 M11X132A,component_sku,component-skus-bedroom,no_product,
 5980339,vendor_path_exact,sofas-and-seating-sleeper-sofas,would_add,living-room-sets
 100-607,sku_prefix:100-,store-displays,no_product,
@@ -4136,10 +4163,10 @@ B1013-87,vendor_path_exact,kids-furniture-headboards,would_add,bedroom-sets
 PC5590261,vendor_path_exact,sofas-and-seating-recliners,would_add,living-room-sets
 A3000739,path_leaf_name_match,sofas-and-seating-recliners,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-recliners
 PC5910665,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
-M20751,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M20651,path_leaf_name_match,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M20551,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M20531,path_leaf_name_match,mattresses-and-bases-by-type-memory-foam,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M20751,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M20651,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M20551,name_rule,mattresses-by-size-california-king,no_product,
+M20531,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 M11X132B,component_sku,component-skus-bedroom,no_product,
 PC5590239,vendor_path_exact,sofas-and-seating-sleeper-sofas,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas
 PCB386-94,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
@@ -4212,6 +4239,12 @@ D618-13,path_leaf_name_match,dining-furniture-dining-room-counter-tables,would_a
 PCD373-324,path_leaf_name_match,bar-furniture-counter-chairs,would_add,dining-room-sets
 PCD373-230,vendor_path_exact,bar-furniture-bar-stools,would_add,dining-room-sets
 A8010392,vendor_path_exact,wall-decor-mirrors,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors
+R407441,item_class_map,rugs-area-rugs,no_product,
+R407431,item_class_map,rugs-area-rugs,no_product,
+R407422,item_class_map,rugs-area-rugs,no_product,
+R407412,item_class_map,rugs-area-rugs,no_product,
+R407402,item_class_map,rugs-area-rugs,no_product,
+R407381,item_class_map,rugs-area-rugs,no_product,
 PC2140699,path_leaf_name_match,sofas-and-seating-power-reclining,would_add,living-room-sets
 PC4840548,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 PC4840534,component_sku,component-skus-living-room,would_add,living-room-sets
@@ -4246,6 +4279,7 @@ A2000801,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-ac
 A2000799,vendor_path_exact,home-accents-vases-and-bottles,already_linked,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents
 A8000469,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-art
 L235934,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
+R407461,item_class_map,rugs-area-rugs,no_product,
 PCB3381-97,component_sku,component-skus-bedroom,would_add,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds
 L235904,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
 L235884,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting
@@ -4271,6 +4305,7 @@ L235944,vendor_path_exact,lighting-table-lamps,already_linked,lighting-table-lam
 H664-70,vendor_path_exact,home-office-and-study-bookcases,already_linked,home-office | home-office-and-study-bookcases | home-office-home-office-and-study
 H664-01A,vendor_path_exact,home-office-and-study-office-chairs,already_linked,home-office | home-office-and-study-office-chairs | home-office-home-office-and-study
 PCB400-59,vendor_path_exact,kids-furniture-bunk-beds,would_add,bedroom-sets
+R407462,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
 A8000473,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-art
 A8000464,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-art
 A8000463,vendor_path_exact,wall-decor-wall-art,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-art
@@ -4285,6 +4320,16 @@ A8010400,vendor_path_exact,wall-decor-wall-sculptures,already_linked,rugs-and-de
 A8010397,vendor_path_exact,wall-decor-wall-sculptures,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-sculptures
 A8010394,vendor_path_exact,wall-decor-mirrors,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors
 A8010391,vendor_path_exact,wall-decor-mirrors,already_linked,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors
+R407452,item_class_map,rugs-area-rugs,no_product,
+R407451,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407442,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407432,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407421,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407411,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407401,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407382,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
+R407372,item_class_map,rugs-area-rugs,no_product,
+R407371,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
 100-609,sku_prefix:100-,store-displays,no_product,
 PC3200638,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 PC3200620,vendor_path_exact,sofas-and-seating-living-room-chairs,already_linked,living-room | living-room-sofas-and-seating | sofas-and-seating-living-room-chairs
@@ -4719,14 +4764,15 @@ M88807,vendor_path_exact,bedding-accessories-bed-pillows,no_product,
 M88802,vendor_path_exact,bedding-accessories-bed-pillows,already_linked,bedding-accessories-bed-pillows | mattresses-and-bedding | mattresses-and-bedding-bedding-accessories
 PCU6260777,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 PC3200618,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
-M31471,vendor_path_exact,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
-M31371,vendor_path_exact,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
-M31331,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M31241,vendor_path_exact,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
-M31141,vendor_path_exact,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M31471,name_rule,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
+M31371,name_rule,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
+M31331,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M31241,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M31141,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
 R407852,vendor_path_exact,rugs-area-rugs,no_product,
 R407851,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R407842,vendor_path_exact,rugs-area-rugs,no_product,
+R407792,item_class_map,rugs-area-rugs,no_product,
 R407762,vendor_path_exact,rugs-area-rugs,no_product,
 R407732,vendor_path_exact,rugs-area-rugs,no_product,
 R407721,vendor_path_exact,rugs-area-rugs,no_product,
@@ -4747,12 +4793,12 @@ B687-52S,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-
 B687-186,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
 B685-186,component_sku,component-skus-bedroom,no_product,
 B680-186,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
-M31451,vendor_path_exact,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M31431,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M31341,vendor_path_exact,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
-M31251,vendor_path_exact,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M31171,vendor_path_exact,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
-M31151,vendor_path_exact,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M31451,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M31431,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M31341,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M31251,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M31171,name_rule,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
+M31151,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 R407862,vendor_path_exact,rugs-area-rugs,no_product,
 R407861,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R407811,vendor_path_exact,rugs-area-rugs,no_product,
@@ -4796,6 +4842,7 @@ PCU1260077,component_sku,component-skus-living-room,would_add,living-room | livi
 PCU1260046,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 A4000711,path_leaf_name_match,tables-coffee-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-coffee-tables
 R407812,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
+R407791,item_class_map,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs | rugs-washable
 R407761,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R407751,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R407722,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
@@ -4897,11 +4944,11 @@ PC3200538,vendor_path_exact,sofas-and-seating-sofas,would_add,living-room-sets
 PC3200535,vendor_path_exact,sofas-and-seating-loveseats,would_add,living-room-sets
 A4000726,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables
 A4000724,path_leaf_name_match,tables-accent-tables,already_linked,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables
-M31441,vendor_path_exact,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
-M31351,vendor_path_exact,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
-M31271,vendor_path_exact,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
-M31231,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
-M31131,vendor_path_exact,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M31441,name_rule,mattresses-by-size-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king
+M31351,name_rule,mattresses-by-size-california-king,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
+M31271,name_rule,mattresses-by-size-twin-xl,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin-xl
+M31231,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
+M31131,name_rule,mattresses-by-size-queen,already_linked,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen
 R407841,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R407651,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
 R407641,vendor_path_exact,rugs-area-rugs,already_linked,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs
@@ -5191,14 +5238,14 @@ PC6270370,component_sku,component-skus-living-room,would_add,living-room | livin
 PCB1171-86,component_sku,component-skus-bedroom,no_product,
 PCB1171-83,component_sku,component-skus-bedroom,no_product,
 PCB1171-52,component_sku,component-skus-bedroom,no_product,
-M33211,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33171,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33141,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33121,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33111,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33051,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33031,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33011,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33211,name_rule,mattresses-by-size-twin,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33171,name_rule,mattresses-by-size-twin-xl,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33141,name_rule,mattresses-by-size-king,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33121,name_rule,mattresses-by-size-full,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33111,name_rule,mattresses-by-size-twin,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33051,name_rule,mattresses-by-size-california-king,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33031,name_rule,mattresses-by-size-queen,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33011,name_rule,mattresses-by-size-twin,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
 9810446,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 9810364,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2590364,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
@@ -5232,7 +5279,7 @@ PA383-002,component_sku,component-skus-outdoor,no_product,
 PA373-002,component_sku,component-skus-outdoor,no_product,
 PCB1170-83,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-52,component_sku,component-skus-bedroom,would_add,bedroom-sets
-M33271,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33271,name_rule,mattresses-by-size-twin-xl,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
 PCD651-09,path_leaf_name_match,dining-furniture-dining-room-counter-chairs,would_add,dining-room-sets
 D594-32,path_leaf_name_match,dining-furniture-dining-room-counter-tables,would_add,dining-room-sets
 D594-09,path_leaf_name_match,dining-furniture-dining-room-counter-chairs,already_linked,bar-furniture-counter-chairs | dining-furniture-dining-benches | dining-furniture-dining-room-counter-chairs | dining-room | dining-room-bar-furniture | dining-room-dining-furniture
@@ -5268,8 +5315,8 @@ PCB1170-84,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-53,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-52S,component_sku,component-skus-bedroom,would_add,bedroom-sets
 PCB1170-50,component_sku,component-skus-bedroom,would_add,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds
-M33251,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33241,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33251,name_rule,mattresses-by-size-california-king,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33241,name_rule,mattresses-by-size-king,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
 9810465,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 9810464,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 9810365,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
@@ -5309,13 +5356,13 @@ PCB1171-89,component_sku,component-skus-bedroom,no_product,
 PCB1171-53,component_sku,component-skus-bedroom,no_product,
 PCB1171-50,component_sku,component-skus-bedroom,no_product,
 PCB1170-86,component_sku,component-skus-bedroom,would_add,bedroom-sets
-M33231,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33221,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33151,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33131,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33071,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33041,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
-M33021,vendor_path_exact,mattresses-and-bases-by-type-hybrid,already_linked,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33231,name_rule,mattresses-by-size-queen,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33221,name_rule,mattresses-by-size-full,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33151,name_rule,mattresses-by-size-california-king,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33131,name_rule,mattresses-by-size-queen,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33071,name_rule,mattresses-by-size-twin-xl,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33041,name_rule,mattresses-by-size-king,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
+M33021,name_rule,mattresses-by-size-full,would_add,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type
 9810346,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2590365,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 B611-99,component_sku,component-skus-bedroom,would_add,bedroom-sets
@@ -5996,17 +6043,17 @@ PC6950510,component_sku,component-skus-living-room,no_product,
 PC6950738,vendor_path_exact,sofas-and-seating-sofas,no_product,
 PC6950725,vendor_path_exact,sofas-and-seating-recliners,no_product,
 PC6950714,vendor_path_exact,sofas-and-seating-ottomans,no_product,
-M45251,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M45231,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M45211,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M45151,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M45141,path_leaf_name_match,mattresses-by-size-king,no_product,
-M45131,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M45121,path_leaf_name_match,mattresses-by-size-full,no_product,
-M45111,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M45051,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M45031,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M45011,path_leaf_name_match,mattresses-by-size-twin,no_product,
+M45251,name_rule,mattresses-by-size-california-king,no_product,
+M45231,name_rule,mattresses-by-size-queen,no_product,
+M45211,name_rule,mattresses-by-size-twin,no_product,
+M45151,name_rule,mattresses-by-size-california-king,no_product,
+M45141,name_rule,mattresses-by-size-king,no_product,
+M45131,name_rule,mattresses-by-size-queen,no_product,
+M45121,name_rule,mattresses-by-size-full,no_product,
+M45111,name_rule,mattresses-by-size-twin,no_product,
+M45051,name_rule,mattresses-by-size-california-king,no_product,
+M45031,name_rule,mattresses-by-size-queen,no_product,
+M45011,name_rule,mattresses-by-size-twin,no_product,
 2420548,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2420517,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2420508,vendor_path_exact,sofas-and-seating-ottomans,no_product,
@@ -6088,13 +6135,13 @@ PC6950508,vendor_path_exact,sofas-and-seating-ottomans,no_product,
 PC6950739,vendor_path_exact,sofas-and-seating-sleeper-sofas,no_product,
 PC6950735,vendor_path_exact,sofas-and-seating-loveseats,no_product,
 PC6950720,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
-M45271,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M45241,path_leaf_name_match,mattresses-by-size-king,no_product,
-M45221,path_leaf_name_match,mattresses-by-size-full,no_product,
-M45171,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M45071,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M45041,path_leaf_name_match,mattresses-by-size-king,no_product,
-M45021,path_leaf_name_match,mattresses-by-size-full,no_product,
+M45271,name_rule,mattresses-by-size-twin-xl,no_product,
+M45241,name_rule,mattresses-by-size-king,no_product,
+M45221,name_rule,mattresses-by-size-full,no_product,
+M45171,name_rule,mattresses-by-size-twin-xl,no_product,
+M45071,name_rule,mattresses-by-size-twin-xl,no_product,
+M45041,name_rule,mattresses-by-size-king,no_product,
+M45021,name_rule,mattresses-by-size-full,no_product,
 2420549,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2420534,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
 2420516,component_sku,component-skus-living-room,would_add,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas
@@ -6739,10 +6786,10 @@ PA355-003,component_sku,component-skus-outdoor,no_product,
 PA355-001,component_sku,component-skus-outdoor,no_product,
 PA352-003,component_sku,component-skus-outdoor,no_product,
 PA352-002,component_sku,component-skus-outdoor,no_product,
-M31421,vendor_path_exact,mattresses-and-bases-by-type-hybrid,no_product,
-M31221,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
-M31321,vendor_path_exact,mattresses-and-bases-by-type-hybrid,no_product,
-M31121,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
+M31421,name_rule,mattresses-by-size-full,no_product,
+M31221,name_rule,mattresses-by-size-full,no_product,
+M31321,name_rule,mattresses-by-size-full,no_product,
+M31121,name_rule,mattresses-by-size-full,no_product,
 PCB2611-97,component_sku,component-skus-bedroom,no_product,
 PCB2611-89,component_sku,component-skus-bedroom,no_product,
 PCB2611-87,component_sku,component-skus-bedroom,no_product,
@@ -6806,8 +6853,8 @@ PC8881116S,component_sku,component-skus-living-room,no_product,
 PC8881065P,component_sku,component-skus-living-room,no_product,
 PC8881046P,component_sku,component-skus-living-room,no_product,
 PC8881016S,component_sku,component-skus-living-room,no_product,
-M47141,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
-M47031,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
+M47141,name_rule,mattresses-by-size-king,no_product,
+M47031,name_rule,mattresses-by-size-queen,no_product,
 T714-6,vendor_path_exact,tables-end-and-side-tables,no_product,
 T608-8,vendor_path_exact,tables-coffee-tables,no_product,
 PCD791-50,vendor_path_exact,dining-furniture-dining-room-tables,no_product,
@@ -6855,8 +6902,8 @@ PC8881077,component_sku,component-skus-living-room,no_product,
 PC8881064P,component_sku,component-skus-living-room,no_product,
 PC8881046,component_sku,component-skus-living-room,no_product,
 PC8881017S,component_sku,component-skus-living-room,no_product,
-M47241,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
-M47041,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
+M47241,name_rule,mattresses-by-size-king,no_product,
+M47041,name_rule,mattresses-by-size-king,no_product,
 T608-6,vendor_path_exact,tables-end-and-side-tables,no_product,
 PCD791-01,vendor_path_exact,dining-furniture-dining-room-chairs,no_product,
 P767-838,vendor_path_exact,patio-furniture-seating,no_product,
@@ -6884,8 +6931,8 @@ P158-998B,vendor_path_exact,patio-accessories-patio-umbrellas,no_product,
 P155-999B,vendor_path_exact,patio-accessories-patio-umbrellas,no_product,
 P140-991,vendor_path_exact,patio-accessories-patio-umbrellas,no_product,
 P140-990,vendor_path_exact,patio-accessories-patio-umbrellas,no_product,
-M47231,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
-M47131,vendor_path_exact,mattresses-and-bases-by-type-memory-foam,no_product,
+M47231,name_rule,mattresses-by-size-queen,no_product,
+M47131,name_rule,mattresses-by-size-queen,no_product,
 T714-8,vendor_path_exact,tables-coffee-tables,no_product,
 T608-4,vendor_path_exact,tables-console-tables,no_product,
 P803-815,vendor_path_exact,patio-furniture-seating,no_product,
@@ -6958,23 +7005,23 @@ PC8881142,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 PC8881242,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 PC8881042,vendor_path_exact,sofas-and-seating-living-room-chairs,no_product,
 30143,component_sku,component-skus-bedroom,no_product,
-M42241,path_leaf_name_match,mattresses-by-size-king,no_product,
-M42211,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M42151,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M42121,path_leaf_name_match,mattresses-by-size-full,no_product,
-M42071,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M42041,path_leaf_name_match,mattresses-by-size-king,no_product,
-M42021,path_leaf_name_match,mattresses-by-size-full,no_product,
-M42251,path_leaf_name_match,mattresses-by-size-california-king,no_product,
-M42231,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M42171,path_leaf_name_match,mattresses-by-size-twin-xl,no_product,
-M42131,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M42111,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M42031,path_leaf_name_match,mattresses-by-size-queen,no_product,
-M42011,path_leaf_name_match,mattresses-by-size-twin,no_product,
-M42221,path_leaf_name_match,mattresses-by-size-full,no_product,
-M42141,path_leaf_name_match,mattresses-by-size-king,no_product,
-M42051,path_leaf_name_match,mattresses-by-size-california-king,no_product,
+M42241,name_rule,mattresses-by-size-king,no_product,
+M42211,name_rule,mattresses-by-size-twin,no_product,
+M42151,name_rule,mattresses-by-size-california-king,no_product,
+M42121,name_rule,mattresses-by-size-full,no_product,
+M42071,name_rule,mattresses-by-size-twin-xl,no_product,
+M42041,name_rule,mattresses-by-size-king,no_product,
+M42021,name_rule,mattresses-by-size-full,no_product,
+M42251,name_rule,mattresses-by-size-california-king,no_product,
+M42231,name_rule,mattresses-by-size-queen,no_product,
+M42171,name_rule,mattresses-by-size-twin-xl,no_product,
+M42131,name_rule,mattresses-by-size-queen,no_product,
+M42111,name_rule,mattresses-by-size-twin,no_product,
+M42031,name_rule,mattresses-by-size-queen,no_product,
+M42011,name_rule,mattresses-by-size-twin,no_product,
+M42221,name_rule,mattresses-by-size-full,no_product,
+M42141,name_rule,mattresses-by-size-king,no_product,
+M42051,name_rule,mattresses-by-size-california-king,no_product,
 P140-991B,component_sku,component-skus-outdoor,no_product,
 30367,component_sku,component-skus-bedroom,no_product,
 30366,component_sku,component-skus-bedroom,no_product,

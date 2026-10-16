@@ -1,6 +1,6 @@
 """Step 8 of the cascade: the model picks one category from a short list, or says none fit.
 
-Fail closed. This module never assigns anything itself. It returns {'choice', 'probabilities'} and route() decides:
+Fail closed. This module never assigns anything itself. It returns {'choice', 'probabilities'} and  decides:
 the choice must be one of the offered options, and confidence must reach the per-option-count threshold in the vendor
 config. While `settings.thresholds` is null (Phase 5 not done) every model answer goes to review.
 
