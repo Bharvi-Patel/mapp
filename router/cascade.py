@@ -3,6 +3,7 @@
 
   0 reuse          same vendor + SKU + content hash decided before
   1 human          a person already decided this item
+  1a golden_map    SKU is in golden.jsonl (optional, shadow --golden-map): its first accepted slug that the store can take
   2 sku_prefix     vendor config, e.g. StoreDisplay (100-) -> store-displays
   3 package        product item_code -> set category (vendor config)
   4 review_class   item classes that never get a category yet -> review
@@ -24,7 +25,7 @@ from contract import RouterInput, RouterOutput
 
 NONE_OF_THESE = '__none_of_these__'
 MODEL_CAP = 0.95            # a model never outranks a rule
-RULE_CONF = {'reuse': 1.0, 'human': 1.0, 'sku_prefix': 1.0, 'package': 0.99, 'vendor_map': 0.98, 'vendor_path': 0.95, 'item_class': 0.96, 'name_rule': 0.95}
+RULE_CONF = {'golden_map': 0.97, 'reuse': 1.0, 'human': 1.0, 'sku_prefix': 1.0, 'package': 0.99, 'vendor_map': 0.98, 'vendor_path': 0.95, 'item_class': 0.96, 'name_rule': 0.95}
 
 def nav_code(path):
     """One Ashley navigableCategories entry -> the ashley_category code stored in pim_vendor_categories.
@@ -62,6 +63,7 @@ class Resources:
     code_slug: dict = field(default_factory=dict)    # vendor category code -> slug, every matched LEAF row (lets step 6 read real codes)
     item_class_map: dict = field(default_factory=dict)   # item_class -> slug, classes Ashley always files in one category (build_item_class_map.py)
     labels: dict = field(default_factory=dict)           # slug -> category name (from the vendor map); Jev reads these as option descriptions
+    golden: dict = field(default_factory=dict)           # sku -> [accepted slugs], from golden.jsonl (shadow --golden-map); empty = step off
 
 def threshold_for(cfg, n_options):
     t = cfg['settings'].get('thresholds')
@@ -138,6 +140,10 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
         if r: return assign(r[0], 'reuse', 'reuse', r[1], res.leaf)
         h = ds.find_human(inp.vendor_id, inp.subject_type, inp.subject_uuid)
         if h: return assign(h, 'human', 'prior_human_decision', 1.0, res.leaf)
+    gm = res.golden.get(inp.sku)                                             # 1a: SKU is in the golden mapping (only when shadow --golden-map is given)
+    if gm:
+        slug = next((a for a in gm if a in res.leaf and a in res.store and a not in res.excluded and a not in res.inactive), gm[0])   # first accepted slug the store can take
+        return assign(slug, 'rule', 'golden_map', RULE_CONF['golden_map'], res.leaf)       # no valid one -> validate_output sends it to review
     for prefix, slug in (cfg.get('sku_prefix_rules') or {}).items():       # 2
         if (inp.sku or '').startswith(prefix):
             return assign(slug, 'rule', f'sku_prefix:{prefix}', RULE_CONF['sku_prefix'], [slug], exempt=[slug])
@@ -262,31 +268,45 @@ def inputs_from_dump(dump, skus, vendor_id, navcats=None):
                                r['itemDesc'], r['itemType'], (r['itemClass'] or '').strip(), icode.get(sku), (navcats[sku] if navcats and sku in navcats else path.get(sku, [])))
     return out
 
+def load_golden(path):
+    """The other team's golden.jsonl -> rows shaped like gold.csv rows, plus 'accept' (every accepted slug)."""
+    out = []
+    with open(path, encoding='utf-8-sig') as f:
+        for line in f:
+            if line.strip():
+                r = json.loads(line)
+                if r.get('sku') and r.get('accept'):
+                    out.append({'row_id': r['sku'], 'sku': r['sku'], 'name': '', 'gold_slug': r['accept'][0], 'accept': list(r['accept']), 'status': 'golden'})
+    return out
+
+def golden_key(accept, picks, options):
+    """Golden lists every accepted slug. Report one key per row so the existing comparisons (pick == key) keep working:
+    the accepted slug the router picked, else the first accepted slug that was among its options, else the first accepted."""
+    for a in accept:
+        if a in picks: return a
+    return next((a for a in accept if a in options), accept[0])
+
 def evaluate(args):
     cfg = K.load_vendor_config(args.vendor)
     res = resources_from_dump(cfg, args.dump, args.unreviewed_map)
-    gold = [r for r in _csv_any(os.path.join(HERE, 'gold', 'gold.csv'))
-            if r['status'] in ('gold', 'gold_flagged', 'gold_ruled', 'rule_handled')]
+    if args.golden: gold = load_golden(args.golden)                           # answer key = golden.jsonl (a row is right if the pick is ANY accepted slug)
+    else: gold = [r for r in _csv_any(os.path.join(HERE, 'gold', 'gold.csv'))
+                  if r['status'] in ('gold', 'gold_flagged', 'gold_ruled', 'rule_handled')]
     navcats = load_navcats(args.navcats) if args.navcats else None
     inputs = inputs_from_dump(args.dump, {r['sku'] for r in gold}, cfg['vendor_id'], navcats)
     trust = args.trust_vendor_path; rowsout = []
-    model = None
-    if args.use_model:
-        import model_step as MS
-        cap = args.max_model_calls or cfg['settings'].get('model_spend_cap_per_batch')
-        cache = os.path.join(HERE, 'reports', 'model_cache.json')
-        if args.provider == 'openai-compat':
-            if not (args.base_url and args.model_name): raise SystemExit('--provider openai-compat needs --base-url and --model-name')
-            model = MS.OpenAICompatModel(args.model_name, args.base_url, max_calls=cap, cache_path=cache, min_interval=args.pause_seconds, tie_prefer=cfg.get('tie_prefer'))
-        else:
-            model = MS.LLMModel(model=args.model_name or MS.DEFAULT_MODEL, max_calls=cap, cache_path=cache, tie_prefer=cfg.get('tie_prefer'))
+    model = make_model(args, cfg)                                    # same builder as shadow: jev / openai-compat / anthropic
+    if model is not None and hasattr(model, 'labels'): model.labels = res.labels
     for g in gold:
         inp = inputs.get(g['sku'])
         if not inp: continue
         out = route(inp, res, model, trust)
         opts, why = options_for(inp, res, trust)
         key = g['gold_slug']
-        rowsout.append(dict(row_id=g['row_id'], name=g['name'][:40], gold=key, outcome=out.outcome, stage=out.stage, rule=out.rule,
+        if g.get('accept'):
+            picks = {out.primary_slug} | {c['slug'] for c in (out.candidates or [])[:1]}
+            key = golden_key(g['accept'], picks, opts)
+        rowsout.append(dict(row_id=g['row_id'], name=(g['name'] or inp.name or '')[:40], gold=key, outcome=out.outcome, stage=out.stage, rule=out.rule,
                             slug=out.primary_slug or '', reason=out.review_reason or '', n_options=len(opts), options_from=why,
                             gold_in_options=(key in opts) if key != "__none__" else '', correct=(out.primary_slug == key),
                             item_type=inp.item_type or '', item_class=inp.item_class or '',
@@ -364,7 +384,7 @@ def evaluate(args):
         L += [f'Model calls this run: {model.calls}']
         if model.errors: L += ['', f'**Model errors (rows sent to review): {model.errors}**', f'First error: {model.first_error}']
     os.makedirs(os.path.join(HERE, 'reports'), exist_ok=True)
-    tag = ('trust' if trust else 'independent') + ('_unreviewed_map' if args.unreviewed_map else '') + ('_navcats' if args.navcats else '') + ('_model' if args.use_model else '')
+    tag = ('trust' if trust else 'independent') + ('_unreviewed_map' if args.unreviewed_map else '') + ('_navcats' if args.navcats else '') + ('_golden' if args.golden else '') + ('_model' if args.use_model else '')
     with open(os.path.join(HERE, 'reports', f'cascade_eval_{tag}.md'), 'w', encoding='utf-8') as f: f.write('\n'.join(L) + '\n')
     with open(os.path.join(HERE, 'reports', f'cascade_eval_{tag}_rows.csv'), 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(rowsout[0])); w.writeheader(); w.writerows(rowsout)
@@ -423,6 +443,9 @@ def shadow(args):
         conn = pymysql.connect(host=u.hostname, port=u.port or 3306, user=U.unquote(u.username or ''), password=U.unquote(u.password or ''), database=u.path.lstrip('/'))
         st = SqlDecisionStore(conn, '%s')
     else: raise SystemExit('--db must start with sqlite: or mysql://')
+    if args.golden_map:
+        res.golden = {r['sku']: r['accept'] for r in load_golden(args.golden_map)}
+        print(f'golden map: {len(res.golden)} SKUs, {sum(1 for i in inputs if i.sku in res.golden)} of the routed products are in it')
     model = make_model(args, cfg)
     if model is not None and hasattr(model, 'labels'): model.labels = res.labels
     n = run_shadow(inputs, lambda i: route(i, res, model, args.trust_vendor_path), st)
@@ -468,17 +491,19 @@ def main():
     e.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
     e.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
     e.add_argument('--navcats', help='CSV from fetch_navcats.py (sku, navigableCategories); uses real Ashley paths')
+    e.add_argument('--golden', help='score against golden.jsonl (the other team\'s key) instead of gold/gold.csv')
     e.add_argument('--trust-vendor-path', action='store_true'); e.add_argument('--unreviewed-map', action='store_true')
-    e.add_argument('--use-model', action='store_true', help='run step 8 (needs ANTHROPIC_API_KEY); picks go to review while thresholds are null')
+    e.add_argument('--use-model', action='store_true', help='run step 8 (Jev: needs OPENROUTER_API_KEY); picks go to review while thresholds are null')
     e.add_argument('--max-model-calls', type=int, default=None)
-    e.add_argument('--provider', choices=['anthropic', 'openai-compat'], default='anthropic')
-    e.add_argument('--model-name', default=None, help='model id (openai-compat: e.g. ministral-3:14b on Ollama, mistralai/ministral-14b-2512 on OpenRouter)')
-    e.add_argument('--pause-seconds', type=float, default=1.2, help='openai-compat: minimum gap between calls (raise it if you see HTTP 429 rate limits)')
-    e.add_argument('--base-url', default=None, help='openai-compat only, e.g. http://localhost:11434/v1')
+    e.add_argument('--provider', choices=['jev', 'anthropic', 'openai-compat'], default='jev')
+    e.add_argument('--model-name', default=None, help='jev: default typesafe/jev-1.14; openai-compat: e.g. ministral-3:14b on Ollama, mistralai/ministral-14b-2512 on OpenRouter')
+    e.add_argument('--pause-seconds', type=float, default=0.2, help='minimum gap between calls (raise it if you see HTTP 429 rate limits)')
+    e.add_argument('--base-url', default=None, help='jev: full endpoint, default OpenRouter Decisions API; openai-compat: e.g. http://localhost:11434/v1')
     s = sub.add_parser('shadow')
     s.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
     s.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
     s.add_argument('--navcats'); s.add_argument('--trust-vendor-path', action='store_true')
+    s.add_argument('--golden-map', help='golden.jsonl: map every SKU it lists to its first valid accepted category (step 1a); the rest go through the normal cascade')
     s.add_argument('--all', action='store_true', help='route every product in the dump, not just the answer-key SKUs')
     s.add_argument('--skus', help='text file with one SKU per line (e.g. test_sku.txt)')
     s.add_argument('--use-model', action='store_true', help='also run step 8 on what the rules leave (needs ANTHROPIC_API_KEY, or --provider openai-compat)')

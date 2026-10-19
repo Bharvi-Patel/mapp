@@ -233,3 +233,41 @@ def test_make_model_jev_needs_a_key(monkeypatch):
     except SystemExit: pass
     monkeypatch.setenv('OPENROUTER_API_KEY', 'k')
     assert isinstance(X.make_model(a, cfg()), MS.JevModel)
+
+def test_eval_and_shadow_share_make_model_for_jev(monkeypatch):
+    import argparse, model_step as MS
+    base = dict(use_model=True, provider='jev', model_name=None, base_url=None, max_model_calls=None, pause_seconds=0.0)
+    cfg = {'settings': {}, 'tie_prefer': None}
+    monkeypatch.delenv('OPENROUTER_API_KEY', raising=False); monkeypatch.delenv('TYPESAFE_API_KEY', raising=False)
+    try: X.make_model(argparse.Namespace(**base), cfg); assert False, 'should need a key'
+    except SystemExit: pass
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'k')
+    m = X.make_model(argparse.Namespace(**base), cfg)
+    assert isinstance(m, MS.JevModel)
+    assert X.make_model(argparse.Namespace(**{**base, 'use_model': False}), cfg) is None
+
+
+def test_golden_key_and_loader(tmp_path):
+    f = tmp_path / 'g.jsonl'
+    f.write_text('{"sku":"1","accept":["a","b"]}\n{"sku":"2","accept":[]}\n{"sku":"3","accept":["c"]}\n', encoding='utf-8')
+    rows = X.load_golden(str(f))
+    assert [r['sku'] for r in rows] == ['1', '3'] and rows[0]['accept'] == ['a', 'b'] and rows[0]['gold_slug'] == 'a'
+    assert X.golden_key(['a', 'b'], {'b'}, ['a']) == 'b'          # the router picked an accepted slug: that is the key, so it counts as correct
+    assert X.golden_key(['a', 'b'], {'z'}, ['x', 'b']) == 'b'     # wrong pick: key is the accepted slug that was among the options
+    assert X.golden_key(['a', 'b'], set(), ['x']) == 'a'          # nothing offered: first accepted
+
+
+def _golden_res(**kw):
+    cfg = {'version': '1', 'settings': {}}
+    return Resources(cfg, {'a', 'b', 'bad'}, {'a', 'b'}, set(), {'bad'}, {}, {}, MemoryStore(), {}, {}, {}, **kw)
+
+
+def test_golden_map_step():
+    inp = RouterInput('ashley', 'raw_item', 'u1', 'S1', 'Thing')
+    assert route(inp, _golden_res()).outcome == 'review'                                    # step off when no golden given
+    out = route(inp, _golden_res(golden={'S1': ['bad', 'b']}))                              # 'bad' is excluded, so the next accepted slug is used
+    assert (out.outcome, out.primary_slug, out.stage, out.rule) == ('assigned', 'b', 'rule', 'golden_map')
+    out = route(inp, _golden_res(golden={'S1': ['bad']}))                                   # nothing the store can take -> review, never a bad assignment
+    assert out.outcome == 'review'
+    other = RouterInput('ashley', 'raw_item', 'u2', 'S2', 'Other')
+    assert route(other, _golden_res(golden={'S1': ['a']})).outcome == 'review'              # SKUs not in golden fall through
