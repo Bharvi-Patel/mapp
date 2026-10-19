@@ -147,3 +147,89 @@ def test_component_rule_assigns_the_parts_category_only_for_components():
     assert route(inp(item_type='Item', vendor_category_path=p), r, None, True).outcome == 'review'      # not a Component
     assert route(inp(item_type='Component', vendor_category_path=p), r, None, False).outcome == 'review'   # vendor path not trusted
     assert route(inp(item_type='Component', vendor_category_path=['component-skus']), r, None, True).outcome == 'review'   # parent only
+def test_item_class_map_assigns_without_a_path_even_with_trust_off():
+    o = route(inp(), res(item_class_map={'CLS': 'ottomans'}))
+    assert (o.outcome, o.primary_slug, o.rule) == ('assigned', 'ottomans', 'item_class_map')
+
+def test_item_class_map_skips_excluded_or_missing_targets():
+    assert route(inp(), res(item_class_map={'CLS': 'store-displays'})).rule != 'item_class_map'   # excluded
+    assert route(inp(), res(item_class_map={'CLS': 'nursery-cribs'})).rule != 'item_class_map'    # leaf, but not in the store
+
+NAME_RULES = [{'pattern': r'\b(?P<size>split california king|split king|california king|twin xl|twin|full|queen|king)\s+mattress\s*$',
+               'template': 'mattresses-by-size-{size}'}]
+def res_mattress(**kw):
+    r = res(cfg=cfg(name_rules=NAME_RULES))
+    r.leaf = r.leaf | {'mattresses-by-size-twin-xl', 'mattresses-by-size-california-king', 'mattresses-by-size-king'}
+    r.store = r.store | {'mattresses-by-size-twin-xl', 'mattresses-by-size-california-king', 'mattresses-by-size-king'}
+    return r
+
+def test_name_rule_sends_a_sized_mattress_to_its_size_category():
+    for name, slug in [('Dreamcloud Premier Memory Foam Twin XL Mattress', 'mattresses-by-size-twin-xl'),
+                       ('Firm Luxe 2.0 California King Mattress', 'mattresses-by-size-california-king'),
+                       ('Dreamcloud Classic Memory Foam King Mattress', 'mattresses-by-size-king')]:
+        o = route(inp(name=name), res_mattress())
+        assert (o.outcome, o.primary_slug, o.rule) == ('assigned', slug, 'name_rule')
+
+def test_name_rule_ignores_protectors_displays_and_unlisted_sizes():
+    for name in ['Serenity Sleep Twin Mattress Protector', 'Queen Mattress Topper', 'Cooling Full XL Mattress']:
+        assert route(inp(name=name), res_mattress()).rule != 'name_rule'
+
+def test_name_rule_needs_the_size_category_to_exist_in_the_store():
+    assert route(inp(name='Plush Queen Mattress'), res_mattress()).rule != 'name_rule'    # queen slug is not in the test store
+
+class Boom:
+    def classify(self, i, options): raise AssertionError('the model must not be called')
+
+def test_no_text_skips_the_model():
+    o = route(inp(name='  ', description=None), res(), Boom())
+    assert (o.outcome, o.review_reason) == ('review', 'no_text')
+
+def test_make_model_is_off_unless_asked():
+    import types
+    assert X.make_model(types.SimpleNamespace(use_model=False), cfg()) is None
+
+import model_step as MS
+class FakeJev(MS.JevModel):
+    def __init__(self, answer, **kw): super().__init__(api_key='k', **kw); self.answer = answer; self.sent = []
+    def _post(self, body): self.sent.append(body); return {'answers': {'category': self.answer}}
+def jev_res(**settings):
+    s = {'trust_vendor_path': False, 'thresholds': {'999': 0.8}}; s.update(settings)
+    return res(cfg=cfg(settings=s))
+
+def test_jev_request_describes_every_option_and_offers_none():
+    m = FakeJev({'choice': 'sofas', 'probabilities': {'sofas': 0.9, 'ottomans': 0.1, 'none_of_these': 0}}, labels={'sofas': 'Sofas'})
+    m.classify(inp(name='Camden Sofa'), ['sofas', 'ottomans'])
+    body = m.sent[0]; q = body['questions']['category']
+    assert q['type'] == 'choice' and set(q['criteria']) == {'sofas', 'ottomans', 'none_of_these'}
+    assert q['criteria']['sofas'] == 'Sofas' and body['state']['name'] == 'Camden Sofa'
+
+def test_jev_confident_clear_pick_is_assigned():
+    m = FakeJev({'choice': 'sofas', 'probabilities': {'sofas': 0.9, 'ottomans': 0.1, 'none_of_these': 0}})
+    o = route(inp(), jev_res(min_margin=0.3), m)
+    assert (o.outcome, o.primary_slug, o.stage) == ('assigned', 'sofas', 'model')
+
+def test_jev_near_tie_goes_to_review_even_above_threshold():
+    m = FakeJev({'choice': 'sofas', 'probabilities': {'sofas': 0.55, 'ottomans': 0.45, 'none_of_these': 0}})
+    o = route(inp(), jev_res(thresholds={'999': 0.5}, min_margin=0.3), m)
+    assert (o.outcome, o.review_reason) == ('review', 'too_close')
+
+def test_jev_none_of_these_and_low_confidence_go_to_review():
+    m = FakeJev({'choice': 'none_of_these', 'probabilities': {'sofas': 0.1, 'ottomans': 0.1, 'none_of_these': 0.8}})
+    assert route(inp(), jev_res(), m).review_reason == 'none_of_these'
+    m = FakeJev({'choice': 'sofas', 'probabilities': {'sofas': 0.6, 'ottomans': 0.3, 'none_of_these': 0.1}})
+    assert route(inp(), jev_res(), m).review_reason == 'below_threshold'
+
+def test_jev_failure_sends_the_product_to_review():
+    class Down(FakeJev):
+        def _post(self, body): raise RuntimeError('boom')
+    m = Down({}); o = route(inp(), jev_res(), m)
+    assert o.outcome == 'review' and m.errors and 'boom' in m.first_error
+
+def test_make_model_jev_needs_a_key(monkeypatch):
+    import types
+    for k in ('OPENROUTER_API_KEY', 'TYPESAFE_API_KEY'): monkeypatch.delenv(k, raising=False)
+    a = types.SimpleNamespace(use_model=True, provider='jev', model_name=None, base_url=None, max_model_calls=5, pause_seconds=0.0)
+    try: X.make_model(a, cfg()); assert False, 'should need a key'
+    except SystemExit: pass
+    monkeypatch.setenv('OPENROUTER_API_KEY', 'k')
+    assert isinstance(X.make_model(a, cfg()), MS.JevModel)

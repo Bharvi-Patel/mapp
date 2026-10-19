@@ -60,7 +60,8 @@ class Resources:
     vendor_map: dict = field(default_factory=dict)   # vendor category code -> slug (accepted rows only)
     decisions: object = None
     code_slug: dict = field(default_factory=dict)    # vendor category code -> slug, every matched LEAF row (lets step 6 read real codes)
-    item_class_map: dict = field(default_factory=dict)
+    item_class_map: dict = field(default_factory=dict)   # item_class -> slug, classes Ashley always files in one category (build_item_class_map.py)
+    labels: dict = field(default_factory=dict)           # slug -> category name (from the vendor map); Jev reads these as option descriptions
 
 def threshold_for(cfg, n_options):
     t = cfg['settings'].get('thresholds')
@@ -152,7 +153,6 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
             if slug in res.leaf and slug in res.store and slug not in res.excluded and slug not in res.inactive:
                 return assign(slug, 'rule', 'name_rule', RULE_CONF['name_rule'], res.leaf)
     cr = cfg.get('component_rule')                                                           # 4b: Component SKUs follow Ashley's own parts category
-    
     comp_only = False                  # an Item (not a Component) whose Ashley path leads only to excluded leaves, e.g. component-skus-*
     if trust and cr and (inp.item_type or '') != cr['item_type'] and cr.get('items_with_only_component_path'):
         _lv = [x for x in dict.fromkeys(res.code_slug.get(c, c) for c in (inp.vendor_category_path or [])) if x in res.leaf]
@@ -176,19 +176,26 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
         if len(leaves) >= 2 and cfg['settings'].get('name_match_tiebreak'):                  # 6b (off unless enabled in the vendor config)
             slug = pick_by_name(inp.name, leaves)
             if slug: return assign(slug, 'rule', 'path_leaf_name_match', RULE_CONF['vendor_path'], res.leaf)
-        icm = res.item_class_map.get((inp.item_class or '').strip())
+    icm = res.item_class_map.get((inp.item_class or '').strip())                            # 6c: itemClass that always lands in one category (works with the Ashley path off too)
     if icm and icm in res.leaf and icm in res.store and icm not in res.excluded and icm not in res.inactive:
         return assign(icm, 'rule', 'item_class_map', RULE_CONF['item_class'], res.leaf)
     options, why = options_for(inp, res, trust)                                              # 7
     if not options: return review('no_pool')
     if model is None:
         return review('no_rule_no_model', [{'slug': s} for s in options[:5]])
+    if not ((inp.name or '').strip() or (inp.description or '').strip()):                    # nothing to read: don't pay for a guess
+        return review('no_text', [{'slug': s} for s in options[:5]])
     ans = model.classify(inp, options)                                                       # 8
     probs = ans.get('probabilities') or {}
     top5 = [{'slug': s, 'p': round(p, 4)} for s, p in sorted(probs.items(), key=lambda kv: -kv[1]) if s != NONE_OF_THESE][:5]
     choice = ans.get('choice')
     if choice == NONE_OF_THESE: return review('none_of_these', top5, stage='model', rule='model_pool')
     if choice not in options: return review('not_offered', top5, stage='model', rule='model_pool')
+    mm = cfg['settings'].get('min_margin')                                                   # Jev gives a probability for every option: refuse a near tie
+    if mm:
+        rivals = [p for s_, p in probs.items() if s_ != choice]
+        if rivals and float(probs.get(choice, 0.0)) - max(rivals) < float(mm):
+            return review('too_close', top5, stage='model', rule='model_pool')
     conf = min(float(probs.get(choice, 0.0)), MODEL_CAP)
     if not K.model_decision_ok(conf, threshold_for(cfg, len(options))):
         return review('below_threshold', top5, stage='model', rule='model_pool')
@@ -219,17 +226,18 @@ def resources_from_dump(cfg, dump, unreviewed_map=False):
         opts = [o['slug'] for o in sorted(p['options'], key=lambda o: -(o.get('support') or 0))
                 if o['slug'] in leaf and o['slug'] in store and o['slug'] not in excluded]
         if opts: pools[cls.strip()] = opts
-    vmap, cmap = {}, {}
+    vmap, cmap, labels = {}, {}, {}
     for r in _csv_any(os.path.join(HERE, cfg['vendor_map_file'])):
         rv = (r.get('REVIEW (Y/N/slug)') or '').strip(); slug = r.get('master_slug') or ''
         if r.get('status') == 'match' and r.get('leaf_or_parent') == 'LEAF' and slug: cmap[r['ashley_category']] = slug
+        if slug and r.get('vendor_name'): labels[slug] = r['vendor_name']
         if rv.upper() == 'N': continue
         if rv.upper() == 'Y' or (not rv and unreviewed_map and r.get('status') == 'match' and r.get('leaf_or_parent') == 'LEAF'): vmap[r['ashley_category']] = slug
         elif rv and rv.upper() != 'Y': vmap[r['ashley_category']] = rv
-        icm = {}
+    icm = {}
     if cfg.get('item_class_map_file') and os.path.exists(os.path.join(HERE, cfg['item_class_map_file'])):
         icm = {r['item_class'].strip(): r['slug'] for r in _csv_any(os.path.join(HERE, cfg['item_class_map_file'])) if r.get('slug')}
-    return Resources(cfg, leaf, store, inactive, excluded, pools, vmap, MemoryStore(), cmap, icm)
+    return Resources(cfg, leaf, store, inactive, excluded, pools, vmap, MemoryStore(), cmap, icm, labels)
 
 def inputs_from_dump(dump, skus, vendor_id, navcats=None):
     """RouterInputs for raw items by SKU. vendor_category_path = the real navigableCategories codes when navcats
@@ -370,6 +378,23 @@ CREATE TABLE IF NOT EXISTS router_review_queue (id INTEGER PRIMARY KEY AUTOINCRE
   content_hash TEXT, reason TEXT, candidates TEXT, decision_id INTEGER, status TEXT DEFAULT 'open');
 """
 
+def make_model(args, cfg):
+    """Build the step-8 model from the command-line options, or None when --use-model is not given."""
+    if not getattr(args, 'use_model', False): return None
+    import model_step as MS
+    cap = args.max_model_calls or cfg['settings'].get('model_spend_cap_per_batch')
+    os.makedirs(os.path.join(HERE, 'reports'), exist_ok=True)
+    cache = os.path.join(HERE, 'reports', 'model_cache.json')          # answers are cached by prompt, so a rerun costs nothing
+    if args.provider == 'jev':
+        key = os.environ.get('OPENROUTER_API_KEY') or os.environ.get('TYPESAFE_API_KEY')
+        if not key: raise SystemExit('Set OPENROUTER_API_KEY (or TYPESAFE_API_KEY with --base-url) before using --use-model with Jev.')
+        return MS.JevModel(model=args.model_name, endpoint=args.base_url, api_key=key, max_calls=cap, cache_path=cache,
+                           min_interval=args.pause_seconds, tie_prefer=cfg.get('tie_prefer'))
+    if args.provider == 'openai-compat':
+        if not (args.base_url and args.model_name): raise SystemExit('--provider openai-compat needs --base-url and --model-name')
+        return MS.OpenAICompatModel(args.model_name, args.base_url, max_calls=cap, cache_path=cache, min_interval=args.pause_seconds, tie_prefer=cfg.get('tie_prefer'))
+    return MS.LLMModel(model=args.model_name or MS.DEFAULT_MODEL, max_calls=cap, cache_path=cache, tie_prefer=cfg.get('tie_prefer'))
+
 def shadow(args):
     """Record what the router WOULD do, into router_decisions (status 'shadow'). Applies nothing.
     --db sqlite:reports/shadow.db  : local trial file, no MySQL needed.
@@ -398,9 +423,14 @@ def shadow(args):
         conn = pymysql.connect(host=u.hostname, port=u.port or 3306, user=U.unquote(u.username or ''), password=U.unquote(u.password or ''), database=u.path.lstrip('/'))
         st = SqlDecisionStore(conn, '%s')
     else: raise SystemExit('--db must start with sqlite: or mysql://')
-    n = run_shadow(inputs, lambda i: route(i, res, None, args.trust_vendor_path), st)
+    model = make_model(args, cfg)
+    if model is not None and hasattr(model, 'labels'): model.labels = res.labels
+    n = run_shadow(inputs, lambda i: route(i, res, model, args.trust_vendor_path), st)
     print(f'shadow run: {len(inputs)} items, {n["assigned"]} assigned, {n["review"]} to review. Nothing was applied.')
     for rule, outcome, k in st.counts_by_rule(cfg['vendor_id'], str(cfg['version'])): print(f'  {rule:28s} {outcome:9s} {k}')
+    if model:
+        print(f'model calls this run: {model.calls}' + (f' | errors: {model.errors} | first error: {model.first_error}' if model.errors else ''))
+        print('thresholds are ' + ('not set, so every model pick is recorded as review with its stated confidence' if not cfg['settings'].get('thresholds') else 'set'))
 
 def compare(args):
     """Shadow decisions vs the product's current category links in the dump. Read-only. Says where the router's pick
@@ -451,6 +481,12 @@ def main():
     s.add_argument('--navcats'); s.add_argument('--trust-vendor-path', action='store_true')
     s.add_argument('--all', action='store_true', help='route every product in the dump, not just the answer-key SKUs')
     s.add_argument('--skus', help='text file with one SKU per line (e.g. test_sku.txt)')
+    s.add_argument('--use-model', action='store_true', help='also run step 8 on what the rules leave (needs ANTHROPIC_API_KEY, or --provider openai-compat)')
+    s.add_argument('--max-model-calls', type=int, default=None, help='stop calling the model after this many calls; the rest go to review')
+    s.add_argument('--provider', choices=['jev', 'anthropic', 'openai-compat'], default='jev')
+    s.add_argument('--model-name', default=None, help='jev: default typesafe/jev-1.14')
+    s.add_argument('--base-url', default=None, help='jev: full endpoint, default OpenRouter Decisions API; openai-compat: e.g. http://localhost:11434/v1')
+    s.add_argument('--pause-seconds', type=float, default=0.2, help='minimum gap between calls (raise it on HTTP 429)')
     s.add_argument('--db', required=True, help='sqlite:reports/shadow.db  or  mysql://user:pass@host/dbname')
     k = sub.add_parser('compare')
     k.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
