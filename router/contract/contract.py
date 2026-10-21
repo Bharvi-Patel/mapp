@@ -33,6 +33,8 @@ class RouterInput:
     item_class: Optional[str] = None
     item_code: Optional[str] = None
     vendor_category_path: list = field(default_factory=list)
+    nav_categories: Optional[list] = None   # the vendor's real navigableCategories as codes. None = not fetched / fetch failed (cascade carries on);
+                                            # [] = the vendor answered and gave none (-> uncategorized); [codes] = use these.
 
 @dataclass
 class RouterOutput:
@@ -45,6 +47,11 @@ class RouterOutput:
     content_hash: str
     review_reason: Optional[str] = None
     candidates: Optional[list] = None
+    slugs: Optional[list] = None  # every category the product belongs to (a product can be in several). primary_slug = slugs[0].
+    uncategorized: bool = False   # True when the vendor gave no navigable categories (outcome 'uncategorized': no slug, not a review)
+
+    def __post_init__(self):
+        if self.slugs is None: self.slugs = [self.primary_slug] if self.primary_slug else []
 
 def _norm(s):
     return re.sub(r'\s+', ' ', (s or '').strip()).lower()
@@ -76,9 +83,14 @@ def validate_output(out: RouterOutput, *, allowed_slugs: set, leaf_slugs: set,
     that applies to every stage, rules included. 'allowed_slugs' = the options this item was offered."""
     errs = []
     if out.stage not in STAGES: errs.append(f'bad stage {out.stage}')
+    if out.uncategorized and out.outcome != 'uncategorized': errs.append('uncategorized flag only on outcome uncategorized')
     if out.outcome == 'review':
         if out.primary_slug is not None: errs.append('review must have primary_slug null')
         if out.review_reason not in REVIEW_REASONS: errs.append(f'bad review_reason {out.review_reason}')
+        return errs
+    if out.outcome == 'uncategorized':
+        if out.primary_slug is not None or out.slugs: errs.append('uncategorized must have no slugs')
+        if not out.uncategorized: errs.append('uncategorized flag not set')
         return errs
     if out.outcome != 'assigned': return errs + [f'bad outcome {out.outcome}']
     s = out.primary_slug

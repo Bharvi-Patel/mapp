@@ -21,4 +21,5 @@ def test_load_navcats_roundtrip(tmp_path):
         w.writerow(['MISSING', '', 'not_found'])
     got = X.load_navcats(str(f))
     assert got['B730B11'][0] == 'BEDROOMBEDROOMFURNITUREBEDS'
-    assert got['A60002521'] == [] and got['MISSING'] == []
+    assert got['A60002521'] == []                 # API answered 'Uncategorized' -> vendor gave none
+    assert 'MISSING' not in got                   # fetch failed -> unknown, left out (not the same as none)

@@ -44,10 +44,13 @@ def rollup(products, raw_of, decisions, package_rules, current):
             ds = [decisions[r] for r in pieces if r in decisions]
             if not ds: row['state'] = 'not_in_run'
             else:
-                got = [(slug, rule) for outcome, slug, rule in ds if outcome == 'assigned' and slug]
+                got = [(slug, rule, slist or [slug]) for outcome, slug, rule, slist in ds if outcome == 'assigned' and slug]
                 real = [g for g in got if not g[0].startswith('component-skus')] or got
-                slugs = {s for s, _ in real}
-                if not got: row['state'] = 'review'
+                slugs = {s for s, _, _ in real}
+                if any(g[1] == 'navigable_categories' for g in got):       # the vendor's own navigable categories: a product can be in several, keep ALL
+                    every = sorted({s for _, _, sl in real for s in sl})
+                    row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=' | '.join(every), rule='navigable_categories')
+                elif not got: row['state'] = 'review'
                 elif len(slugs) > 1:
                     pick, how = break_tie(slugs, code, cur)
                     if pick: row.update(state='assigned', category=pick, rule=how)
@@ -71,8 +74,11 @@ def main():
     products = {p['uuid']: p['item_code'] for p in rows(a.dump, 'pim_products') if not p.get('deleted_at')}
     raw_of = C.defaultdict(list)
     for r in rows(a.dump, 'pim_product_raw_items'): raw_of[r['product_id']].append(r['raw_item_id'])
-    decisions = {u: (o, s, rule) for u, o, s, rule in sqlite3.connect(a.db).execute(
-        "select subject_uuid, outcome, primary_slug, rule from router_decisions where status in ('shadow','applied') order by id")}
+    import json
+    conn = sqlite3.connect(a.db)
+    try: dec_rows = conn.execute("select subject_uuid, outcome, primary_slug, rule, slugs from router_decisions where status in ('shadow','applied') order by id").fetchall()
+    except sqlite3.OperationalError: dec_rows = [r + (None,) for r in conn.execute("select subject_uuid, outcome, primary_slug, rule from router_decisions where status in ('shadow','applied') order by id")]
+    decisions = {u: (o, s, rule, json.loads(sl) if sl else None) for u, o, s, rule, sl in dec_rows}     # slugs = every category of a multi-category decision
     slug = {c['uuid']: c['slug'] for c in rows(a.dump, 'pim_categories')}
     current = C.defaultdict(set)
     for r in rows(a.dump, 'pim_product_categories'):

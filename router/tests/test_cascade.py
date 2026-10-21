@@ -271,3 +271,58 @@ def test_golden_map_step():
     assert out.outcome == 'review'
     other = RouterInput('ashley', 'raw_item', 'u2', 'S2', 'Other')
     assert route(other, _golden_res(golden={'S1': ['a']})).outcome == 'review'              # SKUs not in golden fall through
+# ---- navigable categories: use them when present; several per product; uncategorized flag
+def nres(**kw):
+    r = res(**kw); r.leaf = r.leaf | {'sectionals'}; r.store = r.store | {'sectionals'}
+    r.cfg['settings']['trust_vendor_path'] = True
+    r.code_slug = {'A': 'sofas', 'B': 'ottomans', 'C': 'sectionals', 'COMP': 'comp-bedroom'}
+    return r
+
+def test_navigable_categories_give_every_usable_leaf():
+    o = route(inp(nav_categories=['A', 'PARENT', 'B']), nres())
+    assert (o.outcome, o.rule, o.slugs, o.primary_slug, o.uncategorized) == ('assigned', 'navigable_categories', ['sofas', 'ottomans'], 'sofas', False)
+
+def test_navigable_categories_win_over_package_and_class_pool():
+    o = route(inp(subject_type='product', item_code='Bedroom Package', nav_categories=['C']), nres())
+    assert (o.rule, o.slugs) == ('navigable_categories', ['sectionals'])
+
+def test_sku_prefix_still_runs_first():
+    assert route(inp(sku='100-7', nav_categories=['A']), nres()).rule == 'sku_prefix:100-'
+
+def test_vendor_gave_none_is_uncategorized_flag_not_review():
+    o = route(inp(nav_categories=[]), nres())
+    assert (o.outcome, o.uncategorized, o.slugs, o.primary_slug, o.review_reason) == ('uncategorized', True, [], None, None)
+
+def test_unknown_navigable_categories_carry_on_with_the_cascade():
+    o = route(inp(nav_categories=None, item_class='ONE'), nres())          # not fetched: not uncategorized
+    assert o.outcome != 'uncategorized' and not o.uncategorized
+
+def test_codes_with_no_usable_leaf_fall_through():
+    r = nres(); r.excluded = r.excluded | {'comp-bedroom'}; r.leaf = r.leaf | {'comp-bedroom'}; r.store = r.store | {'comp-bedroom'}
+    o = route(inp(nav_categories=['COMP'], vendor_category_path=['COMP']), r)
+    assert o.rule != 'navigable_categories' and not o.uncategorized
+
+def test_single_slug_paths_still_fill_slugs():
+    assert route(inp(sku='100-7'), res()).slugs == ['store-displays']
+
+def test_multi_slug_reuse_returns_all_slugs():
+    r = nres(); r.decisions.reuse[('v', 'S1', K_hash(inp()))] = ('sofas', 0.99, ['sofas', 'ottomans'])
+    o = route(inp(), r)
+    assert (o.stage, o.slugs) == ('reuse', ['sofas', 'ottomans'])
+
+def K_hash(i):
+    import contract as K; return K.content_hash(i)
+
+def test_load_navcats_marks_only_answered_empty_as_none(tmp_path):
+    import csv, json
+    f = tmp_path / 'n.csv'
+    with open(f, 'w', newline='', encoding='utf-8') as fh:
+        w = csv.writer(fh); w.writerow(['sku', 'navigableCategories', 'status'])
+        w.writerow(['U', json.dumps(['Uncategorized']), 'ok']); w.writerow(['BAD', '', 'bad_body']); w.writerow(['NF', '', 'no_field'])
+    got = X.load_navcats(str(f))
+    assert got == {'U': []}
+
+def test_navigable_step_needs_trust_vendor_path():
+    r = nres(); r.cfg['settings']['trust_vendor_path'] = False
+    o = route(inp(nav_categories=['A', 'B']), r)
+    assert o.rule != 'navigable_categories' and not o.uncategorized          # independent mode stays independent

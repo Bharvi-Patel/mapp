@@ -55,3 +55,12 @@ def test_sql_parses():
     stmts = sqlglot.parse(open(os.path.join(ROOT, 'contract', 'schema.sql')).read(), read='mysql')
     from sqlglot import exp
     assert len([s for s in stmts if isinstance(s, exp.Create)]) == 2
+
+def test_output_schema_multi_slug_and_uncategorized():
+    s = schema('output.schema.json')
+    jsonschema.validate(to_dict(mk(slugs=['bedroom-sets', 'kids-beds'])), s)
+    u = mk(outcome='uncategorized', primary_slug=None, stage='rule', rule='no_navigable_categories', slugs=[], uncategorized=True)
+    jsonschema.validate(to_dict(u), s)
+    assert validate_output(u, **KW) == []
+    assert validate_output(mk(outcome='uncategorized', primary_slug='x', slugs=['x'], uncategorized=True), **KW)       # no slug allowed
+    assert validate_output(mk(uncategorized=True), **KW)                                                              # flag only on that outcome

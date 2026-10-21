@@ -6,7 +6,7 @@ cfg = CA.K.load_vendor_config('vendors/ashley.yaml')
 res = CA.resources_from_dump(cfg, DUMP, False)
 nav = CA.load_navcats('navcats_merged.csv')
 
-q = [x[0] for x in sqlite3.connect('reports/shadow.db').execute('select sku from router_review_queue')]
+q = [x[0] for x in sqlite3.connect('reports/shadow.db').execute("select distinct sku from router_decisions where status='shadow' and outcome='review'")]
 inputs = CA.inputs_from_dump(DUMP, set(q), cfg['vendor_id'], nav)
 
 why = C.Counter()
