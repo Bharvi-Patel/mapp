@@ -23,6 +23,11 @@ def break_tie(slugs, code, cur):
     pool = best or list(slugs)
     have = [s for s in pool if s in cur]
     if len(have) == 1: return have[0], 'tiebreak:current_link'
+    # 3) same branch as the product's current links: 'kids-...' links pick the kids candidate, 'bedroom-...' the bedroom one.
+    #    If the current links span both branches (or match none), it stays a conflict for a human.
+    branches = {c.split('-')[0] for c in cur}
+    same = [s for s in pool if s.split('-')[0] in branches]
+    if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
 def rollup(products, raw_of, decisions, package_rules, current):

@@ -2842,7 +2842,7 @@ c337ed0c56dd4eeba630cb4683a719ce,Bedroom Package,8,assigned,bedroom-sets,package
 918b3a19597748f9a1240a8b6bc7bb93,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 b360b8da85ee4761b8cc07199d6714c8,Motion Upholstery Package,4,assigned,living-room-sets,package:Motion Upholstery Package,living-room-sets,already_linked
 ed107f4f58244f2d8cadaeeffc4d3c2a,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
-11d11d0a48f84b1f826e3f297033e6a9,Bed,25,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+11d11d0a48f84b1f826e3f297033e6a9,Bed,25,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 306e356d1b4140db8ba2bac32377e482,Stationary Upholstery Package,10,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
 14b86a00caee4278998f14af8a477df8,Pillow,1,review,,,pillows-accent-pillows | pillows-washable-pillows | rugs-and-decor | rugs-and-decor-pillows,
 7d265b211e414d6591480b07cd3bac6d,Pillow,1,review,,,pillows-accent-pillows | pillows-washable-pillows | rugs-and-decor | rugs-and-decor-pillows,
@@ -2863,7 +2863,7 @@ c4a8f5d675094b60ac9a3fd9499910fb,Bedroom Package,12,assigned,bedroom-sets,packag
 f7083a8293264316a93e6287f1819f2f,Dining Package,4,assigned,dining-room-sets,package:Dining Package,dining-room-sets,already_linked
 fabc471a6d584c98a877805061dd0f39,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 9fac1e5b34794bb99cf02a2211f37ef0,Motion Upholstery Package,4,assigned,living-room-sets,package:Motion Upholstery Package,living-room-sets,already_linked
-ad37dd7c37f04b09969e73bb5d754f8f,Bed,27,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+ad37dd7c37f04b09969e73bb5d754f8f,Bed,27,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 ce6a85abf633469aa99822d7d425b3b2,Pillow,1,review,,,pillows-accent-pillows | pillows-washable-pillows | rugs-and-decor | rugs-and-decor-pillows,
 b244fe386cdb41609e3c2332b70cd6d9,Pillow,1,review,,,pillows-accent-pillows | pillows-washable-pillows | rugs-and-decor | rugs-and-decor-pillows,
 b99871816bb2402aab237a6f283b5e73,Pillow,1,review,,,pillows-accent-pillows | pillows-washable-pillows | rugs-and-decor | rugs-and-decor-pillows,
@@ -3656,9 +3656,9 @@ c273e9705fea4730874d9b4bd81ee765,Vase,1,assigned,home-accents-vases-and-bottles,
 49d5f3e9330a480e92ffc1d3decf26dd,Vase,1,assigned,home-accents-vases-and-bottles,vendor_path_exact,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents,already_linked
 379023fa749144848c4cc54068b118ea,Vase,1,assigned,home-accents-vases-and-bottles,vendor_path_exact,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents,already_linked
 e311957179b04b9daae7446afca7806d,Bed,6,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
-48232746a4e7458294dd0a33c6c673a6,Bed,14,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
-5ab8abf3100949e782c4231ea093dec6,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
-88146737143e408287f164767bd3104f,Bed,19,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+48232746a4e7458294dd0a33c6c673a6,Bed,14,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
+5ab8abf3100949e782c4231ea093dec6,Bed,16,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+88146737143e408287f164767bd3104f,Bed,19,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 55538ff7e7f345d2a676245007f3e736,Bed,13,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 59878b8dbba44b9981ce19304a5b2407,Bed,10,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 e2816296c6384d9ba954fe71fba6c7f8,Recliner,1,assigned,sofas-and-seating-recliners,path_leaf_name_match,living-room | living-room-sofas-and-seating | sofas-and-seating-lift-chairs | sofas-and-seating-power-reclining | sofas-and-seating-recliners,already_linked
@@ -3678,7 +3678,7 @@ fc52619b9d934c9a9755a44598deb4a8,Loveseat,1,review,,,living-room | living-room-s
 ed852b1eb0f9446785d8cd0b20303708,Bed,8,assigned,kids-furniture-beds,tiebreak:item_code,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,already_linked
 7b0f4609035c4e75922a45d436ea7680,Hybrid Mattress,1,assigned,mattresses-by-size-king,name_rule,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-king,already_linked
 e317b57dc2654f30b03bc9caaee472f6,Hybrid Mattress,1,assigned,mattresses-by-size-queen,name_rule,mattresses-and-bedding | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-queen,already_linked
-91ea333c649349308d17584e0fa94a35,Bed,18,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+91ea333c649349308d17584e0fa94a35,Bed,18,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 8b75613ba8f74b079e0260004966d2a7,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 1ff96fa143d348dbb862bcbf2de0bd74,Sleeper,2,assigned,sofas-and-seating-sleeper-sofas,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-sleeper-sofas,already_linked
 a9f8f25b4bb043988148347df4a3b755,Recliner,2,assigned,sofas-and-seating-recliners,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners,already_linked
@@ -4177,7 +4177,7 @@ a8717e8c565d4faabce109d5a42cd797,Bedroom Package,6,assigned,bedroom-sets,package
 9882db17cdea4e34ada58a1d7cb4e05f,Nightstand,1,assigned,bedroom-furniture-nightstands,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
 859097512fca45a38f3e1aabac6668cd,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 5c59f448bd2743aba2a07d4336488324,Dining Chair,1,assigned,dining-furniture-dining-room-chairs,vendor_path_exact,dining-furniture-dining-room-chairs | dining-room | dining-room-dining-furniture,already_linked
-fc0251cada7947958a2a7319ae93a205,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+fc0251cada7947958a2a7319ae93a205,Bed,15,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 a988322c4582433f9369cd94dda910a2,Vase,1,assigned,home-accents-vases-and-bottles,vendor_path_exact,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents,already_linked
 32a1a63774b642119bf3f440aa6a28db,Vase,1,assigned,home-accents-vases-and-bottles,vendor_path_exact,home-accents-vases-and-bottles | rugs-and-decor | rugs-and-decor-home-accents,already_linked
 5e3a62e9fe68429a86505f809b0df252,Sectional,12,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
@@ -5023,7 +5023,7 @@ db896b41b06148b8a3b7e9c45e68fcc2,Sectional,8,assigned,component-skus-living-room
 23849b1302c54d2ebb7916fef3651718,Bed,6,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 4cd5a163ff3f4d249f599c6eab7bfde2,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 0254e0e5c58d425e8fafc53374be6f92,Bed,14,assigned,component-skus-bedroom,component_sku,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
-130beeafc99f4175a9fa16853156d05f,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+130beeafc99f4175a9fa16853156d05f,Bed,16,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 820dce719c70432397a1c1bb15204c85,Bed,12,assigned,component-skus-bedroom,component_sku,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 ff00ba4309db4cf79cdbd624a6def175,Desk,4,assigned,home-office-and-study-desks,vendor_path_exact,home-office | home-office-and-study-desks | home-office-home-office-and-study,already_linked
 e3ac6b9331124022b070e2b13ce9fa53,Dining Package,8,assigned,dining-room-sets,package:Dining Package,dining-room-sets,already_linked
@@ -5054,7 +5054,7 @@ f0944449b157432898a38429ecc9d90f,Bedroom Package,14,assigned,bedroom-sets,packag
 ba8bcacba74c4ee7b9ef50f5b30e6c05,Sectional,11,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 7730cc9311b94a4fa1bbbbbd84d0c31f,Sectional,8,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 49d966a976ad4a318b2f9d523f7c0a91,Sectional,8,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
-1e2045e82e654546aa7611b5e8d04a09,Bed,23,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+1e2045e82e654546aa7611b5e8d04a09,Bed,23,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 149a904b2c0f47d3abc67076639a5bab,Bed,16,assigned,component-skus-bedroom,component_sku,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 d8e0a0f902d7447e828988635cb572f9,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 77796e6a52ae42709e50b75f7ef69d56,Table Lamp,1,assigned,lighting-table-lamps,vendor_path_exact,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting,already_linked
@@ -5077,7 +5077,7 @@ b8613b1ebfd246ceac12d9f848195665,Bedroom Package,10,assigned,bedroom-sets,packag
 c7339de3d72041528654772576faa0cc,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 fbeb9c1dfae140cc872a79c16e9e8c27,Desk,1,assigned,home-office-and-study-desks,vendor_path_exact,home-office | home-office-and-study-desks | home-office-home-office-and-study,already_linked
 3ac78ec572a04ec1b939989f0359aa59,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
-e619698d59334b98819bb93038bf10c0,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+e619698d59334b98819bb93038bf10c0,Bed,20,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 9231a2c93b9f4186a9220ec8088281a6,Bench,1,assigned,dining-furniture-dining-benches,vendor_path_exact,dining-furniture-dining-benches | dining-room | dining-room-dining-furniture,already_linked
 89b3a7f2a3fd4bfe8a1455d40aefb649,Chest,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
 65dd35c61ba54f2790bce471646330ae,Memory Foam Mattress,1,assigned,mattresses-by-size-twin,name_rule,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-twin,already_linked
@@ -5194,9 +5194,9 @@ b6226c63594c457fb6bf475649f89806,Bedroom Package,8,assigned,bedroom-sets,package
 ed2dc972ab7f42b2b0e8538b00171e6e,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 91fc07669efd4d05b4735c3d2824aa14,Bed,1,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-headboards,already_linked
 280c6f1deae44a71aadfdf6b0706a4b4,Nightstand,1,assigned,bedroom-furniture-nightstands,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
-c8d021f536514fa0bc55215b796cc6c5,Bed,18,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+c8d021f536514fa0bc55215b796cc6c5,Bed,18,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 bc9764aa69364c44aa1d51f45651085b,Bed,21,assigned,component-skus-bedroom,component_sku,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
-d4689a945dba4cc385b408cb004a05f6,Bed,18,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+d4689a945dba4cc385b408cb004a05f6,Bed,18,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 800bb34e9acb406e88f62ac081e08d44,Outdoor Dining Chair,1,assigned,patio-furniture-seating,vendor_path_exact,outdoor | outdoor-patio-furniture | patio-furniture-seating,already_linked
 5295964bec8541cfa697122dfc8ec6d7,Outdoor Dining Chair,1,assigned,patio-furniture-seating,vendor_path_exact,outdoor | outdoor-patio-furniture | patio-furniture-seating,already_linked
 8546e707981049f4866701a4a5c8d2af,Outdoor Loveseat,1,assigned,patio-furniture-seating,vendor_path_exact,outdoor | outdoor-patio-furniture | patio-furniture-seating,already_linked
@@ -5217,9 +5217,9 @@ f7160ef50c3e41adb9cd04c05db06815,Bed,1,assigned,kids-furniture-headboards,vendor
 65da7f39607741afa1aa83d17c61ebd6,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
 641b92f3a12d4dabb9ed7cd1684964aa,Pillow,1,assigned,pillows-accent-pillows,vendor_path_exact,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows,already_linked
 eb37f55a59014ea992163694d2fa9f20,Bed,1,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-headboards,already_linked
-80d334cfe43a4562b7d37e98912238d7,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+80d334cfe43a4562b7d37e98912238d7,Bed,15,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 99b4caac8cb942259240f1c29bbbd79b,Bed,15,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
-8cbb52f487fb4490a6ad55f1359ed82a,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+8cbb52f487fb4490a6ad55f1359ed82a,Bed,16,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 088bff7248994389808c55bd257d65af,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 70e331a834314ffe86d98b73bae7ac44,Dining Package,4,assigned,dining-room-sets,package:Dining Package,dining-room-sets,already_linked
 eb2eb7cef5e4455da5db20f2bf0822b0,Dining Package,6,assigned,dining-room-sets,package:Dining Package,dining-room-sets,already_linked
@@ -5311,7 +5311,7 @@ bf0ee0d193a941eabe02790c0e483bec,Table Lamp Pair,2,assigned,lighting-table-lamps
 48601b332a7548ebb47aabfa30e548e8,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 bc2254cf46b541a5a084467485b53d12,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 f2e3a9bd373444bbb654ef0b995f37ac,Dining Package,6,assigned,dining-room-sets,package:Dining Package,dining-room-sets,already_linked
-c70233bf516342d0a0032af0e53f250f,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+c70233bf516342d0a0032af0e53f250f,Bed,20,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 6413bbc542844015abf39ab05cd2f254,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 0e9acfee1d52442fb9c9438441927b43,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 b2f9e785e4e54b739bd54297bd58b6a9,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
@@ -6056,7 +6056,7 @@ d14fc135b9234166bf7a5068d51eab44,EA Furniture,1,assigned,wall-decor-wall-sculptu
 f0de82be209e4af5bac4c6bcafe33d79,Chair,1,assigned,sofas-and-seating-living-room-chairs,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-living-room-chairs,already_linked
 d675a899c8af4b838f9227ada5840ceb,Sofa,1,assigned,sofas-and-seating-sofas,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-sofas,already_linked
 2e79a87e007343c583924b82af663b26,Sectional,4,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
-98c500bdf0f1446d8f5224341b81d57c,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+98c500bdf0f1446d8f5224341b81d57c,Bed,16,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 23f7111c7851480aabcad656dc6f26b2,Barstool,1,assigned,bar-furniture-bar-stools,vendor_path_exact,bar-furniture-bar-stools | dining-room | dining-room-bar-furniture,already_linked
 bc26d829471b41a4b0d4635e6209bc29,Sofa,1,assigned,sofas-and-seating-reclining-sofas,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-sofas,already_linked
 a84844e77c0d45c0bae3feaab1250f80,Loveseat,1,review,,,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats,
@@ -6111,7 +6111,7 @@ fcd1152521534a76ab5f820494e806d4,Bed,1,assigned,kids-furniture-headboards,vendor
 b165cd5745dd4fe1b2304452b4dc4bdb,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
 543c7a560e7f4b9d8f095782eaf050d5,Nightstand,1,assigned,bedroom-furniture-nightstands,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
 a1c3f2b19d5b43bb93cc44e8d00f72a3,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,tiebreak:item_code,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
-f637513bc3a540ef81d3386e600daebb,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+f637513bc3a540ef81d3386e600daebb,Bed,15,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 4252b0c59afa4076a924c3b319c07cfa,Bed,9,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 d562ee62ea2c428a92134e1efe667e6d,Chest,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
 998d4ad22bff46c7b3899dac209442f1,Bed,8,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
@@ -6227,7 +6227,7 @@ e70f5dee3a654ccb815ff0ac1e2c6cbc,Loveseat,1,assigned,sofas-and-seating-loveseats
 8bd78c3be66c4113bd80c14ac4a1c6d8,Accent Table,1,assigned,home-accents-accent-furniture,vendor_path_exact,home-accents-accent-furniture | rugs-and-decor | rugs-and-decor-home-accents,already_linked
 1484e654192e4150b6e23f324ce0f8eb,Accent Cabinet,1,review,,,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-storage-cabinets,
 d60e314997234e549a3b155c6ca80616,Rug Medium,1,assigned,rugs-area-rugs,vendor_path_exact,rugs-and-decor | rugs-and-decor-rugs | rugs-area-rugs,already_linked
-8373ced183af499381eb33f6e1e3ccfc,Bed,10,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+8373ced183af499381eb33f6e1e3ccfc,Bed,10,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 8300f6d874384eb1ac06d7121bd47893,Outdoor Fire Pit Table,1,assigned,outdoor-dining-dining-tables,vendor_path_exact,outdoor | outdoor-dining-dining-tables | outdoor-outdoor-dining,already_linked
 b7a6c6c781d64234979a192c59445a66,TV Stand,1,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
 9df34620808049a188636884d7837eee,TV Stand,1,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
@@ -6336,16 +6336,16 @@ c8ccabea72dc4c399fbd7ccee99405ed,Sofa,1,assigned,sofas-and-seating-sofas,vendor_
 1f4c94ee85c24f73a60477caafba7269,Vanity,1,assigned,kids-furniture-vanities,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-vanities,already_linked
 447f6beb6b764ae3867a6dbd29d729f1,Chair,1,assigned,sofas-and-seating-living-room-chairs,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-living-room-chairs,already_linked
 8855874a97ce46db9e21199eace158dd,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,tiebreak:item_code,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
-7634f2fb2a96459d9b383cd863035ddd,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,
-4edd69abf86041da859da465dd66a3c3,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
-1771a1ba76574d43ad35f5a4805fa828,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+7634f2fb2a96459d9b383cd863035ddd,Bed,20,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
+4edd69abf86041da859da465dd66a3c3,Bed,15,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+1771a1ba76574d43ad35f5a4805fa828,Bed,20,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 1799f4b69954437d89ed11ec971ca7fd,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
 42ea02b191484e9b87465597fe3bcb9f,Bed,12,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 310cd50bfe944f378939670f5166a8ca,Bed,12,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 1c69034f95394edaa40b5f0b98ad0124,Bed,12,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 9ea51958cfde464cacac77185f87966a,Pillow,1,assigned,pillows-accent-pillows,vendor_path_exact,pillows-accent-pillows | rugs-and-decor | rugs-and-decor-pillows,already_linked
 4091a4689cb644f3875c581e64e90c4c,Entertainment Center,6,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
-800dbe8904044714a48eca47aedf5fc7,Bed,10,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+800dbe8904044714a48eca47aedf5fc7,Bed,10,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 5fbfcb60b0b94c7f8b631e3f37a37374,Desk,4,assigned,home-office-and-study-desks,vendor_path_exact,home-office | home-office-and-study-desks | home-office-home-office-and-study,already_linked
 87385af924834c63a217ba73e54b3c71,Recliner,1,assigned,sofas-and-seating-recliners,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners,already_linked
 aa192c8b14f449cd9ef6898822b2e61c,Recliner,1,assigned,sofas-and-seating-recliners,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners,already_linked
@@ -6362,14 +6362,14 @@ c7b890bf192d4d978117495e96743f8a,Sofa Table,1,assigned,tables-console-tables,ven
 8026f41c1e644cefbeeb7d3627a45015,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
 12949fb6325f4af69bd8ccf1ea1de7b1,Desk,1,assigned,home-office-and-study-desks,vendor_path_exact,home-office | home-office-and-study-desks | home-office-home-office-and-study,already_linked
 1aa1b6f47d4a4ff18b45fba350e41379,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
-74945629f3ee483999cd70d6175c0b27,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
-b82aeb17f810416680bf506d581576a7,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
-78990cc3292440929bd81bb0adbb958a,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+74945629f3ee483999cd70d6175c0b27,Bed,12,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+b82aeb17f810416680bf506d581576a7,Bed,12,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
+78990cc3292440929bd81bb0adbb958a,Bed,12,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 cd599c154e1e4bbf80446b945fc4e937,Sectional,4,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 864253eff5de4e53a11c9410cd372633,Sectional,4,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 704338ee55584fd7b9fae4bd7066a165,Sectional,6,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
-11e25d75dc0e47c9a78e38179565e854,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
-feb588a833aa4ecaa62ff6d161fc62e1,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+11e25d75dc0e47c9a78e38179565e854,Bed,16,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+feb588a833aa4ecaa62ff6d161fc62e1,Bed,12,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 db689b1396da4b70b596f4abc17c3bf5,Mirror,1,assigned,wall-decor-mirrors,vendor_path_exact,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors,already_linked
 a72dff4f3a5b42f9ac6c68830c2057c2,Table Lamp,1,assigned,lighting-table-lamps,vendor_path_exact,lighting-table-lamps | rugs-and-decor | rugs-and-decor-lighting,already_linked
 d6d5ae181aa74ce394f30eb0272f4fc4,Bed,15,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
@@ -6409,8 +6409,8 @@ aedec5ce0fab4836a344a8eb77c63758,TV Stand w/Fire,8,assigned,entertainment-tv-sta
 1b7e7d3932ee4b3f953f4cb95076c7cc,Entertainment Center,6,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
 63e10c4c17ed47c08b726587a1855af2,TV Stand w/Fire,4,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
 ad883fa383d6400cb2dbd3f0a7ab9038,TV Stand w/Fire,8,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
-3dc4d7ea78e24ef89f3969607b9fb5f2,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,
-64a9c4b3e20d478cbbbb5e0581d7f765,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,
+3dc4d7ea78e24ef89f3969607b9fb5f2,Bed,20,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
+64a9c4b3e20d478cbbbb5e0581d7f765,Bed,16,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
 bd21870717e54b7cab1546a0ce7aaebd,Server,1,assigned,dining-furniture-dining-storage,vendor_path_exact,dining-furniture-dining-storage | dining-room | dining-room-dining-furniture,already_linked
 cadc1d5ede5d4f81a62d5b824493588b,Accent Chair,1,assigned,sofas-and-seating-living-room-chairs,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-living-room-chairs,already_linked
 9ef6e6ec17f7403f8e6f085d8c08f012,Counter Height Table,1,assigned,dining-furniture-dining-room-counter-tables,path_leaf_name_match,bar-furniture-counter-tables | dining-furniture-dining-room-counter-tables | dining-room | dining-room-bar-furniture | dining-room-dining-furniture,already_linked
@@ -6423,7 +6423,7 @@ f90b0c1d43f44125b5d3c2f819095f4a,Dresser,4,assigned,bedroom-furniture-dressers-a
 f0d637022a4145c4bd3b7b3ca06c7200,Desk,4,assigned,home-office-and-study-desks,vendor_path_exact,home-office | home-office-and-study-desks | home-office-home-office-and-study,already_linked
 2b67f13bb8db4046832f5c0c9aa0cb04,Sectional,6,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 86922da7d022487c85d8124cb76da403,TV Stand w/Fire,4,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-mantels-and-fireplaces | entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
-20e2a8cda62c4b4b8271a60ab2447021,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+20e2a8cda62c4b4b8271a60ab2447021,Bed,12,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 774c153de7cc4bdfa186bc6d4c4a5948,Sculpture,1,assigned,home-accents-sculptures,vendor_path_exact,home-accents-sculptures | rugs-and-decor | rugs-and-decor-home-accents,already_linked
 acc036a99b2b4c0b95f1e7b17a1bdda0,3 Pack,1,assigned,tables-table-packs,vendor_path_exact,living-room | living-room-tables | tables-table-packs,already_linked
 d494225281c9418890c7b70de1f96c4e,Accent Table,1,assigned,tables-accent-tables,path_leaf_name_match,home-accents-accent-furniture | living-room | living-room-tables | rugs-and-decor | rugs-and-decor-home-accents | tables-accent-tables,already_linked
@@ -6449,14 +6449,14 @@ c517e7b3951c40b3a48b4e7d566343f9,TV Stand w/Fire,8,assigned,entertainment-tv-sta
 cde837998df0444ab3db057ea96d5f62,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
 96f8450f35ba4930a5302a77f47a7684,Nightstand,1,assigned,bedroom-furniture-nightstands,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
 5d4ea51f8d2a4801b3a486aa04442357,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,tiebreak:item_code,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
-c3c964c508b247c2b7eca551b90c5142,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
-96e271c249b54a37a82b53c30a8c5c6a,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+c3c964c508b247c2b7eca551b90c5142,Bed,15,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
+96e271c249b54a37a82b53c30a8c5c6a,Bed,12,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 8e0bad4beccd42cca17f00937874d1aa,Floor Lamp,1,assigned,lighting-floor-lamps,vendor_path_exact,lighting-floor-lamps | rugs-and-decor | rugs-and-decor-lighting,already_linked
 050c615a5d0149acb1218a44c4501e20,Ottoman,1,assigned,sofas-and-seating-ottomans,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-ottomans,already_linked
 4311235714684af4bcfa969ef8ca1000,Accent Chair,1,assigned,sofas-and-seating-living-room-chairs,vendor_path_exact,living-room | living-room-sofas-and-seating | sofas-and-seating-living-room-chairs,already_linked
-cf1420ac107d469a963ce6a136d30794,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,
-f55b47f140f94ee99e1b78ba811dddbe,Bed,20,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,
-e24c07d524cf44df93be22df09a1ae36,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+cf1420ac107d469a963ce6a136d30794,Bed,20,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
+f55b47f140f94ee99e1b78ba811dddbe,Bed,20,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
+e24c07d524cf44df93be22df09a1ae36,Bed,16,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 19dbcd6f57bd42deb25d2dda5e46dce2,Sectional,6,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 a4ce0b56e7b8460fac741d3711c3b108,Sectional,6,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 a24021f90e2c4a50a8ef0ca72b0855d3,Entertainment Center,4,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
@@ -6482,7 +6482,7 @@ f46342e2767f47e2927c4230362a9812,Mirror,1,assigned,wall-decor-mirrors,vendor_pat
 3df359c852c9413e91df027c5c597d5b,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
 a714afd288ce441aa687fd2c419a6d23,Bed,12,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 0040ae80401d4afcbc10343cadfec74e,Bed,12,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
-1eab091609fc49bdb89e5a481bff6184,Bed,18,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+1eab091609fc49bdb89e5a481bff6184,Bed,18,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 aec36f28a2e743e4a5b8a23dc3cbca11,Bed,12,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
 d45d524ed7604ac1842b1cc7ff6db588,Innerspring Mattress,1,assigned,mattresses-by-size-full,path_leaf_name_match,mattresses-and-bases-by-type-innerspring | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full,already_linked
 1ee21c6493da4025bb58160e8787e911,Hybrid Mattress,1,assigned,mattresses-by-size-full,path_leaf_name_match,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-full,already_linked
@@ -6496,12 +6496,12 @@ f05cbcb09195435ebb6247f97e5d0a74,Sectional,9,assigned,component-skus-living-room
 e2fbb7947f444b18ae0d38041bc088ea,Bed,6,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 a77bdcb4f6ad490fa35210b2c6cbdf08,Bed,12,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
 fcfeab1b8d7e456bacffae17572faa3f,Bed,12,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
-563b8e8286de412abe976500d95160f0,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+563b8e8286de412abe976500d95160f0,Bed,15,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 ab92c3550eda45ab86e2ab4337584de5,Bed,12,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 2e818967170641988e8b2cb7606a3642,Bed,15,assigned,kids-furniture-headboards,vendor_path_exact,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds | kids-furniture-storage,would_add
-6a22090f699142cabfa167ea2970953e,Bed,15,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
-34ebfb9d875443789b5e8eec48c2cc10,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
-058301f443094210ac516094a7377994,Bed,16,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,
+6a22090f699142cabfa167ea2970953e,Bed,15,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+34ebfb9d875443789b5e8eec48c2cc10,Bed,16,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+058301f443094210ac516094a7377994,Bed,16,assigned,bedroom-furniture-headboards,tiebreak:current_branch,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 d3910a859ddd44b2bad7d9f04c27e806,Entertainment Center,6,assigned,entertainment-tv-stands-and-media-centers,vendor_path_exact,entertainment-tv-stands-and-media-centers | living-room | living-room-entertainment,already_linked
 a904069c17744087a0d44c749ac696f9,Foundation,1,assigned,mattresses-and-bases-by-type-foundations-and-frames,vendor_path_exact,mattresses-and-bases-by-type-foundations-and-frames | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type,already_linked
 1f9cb4c4fb36458682977b37b21f56e5,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
@@ -6633,11 +6633,11 @@ cdcc94ed00d74ffba7a13b13d1fc4f87,Dining Table,1,assigned,dining-furniture-dining
 d85ffe8bc9d149ecaf375c0be245bec9,End Table,1,assigned,tables-end-and-side-tables,vendor_path_exact,living-room | living-room-tables | tables-end-and-side-tables,already_linked
 29db37b9309e4cde9944710ece7f41aa,End Table,1,assigned,tables-end-and-side-tables,vendor_path_exact,living-room | living-room-tables | tables-end-and-side-tables,already_linked
 8100d93110a0443dac4c766f735e1827,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
-c91ac9f3f4d84df7b254abffbaea4cde,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+c91ac9f3f4d84df7b254abffbaea4cde,Bed,12,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 92c4ebc92a444e2aa61500bcc4a238ca,Nightstand,1,assigned,bedroom-furniture-nightstands,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
 4285fcf3d5ef4065ae44071ebfa9f356,Bed,1,assigned,bedroom-furniture-beds,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,already_linked
 ec08178d5726499c84c83d49162db15a,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
-fa4f27ac84a546d8b74c5f5f6ad770c4,Bed,12,conflict,bedroom-furniture-headboards | kids-furniture-headboards,,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,
+fa4f27ac84a546d8b74c5f5f6ad770c4,Bed,12,assigned,kids-furniture-headboards,tiebreak:current_branch,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 148a38461db148da9f9c2d4098652d40,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
 71ea2c2d4ca849b894415b7805ed6981,Wall Art,1,assigned,wall-decor-wall-art,vendor_path_exact,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-wall-art,already_linked
 4978f94c6a724d16ab0ab93eb47ddf70,Mirror,1,assigned,wall-decor-mirrors,vendor_path_exact,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors,already_linked
