@@ -49,3 +49,10 @@ def test_run_shadow_counts_and_applies_nothing():
     n = run_shadow([inp('u1', 'S1'), inp('u2', 'S2')], lambda i: out() if i.sku == 'S1' else out('review', None, 'none', reason='no_rule_no_model', stage='review'), s)
     assert n == {'assigned': 1, 'review': 1}
     assert c.execute("SELECT COUNT(*) FROM router_decisions WHERE status='applied'").fetchone()[0] == 0
+def test_multi_slug_and_uncategorized_roundtrip():
+    c = sqlite3.connect(':memory:'); c.executescript(DDL + "ALTER TABLE router_decisions ADD COLUMN slugs TEXT; ALTER TABLE router_decisions ADD COLUMN uncategorized INTEGER DEFAULT 0;")
+    s = SqlDecisionStore(c, '?')
+    s.record(inp(), RouterOutput('assigned', 'a', 'rule', 'navigable_categories', 0.98, 'v1', 'h1', slugs=['a', 'b']), status='applied')
+    assert s.find_reuse('ashley', 'S1', 'h1') == ('a', 0.98, ['a', 'b'])
+    s.record(inp('u2', 'S2'), RouterOutput('uncategorized', None, 'rule', 'no_navigable_categories', 0.98, 'v1', 'h2', slugs=[], uncategorized=True))
+    assert c.execute("SELECT outcome, slugs, uncategorized FROM router_decisions WHERE sku='S2'").fetchone() == ('uncategorized', '[]', 1)

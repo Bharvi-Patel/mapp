@@ -1,25 +1,31 @@
-"""Give every pim_product_variation its product's category, and check it against the raw item with the same SKU.
+"""Give every pim_product_variation its product's categories (one or several), flag those with none, and check against the raw item with the same SKU.
 Step 1, in DBeaver, run this and export the result grid as CSV to router/reports/variations.csv (columns: uuid, product_id, sku, name):
     SELECT v.uuid, v.product_id, v.sku, l.name
     FROM pim_product_variations v LEFT JOIN pim_product_variation_languages l ON l.variation_id = v.uuid;
 Step 2, from the router folder (after rollup_products.py):
     python rollup_variations.py [--variations reports/variations.csv] [--rollup reports/product_rollup.csv] [--db reports/shadow.db]
-Writes reports/variation_rollup.csv and prints counts. A variation takes its product's category (the router's decision is per product)."""
+Writes reports/variation_rollup.csv and prints counts. A variation takes ALL of its product's categories (the router's decision is per product).
+Columns added: categories (every category, ' | ' separated), n_categories, uncategorized (True when the product gives it none)."""
 import argparse, collections as C, csv, os, sqlite3
+
+def split_cats(text):
+    return [c.strip() for c in (text or '').split('|') if c.strip()]
 
 def join(variations, products, sku_decisions):
     out = []
     for v in variations:
         p = products.get(v['product_id'])
         row = dict(variation=v['uuid'], sku=v['sku'], name=v.get('name', ''), product=v['product_id'],
-                   item_code='', product_state='no_product_in_rollup', category='', rule='', sku_pick='', sku_vs_product='')
+                   item_code='', product_state='no_product_in_rollup', category='', categories='', n_categories=0, uncategorized=True,
+                   rule='', sku_pick='', sku_vs_product='')
         if p:
-            row.update(item_code=p['item_code'], product_state=p['state'], category=p['category'], rule=p['rule'])
+            cats = split_cats(p['category'])                       # 'a | b' (a product whose pieces landed in several) -> ['a', 'b']
+            row.update(item_code=p['item_code'], product_state=p['state'], category=p['category'], categories=' | '.join(cats),
+                       n_categories=len(cats), uncategorized=not cats, rule=p['rule'])
             d = sku_decisions.get(v['sku'])
             if d and d[0] == 'assigned':
                 row['sku_pick'] = d[1]
-                if p['state'] in ('assigned', 'assigned_partial'):
-                    row['sku_vs_product'] = 'same' if d[1] == p['category'] else 'different'
+                if cats: row['sku_vs_product'] = 'same' if d[1] in cats else 'different'
             elif d: row['sku_pick'] = '(review)'
         out.append(row)
     return out
@@ -40,11 +46,12 @@ def main():
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(res[0])); w.writeheader(); w.writerows(res)
     n = len(res); st = C.Counter(r['product_state'] for r in res)
-    ok = st['assigned'] + st['assigned_partial']
+    ok = sum(1 for r in res if not r['uncategorized'])
+    multi = sum(1 for r in res if r['n_categories'] > 1)
     print(f'{n} variations, {len({r["product"] for r in res})} distinct products')
     for k, v in st.most_common(): print(f'  {k:22s} {v:6d}  {100*v/n:5.1f}%')
-    print(f'\nvariations that get a category through their product: {ok} ({100*ok/n:.1f}%)')
-    print('by rule:', dict(C.Counter(r['rule'].split(':')[0] for r in res if r['category'] and r['product_state'] in ('assigned', 'assigned_partial')).most_common()))
+    print(f'\nvariations that get a category through their product: {ok} ({100*ok/n:.1f}%)   in several categories: {multi}   uncategorized: {n - ok}')
+    print('by rule:', dict(C.Counter(r['rule'].split(':')[0] for r in res if not r['uncategorized']).most_common()))
     m = [r for r in res if r['sku_vs_product']]
     print(f'\nvariation SKU also a raw item with its own pick: {len(m)} ({100*len(m)/n:.1f}% of variations)')
     c = C.Counter(r['sku_vs_product'] for r in m); print('   same as the product category:', c['same'], '| different:', c['different'])

@@ -5,6 +5,8 @@
   1 human          a person already decided this item
   1a golden_map    SKU is in golden.jsonl (optional, shadow --golden-map): its first accepted slug that the store can take
   2 sku_prefix     vendor config, e.g. StoreDisplay (100-) -> store-displays
+  2a navigable     (needs trust_vendor_path) the vendor's own navigableCategories, when we have them: ALL usable leaves (a product can be in several);
+                   none given -> outcome 'uncategorized' (flag, no slug). Unknown (fetch failed) -> carry on below.
   3 package        product item_code -> set category (vendor config)
   4 review_class   item classes that never get a category yet -> review
   5 vendor_map     reviewed Ashley-category -> our-category map          (needs trust_vendor_path)
@@ -25,7 +27,7 @@ from contract import RouterInput, RouterOutput
 
 NONE_OF_THESE = '__none_of_these__'
 MODEL_CAP = 0.95            # a model never outranks a rule
-RULE_CONF = {'golden_map': 0.97, 'reuse': 1.0, 'human': 1.0, 'sku_prefix': 1.0, 'package': 0.99, 'vendor_map': 0.98, 'vendor_path': 0.95, 'item_class': 0.96, 'name_rule': 0.95}
+RULE_CONF = {'golden_map': 0.97, 'reuse': 1.0, 'human': 1.0, 'sku_prefix': 1.0, 'package': 0.99, 'vendor_map': 0.98, 'vendor_path': 0.95, 'item_class': 0.96, 'name_rule': 0.95, 'navigable_categories': 0.98}
 
 def nav_code(path):
     """One Ashley navigableCategories entry -> the ashley_category code stored in pim_vendor_categories.
@@ -44,8 +46,16 @@ def nav_codes(nav):
     return sorted(codes, key=len, reverse=True)
 
 def load_navcats(path):
-    """CSV with columns sku, navigableCategories (JSON list) -> {sku: [codes]}."""
-    return {r['sku']: nav_codes(r.get('navigableCategories')) for r in _csv_any(path) if r.get('sku')}
+    """CSV with columns sku, navigableCategories (JSON list), status -> {sku: [codes]}.
+    A row whose fetch failed (status bad_body / no_field / not_found / error:*) is left OUT: we do not know its categories,
+    which is not the same as the vendor giving none. [] therefore means the API answered and listed nothing (or only 'Uncategorized')."""
+    return {r['sku']: nav_codes(r.get('navigableCategories')) for r in _csv_any(path)
+            if r.get('sku') and (r.get('status') or 'ok').strip() == 'ok'}
+
+def nav_slugs(codes, res):
+    """Navigable-category codes -> our category slugs: every one that is a leaf, in the store, active and not excluded. Order kept (deepest first)."""
+    out = [res.vendor_map.get(c) or res.code_slug.get(c, c) for c in (codes or [])]
+    return [s for s in dict.fromkeys(out) if s in res.leaf and s in res.store and s not in res.excluded and s not in res.inactive]
 
 class MemoryStore:
     """Decision store used for tests and evaluation. Phase 6 swaps in the router_decisions tables."""
@@ -135,8 +145,17 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
                                  inactive_slugs=res.inactive - ex, excluded_slugs=res.excluded - ex, store_slugs=res.store)
         return review(errs[0], cands, stage=stage, rule=rule) if errs else out
 
+    def assign_many(slugs, stage, rule, conf, options):
+        """Several categories for one product; every one passes the same checks as a single pick."""
+        for s in slugs:
+            errs = K.validate_output(RouterOutput('assigned', s, stage, rule, conf, ver, chash), allowed_slugs=set(options), leaf_slugs=res.leaf,
+                                     inactive_slugs=res.inactive, excluded_slugs=res.excluded, store_slugs=res.store)
+            if errs: return review(errs[0], None, stage=stage, rule=rule)
+        return RouterOutput('assigned', slugs[0], stage, rule, conf, ver, chash, None, None, slugs=list(slugs))
+
     if ds:                                                                   # 0, 1
         r = ds.find_reuse(inp.vendor_id, inp.sku, chash)
+        if r and len(r) > 2 and r[2] and len(r[2]) > 1: return assign_many(r[2], 'reuse', 'reuse', r[1], res.leaf)
         if r: return assign(r[0], 'reuse', 'reuse', r[1], res.leaf)
         h = ds.find_human(inp.vendor_id, inp.subject_type, inp.subject_uuid)
         if h: return assign(h, 'human', 'prior_human_decision', 1.0, res.leaf)
@@ -147,6 +166,12 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
     for prefix, slug in (cfg.get('sku_prefix_rules') or {}).items():       # 2
         if (inp.sku or '').startswith(prefix):
             return assign(slug, 'rule', f'sku_prefix:{prefix}', RULE_CONF['sku_prefix'], [slug], exempt=[slug])
+    if trust and inp.nav_categories is not None:                             # 2a: the vendor's own navigable categories decide, when we have them (needs trust_vendor_path)
+        if not inp.nav_categories:                                           # the vendor answered and gave none -> flag it, no slug, not a review
+            return RouterOutput('uncategorized', None, 'rule', 'no_navigable_categories', RULE_CONF['navigable_categories'], ver, chash, None, None, slugs=[], uncategorized=True)
+        slugs = nav_slugs(inp.nav_categories, res)
+        if slugs: return assign_many(slugs, 'rule', 'navigable_categories', RULE_CONF['navigable_categories'], res.leaf)
+        # codes present but none usable (excluded component leaf, not in our store, not a leaf): carry on with the rules below
     if inp.subject_type == 'product' and inp.item_code in (cfg.get('package_rules') or {}):   # 3
         slug = cfg['package_rules'][inp.item_code]
         return assign(slug, 'rule', f'package:{inp.item_code}', RULE_CONF['package'], [slug], exempt=[slug])
@@ -265,7 +290,8 @@ def inputs_from_dump(dump, skus, vendor_id, navcats=None):
     out = {}
     for sku, r in raw.items():
         out[sku] = RouterInput(vendor_id, 'raw_item', r['uuid'], sku, (r['itemName'] or r['itemFriendlyDesc'] or '').strip(),
-                               r['itemDesc'], r['itemType'], (r['itemClass'] or '').strip(), icode.get(sku), (navcats[sku] if navcats and sku in navcats else path.get(sku, [])))
+                               r['itemDesc'], r['itemType'], (r['itemClass'] or '').strip(), icode.get(sku), (navcats[sku] if navcats and sku in navcats else path.get(sku, [])),
+                               nav_categories=(navcats[sku] if navcats and sku in navcats else None))
     return out
 
 def load_golden(path):
@@ -304,11 +330,13 @@ def evaluate(args):
         opts, why = options_for(inp, res, trust)
         key = g['gold_slug']
         if g.get('accept'):
-            picks = {out.primary_slug} | {c['slug'] for c in (out.candidates or [])[:1]}
+            picks = set(out.slugs or []) | {c['slug'] for c in (out.candidates or [])[:1]}
             key = golden_key(g['accept'], picks, opts)
         rowsout.append(dict(row_id=g['row_id'], name=(g['name'] or inp.name or '')[:40], gold=key, outcome=out.outcome, stage=out.stage, rule=out.rule,
                             slug=out.primary_slug or '', reason=out.review_reason or '', n_options=len(opts), options_from=why,
-                            gold_in_options=(key in opts) if key != "__none__" else '', correct=(out.primary_slug == key),
+                            gold_in_options=(key in opts) if key != "__none__" else '',
+                            correct=((key in (out.slugs or [])) or (out.outcome == 'uncategorized' and key == '__none__')),
+                            slugs=' | '.join(out.slugs or []), n_slugs=len(out.slugs or []), uncategorized=out.uncategorized,
                             item_type=inp.item_type or '', item_class=inp.item_class or '',
                             undecided_why=undecided_why(inp, res) if out.outcome == 'review' else '',
                             model_pick=(out.candidates[0]['slug'] if out.stage == 'model' and out.candidates else (out.primary_slug if out.stage == 'model' else '')),
@@ -343,6 +371,11 @@ def evaluate(args):
               f'{len(comp_rows)} Component rows assigned by rule component_sku. Not scored against the key: the key labels them with real categories, by design.',
               f'The key says "no category" for {sum(r["gold"] == "__none__" for r in comp_rows)} of them (check those).']
         for slug, n in sorted(C.Counter(r['slug'] for r in comp_rows).items()): L.append(f'- {slug}: {n}')
+    multi = [r for r in asg if r['n_slugs'] > 1]
+    if multi: L += ['', f'## Several categories per product', '', f'{len(multi)} of {len(asg)} rule-assigned rows got more than one category (largest: {max(r["n_slugs"] for r in multi)}). A row counts as correct when the key slug is any of its categories.']
+    unc = [r for r in rowsout if r['outcome'] == 'uncategorized']
+    L += ['', f'## Uncategorized (vendor gave no navigable categories): {len(unc)}']
+    if unc: L += ['', f'The key says "no category" for {sum(r["gold"] == "__none__" for r in unc)} of them; the other {sum(r["gold"] != "__none__" for r in unc)} have a real key answer (check those).']
     rev = [r for r in rowsout if r['outcome'] == 'review']
     L += ['', f'## Not decided: {len(rev)}', '', '| reason | rows | of which the key says "no category" |', '|---|---|---|']
     for reason in sorted({r['reason'] for r in rev}):
@@ -393,7 +426,7 @@ def evaluate(args):
 SQLITE_DDL = """
 CREATE TABLE IF NOT EXISTS router_decisions (id INTEGER PRIMARY KEY AUTOINCREMENT, vendor_id TEXT, subject_type TEXT, subject_uuid TEXT, sku TEXT,
   content_hash TEXT, primary_slug TEXT, outcome TEXT, stage TEXT, rule TEXT, confidence REAL, version TEXT, decided_by TEXT DEFAULT 'system',
-  status TEXT DEFAULT 'shadow', candidates TEXT, invalidated_reason TEXT);
+  status TEXT DEFAULT 'shadow', candidates TEXT, invalidated_reason TEXT, slugs TEXT, uncategorized INTEGER DEFAULT 0);
 CREATE TABLE IF NOT EXISTS router_review_queue (id INTEGER PRIMARY KEY AUTOINCREMENT, vendor_id TEXT, subject_type TEXT, subject_uuid TEXT, sku TEXT,
   content_hash TEXT, reason TEXT, candidates TEXT, decision_id INTEGER, status TEXT DEFAULT 'open');
 """
@@ -436,7 +469,11 @@ def shadow(args):
     print(f'shadow: routing {len(inputs)} of {len(wanted)} requested SKUs')
     if args.db.startswith('sqlite:'):
         import sqlite3
-        conn = sqlite3.connect(args.db[7:]); conn.executescript(SQLITE_DDL); st = SqlDecisionStore(conn, '?')
+        conn = sqlite3.connect(args.db[7:]); conn.executescript(SQLITE_DDL)
+        for col in ('slugs TEXT', 'uncategorized INTEGER DEFAULT 0'):          # shadow.db made before multi-category support
+            try: conn.execute(f'ALTER TABLE router_decisions ADD COLUMN {col}')
+            except sqlite3.OperationalError: pass
+        st = SqlDecisionStore(conn, '?')
     elif args.db.startswith('mysql://'):
         import pymysql, urllib.parse as U
         u = U.urlparse(args.db)
@@ -449,7 +486,7 @@ def shadow(args):
     model = make_model(args, cfg)
     if model is not None and hasattr(model, 'labels'): model.labels = res.labels
     n = run_shadow(inputs, lambda i: route(i, res, model, args.trust_vendor_path), st)
-    print(f'shadow run: {len(inputs)} items, {n["assigned"]} assigned, {n["review"]} to review. Nothing was applied.')
+    print(f'shadow run: {len(inputs)} items, {n["assigned"]} assigned, {n.get("uncategorized", 0)} uncategorized, {n["review"]} to review. Nothing was applied.')
     for rule, outcome, k in st.counts_by_rule(cfg['vendor_id'], str(cfg['version'])): print(f'  {rule:28s} {outcome:9s} {k}')
     if model:
         print(f'model calls this run: {model.calls}' + (f' | errors: {model.errors} | first error: {model.first_error}' if model.errors else ''))
@@ -462,7 +499,8 @@ def compare(args):
     from dumpreader import rows
     cfg = K.load_vendor_config(args.vendor)
     conn = sqlite3.connect(args.db[7:])
-    dec = conn.execute("SELECT sku, subject_uuid, primary_slug, rule FROM router_decisions WHERE status='shadow' AND outcome='assigned' AND vendor_id=?", (cfg['vendor_id'],)).fetchall()
+    dec = [(s, u, json.loads(sl) if sl else [p], r) for s, u, p, r, sl in conn.execute(
+        "SELECT sku, subject_uuid, primary_slug, rule, slugs FROM router_decisions WHERE status='shadow' AND outcome='assigned' AND vendor_id=?", (cfg['vendor_id'],)).fetchall()]
     slug = {r['uuid']: r['slug'] for r in rows(args.dump, 'pim_categories')}
     prod_of = {}
     for r in rows(args.dump, 'pim_product_raw_items'): prod_of.setdefault(r['raw_item_id'], r['product_id'])
@@ -472,8 +510,8 @@ def compare(args):
     out, by = [], C.defaultdict(C.Counter)
     for sku, uuid, pick, rule in dec:
         p = prod_of.get(uuid); cur = links.get(p, set()) if p else set()
-        state = 'no_product' if not p else ('already_linked' if pick in cur else ('product_has_no_links' if not cur else 'would_add'))
-        by[rule][state] += 1; out.append(dict(sku=sku, rule=rule, pick=pick, state=state, current=' | '.join(sorted(cur))))
+        state = 'no_product' if not p else ('already_linked' if set(pick) <= cur else ('product_has_no_links' if not cur else 'would_add'))
+        by[rule][state] += 1; out.append(dict(sku=sku, rule=rule, pick=' | '.join(pick), state=state, current=' | '.join(sorted(cur))))
     L = ['# Shadow decisions vs current category links (read-only)', '',
          '| rule | already linked | would add a category | product has no links | no product |', '|---|---|---|---|---|']
     for rule, cn in sorted(by.items()):

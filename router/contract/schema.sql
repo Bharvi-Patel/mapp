@@ -10,8 +10,10 @@ CREATE TABLE IF NOT EXISTS router_decisions (
   subject_uuid     VARCHAR(64)  NOT NULL,
   sku              VARCHAR(64)  NOT NULL,
   content_hash     CHAR(64)     NOT NULL,                  -- sha256 of normalized input (see contract.py)
-  primary_slug     VARCHAR(255) NULL,                      -- NULL when outcome is review
-  outcome          ENUM('assigned','review') NOT NULL,
+  primary_slug     VARCHAR(255) NULL,                      -- first of slugs; NULL when outcome is review or uncategorized
+  slugs            JSON NULL,                              -- every category the product belongs to (a product can be in several)
+  uncategorized    TINYINT(1) NOT NULL DEFAULT 0,          -- 1 when the vendor gave no navigable categories
+  outcome          ENUM('assigned','review','uncategorized') NOT NULL,
   stage            ENUM('reuse','human','rule','model','review') NOT NULL,
   rule             VARCHAR(64)  NOT NULL,                  -- e.g. vendor_map, package_item_code, vendor_path_exact, model_pool
   confidence       DECIMAL(5,4) NULL,                      -- NULL for rules that have no score

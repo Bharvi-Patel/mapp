@@ -17,6 +17,10 @@
     "vendor_category_path": {
       "description": "Vendor's own category path, shallow to deep. Empty when the vendor gave none.",
       "type": "array", "items": {"type": "string"}
+    },
+    "nav_categories": {
+      "description": "The vendor's real navigable categories as codes. null = not fetched or the fetch failed; [] = the vendor gave none (the product is uncategorized).",
+      "type": ["array", "null"], "items": {"type": "string"}
     }
   }
 }

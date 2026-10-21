@@ -15,15 +15,24 @@ LIVE = ('shadow', 'applied')
 class SqlDecisionStore:
     def __init__(self, conn, paramstyle='%s'):
         self.conn, self.ph = conn, paramstyle
+        try: self._q("SELECT slugs, uncategorized FROM router_decisions WHERE 1=0"); self.multi = True    # table has the multi-category columns
+        except Exception:
+            self.multi = False                                                                          # older table: single primary_slug only
+            try: self.conn.rollback()
+            except Exception: pass
 
     def _q(self, sql, params=()):
         cur = self.conn.cursor(); cur.execute(sql.replace('%s', self.ph), params); return cur
 
     # ---- lookups used by route() steps 0 and 1 -------------------------------------------------------------
     def find_reuse(self, vendor, sku, chash):
-        r = self._q("SELECT primary_slug, confidence FROM router_decisions WHERE vendor_id=%s AND sku=%s AND content_hash=%s "
+        cols = "primary_slug, confidence, slugs" if self.multi else "primary_slug, confidence"
+        r = self._q(f"SELECT {cols} FROM router_decisions WHERE vendor_id=%s AND sku=%s AND content_hash=%s "
                     "AND status='applied' AND outcome='assigned' ORDER BY id DESC LIMIT 1", (vendor, sku, chash)).fetchone()
-        return (r[0], float(r[1]) if r[1] is not None else 1.0) if r else None
+        if not r: return None
+        conf = float(r[1]) if r[1] is not None else 1.0
+        slugs = json.loads(r[2]) if self.multi and r[2] else None
+        return (r[0], conf, slugs) if slugs and len(slugs) > 1 else (r[0], conf)      # several categories: hand them all back
 
     def find_human(self, vendor, subject_type, uuid):
         r = self._q("SELECT primary_slug FROM router_decisions WHERE vendor_id=%s AND subject_type=%s AND subject_uuid=%s "
@@ -41,6 +50,7 @@ class SqlDecisionStore:
                       (inp.vendor_id, inp.subject_type, inp.subject_uuid, inp.sku, out.content_hash, out.primary_slug, out.outcome,
                        out.stage, out.rule or out.stage, out.confidence, out.version, decided_by, status,
                        json.dumps(out.candidates) if out.candidates is not None else None))
+        if self.multi: self._q("UPDATE router_decisions SET slugs=%s, uncategorized=%s WHERE id=%s", (json.dumps(out.slugs or []), 1 if out.uncategorized else 0, cur.lastrowid))
         did = cur.lastrowid
         if out.outcome == 'review': self._open_review(inp, out, did)
         else: self._close_reviews(inp)
@@ -74,5 +84,5 @@ def run_shadow(inputs, route_fn, store, status='shadow'):
     """Route every input and record the decision. route_fn(inp) -> RouterOutput. Nothing is applied anywhere."""
     n = {'assigned': 0, 'review': 0}
     for inp in inputs:
-        out = route_fn(inp); store.record(inp, out, status=status); n[out.outcome] += 1
+        out = route_fn(inp); store.record(inp, out, status=status); n[out.outcome] = n.get(out.outcome, 0) + 1
     return n
