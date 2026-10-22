@@ -47,10 +47,11 @@ def main():
         w = csv.DictWriter(f, fieldnames=list(res[0])); w.writeheader(); w.writerows(res)
     n = len(res); st = C.Counter(r['product_state'] for r in res)
     ok = sum(1 for r in res if not r['uncategorized'])
+    kept = sum(1 for r in res if r['product_state'] == 'keep_current')
     multi = sum(1 for r in res if r['n_categories'] > 1)
     print(f'{n} variations, {len({r["product"] for r in res})} distinct products')
     for k, v in st.most_common(): print(f'  {k:22s} {v:6d}  {100*v/n:5.1f}%')
-    print(f'\nvariations that get a category through their product: {ok} ({100*ok/n:.1f}%)   in several categories: {multi}   uncategorized: {n - ok}')
+    print(f'\nvariations that get a category through their product: {ok} ({100*ok/n:.1f}%)   in several categories: {multi}   kept as they are (component-only products): {kept}   uncategorized: {n - ok}')
     print('by rule:', dict(C.Counter(r['rule'].split(':')[0] for r in res if not r['uncategorized']).most_common()))
     m = [r for r in res if r['sku_vs_product']]
     print(f'\nvariation SKU also a raw item with its own pick: {len(m)} ({100*len(m)/n:.1f}% of variations)')

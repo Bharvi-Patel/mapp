@@ -40,3 +40,7 @@ def test_component_only_with_no_current_categories_falls_back_to_the_component_c
 def test_a_real_piece_still_wins_over_component_pieces():
     r = run_cur({'r1': ('assigned', 'component-skus-bedroom', 'component_sku', None), 'r2': ('assigned', 'bedroom-furniture-beds', 'vendor_path_exact', None)}, {'x'})
     assert (r['state'], r['category']) == ('assigned', 'bedroom-furniture-beds')
+
+def test_several_categories_from_the_keep_all_path_rule_survive_the_rollup():
+    r = run({'r1': ('assigned', 'sofas-and-seating-reclining-loveseats', 'vendor_path_all_leaves', ['sofas-and-seating-reclining-loveseats', 'sofas-and-seating-power-reclining'])}, code='Loveseat')
+    assert (r['state'], r['category'], r['rule']) == ('assigned', 'sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats', 'vendor_path_all_leaves')
