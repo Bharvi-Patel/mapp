@@ -5,8 +5,6 @@ sku,navigableCategories,status
 100-466,,bad_body
 100-490,,bad_body
 100-496,,bad_body
-100-577,"[""Component SKUs""]",ok
-100-579,"[""Component SKUs""]",ok
 A2000910,,bad_body
 B2611-174S,,no_field
 B2611-176S,,no_field
@@ -121,61 +119,3 @@ M1B2811P,,bad_body
 M1B2821,,bad_body
 M1B2821P,,bad_body
 M1B2841,,bad_body
-M1B2841P,,bad_body
-M1B3311,,bad_body
-M1B3311P,,bad_body
-M1B3321,,bad_body
-M1B3321P,,bad_body
-M1B3331,,bad_body
-M1B3331P,,bad_body
-M1B3341,,bad_body
-M1B3341P,,bad_body
-M1B3351,,bad_body
-M1B3351P,,bad_body
-M1B3371,,bad_body
-M1B3371P,,bad_body
-M1B3391,,bad_body
-M1B3391P,,bad_body
-M1B3411,,bad_body
-M1B3411P,,bad_body
-M1B3421,,bad_body
-M1B3421P,,bad_body
-M1B3431,,bad_body
-M1B3431P,,bad_body
-M1B3441,,bad_body
-M1B3441P,,bad_body
-M1B3451,,bad_body
-M1B3451P,,bad_body
-M1B3471,,bad_body
-M1B3471P,,bad_body
-M1B3491,,bad_body
-M1B3491P,,bad_body
-M1P1631,,bad_body
-M1P1631P,,bad_body
-M1P1831,,bad_body
-M1P1831P,,bad_body
-M1P1841,,bad_body
-M1P1841P,,bad_body
-M50741,,bad_body
-M88905,,bad_body
-M88905P,,bad_body
-M88906,,bad_body
-M88906P,,bad_body
-M88907,,bad_body
-M88907P,,bad_body
-P790-820,,no_field
-PA469-002,,bad_body
-PA469-003,,bad_body
-PCB1580-31,"[""Bedroom"", ""Bedroom - Bedroom Furniture"", ""Bedroom - Bedroom Furniture - Dressers and Chests""]",ok
-PCB1580-36,"[""Rugs and Decor"", ""Rugs and Decor - Wall Decor"", ""Rugs and Decor - Wall Decor - Mirrors""]",ok
-PCB1580-46,"[""Bedroom"", ""Bedroom - Bedroom Furniture"", ""Bedroom - Bedroom Furniture - Dressers and Chests""]",ok
-PCB1580-54,"[""Component SKUs"", ""Component SKUs - Bedroom""]",ok
-PCB1580-56,"[""Component SKUs"", ""Component SKUs - Bedroom""]",ok
-PCB1580-57,"[""Bedroom"", ""Bedroom - Bedroom Furniture"", ""Bedroom - Bedroom Furniture - Headboards""]",ok
-PCB1580-58,"[""Bedroom"", ""Bedroom - Bedroom Furniture"", ""Bedroom - Bedroom Furniture - Headboards""]",ok
-PCB1580-92,"[""Bedroom"", ""Bedroom - Bedroom Furniture"", ""Bedroom - Bedroom Furniture - Nightstands""]",ok
-PCB1580-96,"[""Component SKUs"", ""Component SKUs - Bedroom""]",ok
-PCB1580-97,"[""Component SKUs"", ""Component SKUs - Bedroom""]",ok
-U6600013,,bad_body
-U6600014,,bad_body
-U6600015,,bad_body

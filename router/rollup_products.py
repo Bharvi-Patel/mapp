@@ -5,7 +5,8 @@ Per product:
   - item_code in package_rules (Bedroom Package, Dining Package ...)  -> its set category (package rule, same as the router's)
   - otherwise the decisions of its raw items. Component pieces (component-skus-*) are set aside when the product has a
     real category from another piece; if all assigned pieces agree the product takes that category.
-States: assigned | assigned_partial (some pieces still in review) | conflict (pieces disagree) | review | no_raw_item | not_in_run
+States: assigned | assigned_partial (some pieces still in review) | keep_current (only with --keep-current-components: every piece is a Component, so the product keeps
+        the categories it has today; off by default, because Ashley's navigable categories for those pieces ARE the component categories) | conflict (pieces disagree) | review | no_raw_item | not_in_run
 Writes reports/product_rollup.csv and prints counts, plus how often the pick is already one of the product's current categories."""
 import argparse, collections as C, csv, os, re, sqlite3
 
@@ -30,7 +31,7 @@ def break_tie(slugs, code, cur):
     if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
-def rollup(products, raw_of, decisions, package_rules, current):
+def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False):
     out = []
     for p, code in products.items():
         pieces = raw_of.get(p, [])
@@ -47,9 +48,12 @@ def rollup(products, raw_of, decisions, package_rules, current):
                 got = [(slug, rule, slist or [slug]) for outcome, slug, rule, slist in ds if outcome == 'assigned' and slug]
                 real = [g for g in got if not g[0].startswith('component-skus')] or got
                 slugs = {s for s, _, _ in real}
-                if any(g[1] == 'navigable_categories' for g in got):       # the vendor's own navigable categories: a product can be in several, keep ALL
+                component_only = bool(got) and all(g[0].startswith('component-skus') for g in got)
+                if keep_current_components and component_only and cur:      # OPT-IN (--keep-current-components): every piece is a Component, so keep the product's current categories
+                    row.update(state='keep_current', category=' | '.join(sorted(cur)), rule='keep_current:component_only')     # so it keeps the categories it has today
+                elif any(g[1] == 'navigable_categories' or len(g[2]) > 1 for g in got):       # navigable categories, or any decision that holds several categories: a product can be in several, keep ALL
                     every = sorted({s for _, _, sl in real for s in sl})
-                    row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=' | '.join(every), rule='navigable_categories')
+                    row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=' | '.join(every), rule=next((g[1] for g in got if g[1] == 'navigable_categories'), got[0][1]))
                 elif not got: row['state'] = 'review'
                 elif len(slugs) > 1:
                     pick, how = break_tie(slugs, code, cur)
@@ -57,7 +61,8 @@ def rollup(products, raw_of, decisions, package_rules, current):
                     else: row.update(state='conflict', category=' | '.join(sorted(slugs)))
                 else:
                     row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=next(iter(slugs)), rule=real[0][1])
-        if row['category'] and '|' not in row['category']:
+        if row['state'] == 'keep_current': row['vs_current'] = 'kept'
+        elif row['category'] and '|' not in row['category']:
             row['vs_current'] = 'already_linked' if row['category'] in cur else ('no_links' if not cur else 'would_add')
         else: row['vs_current'] = ''
         out.append(row)
@@ -69,6 +74,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--db', default='reports/shadow.db'); ap.add_argument('--dump', default='dump_for_evidence.sql')
     ap.add_argument('--vendor', default='vendors/ashley.yaml'); ap.add_argument('--out', default='reports/product_rollup.csv')
+    ap.add_argument('--keep-current-components', action='store_true', help="a product whose pieces are ALL Components keeps its current categories instead of taking the component-skus-* category (off by default: Ashley's navigable categories decide)")
     a = ap.parse_args()
     cfg = CA.K.load_vendor_config(a.vendor)
     products = {p['uuid']: p['item_code'] for p in rows(a.dump, 'pim_products') if not p.get('deleted_at')}
@@ -83,16 +89,16 @@ def main():
     current = C.defaultdict(set)
     for r in rows(a.dump, 'pim_product_categories'):
         if r['category_id'] in slug: current[r['product_id']].add(slug[r['category_id']])
-    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current)
+    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components)
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(res[0])); w.writeheader(); w.writerows(res)
     n = len(res); st = C.Counter(r['state'] for r in res)
     print(f'{n} products')
     for k, v in st.most_common(): print(f'  {k:16s} {v:6d}  {100*v/n:5.1f}%')
-    ok = [r for r in res if r['state'] in ('assigned', 'assigned_partial')]
+    ok = [r for r in res if r['state'] in ('assigned', 'assigned_partial', 'keep_current')]
     vs = C.Counter(r['vs_current'] for r in ok)
-    print(f'\nclassified (assigned + assigned_partial): {len(ok)} ({100*len(ok)/n:.1f}%)')
+    print(f'\nclassified (assigned + assigned_partial + keep_current): {len(ok)} ({100*len(ok)/n:.1f}%)')
     print('  against the products\' current categories:', dict(vs))
     print('by rule:', dict(C.Counter(r['rule'].split(':')[0] for r in ok).most_common()))
     print(f'wrote {a.out}')

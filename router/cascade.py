@@ -207,6 +207,8 @@ def route(inp: RouterInput, res: Resources, model=None, trust_vendor_path=None) 
         if len(leaves) >= 2 and cfg['settings'].get('name_match_tiebreak'):                  # 6b (off unless enabled in the vendor config)
             slug = pick_by_name(inp.name, leaves)
             if slug: return assign(slug, 'rule', 'path_leaf_name_match', RULE_CONF['vendor_path'], res.leaf)
+        if len(leaves) >= 2 and cfg['settings'].get('keep_all_path_leaves') and inp.nav_categories is None:   # 6d: no navigable categories to follow and the name did not decide:
+            return assign_many(leaves, 'rule', 'vendor_path_all_leaves', RULE_CONF['vendor_path'], res.leaf)   # the product can be in several, so keep every leaf it is linked to
     icm = res.item_class_map.get((inp.item_class or '').strip())                            # 6c: itemClass that always lands in one category (works with the Ashley path off too)
     if icm and icm in res.leaf and icm in res.store and icm not in res.excluded and icm not in res.inactive:
         return assign(icm, 'rule', 'item_class_map', RULE_CONF['item_class'], res.leaf)

@@ -15,6 +15,7 @@ field_map:
 settings:
   trust_vendor_path: false
   name_match_tiebreak: true
+  keep_all_path_leaves: true      # no navigable categories + several leaves in the existing links + the name tie-break found no winner -> keep ALL those leaves (a product can be in several)
   thresholds: null                # null = model answers always go to review until Phase 5 sets real values
   model_spend_cap_per_batch: null
 
