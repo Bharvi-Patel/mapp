@@ -326,3 +326,17 @@ def test_navigable_step_needs_trust_vendor_path():
     r = nres(); r.cfg['settings']['trust_vendor_path'] = False
     o = route(inp(nav_categories=['A', 'B']), r)
     assert o.rule != 'navigable_categories' and not o.uncategorized          # independent mode stays independent
+
+# ---- 6d: no navigable categories, several leaves in the existing links -> keep them all (setting keep_all_path_leaves)
+def kres(on=True):
+    r = res(); r.cfg['settings']['trust_vendor_path'] = True; r.cfg['settings']['name_match_tiebreak'] = False; r.cfg['settings']['keep_all_path_leaves'] = on
+    r.leaf = r.leaf | {'sectionals'}; r.store = r.store | {'sectionals'}
+    r.code_slug = {'A': 'sofas', 'C': 'sectionals'}
+    return r
+
+def test_several_leaves_without_navcats_keep_all_when_enabled():
+    o = route(inp(nav_categories=None, vendor_category_path=['A', 'C']), kres())
+    assert (o.outcome, o.rule, o.slugs) == ('assigned', 'vendor_path_all_leaves', ['sofas', 'sectionals'])
+
+def test_several_leaves_without_navcats_still_review_when_disabled():
+    assert route(inp(nav_categories=None, vendor_category_path=['A', 'C']), kres(on=False)).outcome == 'review'

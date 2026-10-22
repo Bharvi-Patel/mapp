@@ -12,8 +12,13 @@
 
 Output CSV: sku, navigableCategories (JSON list as the API returned it), status (ok | not_found | no_field | error:<code>).
 Resumable: SKUs already in the output file are skipped, so a rerun after a failure continues where it stopped.
-The response may be one product object or a list/wrapper holding products; the product whose 'sku' matches is used."""
-import argparse, base64, csv, json, os, sys, time, urllib.error, urllib.request
+The response may be one product object or a list/wrapper holding products; the product whose 'sku' matches is used.
+
+Second URL form: some SKUs return 204 (no content) from the path form above but data from the query form Postman uses,
+  https://apigw3.ashleyfurniture.com/productinformation/Products?Environment=AFI&sku={sku}
+When the first URL gives nothing, that form is tried. Set it with ASHLEY_API_URL_FALLBACK, or leave it unset and it is derived from
+ASHLEY_API_URL (the {sku} moves from the path to a 'sku' query parameter; customer, Limit and Page are dropped)."""
+import argparse, base64, csv, json, os, sys, time, urllib.error, urllib.parse, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -34,6 +39,7 @@ def fetch(url, headers, retries=5):
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
                 text = r.read().decode('utf-8', 'replace')
+                if r.status == 204: return 204, '<204 no content>'                 # urlopen does not raise on 204
             try: return 200, json.loads(text)
             except ValueError: return 200, text[:200] or '<empty body>'       # 200 but not JSON: recorded as bad_body
         except urllib.error.HTTPError as e:
@@ -46,6 +52,16 @@ def fetch(url, headers, retries=5):
         except (urllib.error.URLError, TimeoutError) as e:
             if attempt < retries - 1: time.sleep(2 ** attempt); continue
             return 0, str(e)
+
+def fallback_url(url_t):
+    """The query form (.../Products?Environment=AFI&sku={sku}) from the path form (.../Products/{sku}?...&customer=..&Limit=..&Page=..)."""
+    env = os.environ.get('ASHLEY_API_URL_FALLBACK')
+    if env: return env if '{sku}' in env else None
+    u = urllib.parse.urlsplit(url_t)
+    if '/{sku}' not in u.path: return None
+    keep = [(k, v) for k, v in urllib.parse.parse_qsl(u.query, keep_blank_values=True) if k.lower() not in ('customer', 'limit', 'page', 'sku')]
+    q = urllib.parse.urlencode(keep) + ('&' if keep else '') + 'sku={sku}'
+    return urllib.parse.urlunsplit((u.scheme, u.netloc, u.path.replace('/{sku}', ''), q, ''))
 
 def read_skus(args):
     if args.skus_file:
@@ -70,6 +86,15 @@ def main():
                    'Accept': 'application/json'}
     cid = os.environ.get('ASHLEY_CLIENT_ID')
     if cid: headers[os.environ.get('ASHLEY_CLIENT_ID_HEADER', 'client_id')] = cid
+    fb = fallback_url(url_t)
+    print('fallback URL form:', fb.replace('{sku}', '<sku>') if fb else 'none')
+    def lookup(sku):
+        code, payload = fetch(url_t.format(sku=sku), headers)
+        empty = code in (204, 404) or (code == 200 and (isinstance(payload, str) or not find_product(payload, sku)))
+        if fb and empty:
+            c2, p2 = fetch(fb.format(sku=sku), headers)
+            if c2 == 200 and not isinstance(p2, str) and find_product(p2, sku): return c2, p2
+        return code, payload
     done = set(); kept = []
     if os.path.exists(args.out):
         with open(args.out, newline='', encoding='utf-8') as f:
@@ -85,10 +110,10 @@ def main():
         w = csv.writer(f)
         if new: w.writerow(['sku', 'navigableCategories', 'status'])
         for i, sku in enumerate(skus, 1):
-            code, payload = fetch(url_t.format(sku=sku), headers)
-            if code == 200 and isinstance(payload, str):
+            code, payload = lookup(sku)
+            if code in (200, 204) and isinstance(payload, str):
                 row = [sku, '', 'bad_body']
-                print(f'  {sku}: HTTP 200 but the body is not JSON: {payload!r}')
+                print(f'  {sku}: HTTP {code} but there is no JSON body: {payload!r}')
             elif code == 200:
                 prod = find_product(payload, sku)
                 row = [sku, json.dumps(prod['navigableCategories']), 'ok'] if prod else [sku, '', 'no_field']
@@ -98,7 +123,7 @@ def main():
                     bad += 1
                     if bad == 1: print(f'  first failure: {sku} -> HTTP {code}: {payload}')
                     if bad >= 3 and code in (401, 403, 0): w.writerow(row); sys.exit(f'Stopping after {bad} failures (HTTP {code}). Fix the cause and rerun; failed SKUs are retried.')
-            if code == 200: bad = 0
+            if code in (200, 204): bad = 0
             if bad == 0 and code == 200 and row[2] == 'bad_body': pass
             w.writerow(row); f.flush()
             if i % 25 == 0: print(f'  {i}/{len(skus)}')

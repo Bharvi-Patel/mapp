@@ -1054,8 +1054,8 @@ dc157613473e4d599938ba1ae67e09e2,Table Lamp Pair,1,assigned,lighting-table-lamps
 56bf555fc13a47af9c9bff7e69ffec83,Mirror,1,assigned,wall-decor-mirrors,navigable_categories,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors,already_linked
 fe995dee3029411f9daacfdfa9c10172,Nightstand,1,assigned,bedroom-furniture-nightstands,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
 7f4ecb58c155443bb63bfedca52bf153,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
-016d4901595d456fbfa1dc8b6c6ffc9a,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
-6323cd92160441c5b1865a63651aff5d,Mirror,1,assigned,wall-decor-mirrors,vendor_path_exact,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors,already_linked
+016d4901595d456fbfa1dc8b6c6ffc9a,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
+6323cd92160441c5b1865a63651aff5d,Mirror,1,assigned,wall-decor-mirrors,navigable_categories,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors,already_linked
 6fc4813e30aa400cb26447d0eef3b62f,Sofa,1,assigned,sofas-and-seating-reclining-sofas,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-sofas,already_linked
 32e29542f1e14f7ea3ca91d67facb6aa,Loveseat,1,assigned,sofas-and-seating-reclining-loveseats,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-loveseats,already_linked
 246d6296844c47f79a3481968cd3e50b,Dining Chair,1,assigned,dining-furniture-dining-room-chairs,navigable_categories,dining-furniture-dining-room-chairs | dining-room | dining-room-dining-furniture,already_linked
@@ -1071,7 +1071,7 @@ c41070f741964378bcd584fbc69aa085,Bed,8,assigned,component-skus-bedroom,component
 5c6e0e2eb13448a9a13c427236060f5e,Bed,8,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 4c5ca3e39a594856a51a86b3ab03252c,Bed,4,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 85d48495b7e34567a4ff93da121280c1,Bed,6,assigned,bedroom-furniture-headboards,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
-6e29bfbd883544f0a2890d52dc784361,Bed,6,assigned_partial,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+6e29bfbd883544f0a2890d52dc784361,Bed,6,assigned,bedroom-furniture-headboards,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 44c97a87fd7b47c5b0110d4c3caef7a1,Dresser,6,assigned,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,
 a64588d8a33a4147b86c4c67c1c58ce8,Bed,8,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 c484ac9d483e400081127c8393af6669,Bed,10,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
@@ -1190,8 +1190,8 @@ c8057f4fe6f54ec1a85d9addaf66520b,Bed,10,assigned,component-skus-bedroom,componen
 c0a0976d478c4970ba3220e9799624e6,Bed,8,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 41d5115463c44a59b356a255b1ccd925,Bed,10,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 781f0720778147b3a5253a044e4f37f7,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
-23d29ff06da046719d7ab70cc39cf423,Dresser,4,assigned,bedroom-furniture-dressers-and-chests,tiebreak:item_code,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,would_add
-ba690970e1fe4168acdf593f00e3ea8e,Bed,6,assigned_partial,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
+23d29ff06da046719d7ab70cc39cf423,Dresser,4,assigned,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-mirrored-dressers,
+ba690970e1fe4168acdf593f00e3ea8e,Bed,6,assigned,bedroom-furniture-headboards,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 0404b133d5974123b6eb41d060e77f40,Bed,6,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add
 598f385c7c8b425bb34bd1915ff2ecb3,Hybrid Mattress,1,assigned,mattresses-and-bases-by-type-hybrid,navigable_categories,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type,already_linked
 42ebeb8339ea4ba38310dd725dd58abf,Hybrid Mattress,1,assigned,mattresses-and-bases-by-type-hybrid,navigable_categories,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type,already_linked
@@ -1211,7 +1211,7 @@ e3f92afb5831442fa09c20430a9d8af8,Chair,1,assigned,sofas-and-seating-living-room-
 19c0880bd5b14e8e9be3ea80cd5648ee,Sectional,8,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 39d6218eeab347d0a48a8955486d2796,Sectional,4,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 dce47b58da274b72979e81eb5b7ce1be,Sectional,8,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
-205ba1fc020645d484388c8901e32bb7,Chest,1,assigned,bedroom-furniture-dressers-and-chests,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
+205ba1fc020645d484388c8901e32bb7,Chest,1,assigned,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
 63897abe90214e7493900bf42beaff19,Sectional,8,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 4de5cec6570947129b5813548f411448,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 a7cc98da04e14b1788a7eb640ee3e0b9,Bedroom Package,8,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
@@ -1244,7 +1244,7 @@ e0b3ef685abf4c3daa82db5646399039,Bedroom Package,16,assigned,bedroom-sets,packag
 62126648b7224438a1b2497acdcd3e66,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 f0215884e93744bf9296780e5e0d0113,Chest,1,assigned,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
 adfd358472b942c58792e6f7ca656004,Mirror,1,assigned,wall-decor-mirrors,navigable_categories,rugs-and-decor | rugs-and-decor-wall-decor | wall-decor-mirrors,already_linked
-ae6ec26980b441b198724f1d95bf5df0,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
+ae6ec26980b441b198724f1d95bf5df0,Bed,1,assigned,bedroom-furniture-headboards,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
 ffbc2dcb1d544291aac23dd0135bd1c1,Bed,1,assigned,bedroom-furniture-headboards,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
 b2abb328a0e54994a3119cc70a86915c,Recliner,1,assigned,sofas-and-seating-recliners,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-recliners,already_linked
 721e431cc09b4007952f90fa74b4b097,Sofa,1,assigned,sofas-and-seating-reclining-sofas,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-sofas,already_linked
@@ -1273,8 +1273,8 @@ a219cd1abc374b2ab2215678188da35b,Sectional,8,assigned,component-skus-living-room
 4c3ac0f9081d4009b9abd22d699b4e84,Stationary Upholstery Package,6,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
 66d3adc3cfb44e99babf224977a0c5ee,Outdoor Sectional,6,assigned,component-skus-outdoor,component_sku,outdoor | outdoor-patio-furniture | patio-furniture-seating,would_add
 99ae2e62a2b54a60a6f4afae34ffc99e,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
-75cc985f9e834c46b188b2b014da144f,Bed,1,assigned,bedroom-furniture-headboards,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
-f368967685ec428d9cc8a2f71a4c70ed,Nightstand,1,assigned,bedroom-furniture-nightstands,vendor_path_exact,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
+75cc985f9e834c46b188b2b014da144f,Bed,1,assigned,bedroom-furniture-headboards,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-headboards,already_linked
+f368967685ec428d9cc8a2f71a4c70ed,Nightstand,1,assigned,bedroom-furniture-nightstands,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-nightstands,already_linked
 0377755da258416e92fca78dddcf6508,Ottoman,1,assigned,sofas-and-seating-ottomans,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-ottomans,already_linked
 67fa454c36184c3fa7a0ad13b5be0d90,Loveseat,1,assigned,sofas-and-seating-reclining-loveseats,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-loveseats,already_linked
 c5750f182dd3450790b952b72f172a8b,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
@@ -4227,7 +4227,7 @@ f75fbd2485fe4dfc969dfb88fd8ce021,Bedroom Package,12,assigned,bedroom-sets,packag
 1b0207033fa5481db6cddda9fb4339ed,Dining Chair,1,assigned,dining-furniture-dining-room-chairs,navigable_categories,dining-furniture-dining-room-chairs | dining-room | dining-room-dining-furniture,already_linked
 0abd4bf33e184916820ed762db1dbac6,Stationary Upholstery Package,4,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
 d8cb114324d549b6b260d4ae09e2ea07,Stationary Upholstery Package,10,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
-a99b70495aad4be39285b88ef3f0074f,Loveseat,1,review,,,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats,
+a99b70495aad4be39285b88ef3f0074f,Loveseat,1,assigned,sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats,vendor_path_all_leaves,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats,
 6751d81204774076b243783105c8f219,Bedroom Package,6,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 b8ea4f0f278f4986bc95f448ae04c380,Dresser,1,assigned,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom | bedroom-bedroom-furniture | bedroom-furniture-dressers-and-chests,already_linked
 03d6bbc61d8f46f49fcf7dcc9280baba,Bed,10,assigned,component-skus-bedroom,component_sku,bedroom | bedroom-bedroom-furniture | bedroom-furniture-beds,would_add

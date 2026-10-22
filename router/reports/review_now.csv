@@ -1,0 +1,72 @@
+﻿sku,name,item_type,item_code,item_class,why,navcats_status,has_ashley_path,path_codes,uuid
+P790-820,Laguna Heights Outdoor Lounge Chair (Set of 2),Item,,OUTDOOR SDG PUR FM LIVING,component_or_excluded_only,no_field,False,uncategorized,82930756848386055869685301825069
+K20201,Waterproof Crib Mattress Pad,Item,,BEDDING SDG PUR FIBER KID,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-kids-bedding | kids-bedding-mattress-pads-and-covers,77384332488405443716822274546874
+K40007,Organic Cotton Standard Crib Sheet (Set of 2) (Case of 12),Item,,BEDDING SDG PUR KIDS TOB,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-kids-bedding | kids-bedding-sheets,33474518457455334726772005258781
+K40010,Organic Cotton Standard Crib Sheet (Set of 2) (Case of 12),Item,,BEDDING SDG PUR KIDS TOB,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-kids-bedding | kids-bedding-sheets,73906052424476136266278198804840
+K40012,Organic Cotton Standard Crib Sheet (Set of 2) (Case of 12),Item,,BEDDING SDG PUR KIDS TOB,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-kids-bedding | kids-bedding-sheets,80433275433933820991617872843460
+K40019,Organic Cotton Standard Crib Sheet (Set of 2) (Case of 12),Item,,BEDDING SDG PUR KIDS TOB,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-kids-bedding | kids-bedding-sheets,16921942758431932299343326935889
+K61017,Galileo Convertible Crib,Item,,BEDDING SDG PUR KIDS FURN,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-nursery | nursery-cribs,87046425143421911402074831797820
+K62118B,Nest Convertible Crib with Liner Box B,Component,,BEDDING SDG PUR KIDS FURN,leaf_not_in_store,bad_body,False,kids-and-nursery | kids-and-nursery-nursery | nursery-cribs,73896215485345558021682060336772
+B2611-174S,Shoralli Queen Upholstered Storage Footboard/Rails/Roll Slats,Component,,CASEGOOD SDG PUR BEDROOM,path_has_no_leaf,no_field,False,bedroom,02275206508438099981350660577539
+B2611-176S,Shoralli King Upholstered Storage Footboard/Rails/Roll Slats,Component,,CASEGOOD SDG PUR BEDROOM,path_has_no_leaf,no_field,False,bedroom,07554782456794716353109351051633
+B2611-177,Shoralli Queen Upholstered Headboard,Component,,CASEGOOD SDG PUR BEDROOM,path_has_no_leaf,no_field,False,bedroom,63000951647378552545199110821342
+B2611-178,Shoralli King Upholstered Headboard,Component,,CASEGOOD SDG PUR BEDROOM,path_has_no_leaf,no_field,False,bedroom,52529977140172651629866306581964
+B2611-254,Shoralli Lit Queen Panel Footboard,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,86185416942234679083490944979613
+B2611-256,Shoralli Lit King Panel Footboard,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,34009255104980657511812261731969
+B2611-284,Shoralli Lit Full Panel Footboard,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,35190645532510413979212419781869
+B2611-57,Shoralli Queen Panel Headboard,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,37569244480768528744101477957530
+B2611-58,Shoralli King Panel Headboard,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,00196148517273212277103615016607
+B2611-86,Shoralli Full Panel Rails,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,02806984155680312631758622806561
+B2611-87,Shoralli Full Panel Headboard,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,05314240527260229752703826680835
+B2611-89,Shoralli Full Platform Rails,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,07367401042258500320855545087288
+B2611-95,Shoralli Queen/King Platform Rails,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,18185489845911594023792425989925
+B2611-96,Shoralli Queen Panel Rails,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,44104090467201178834980788904760
+B2611-97,Shoralli King Panel Rails,Component,,CASEGOOD SDG BEDROOM,path_has_no_leaf,no_field,False,bedroom,90110459876541405091029339216069
+EB2712-68B,Larstin Twin Loft Caster Bed,Component,,CG SDG PUR RTA BEDROOM (I=PUR),path_has_no_leaf,bad_body,False,bedroom,61109643985773471803426970543858
+M11X142A,Waverly Bedframe Grey King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,63234962424869860556481264595439
+M11X142B,Waverly Bedframe Grey King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,41699041247908425507741941452475
+M11X152A,Waverly Bedframe Grey California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,97328584183430306059080779867395
+M11X152B,Waverly Bedframe Grey California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,02255878040381817513521001499491
+M11X232A,Waverly Bedframe Linen Queen Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,92671724624375982189232558653567
+M11X232B,Waverly Bedframe Linen Queen Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,86940457780470689888891621506285
+M11X242A,Waverly Bedframe Linen King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,20239469838162002767368035858203
+M11X242B,Waverly Bedframe Linen King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,49402844449986374285819822625356
+M11X252A,Waverly Bedframe Linen California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,37946445548430640822015815119736
+M11X252B,Waverly Bedframe Linen California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,18560942708617714890002644328720
+M11X342A,Waverly Bedframe Taupe King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,81318415998882074356034392072288
+M11X342B,Waverly Bedframe Taupe King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,95117174788567053918938945615986
+M11X352A,Waverly Bedframe Taupe California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,09090474069833913608574457421635
+M11X352B,Waverly Bedframe Taupe California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,80199684519946122656867400048309
+M12X132A,Thalia Bedframe Grey Queen Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,78055744656196114431709148505362
+M12X132B,Thalia Bedframe Grey Queen Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,61413645443814629056167008138205
+M12X152A,Thalia Bedframe Grey California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,93681563437531855204840512424952
+M12X152B,Thalia Bedframe Grey California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,52554908483399419860511302346567
+M12X252A,Thalia Bedframe Linen California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,77358484007493178095368105690878
+M12X252B,Thalia Bedframe Linen California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,27374258269867494273695562692487
+M12X332A,Thalia Bedframe Taupe Queen Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,13468062423923253124065239746609
+M12X332B,Thalia Bedframe Taupe Queen Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,66615085284968743145623463924787
+M12X352A,Thalia Bedframe Taupe California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,03193656449114111902660966889310
+M12X352B,Thalia Bedframe Taupe California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,47853131443772932038850748158211
+M13X132A,Somerset Bedframe Grey Queen Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,51157046706027440253786212050574
+M13X132B,Somerset Bedframe Grey Queen Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,20441997904489344864458235819756
+M13X152A,Somerset Bedframe Grey California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,58567494792737176180826873640254
+M13X152B,Somerset Bedframe Grey California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,20113631849449160166211264117858
+M13X232A,Somerset Bedframe White Queen Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,58137426243369622774645509676131
+M13X232B,Somerset Bedframe White Queen Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,47322444497834139300006136578975
+M13X242A,Somerset Bedframe White King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,64440548846554878326722588779024
+M13X242B,Somerset Bedframe White King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,65243482419638419682763449147732
+M13X252A,Somerset Bedframe White California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,09116743995483350866676202371716
+M13X252B,Somerset Bedframe White California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,11550824379182468882384145552123
+M13X332A,Somerset Bedframe Taupe Queen Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,20499389944186452421699672527358
+M13X332B,Somerset Bedframe Taupe Queen Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,68736449394693013402159499286428
+M13X352A,Somerset Bedframe Taupe California King Upholstered Bed (Box A),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,40225492188960526538102028924212
+M13X352B,Somerset Bedframe Taupe California King Upholstered Bed (Box B),Component,,RH BEDDING SDG PUR ACCENT,path_has_no_leaf,bad_body,False,bedroom,57748673984569831933355848473547
+PA469-002,Cool Days Seat Cushion,Item,,OUTDOOR SDG PUR ACCESSOR,path_has_no_leaf,bad_body,False,outdoor,71816874289331742298500224873644
+PA469-003,Cool Days Back Cushion,Item,,OUTDOOR SDG PUR ACCESSOR,path_has_no_leaf,bad_body,False,outdoor,29877654928787570752288715726948
+U6600014,Mosswell Power Reclining Loveseat,Item,Loveseat,MOTION PUR MIL UPH,several_leaves,bad_body,False,living-room | living-room-sofas-and-seating | sofas-and-seating-reclining-loveseats | sofas-and-seating-power-reclining,70971488994608071322601923413272
+PA305-002,Vallerie Seat Cushion,Component,,OUTDOOR SDG PUR RTA ACC,path_has_no_leaf,ok,True,COMPONENTSKUS,15717687726468481937513487252572
+PA349-001,Fynnegan Pillow,Component,,OUTDOOR SDG PUR RTA ACC,path_has_no_leaf,ok,True,COMPONENTSKUS,41059542984912969013068012704889
+PA349-002,Fynnegan Seat Cushion,Component,,OUTDOOR SDG PUR RTA ACC,path_has_no_leaf,ok,True,COMPONENTSKUS,39260134743684121529357726400121
+PA349-003,Fynnegan Back Cushion,Component,,OUTDOOR SDG PUR RTA ACC,path_has_no_leaf,ok,True,COMPONENTSKUS,61771044424314470935760330835974
+PA349-012,Fynnegan Loveseat Cushion,Component,,OUTDOOR SDG PUR RTA ACC,path_has_no_leaf,ok,True,COMPONENTSKUS,69655355433895894010017638849037
+PA349-013,Fynnegan Loveseat Back Cushion,Component,,OUTDOOR SDG PUR RTA ACC,path_has_no_leaf,ok,True,COMPONENTSKUS,20873914692964881488950941067186
