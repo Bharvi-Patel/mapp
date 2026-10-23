@@ -44,3 +44,14 @@ def test_a_real_piece_still_wins_over_component_pieces():
 def test_several_categories_from_the_keep_all_path_rule_survive_the_rollup():
     r = run({'r1': ('assigned', 'sofas-and-seating-reclining-loveseats', 'vendor_path_all_leaves', ['sofas-and-seating-reclining-loveseats', 'sofas-and-seating-power-reclining'])}, code='Loveseat')
     assert (r['state'], r['category'], r['rule']) == ('assigned', 'sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats', 'vendor_path_all_leaves')
+
+def test_check_package_statuses():
+    from check_package import compare
+    rules = {'Bedroom Package': 'bedroom-sets'}
+    products = {'a': 'Bedroom Package', 'b': 'Bedroom Package', 'c': 'Bedroom Package', 'd': 'Bed'}
+    raw_of = {'a': ['a1'], 'b': ['b1'], 'c': ['c1'], 'd': ['d1']}
+    dec = {'a1': ('assigned', 'bedroom-sets', 'navigable_categories', ['bedroom-sets', 'kids-furniture-beds']),
+           'b1': ('assigned', 'kids-furniture-beds', 'navigable_categories', None),
+           'c1': ('assigned', 'component-skus-bedroom', 'component_sku', None), 'd1': ('assigned', 'x', 'r', None)}
+    got = {r['product']: r['status'] for r in compare(products, raw_of, dec, rules, {})}
+    assert got == {'a': 'agree', 'b': 'differ', 'c': 'only_components'}      # 'd' is not a package code
