@@ -33,6 +33,16 @@ def find_product(payload, sku):
         elif isinstance(x, list): stack.extend(x)
     return None
 
+def has_sku(payload, sku):
+    stack = [payload]
+    while stack:
+        x = stack.pop()
+        if isinstance(x, dict):
+            if str(x.get('sku', '')).strip().upper() == sku.upper(): return True
+            stack.extend(x.values())
+        elif isinstance(x, list): stack.extend(x)
+    return False
+
 def fetch(url, headers, retries=5):
     for attempt in range(retries):
         req = urllib.request.Request(url, headers=headers)
@@ -131,7 +141,8 @@ def main():
                     print(f'  {sku}: HTTP {code} but there is no JSON body: {payload!r}')
                 elif code == 200:
                     prod = find_product(payload, sku)
-                    row = [sku, json.dumps(prod['navigableCategories']), 'ok'] if prod else [sku, '', 'no_field']
+                    row = [sku, json.dumps(prod['navigableCategories']), 'ok'] if prod else \
+                        [sku, '', 'no_field' if has_sku(payload, sku) else 'sku_not_returned']
                 else:
                     row = [sku, '', 'not_found' if code == 404 else f'error:{code}']
                     if code != 404:
