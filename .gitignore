@@ -1,3 +1,10 @@
 .env
 router/dump_for_evidence.sql
 # *.sql
+
+router/*_for_router.sql
+
+*.db
+
+__pycache__/
+
