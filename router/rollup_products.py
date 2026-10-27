@@ -81,9 +81,13 @@ def main():
     raw_of = C.defaultdict(list)
     for r in rows(a.dump, 'pim_product_raw_items'): raw_of[r['product_id']].append(r['raw_item_id'])
     import json
-    conn = sqlite3.connect(a.db)
-    try: dec_rows = conn.execute("select subject_uuid, outcome, primary_slug, rule, slugs from router_decisions where status in ('shadow','applied') order by id").fetchall()
-    except sqlite3.OperationalError: dec_rows = [r + (None,) for r in conn.execute("select subject_uuid, outcome, primary_slug, rule from router_decisions where status in ('shadow','applied') order by id")]
+    import dbconn
+    conn, ph = dbconn.connect(a.db)
+    try: dec_rows = dbconn.fetch(conn, ph, "select subject_uuid, outcome, primary_slug, rule, slugs from router_decisions where status in ('shadow','applied') order by id")
+    except Exception:       # older table without the slugs column
+        try: conn.rollback()
+        except Exception: pass
+        dec_rows = [tuple(r) + (None,) for r in dbconn.fetch(conn, ph, "select subject_uuid, outcome, primary_slug, rule from router_decisions where status in ('shadow','applied') order by id")]
     decisions = {u: (o, s, rule, json.loads(sl) if sl else None) for u, o, s, rule, sl in dec_rows}     # slugs = every category of a multi-category decision
     slug = {c['uuid']: c['slug'] for c in rows(a.dump, 'pim_categories')}
     current = C.defaultdict(set)
