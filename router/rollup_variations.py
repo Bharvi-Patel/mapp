@@ -38,9 +38,10 @@ def main():
     variations = list(csv.DictReader(open(a.variations, encoding='utf-8-sig')))
     products = {r['product']: r for r in csv.DictReader(open(a.rollup, encoding='utf-8-sig'))}
     dec = {}
-    if os.path.exists(a.db):
-        for sku, outcome, slug in sqlite3.connect(a.db).execute(
-                "select sku, outcome, primary_slug from router_decisions where status in ('shadow','applied') order by id"):
+    import dbconn
+    if dbconn.exists(a.db):
+        conn, ph = dbconn.connect(a.db)
+        for sku, outcome, slug in dbconn.fetch(conn, ph, "select sku, outcome, primary_slug from router_decisions where status in ('shadow','applied') order by id"):
             dec[sku] = (outcome, slug)
     res = join(variations, products, dec)
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:

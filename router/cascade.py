@@ -497,12 +497,12 @@ def shadow(args):
 def compare(args):
     """Shadow decisions vs the product's current category links in the dump. Read-only. Says where the router's pick
     is already one of the product's categories and where applying it would add something new."""
-    import sqlite3
+    import dbconn
     from dumpreader import rows
     cfg = K.load_vendor_config(args.vendor)
-    conn = sqlite3.connect(args.db[7:])
-    dec = [(s, u, json.loads(sl) if sl else [p], r) for s, u, p, r, sl in conn.execute(
-        "SELECT sku, subject_uuid, primary_slug, rule, slugs FROM router_decisions WHERE status='shadow' AND outcome='assigned' AND vendor_id=?", (cfg['vendor_id'],)).fetchall()]
+    conn, ph = dbconn.connect(args.db)
+    dec = [(s, u, json.loads(sl) if sl else [p], r) for s, u, p, r, sl in dbconn.fetch(conn, ph,
+        "SELECT sku, subject_uuid, primary_slug, rule, slugs FROM router_decisions WHERE status='shadow' AND outcome='assigned' AND vendor_id=%s", (cfg['vendor_id'],))]
     slug = {r['uuid']: r['slug'] for r in rows(args.dump, 'pim_categories')}
     prod_of = {}
     for r in rows(args.dump, 'pim_product_raw_items'): prod_of.setdefault(r['raw_item_id'], r['product_id'])
@@ -556,7 +556,7 @@ def main():
     k = sub.add_parser('compare')
     k.add_argument('--dump', default=os.path.join(HERE, 'dump_for_evidence.sql'))
     k.add_argument('--vendor', default=os.path.join(HERE, 'vendors', 'ashley.yaml'))
-    k.add_argument('--db', required=True, help='sqlite:reports/shadow.db (the file shadow wrote)')
+    k.add_argument('--db', required=True, help='where shadow wrote: sqlite:reports/shadow.db or mysql://user:pass@host/dbname')
     a = ap.parse_args(); {'eval': evaluate, 'shadow': shadow, 'compare': compare}[a.cmd](a)
 
 if __name__ == '__main__': main()

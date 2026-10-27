@@ -31,7 +31,7 @@ a8f8f373cd1f4897bc1422225043fea2,Bedroom Package,10,assigned,bedroom-sets,packag
 971e4b197db048b7b56f2b5665c23f82,Bedroom Package,8,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 599d9ff440a74b449ed4801c9dd66228,Stationary Upholstery Package,4,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
 f864c09de02240378ccce8211bfad00c,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
-059a41e1b2c64d4ab40a8b3374c56a51,Bedroom Package,4,assigned,living-room-sets,package_exception,bedroom-sets,would_add
+059a41e1b2c64d4ab40a8b3374c56a51,Bedroom Package,4,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 ad0cd0d717ed47d8abf5aedb7f0e1b22,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 76c2185c23c243b7b86bb203597f9a28,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 0f0186c736d44acc85d482758643d201,Stationary Upholstery Package,4,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
@@ -105,7 +105,7 @@ b04072dc834946c1b312556402fb0f22,Bedroom Package,14,assigned,bedroom-sets,packag
 aad6a69abdc74eb88ffc1117f47d2abf,Bedroom Package,8,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 9273ca094ee44240a5a2e3cf2ce8df5f,Sectional,14,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas,would_add
 22bfda8d3d8f4180899ee181d8b653e8,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
-ab024b8442f04c20be5319dd44d5f921,Bedroom Package,4,assigned,living-room-sets,package_exception,bedroom-sets,would_add
+ab024b8442f04c20be5319dd44d5f921,Bedroom Package,4,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 a581daed10ae41f987ec64699251a0ec,Motion Upholstery Package,6,assigned,living-room-sets,package:Motion Upholstery Package,living-room-sets,already_linked
 35de609c327644fca92a14f87c14879f,Bedroom Package,8,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 cc3ca6b94ac84f1bb6ecfd8b6ab7c9cc,Stationary Upholstery Package,4,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
@@ -221,7 +221,7 @@ c58c38ef1db740cdb429bca2abc44856,Sectional,8,assigned,component-skus-living-room
 aea994863e2d46f3961170fae8d9534c,Stationary Upholstery Package,8,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
 a7dfc55dd6b64d8f939c2614cec901de,Motion Upholstery Package,4,assigned,living-room-sets,package:Motion Upholstery Package,living-room-sets,already_linked
 05b675f180464854af6aceefbce8ee59,Bedroom Package,4,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
-22ce66fc19464eedba13b61e61be47d6,Bedroom Package,6,assigned,living-room-sets,package_exception,bedroom-sets,would_add
+22ce66fc19464eedba13b61e61be47d6,Bedroom Package,6,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 a1ebf742ef8c43b5958854712500fd2c,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 c95650c44b1144768070a5b4c11b6643,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 8d8b13cbb8b04ec485c30d9eb140acd6,Sectional,12,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas,would_add
@@ -2105,7 +2105,7 @@ b7ced1b298724c07b990dfadcae7b1de,Bedroom Package,12,assigned,bedroom-sets,packag
 e2b5560674a043cc9ddee1da84c32769,Bedroom Package,16,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 1c6f8364bd92407ca95c03c727bfcab7,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 7b17665c7fbc43c9b4b66f0b31c2896e,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
-cf5bc74e58e448508d7fd67a101f84d6,Bedroom Package,6,keep_current,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,package_exception:keep_current,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,kept
+cf5bc74e58e448508d7fd67a101f84d6,Bedroom Package,6,assigned,bedroom-sets,package:Bedroom Package,kids-and-nursery | kids-and-nursery-kids-furniture | kids-furniture-beds,would_add
 e09b9116df9d4b0c9284afe1e13c230f,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 27f711e220dd4d718ac3b6af2edb9c9e,Bedroom Package,10,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 9eed5ca922af40f2902394c9eb228a79,Bedroom Package,14,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
@@ -3202,7 +3202,7 @@ d5de1c820fcd47029e9b5e7bbc831c0c,Outdoor Sectional,6,assigned,component-skus-out
 f9e25a17ba8b43819b4aeccb9049b659,Dining Package,6,assigned,dining-room-sets,package:Dining Package,dining-room-sets,already_linked
 b0513a17f94c404dbdc0b5cb7658d078,Bedroom Package,12,assigned,bedroom-sets,package:Bedroom Package,bedroom-sets,already_linked
 e7e66fd9607d4dbeb470dca3b368a509,Outdoor Seating Package,4,assigned,outdoor-sets,package:Outdoor Seating Package,outdoor-sets,already_linked
-25db47b32c2d42eba76682f3856e8f77,Stationary Upholstery Package,10,assigned,bedroom-sets,package_exception,living-room-sets,would_add
+25db47b32c2d42eba76682f3856e8f77,Stationary Upholstery Package,10,assigned,living-room-sets,package:Stationary Upholstery Package,living-room-sets,already_linked
 1c46186eefab49acb6e42c0ee155374c,Sectional,36,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 b1f0b3ee43814de593fd48dfb64ef57c,Sectional,36,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
 ecccab99682e4b7cb60f90cdabf02956,Sectional,20,assigned,component-skus-living-room,component_sku,living-room | living-room-sofas-and-seating | sofas-and-seating-sectional-sofas,would_add
