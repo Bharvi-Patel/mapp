@@ -75,3 +75,44 @@ def test_kit_with_no_usable_leaf_goes_to_review_and_adds_nothing():
 def test_kit_without_fetched_categories_keeps_the_old_logic():
     r = run_kit({}, {'bedroom-furniture-beds'})
     assert (r['state'], r['category'], r['rule']) == ('assigned', 'component-skus-bedroom', 'component_sku')
+def test_multi_category_navigable_rows_are_compared_as_a_set_not_left_blank():
+    import rollup_products as R
+    dec = {'r1': ('assigned', 'a', 'navigable_categories', ['a', 'b'])}
+    def run(cur): return R.rollup({'p': 'Bed'}, {'p': ['r1']}, dec, {}, {'p': cur})[0]['vs_current']
+    assert run({'a', 'b', 'c'}) == 'already_linked'
+    assert run({'a'}) == 'would_add'
+    assert run(set()) == 'no_links'
+
+def test_kit_filed_only_under_component_leaves_gets_its_own_rule_and_is_compared_to_current():
+    r = run_kit({'p': ['component-skus-bedroom']}, {'bedroom'})
+    assert (r['state'], r['category'], r['rule'], r['vs_current']) == ('assigned', 'component-skus-bedroom', 'kit_component_categories', 'would_add')
+    assert run_kit({'p': ['component-skus-bedroom']}, {'component-skus-bedroom'})['vs_current'] == 'already_linked'
+
+def test_kit_with_a_real_leaf_keeps_the_normal_rule_name():
+    assert run_kit({'p': ['bedroom-furniture-beds']}, {'bedroom'})['rule'] == 'kit_navigable_categories'
+
+def test_kit_slugs_falls_back_to_component_leaves_only_when_nothing_else_is_usable():
+    import rollup_products as R
+    from types import SimpleNamespace as NS
+    res = NS(cfg={'component_rule': {'slug_prefix': 'component-skus-'}}, vendor_map={}, code_slug={'C1': 'component-skus-bedroom', 'B1': 'bedroom-furniture-beds', 'U1': 'uncategorized'},
+             leaf={'component-skus-bedroom', 'bedroom-furniture-beds', 'uncategorized'}, store={'component-skus-bedroom', 'bedroom-furniture-beds', 'uncategorized'},
+             excluded={'component-skus-bedroom', 'uncategorized'}, inactive=set())
+    assert R.kit_slugs(['C1'], res) == ['component-skus-bedroom']
+    assert R.kit_slugs(['C1', 'B1'], res) == ['bedroom-furniture-beds']
+    assert R.kit_slugs(['U1'], res) == []
+
+def test_batch3_picks_only_the_approved_groups_and_never_a_link_that_exists():
+    import apply_batch3 as B
+    def row(p, code, cat, rule, cur, state='assigned'): return dict(product=p, item_code=code, category=cat, rule=rule, current=cur, state=state)
+    rows = [row('p1', 'Dresser', 'bedroom-furniture-dressers-and-chests | wall-decor-mirrors', 'navigable_categories', 'bedroom'),     # A + C
+            row('p2', 'Barstool', 'bar-furniture-bar-stools | bar-furniture-counter-chairs', 'navigable_categories', 'bar-furniture-bar-stools'),   # bar stools already linked, counter chairs is C
+            row('p3', 'Bed', 'component-skus-bedroom', 'kit_component_categories', 'bedroom'),                                          # D
+            row('p4', 'Bed', 'kids-furniture-headboards', 'navigable_categories', 'bedroom'),                                           # held back
+            row('p5', 'Dresser', 'bedroom-furniture-dressers-and-chests', 'navigable_categories', 'bedroom'),                           # in the approved batch already
+            row('p6', 'Dresser', 'bedroom-furniture-dressers-and-chests', 'navigable_categories', 'bedroom', state='review'),
+            row('p7', 'Bedroom Package', 'bedroom-sets', 'package:Bedroom Package', 'bedroom'),                                         # package rule, not Ashley's navigable categories
+            row('p8', 'Sectional', 'home-accents-accent-chairs', 'navigable_categories', 'living-room'),                                 # on the dropped list
+            row('p9', 'Bed', 'component-skus-bedroom', 'navigable_categories', 'bedroom')]                                              # component slug, not a kit
+    got = B.pick_links(rows, already={('p5', 'bedroom-furniture-dressers-and-chests')}, dropped_products={'p8'})
+    assert got == [('p1', 'bedroom-furniture-dressers-and-chests', 'Dresser', 'bedroom', 'A'), ('p1', 'wall-decor-mirrors', 'Dresser', 'bedroom', 'C'),
+                   ('p2', 'bar-furniture-counter-chairs', 'Barstool', 'bar-furniture-bar-stools', 'C'), ('p3', 'component-skus-bedroom', 'Bed', 'bedroom', 'D')]
