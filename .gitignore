@@ -1,9 +1,9 @@
 .env
-router/dump_for_evidence.sql
+mapp/router/dump_for_evidence.sql
 # *.sql
 
-router/*_for_router.sql
-
+mapp/router/*_for_router.sql
+mapp/router/onebuilddemo_for_router.sql
 *.db
 
 __pycache__/
