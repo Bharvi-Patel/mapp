@@ -43,6 +43,11 @@ def has_sku(payload, sku):
         elif isinstance(x, list): stack.extend(x)
     return False
 
+def alias_of(sku, prefixes):
+    """For a SKU like PCB2108-97 the API may answer with the base item B2108-97 (the SKU without its 'PC')."""
+    u = sku.upper()
+    return sku[2:] if len(sku) > 3 and any(u.startswith(x.upper()) for x in prefixes) else None
+
 def fetch(url, headers, retries=5):
     for attempt in range(retries):
         req = urllib.request.Request(url, headers=headers)
@@ -94,8 +99,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--skus-file'); ap.add_argument('--out', default=os.path.join(HERE, 'navcats_gold.csv'))
     ap.add_argument('--delay', type=float, default=0.2, help='seconds between calls')
+    ap.add_argument('--alias-prefixes', default='PCB', help="comma list of SKU prefixes allowed to use the SKU without 'PC'")
     ap.add_argument('--workers', type=int, default=1, help='requests in flight at once (default 1 = one at a time)')
     args = ap.parse_args()
+    prefixes = [x.strip() for x in args.alias_prefixes.split(',') if x.strip()]
     load_env()
     url_t, token = os.environ.get('ASHLEY_API_URL'), os.environ.get('ASHLEY_API_TOKEN')
     user, pw = os.environ.get('ASHLEY_API_USER'), os.environ.get('ASHLEY_API_PASSWORD')
@@ -112,7 +119,7 @@ def main():
     print('fallback URL form:', fb.replace('{sku}', '<sku>') if fb else 'none')
     def lookup(sku):
         code, payload = fetch(url_t.format(sku=sku), headers)
-        empty = code in (204, 404) or (code == 200 and (isinstance(payload, str) or not find_product(payload, sku)))
+        empty = code in (204, 404) or (code == 200 and (isinstance(payload, str) or not (find_product(payload, sku) or (alias_of(sku, prefixes) and find_product(payload, alias_of(sku, prefixes))))))
         if fb and empty:
             c2, p2 = fetch(fb.format(sku=sku), headers)
             if c2 == 200 and not isinstance(p2, str) and find_product(p2, sku): return c2, p2
@@ -140,9 +147,13 @@ def main():
                     row = [sku, '', 'bad_body']
                     print(f'  {sku}: HTTP {code} but there is no JSON body: {payload!r}')
                 elif code == 200:
-                    prod = find_product(payload, sku)
-                    row = [sku, json.dumps(prod['navigableCategories']), 'ok'] if prod else \
-                        [sku, '', 'no_field' if has_sku(payload, sku) else 'sku_not_returned']
+                    prod = find_product(payload, sku); alias = None
+                    if not prod and alias_of(sku, prefixes):
+                        alias = alias_of(sku, prefixes); prod = find_product(payload, alias)
+                        if not prod: alias = None
+                    row = [sku, json.dumps(prod['navigableCategories']), 'ok'] if prod else [sku, '', 'no_field' if has_sku(payload, sku) else 'sku_not_returned']
+                    if alias:
+                        with open(args.out + '.aliases.csv', 'a', newline='', encoding='utf-8') as af: csv.writer(af).writerow([sku, alias])
                 else:
                     row = [sku, '', 'not_found' if code == 404 else f'error:{code}']
                     if code != 404:
