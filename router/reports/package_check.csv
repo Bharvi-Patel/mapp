@@ -98,7 +98,7 @@ ff7bdad050a5483fb5322d00350ee5e9,Stationary Upholstery Package,living-room-sets,
 b04072dc834946c1b312556402fb0f22,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
 aad6a69abdc74eb88ffc1117f47d2abf,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 22bfda8d3d8f4180899ee181d8b653e8,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
-ab024b8442f04c20be5319dd44d5f921,Bedroom Package,bedroom-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sofas,navigable_categories,bedroom-sets
+ab024b8442f04c20be5319dd44d5f921,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sofas,navigable_categories,living-room-sets
 a581daed10ae41f987ec64699251a0ec,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
 35de609c327644fca92a14f87c14879f,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 cc3ca6b94ac84f1bb6ecfd8b6ab7c9cc,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-sofas,navigable_categories,living-room-sets
@@ -174,6 +174,7 @@ b80f9c0645ab45b79a0fe8c0d051d8c3,Bedroom Package,bedroom-sets,differ,bedroom-fur
 829cf140095341fdae96284ba7ca7c06,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-ottomans,navigable_categories,living-room-sets
 200bbce6ae074897892a093cc2d2cf63,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans,navigable_categories,living-room-sets
 45cc9c860d7249518f5c5931349bea6d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+b366f2f8fd654975b87585f428513dde,Stationary Upholstery Package,living-room-sets,only_components,,,living-room-sets
 0ace9f0186544461b01b4f4342a6a65f,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans | sofas-and-seating-sofas,navigable_categories,living-room-sets
 aea994863e2d46f3961170fae8d9534c,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans,navigable_categories,living-room-sets
 a7dfc55dd6b64d8f939c2614cec901de,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
@@ -585,10 +586,12 @@ ce2641a2affa45a48c50bd6c75522334,Bedroom Package,bedroom-sets,differ,bedroom-fur
 a70bd4a1d9244254bea604c4f9614c6c,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 0c6bb917210f46d39ef5063484ccb67c,Occasional Table Package,living-room-sets,differ,tables-coffee-tables | tables-end-and-side-tables,navigable_categories,living-room-sets
 cdf6bc277c6f47ed9e56b3c10cfd2ed9,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+9b3fbf7e84bb431788ca3c03b87b8ce0,Stationary Upholstery Package,living-room-sets,only_components,,,living-room-sets
 67d1457314114bd3a003ecbc9a898917,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
 902f68e03db5427f922f69ad9f0aae76,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 774f0397d38b4fad80822d0f5eea6bee,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 fc9ae1a066b5440a9d59b810eab7398a,Dining Package,dining-room-sets,differ,dining-furniture-dining-room-chairs,navigable_categories,dining-room-sets
+eb8bc7f3251b4561b1e6fe9cec66c7d9,Stationary Upholstery Package,living-room-sets,only_components,,,living-room-sets
 fecb4611c46d466fac1bcfb83cf3bc06,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-loveseats | sofas-and-seating-ottomans,navigable_categories,living-room-sets
 0fd51cd476d34103a8662acd9f08bb4e,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 9e0bc1f2b16c4e8ab67741f478e9e203,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
@@ -823,6 +826,7 @@ f4661f21ad284e0ab9c96edec3033864,Bedroom Package,bedroom-sets,differ,bedroom-fur
 da0e989b9ca645c5b2b24143f85d6ad3,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | bar-furniture-counter-chairs | bar-furniture-counter-tables | dining-furniture-dining-room-counter-chairs | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
 76269b0cac544a2eb0bccdfeaf2df039,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 a89bfe99b43e46e694848dab1025b421,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+704c9d363d574c2ea9f985d19bc32747,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners,navigable_categories,living-room | living-room-sofas-and-seating | sofas-and-seating-power-reclining | sofas-and-seating-reclining-sectional-sofas
 42711adab8214e42949949466fa60b3d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 c5cb12e47c99467dad5c4a50d6be2c2e,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats,navigable_categories,living-room-sets
 045ac99ac7ea4f9daef0961a16e32828,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sofas,navigable_categories,living-room-sets
@@ -1289,7 +1293,7 @@ d50eb07d06e64eae817f65b659c6fd5c,Dining Package,dining-room-sets,differ,dining-f
 a1018544642b45e084e45534dcd01672,Dining Package,dining-room-sets,differ,dining-furniture-dining-benches | dining-furniture-dining-room-chairs | dining-furniture-dining-room-tables,navigable_categories,dining-room-sets
 1fcc845dd6814ab5b7bc11b59af77967,Dining Package,dining-room-sets,differ,dining-furniture-dining-room-chairs,navigable_categories,dining-room-sets
 189c66dceda1401a9a706171f5a15252,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats,navigable_categories,living-room-sets
-aa4a350b06564cd5af1344951bd4a390,Foundation Package,mattresses-and-bedding-sets,differ,mattresses-and-bases-by-type-foundations-and-frames | mattresses-and-bases-by-type-hybrid | mattresses-by-size-california-king,navigable_categories,mattresses-and-bedding-sets
+aa4a350b06564cd5af1344951bd4a390,Foundation Package,mattresses-and-bedding-sets,differ,mattresses-and-bases-by-type-foundations-and-frames | mattresses-and-bases-by-type-hybrid | mattresses-by-size-california-king,navigable_categories,mattresses-and-bases-by-type-hybrid | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 16559adbf4664094867471df544027b9,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards,navigable_categories,bedroom-sets
 79ccd11d8ec34ff3a6f74f89205a4bdd,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 162732962b9f49e392eaef5a971d7814,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
@@ -2083,7 +2087,7 @@ c200b93432ee41cbb3c74c480501970f,Bedroom Package,bedroom-sets,differ,bedroom-fur
 d2003c672acb4e03b334a520c3a4c1d9,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 343b7f78e8a54205ae9b2b1fed51ef14,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 03d32220a18b4589a1ab586408658823,Dining Package,dining-room-sets,differ,dining-furniture-dining-room-chairs,navigable_categories,dining-room-sets
-3d767cb9340741ab8d0564b20ec879bc,Foundation Package,mattresses-and-bedding-sets,differ,mattresses-and-bases-by-type-foundations-and-frames | mattresses-and-bases-by-type-memory-foam | mattresses-by-size-king,navigable_categories,mattresses-and-bedding-sets
+3d767cb9340741ab8d0564b20ec879bc,Foundation Package,mattresses-and-bedding-sets,differ,mattresses-and-bases-by-type-foundations-and-frames | mattresses-and-bases-by-type-memory-foam | mattresses-by-size-king,navigable_categories,mattresses-and-bases-by-type-memory-foam | mattresses-and-bedding | mattresses-and-bedding-mattresses-and-bases-by-type | mattresses-and-bedding-mattresses-by-size | mattresses-by-size-california-king
 5c1d0a91f31444f1b485a160cc86f96c,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
 1c5679e2d507459a8f17377980749d79,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sleeper-sofas,navigable_categories,living-room-sets
 29e716845b8b483ba6bcce325ccb5c65,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
@@ -2385,3 +2389,175 @@ d934bfb826ef4f448554d5c387c337d0,Bedroom Package,bedroom-sets,differ,bedroom-fur
 daf90c266ff04c5e921fce5a9c258d1d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 0cbc8fcde77a4264b10ff1c8707adae6,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
 17988114d12f4dc29a4c0f6529c3aa92,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+9ef397b27f6e4fba80048bc5f5c6ffaa,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans | sofas-and-seating-sofas,navigable_categories,living-room-sets
+c2049dbed83849aea2f0b7cc06138df3,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans,navigable_categories,living-room-sets
+7b9efcf28836452ba3cc56fa6c1e1a08,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-vanities,navigable_categories,bedroom-sets
+65647f842f954c58a9f3189de880204f,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+f25cc25b59594b089c721c9409d0ef25,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+e46af75781a04fbebd817a8511dabf3b,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+677a0ab5221e4b3195ca868a4d34f833,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+b9b4d308644848a6ae9d18d47b953dce,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+b77eb2f0b86c4d41ab2a60984414f290,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+9e7e8378288744c1ab97d9ae831c20dc,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
+c93ac11b1f6f46c08524b565a3f69ae0,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards,navigable_categories,bedroom-sets
+797638c73df3429eb2c6b07f56d0cb6f,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans,navigable_categories,living-room-sets
+944f4e1582bb4486b37d8a3539d4964e,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans,navigable_categories,living-room-sets
+503609957f044147ac2bfc79ff103465,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sofas,navigable_categories,living-room-sets
+b530d8c163aa4b88a28628fc44a6a185,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+d7a91117129345118017dd87c238aef5,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+67e45853a2514af8b6283d883a408574,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners,navigable_categories,living-room-sets
+79675c4d488e4cdc8232d51611d5fb2d,Dining Package,dining-room-sets,differ,dining-furniture-dining-benches | dining-furniture-dining-room-chairs | dining-furniture-dining-room-tables,navigable_categories,dining-room-sets
+2b9665ac58f142809480b1ecfdb30521,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+2584d13b596c408ab5571306c23dc08d,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+260d937aad5e4d1f98b76bc601fb1e7d,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | bar-furniture-counter-chairs | bar-furniture-counter-tables | dining-furniture-dining-room-counter-chairs | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
+5d523d15350e4666b304d1a0ff92723c,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+7a92b36ab79247b08bdd0ed6c050a2e5,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans,navigable_categories,living-room-sets
+5c2edbbbc78d4b79be521ce8ff7f173b,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+b927d92673714d989060b11b816090c5,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-recliners,navigable_categories,living-room-sets
+297af773f16a4539b5db92dc837db13e,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards,navigable_categories,bedroom-sets
+920da18b827547e98b5803545cf1ca63,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+c553b4d478484719a997d44878dde85c,Dining Package,dining-room-sets,differ,dining-furniture-dining-benches | dining-furniture-dining-room-chairs | dining-furniture-dining-room-tables,navigable_categories,dining-room-sets
+d748e6d4500240f4ac62697fdba90804,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+cc1504ce6f32496fbf568c5757ab465d,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+79f3484ff9554537b20b14d4d60a386c,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | bar-furniture-counter-chairs | bar-furniture-counter-tables | dining-furniture-dining-room-counter-chairs | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
+81d6f620057249228f94ebe0022f9671,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sofas,navigable_categories,living-room-sets
+330bb6b861814230a9f81e955eefeb35,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | bar-furniture-counter-chairs | bar-furniture-counter-tables | dining-furniture-dining-room-counter-chairs | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
+9daf2c32d99143389b5652cd2aeba6cf,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans | sofas-and-seating-sofas,navigable_categories,living-room-sets
+2140adbf94034ed2b1096fb98abeb358,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+49f216bf4b3e413b9dd0070af53dc436,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+4aef0c3aac3e4d8198b834195a7a8877,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+b793d44e6834422588404738590972b7,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+a4efb3fe639746319df97fd26f529cd7,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | bar-furniture-counter-tables | dining-furniture-dining-room-counter-chairs | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
+7e1990f476924173a729470cac88ffa4,Dining Package,dining-room-sets,differ,dining-furniture-dining-room-chairs | dining-furniture-dining-room-tables,navigable_categories,dining-room-sets
+602fea2951fd4aad81cc15c42d18faaf,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+cca9b8fe7863483da8f9466af67cedd7,Dining Package,dining-room-sets,differ,dining-furniture-dining-room-chairs | dining-furniture-dining-room-tables,navigable_categories,dining-room-sets
+1746d00ad840457390f97a4eb6a0a1fb,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
+7625959a374542c6bd74f6c984c6f4e5,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+7e40eb69caee4c839378d6e82833a230,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+b23caba3665c45828ff1a2972ff4ef89,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+d41f18c900f24645bc01f9e6caedc2a0,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+56d4646243424db6a93b99d792cad23d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+e0ccf4fa273a4a34af7066ca3bb7b1ab,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+fa960c7eaca1410c84e343dc957d9ece,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+ad0dc4d844b34038a6bcba5d4d6a6dab,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+fc7e00bcfb064b9e8676f41f74ecc63f,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+6a67d34c6e5841c5998aa8e80fe23f81,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+64caebc0be06458fa75313113665ed02,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards,navigable_categories,bedroom-sets
+912cee5834684fb792db5033cd46a06d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+632c2b2597f84b2e9bb8133778d79195,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
+ddf5233b40624a04a2f416b5ba8b2c73,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards,navigable_categories,bedroom-sets
+da9fc9747fd249778e435458dcd29d60,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+371f7f00282b4bd9838d3691c1ef9f01,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+b12690f373674870b18fb51fabf1d7a4,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+cc0652240dab47a7ac84ed88aaab04d8,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+82af74ec9a8f48858d5c87041e64a430,Occasional Table Package,living-room-sets,differ,tables-coffee-tables | tables-console-tables | tables-end-and-side-tables,navigable_categories,living-room-sets
+8473ed0e8cfb4e82b5fcbf541bddab7f,Bedroom Package,bedroom-sets,differ,kids-furniture-headboards | mattresses-by-size-full,navigable_categories,bedroom-sets
+56b5c3c3159c454bafba930ee09568f5,Bedroom Package,bedroom-sets,differ,kids-furniture-headboards | mattresses-by-size-twin,navigable_categories,bedroom-sets
+de5ed708a5dd4e3a957af7fa1cd90954,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+f1dad5bde45a4bbeab225d6f449bf0b9,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+2a7b4d8027f64092a6730a746f3c3bbb,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+246a1e59669349ab97bda754564eeacf,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+0bc524fb144741b39b39f1b658df8755,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans,navigable_categories,living-room-sets
+fd05c8e2fd634cafba8706a88331312a,Bedroom Package,bedroom-sets,differ,bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+8b55dd132d3440e2afe5f2779ea2a727,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+7d59554d99394d06a95df0af47da0600,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
+41d8ad1d930e48feb651a5f42f92b292,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+543ec4c1c4e147e4985091e539bcd036,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+e0dc24935beb41e3a46493bff7431e94,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+bff11a187e58492ea42d1abc47aabdba,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sleeper-sofas,navigable_categories,living-room-sets
+a67194541cc54ab4afd497cc46717cd8,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+284ca3967c9f4614b6c339abd6fd1aed,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+a35089793b5542bcaae4d76fb32235ee,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+f67a2d07d1bf485990cd459e06f170f5,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats,navigable_categories,living-room-sets
+b5e10c3eb35149ed81cd3fba1f91c6d8,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+9ebe4a1af2b1496792dc3d4ef82c75b6,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats,navigable_categories,living-room-sets
+7e39c9cd1a164d3d937305991bd9ea42,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | kids-furniture-headboards,navigable_categories,bedroom-sets
+b1539dd7085c47a785fdf1bb7185e922,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+4848213d53cb44feb2c102e8522cf407,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+6e0f27761033491a86463c235a036e82,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | kids-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
+5038480329304c80b3aeaa7c59057438,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
+47d57709f0174d4a8be35ea59c661980,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+3ba5de40d470434191824d5830f33244,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners,navigable_categories,living-room-sets
+f8b99b20d2364db5a8ddf76aa8ef0ef4,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+8bae54a09fd24e4a9bd339e3f2188e19,Bedroom Package,bedroom-sets,differ,bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+3fd482bb64d5425896b4754769048d94,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+d15c15a18c1c4a3bb7297409e3576021,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+7f9eb363627b4e65b69471830f8d5f82,Dining Package,dining-room-sets,differ,bar-furniture-bar-stools | bar-furniture-counter-chairs | bar-furniture-counter-tables | dining-furniture-dining-room-counter-chairs | dining-furniture-dining-room-counter-tables,navigable_categories,dining-room-sets
+58ef7a1b92c14a1e9add25dad247dab2,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+434c34d5aa9744e5aa8cdce0bb3b620d,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+c75333572e844128b581b67a735b14e6,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+3f934d44f9224efb806bdcab6c97a71f,Occasional Table Package,living-room-sets,differ,tables-coffee-tables | tables-end-and-side-tables,navigable_categories,living-room-sets
+a8e0199d39eb41b49485b60d4a1879af,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+2fdc9be5d6634dd886c155df0da1da36,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+753ee8e33e12410ba56b37465dfa1ba6,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+5c33560f93d2480297257f2b5c17579b,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+b7b0e7d0ce1e45b4bca9b7c8088e104f,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+574afb09e4cf4efb93e59e74fd9e8d27,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners,navigable_categories,living-room-sets
+4bcc51b33c55473ca17530302e24b995,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+6f1bd23048cc4d32b22468d485cbf6eb,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+0395cfe97bcb4244a9216970e2a841a1,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-recliners | sofas-and-seating-sofas,navigable_categories,living-room-sets
+3ed0e1da122b4453ac19f528e8a6145f,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+2b4910bdc43f4107ba43f7205595fc0c,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+d9779d10becd45208708640ac7d0603f,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+8ebb02e21aa74fee8205c89645930881,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | kids-furniture-headboards | wall-decor-mirrors,navigable_categories,bedroom-sets
+4c9c2b3f3a464d859958f0a6b261d7ea,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+10e191a801ac4a6598ea40ecca72bcd3,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+3317f2dd068f436097082b4c2c7e71b3,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+7fa6a28939094f83819b785195821cd3,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards,navigable_categories,bedroom-sets
+f09cd0f8818348f596007568f99cd39a,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+0f62dca3feef483281a4b2941ebdcbf3,Bedroom Package,bedroom-sets,differ,bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+5d2f3525a2f2449cb7b115886eb32a0a,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+5a93c446eb2c4f1f844b1fd9bff634a5,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+bd9b108608da4979a6c55197ce655dae,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+290ed2aaae884a4c853ce71d80d884d8,Bedroom Package,bedroom-sets,only_components,,,bedroom-sets
+0f3929b4eaca4f899375f6adea3c51de,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+a79c38c206c44f65bdc05eef251b246d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+add580be87aa4ef2a707b17a44fda743,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+97c6b351c5c4441f9853b627b7296792,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans,navigable_categories,living-room-sets
+a131f7b94c3e4278b1116ca266de1344,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-reclining-loveseats | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+55d52e61fcce411ebd9c0f4272e8e646,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans,navigable_categories,living-room-sets
+f8b9489a9e0045fe923597e84f9d661d,Motion Upholstery Package,living-room-sets,only_components,,,living-room-sets
+a57c75cbde5d478abb038667580bd649,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+dcd61be0392b4174a54779f1d527d24e,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+30b325ec5baa4702b4b832883f75dc23,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+e28be60004af4459afef8596cfe935c1,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+02134143eeed47ddbe95170157232da2,Bedroom Package,bedroom-sets,differ,mattresses-and-bases-by-type-power-bases,navigable_categories,bedroom-sets
+63ed96abfcf34e3ca1b4751d1a2ee4fb,Occasional Table Package,living-room-sets,differ,tables-coffee-tables | tables-end-and-side-tables,navigable_categories,living-room-sets
+cc300108e287431facacddb79bf483c8,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+4b9acd278d70463bb2312712edc2689d,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards,navigable_categories,bedroom-sets
+5c58c6981aec4defa8e05414e8997ae8,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+91daa05420f84bd188cd1b2c4491ccfb,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+bd1bd3843d1b45eb852c2f34be65a7f9,Bedroom Package,bedroom-sets,differ,bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+cca1d1872a984c9ab00599b81db4866a,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans,navigable_categories,living-room-sets
+58235f86600042e8b1f5af7fe817a75b,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sleeper-sofas,navigable_categories,living-room-sets
+199f468bca784665a8b01330b824c58a,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests,navigable_categories,bedroom-sets
+65cfb409e72e4bfb8d8bfff2e29ac406,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+da7f12c26bde4a43821c60eeb1f351db,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sleeper-sofas,navigable_categories,living-room-sets
+b828aac7aec84f12b7bdc4564b366796,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+4b0189918a1d4e68b4d9b1d39c45ddd7,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+ec5eef3bee184b349ace4090ee095d12,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-recliners | sofas-and-seating-sofas,navigable_categories,living-room-sets
+052b80f74b3b406d96c6a319c2d865c0,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats,navigable_categories,living-room-sets
+92b2c9eff6ac4749bc006e6be346bf5f,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+0d27a870c2f745f994c468c170859033,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+ecb282b885964f6e9a1cc93b62973c79,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans | sofas-and-seating-sofas,navigable_categories,living-room-sets
+04897c232d7140879282275314af38dd,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs,navigable_categories,living-room-sets
+763fd02336554bf2b07614cc88ebe1ce,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats,navigable_categories,living-room-sets
+1d7ca9a4c356419b979aefb24668c3b2,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+d6d35c576fe0408ab9c56d591c93df79,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | wall-decor-mirrors,navigable_categories,bedroom-sets
+810dae77f8084efebfea7c3bfbb2ab4c,Occasional Table Package,living-room-sets,differ,tables-coffee-tables | tables-end-and-side-tables,navigable_categories,living-room-sets
+0df95cc21e0c4d31807bde6b36d9cc9a,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+19f74141a56b450dac921ffbb2f5a51b,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-sleeper-sofas,navigable_categories,living-room-sets
+316c795e200b46fcb67f492feec37538,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+c9588150bb9445e781b5b81d9400ed97,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+5e5eaf93a9f842c9b0120f5d6ddf343c,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+8b84ca91c5d741f1a4f90f4334a22d2e,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-power-reclining | sofas-and-seating-recliners | sofas-and-seating-reclining-loveseats,navigable_categories,living-room-sets
+3260df5b220e4ad5b4e26a1f04b074c0,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+731fca5a614f40ee8ca76f7f5dfc47e2,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands | kids-furniture-headboards,navigable_categories,bedroom-sets
+17a36b3275ae4f708ced494ab0fe310a,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-headboards | bedroom-furniture-nightstands | wall-decor-mirrors,navigable_categories,bedroom-sets
+c93973bb98d04b3084f57945358afe3f,Bedroom Package,bedroom-sets,differ,bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+9171e477bd214c38bda7e44c00b0c78f,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+22c40f51a2a0435195881e6fde46397c,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-loveseats | sofas-and-seating-sofas,navigable_categories,living-room-sets
+fc7665d09da14836b4e883ef272a3b1c,Stationary Upholstery Package,living-room-sets,differ,sofas-and-seating-ottomans | sofas-and-seating-recliners | sofas-and-seating-sofas,navigable_categories,living-room-sets
+219108e5bd6642ab8c2f378d3e928324,Bedroom Package,bedroom-sets,differ,bedroom-furniture-dressers-and-chests | bedroom-furniture-nightstands,navigable_categories,bedroom-sets
+acd3956a69aa4ccc80b6e39d2c750297,Motion Upholstery Package,living-room-sets,differ,sofas-and-seating-reclining-loveseats | sofas-and-seating-reclining-sofas,navigable_categories,living-room-sets
+52e8fb2df37a469dadb3f297674e3e54,Chair and Ottoman Package,living-room-sets,differ,sofas-and-seating-living-room-chairs | sofas-and-seating-ottomans,navigable_categories,living-room-sets
