@@ -14,6 +14,19 @@ default = the default variant only). A kit whose fetch failed is left to the old
 Writes reports/product_rollup.csv and prints counts, plus how often the pick is already one of the product's current categories."""
 import argparse, collections as C, csv, os, re, sqlite3
 
+COMPONENT_PREFIX = 'component-skus-'
+
+def kit_slugs(codes, res):
+    """Usable categories of a kit from its own Ashley codes. The router's normal filter (CA.nav_slugs) drops excluded slugs, and the config excludes every
+    component-skus-* leaf. A kit Ashley files ONLY under those has nothing left, so for such a kit (and only then) the component-skus-* leaves are allowed:
+    Ashley's navigable category is where the product goes. Other excluded slugs (uncategorized, store-displays) stay excluded."""
+    import cascade as CA
+    usual = CA.nav_slugs(codes, res)
+    if usual: return usual
+    prefix = (res.cfg.get('component_rule') or {}).get('slug_prefix', COMPONENT_PREFIX)
+    out = [res.vendor_map.get(c) or res.code_slug.get(c, c) for c in (codes or [])]
+    return [x for x in dict.fromkeys(out) if x.startswith(prefix) and x in res.leaf and x in res.store and x not in res.inactive]
+
 def _tokens(text):
     return {(t[:-1] if t.endswith('s') and len(t) > 3 else t) for t in re.split(r'[^a-z0-9]+', (text or '').lower()) if t}
 
@@ -45,7 +58,9 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
         if code in package_rules:
             row.update(state='assigned', category=package_rules[code], rule=f'package:{code}')
         elif p in kit_nav:                                  # the kit's own categories decide, not its pieces' hidden Component ones
-            if kit_nav[p]: row.update(state='assigned', category=' | '.join(kit_nav[p]), rule='kit_navigable_categories')
+            if kit_nav[p]:      # a kit whose Ashley categories are ONLY component-skus-* gets its own rule name, so batch scripts keyed on kit_navigable_categories never pick it up by accident
+                only_comp = all(x.startswith(COMPONENT_PREFIX) for x in kit_nav[p])
+                row.update(state='assigned', category=' | '.join(kit_nav[p]), rule='kit_component_categories' if only_comp else 'kit_navigable_categories')
             else: row.update(state='review', rule='kit_no_usable_leaf')
         elif not pieces:
             row['state'] = 'no_raw_item'
@@ -70,10 +85,8 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
                 else:
                     row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=next(iter(slugs)), rule=real[0][1])
         if row['state'] == 'keep_current': row['vs_current'] = 'kept'
-        elif row['rule'] == 'kit_navigable_categories':     # several categories are compared as a set: already linked only when ALL are
+        elif row['category'] and row['state'] != 'conflict':    # one or several categories, compared as a set: already linked only when ALL are
             row['vs_current'] = 'already_linked' if set(row['category'].split(' | ')) <= cur else ('no_links' if not cur else 'would_add')
-        elif row['category'] and '|' not in row['category']:
-            row['vs_current'] = 'already_linked' if row['category'] in cur else ('no_links' if not cur else 'would_add')
         else: row['vs_current'] = ''
         out.append(row)
     return out
@@ -90,12 +103,14 @@ def build_kit_nav(dump, res, navcats_csv, amp_map_csv=None, amp_mode='union'):
     for p in rows(dump, 'pim_products'):
         if p.get('deleted_at'): continue
         slug = p['slug']
-        if slug in codes: out[p['uuid']] = CA.nav_slugs(codes[slug], res)
+        if slug in codes: out[p['uuid']] = kit_slugs(codes[slug], res)
         elif slug in amp:
             variants = sorted(amp[slug], key=lambda v: v[0] != v[1])      # default variant first, so its category leads
             ok = [(sku, codes[sku]) for sku, _ in variants if sku in codes]
             if amp_mode == 'default' and ok and ok[0][0] == variants[0][1]: ok = ok[:1]
-            if ok: out[p['uuid']] = list(dict.fromkeys(s for _, c in ok for s in CA.nav_slugs(c, res)))
+            if ok:
+                leaves = list(dict.fromkeys(s for _, c in ok for s in CA.nav_slugs(c, res)))
+                out[p['uuid']] = leaves or list(dict.fromkeys(s for _, c in ok for s in kit_slugs(c, res)))
     return out
 
 def main():
