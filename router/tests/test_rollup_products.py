@@ -55,3 +55,23 @@ def test_check_package_statuses():
            'c1': ('assigned', 'component-skus-bedroom', 'component_sku', None), 'd1': ('assigned', 'x', 'r', None)}
     got = {r['product']: r['status'] for r in compare(products, raw_of, dec, rules, {})}
     assert got == {'a': 'agree', 'b': 'differ', 'c': 'only_components'}      # 'd' is not a package code
+
+def run_kit(kit_nav, cur, code='Bed', pieces=('r1',), decisions=None):
+    decisions = decisions or {'r1': ('assigned', 'component-skus-bedroom', 'component_sku', None)}
+    return rollup({'p': code}, {'p': list(pieces)}, decisions, {}, {'p': set(cur)}, False, kit_nav)[0]
+
+def test_kit_takes_its_own_categories_not_the_component_pick():
+    r = run_kit({'p': ['bedroom-furniture-beds']}, {'bedroom-furniture-beds'})
+    assert (r['state'], r['category'], r['rule'], r['vs_current']) == ('assigned', 'bedroom-furniture-beds', 'kit_navigable_categories', 'already_linked')
+
+def test_kit_with_several_categories_is_compared_as_a_set():
+    assert run_kit({'p': ['a', 'b']}, {'a', 'b', 'c'})['vs_current'] == 'already_linked'
+    assert run_kit({'p': ['a', 'b']}, {'a'})['vs_current'] == 'would_add'
+
+def test_kit_with_no_usable_leaf_goes_to_review_and_adds_nothing():
+    r = run_kit({'p': []}, {'bedroom'})
+    assert (r['state'], r['rule'], r['vs_current']) == ('review', 'kit_no_usable_leaf', '')
+
+def test_kit_without_fetched_categories_keeps_the_old_logic():
+    r = run_kit({}, {'bedroom-furniture-beds'})
+    assert (r['state'], r['category'], r['rule']) == ('assigned', 'component-skus-bedroom', 'component_sku')
