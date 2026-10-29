@@ -49,15 +49,21 @@ def break_tie(slugs, code, cur):
     if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
-def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None):
+def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None):
     kit_nav = kit_nav or {}
+    approved = approved or {}    # product uuid -> categories of an explicitly approved add-batch (e.g. reports/links_to_add.csv)
     own_nav = own_nav or {}      # product uuid -> its OWN Ashley record: [usable leaf slugs], or None when the record lists no navigable categories      # product uuid -> usable leaf slugs from the kit's own Ashley categories ([] = Ashley answered, but no usable leaf)
     out = []
     for p, code in products.items():
         pieces = raw_of.get(p, [])
         cur = current.get(p, set())
         row = dict(product=p, item_code=code or '', n_raw_items=len(pieces), state='', category='', rule='', current=' | '.join(sorted(cur)))
-        if p in kit_nav and kit_nav[p] is None:           # Ashley's own record answered and lists no navigable categories (or only 'Uncategorized')
+        if p in approved:                                   # an approved add-batch decides: its categories win over the own record and the pieces
+            row.update(state='assigned', category=' | '.join(approved[p]), rule='approved_batch')
+        elif code in package_rules and ((p in kit_nav and kit_nav[p] is None) or (p in own_nav and own_nav[p] is None)):
+            # DECIDED 2026-10-29: a package whose Ashley record lists nothing ('Uncategorized') follows the package rule: it keeps its set category
+            row.update(state='assigned', category=package_rules[code], rule=f'package:{code}')
+        elif p in kit_nav and kit_nav[p] is None:           # Ashley's own record answered and lists no navigable categories (or only 'Uncategorized')
             row.update(state='uncategorized', category=UNCATEGORIZED, rule='no_navigable_categories')
         elif p in kit_nav:                                  # the kit's own categories decide, not its pieces' hidden Component ones
             if kit_nav[p]:      # a kit whose Ashley categories are ONLY component-skus-* gets its own rule name, so batch scripts keyed on kit_navigable_categories never pick it up by accident
@@ -128,7 +134,8 @@ def build_own_nav(dump, res, own_csv):
     None = the record answered and lists nothing. A record with only unusable (e.g. Component SKUs) categories is left out: not decided here."""
     import cascade as CA
     from dumpreader import rows
-    csv.field_size_limit(sys.maxsize)
+    try: csv.field_size_limit(2**31 - 1)      # sys.maxsize overflows on Windows
+    except OverflowError: csv.field_size_limit(2**30)
     recs = {}
     for r in CA._csv_any(own_csv):
         if (r.get('status') or 'ok').strip() == 'ok': recs.setdefault(r['sku'], r.get('navigableCategories'))
@@ -152,6 +159,7 @@ def main():
     ap.add_argument('--kit-navcats', help='fetch_navcats.py output for the kit products (keyed by product slug): kits take their own Ashley categories')
     ap.add_argument('--amp-map', help='CSV master_id,sku,default_variant: AMP masters take the categories of their variant SKUs (looked up in --kit-navcats)')
     ap.add_argument('--amp-mode', choices=['union', 'default'], default='union', help='union = every variant\'s categories, default variant first; default = the default variant only')
+    ap.add_argument('--approved-links', help='CSV product,category_slug (e.g. reports/links_to_add.csv): products in an approved add-batch take those categories (rule approved_batch)')
     ap.add_argument('--own-records', help='export of the products\' own Ashley records (sku, navigableCategories, status): own categories decide; a record listing none keeps the product where it is')
     a = ap.parse_args()
     cfg = CA.K.load_vendor_config(a.vendor)
@@ -173,8 +181,13 @@ def main():
         if r['category_id'] in slug: current[r['product_id']].add(slug[r['category_id']])
     kit_nav = build_kit_nav(a.dump, CA.resources_from_dump(cfg, a.dump), a.kit_navcats, a.amp_map, a.amp_mode) if a.kit_navcats else None
     own_nav = build_own_nav(a.dump, CA.resources_from_dump(cfg, a.dump), a.own_records) if a.own_records else None
-    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav)
+    approved = C.defaultdict(list)
+    if a.approved_links:
+        for r in csv.DictReader(open(a.approved_links, encoding='utf-8-sig', newline='')): approved[r['product']].append(r['category_slug'])
+    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved))
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
+    slug_of = {p['uuid']: p['slug'] for p in rows(a.dump, 'pim_products')}
+    res = [dict(slug=slug_of.get(r['product'], ''), **r) for r in res]       # slug first, as in the committed product_rollup_final.csv
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(res[0])); w.writeheader(); w.writerows(res)
     n = len(res); st = C.Counter(r['state'] for r in res)
