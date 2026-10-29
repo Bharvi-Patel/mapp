@@ -12,9 +12,10 @@ product slug) instead of the categories rolled up from its Component pieces. AMP
 pim_product_masters + pim_product_variation_masters); they take the categories of their variants (--amp-mode union = every variant's, default variant first;
 default = the default variant only). A kit whose fetch failed is left to the old logic. A kit Ashley files only under parents has no usable leaf -> review.
 Writes reports/product_rollup.csv and prints counts, plus how often the pick is already one of the product's current categories."""
-import argparse, collections as C, csv, os, re, sqlite3
+import argparse, collections as C, csv, os, re, sqlite3, sys
 
 COMPONENT_PREFIX = 'component-skus-'
+UNCATEGORIZED = 'uncategorized'      # the store's own category for a product Ashley gives no navigable categories
 
 def kit_slugs(codes, res):
     """Usable categories of a kit from its own Ashley codes. The router's normal filter (CA.nav_slugs) drops excluded slugs, and the config excludes every
@@ -48,20 +49,27 @@ def break_tie(slugs, code, cur):
     if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
-def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None):
-    kit_nav = kit_nav or {}      # product uuid -> usable leaf slugs from the kit's own Ashley categories ([] = Ashley answered, but no usable leaf)
+def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None):
+    kit_nav = kit_nav or {}
+    own_nav = own_nav or {}      # product uuid -> its OWN Ashley record: [usable leaf slugs], or None when the record lists no navigable categories      # product uuid -> usable leaf slugs from the kit's own Ashley categories ([] = Ashley answered, but no usable leaf)
     out = []
     for p, code in products.items():
         pieces = raw_of.get(p, [])
         cur = current.get(p, set())
         row = dict(product=p, item_code=code or '', n_raw_items=len(pieces), state='', category='', rule='', current=' | '.join(sorted(cur)))
-        if code in package_rules:
-            row.update(state='assigned', category=package_rules[code], rule=f'package:{code}')
+        if p in kit_nav and kit_nav[p] is None:           # Ashley's own record answered and lists no navigable categories (or only 'Uncategorized')
+            row.update(state='uncategorized', category=UNCATEGORIZED, rule='no_navigable_categories')
         elif p in kit_nav:                                  # the kit's own categories decide, not its pieces' hidden Component ones
             if kit_nav[p]:      # a kit whose Ashley categories are ONLY component-skus-* gets its own rule name, so batch scripts keyed on kit_navigable_categories never pick it up by accident
                 only_comp = all(x.startswith(COMPONENT_PREFIX) for x in kit_nav[p])
                 row.update(state='assigned', category=' | '.join(kit_nav[p]), rule='kit_component_categories' if only_comp else 'kit_navigable_categories')
             else: row.update(state='review', rule='kit_no_usable_leaf')
+        elif p in own_nav and own_nav[p] is None:           # its own Ashley record lists nothing: keep it where it is today (decided), do not add its pieces' categories
+            row.update(state='keep_current', category=' | '.join(sorted(cur)), rule='own_record_uncategorized_keep_current')
+        elif own_nav.get(p):                                # its own Ashley record lists categories: that is where it goes, not the pieces' union
+            row.update(state='assigned', category=' | '.join(own_nav[p]), rule='own_record_categories')
+        elif code in package_rules:                         # no fetched Ashley record for this package: the item-code rule stays as the fallback
+            row.update(state='assigned', category=package_rules[code], rule=f'package:{code}')
         elif not pieces:
             row['state'] = 'no_raw_item'
         else:
@@ -85,6 +93,7 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
                 else:
                     row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=next(iter(slugs)), rule=real[0][1])
         if row['state'] == 'keep_current': row['vs_current'] = 'kept'
+        elif row['state'] == 'uncategorized': row['vs_current'] = 'already_uncategorized' if cur == {UNCATEGORIZED} else 'to_uncategorize'   # changes its links, so not an add-only row
         elif row['category'] and row['state'] != 'conflict':    # one or several categories, compared as a set: already linked only when ALL are
             row['vs_current'] = 'already_linked' if set(row['category'].split(' | ')) <= cur else ('no_links' if not cur else 'would_add')
         else: row['vs_current'] = ''
@@ -103,14 +112,34 @@ def build_kit_nav(dump, res, navcats_csv, amp_map_csv=None, amp_mode='union'):
     for p in rows(dump, 'pim_products'):
         if p.get('deleted_at'): continue
         slug = p['slug']
-        if slug in codes: out[p['uuid']] = kit_slugs(codes[slug], res)
+        if slug in codes: out[p['uuid']] = kit_slugs(codes[slug], res) if codes[slug] else None   # [] = Ashley answered and listed nothing -> None = uncategorized
         elif slug in amp:
             variants = sorted(amp[slug], key=lambda v: v[0] != v[1])      # default variant first, so its category leads
             ok = [(sku, codes[sku]) for sku, _ in variants if sku in codes]
             if amp_mode == 'default' and ok and ok[0][0] == variants[0][1]: ok = ok[:1]
-            if ok:
+            if ok and not any(c for _, c in ok): out[p['uuid']] = None                 # every variant answered and listed nothing
+            elif ok:
                 leaves = list(dict.fromkeys(s for _, c in ok for s in CA.nav_slugs(c, res)))
                 out[p['uuid']] = leaves or list(dict.fromkeys(s for _, c in ok for s in kit_slugs(c, res)))
+    return out
+
+def build_own_nav(dump, res, own_csv):
+    """{product uuid: [leaf slugs] | None} from the products' OWN Ashley records (pim_vendor_api_ingestion export: sku, navigableCategories, status).
+    None = the record answered and lists nothing. A record with only unusable (e.g. Component SKUs) categories is left out: not decided here."""
+    import cascade as CA
+    from dumpreader import rows
+    csv.field_size_limit(sys.maxsize)
+    recs = {}
+    for r in CA._csv_any(own_csv):
+        if (r.get('status') or 'ok').strip() == 'ok': recs.setdefault(r['sku'], r.get('navigableCategories'))
+    out = {}
+    for p in rows(dump, 'pim_products'):
+        if p.get('deleted_at') or p['slug'] not in recs: continue
+        codes = CA.nav_codes(recs[p['slug']])
+        if not codes: out[p['uuid']] = None
+        else:
+            sl = CA.nav_slugs(codes, res)
+            if sl: out[p['uuid']] = sl
     return out
 
 def main():
@@ -123,6 +152,7 @@ def main():
     ap.add_argument('--kit-navcats', help='fetch_navcats.py output for the kit products (keyed by product slug): kits take their own Ashley categories')
     ap.add_argument('--amp-map', help='CSV master_id,sku,default_variant: AMP masters take the categories of their variant SKUs (looked up in --kit-navcats)')
     ap.add_argument('--amp-mode', choices=['union', 'default'], default='union', help='union = every variant\'s categories, default variant first; default = the default variant only')
+    ap.add_argument('--own-records', help='export of the products\' own Ashley records (sku, navigableCategories, status): own categories decide; a record listing none keeps the product where it is')
     a = ap.parse_args()
     cfg = CA.K.load_vendor_config(a.vendor)
     products = {p['uuid']: p['item_code'] for p in rows(a.dump, 'pim_products') if not p.get('deleted_at')}
@@ -142,7 +172,8 @@ def main():
     for r in rows(a.dump, 'pim_product_categories'):
         if r['category_id'] in slug: current[r['product_id']].add(slug[r['category_id']])
     kit_nav = build_kit_nav(a.dump, CA.resources_from_dump(cfg, a.dump), a.kit_navcats, a.amp_map, a.amp_mode) if a.kit_navcats else None
-    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav)
+    own_nav = build_own_nav(a.dump, CA.resources_from_dump(cfg, a.dump), a.own_records) if a.own_records else None
+    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav)
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(res[0])); w.writeheader(); w.writerows(res)
@@ -154,6 +185,7 @@ def main():
     print(f'\nclassified (assigned + assigned_partial + keep_current): {len(ok)} ({100*len(ok)/n:.1f}%)')
     print('  against the products\' current categories:', dict(vs))
     print('by rule:', dict(C.Counter(r['rule'].split(':')[0] for r in ok).most_common()))
+    print('uncategorized (Ashley lists no navigable categories):', st.get('uncategorized', 0))
     print(f'wrote {a.out}')
 
 if __name__ == '__main__':

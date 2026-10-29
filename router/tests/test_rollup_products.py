@@ -116,3 +116,31 @@ def test_batch3_picks_only_the_approved_groups_and_never_a_link_that_exists():
     got = B.pick_links(rows, already={('p5', 'bedroom-furniture-dressers-and-chests')}, dropped_products={'p8'})
     assert got == [('p1', 'bedroom-furniture-dressers-and-chests', 'Dresser', 'bedroom', 'A'), ('p1', 'wall-decor-mirrors', 'Dresser', 'bedroom', 'C'),
                    ('p2', 'bar-furniture-counter-chairs', 'Barstool', 'bar-furniture-bar-stools', 'C'), ('p3', 'component-skus-bedroom', 'Bed', 'bedroom', 'D')]
+
+def test_kit_whose_ashley_record_lists_nothing_is_marked_uncategorized():
+    r = run_kit({'p': None}, {'living-room-sets'})
+    assert (r['state'], r['category'], r['rule'], r['vs_current']) == ('uncategorized', 'uncategorized', 'no_navigable_categories', 'to_uncategorize')
+    assert run_kit({'p': None}, {'uncategorized'})['vs_current'] == 'already_uncategorized'
+
+
+def test_package_with_fetched_ashley_record_follows_the_record_not_the_item_code():
+    rules = {'Bedroom Package': 'bedroom-sets'}
+    r = rollup({'p': 'Bedroom Package'}, {'p': ['r1']}, {}, rules, {'p': {'bedroom-sets'}}, False, {'p': None})[0]
+    assert (r['state'], r['rule']) == ('uncategorized', 'no_navigable_categories')
+    r = rollup({'p': 'Bedroom Package'}, {'p': ['r1']}, {}, rules, {'p': set()}, False, {})[0]
+    assert (r['state'], r['category'], r['rule']) == ('assigned', 'bedroom-sets', 'package:Bedroom Package')
+
+
+def run_own(own_nav, cur, code='Barstool'):
+    return rollup({'p': code}, {'p': ['r1']}, {'r1': ('assigned', 'bar-furniture-bar-stools', 'navigable_categories', ['bar-furniture-bar-stools'])}, {}, {'p': set(cur)}, False, None, own_nav)[0]
+
+def test_own_record_listing_nothing_keeps_the_product_where_it_is():
+    r = run_own({'p': None}, {'dining-room-sets'})
+    assert (r['state'], r['category'], r['rule'], r['vs_current']) == ('keep_current', 'dining-room-sets', 'own_record_uncategorized_keep_current', 'kept')
+
+def test_own_record_with_categories_beats_the_pieces_union():
+    r = run_own({'p': ['bedroom-furniture-beds']}, {'bedroom-furniture-beds'})
+    assert (r['category'], r['rule'], r['vs_current']) == ('bedroom-furniture-beds', 'own_record_categories', 'already_linked')
+
+def test_without_an_own_record_the_pieces_union_still_applies():
+    assert run_own({}, set())['rule'] == 'navigable_categories'
