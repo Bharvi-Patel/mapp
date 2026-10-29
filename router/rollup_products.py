@@ -197,10 +197,18 @@ def build_own_nav(dump, res, own_csv):
             if sl: out[p['uuid']] = sl
     return out
 
+PROFILES = {      # `python rollup_products.py --profile onebuild` = the whole onebuild catalog from ONE navcats file, ONE output
+    'onebuild': dict(dump='onebuilddemo_for_router.sql', db='reports/shadow_fresh.db', navcats='onebuild/navcats.csv',
+                     amp_map=['onebuild/amp_map.csv'], approved_links='onebuild/approved_links.csv', follow_navcats_amp=True,
+                     out='reports/product_rollup_onebuild.csv', component_links_out='', kit_links_out='', remove_links_out='', uncategorize_out=''),
+}
+
 def main():
     import cascade as CA
     from dumpreader import rows
     ap = argparse.ArgumentParser()
+    ap.add_argument('--profile', choices=sorted(PROFILES), help='a whole run in one flag (see PROFILES); any other flag still overrides it')
+    ap.add_argument('--navcats', help='ONE navcats file per database (fetch_navcats.py output: sku, navigableCategories, status). Every record is used the same way: a product takes its own record, an AMP master takes its variants\' records. Replaces --kit-navcats / --amp-navcats / --own-records')
     ap.add_argument('--db', default='reports/shadow.db'); ap.add_argument('--dump', default='dump_for_evidence.sql')
     ap.add_argument('--vendor', default='vendors/ashley.yaml'); ap.add_argument('--out', default='reports/product_rollup.csv')
     ap.add_argument('--keep-current-components', action='store_true', help="a product whose pieces are ALL Components keeps its current categories instead of taking the component-skus-* category (off by default: Ashley's navigable categories decide)")
@@ -217,7 +225,10 @@ def main():
     ap.add_argument('--sql-out', default=None, help='OPT-IN, off by default: MySQL script that applies every would_add link and every to_remove link to pim_product_categories (one transaction). NOT run by this script')
     ap.add_argument('--uncategorize-out', default='reports/links_to_uncategorize.csv', help='dry-run file: products whose Ashley record lists no categories, with the uncategorized link to add and the current links to drop')
     ap.add_argument('--follow-navcats', help="CSV with a master (or product_slug / slug) column, e.g. the 66 AMP default-variant audit: for those products navcats win where they differ from the current categories; the current leaf links the pick does not contain are listed in to_remove (plan only)")
+    pre, _ = ap.parse_known_args()
+    if pre.profile: ap.set_defaults(**PROFILES[pre.profile])
     a = ap.parse_args()
+    if a.navcats: a.kit_navcats, a.amp_navcats, a.own_records = [a.navcats], None, None
     cfg = CA.K.load_vendor_config(a.vendor)
     products = {p['uuid']: p['item_code'] for p in rows(a.dump, 'pim_products') if not p.get('deleted_at')}
     raw_of = C.defaultdict(list)
@@ -280,22 +291,26 @@ def main():
         print('  by category:', dict(C.Counter(c for r in rem for c in r['to_remove'].split(' | ')).most_common()))
     comp = [(r['product'], sl, r['item_code'], r['current']) for r in res if r['rule'] == 'kit_component_categories' and r['vs_current'] == 'would_add'
             for sl in (c.strip() for c in r['category'].split('|')) if sl.startswith('component-skus-') and sl not in {c.strip() for c in r['current'].split('|')}]      # add-only, component leaf only
-    os.makedirs(os.path.dirname(a.component_links_out) or '.', exist_ok=True)
-    with open(a.component_links_out, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f); w.writerow(['product', 'category_slug', 'item_code', 'current_categories']); w.writerows(comp)
-    print(f'component links to add (dry run, no database touched): {len(comp)} on {len({x[0] for x in comp})} products', dict(C.Counter(x[1] for x in comp).most_common()), '->', a.component_links_out)
+    if a.component_links_out:
+        os.makedirs(os.path.dirname(a.component_links_out) or '.', exist_ok=True)
+        with open(a.component_links_out, 'w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f); w.writerow(['product', 'category_slug', 'item_code', 'current_categories']); w.writerows(comp)
+        print(f'component links to add (dry run, no database touched): {len(comp)} on {len({x[0] for x in comp})} products', dict(C.Counter(x[1] for x in comp).most_common()), '->', a.component_links_out)
     sp = lambda x: [c.strip() for c in x.split('|') if c.strip()]
     unc = [(r['product'], r['slug'], r['item_code'], r['rule'], UNCATEGORIZED, ' | '.join(c for c in sp(r['current']) if c != UNCATEGORIZED)) for r in res if r['vs_current'] == 'to_uncategorize']
-    with open(a.uncategorize_out, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f); w.writerow(['product', 'slug', 'item_code', 'rule', 'category_to_add', 'categories_to_remove']); w.writerows(unc)
-    print(f'to uncategorize (dry run): {len(unc)} products -> {a.uncategorize_out}')
+    if a.uncategorize_out:
+        with open(a.uncategorize_out, 'w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f); w.writerow(['product', 'slug', 'item_code', 'rule', 'category_to_add', 'categories_to_remove']); w.writerows(unc)
+        print(f'to uncategorize (dry run): {len(unc)} products -> {a.uncategorize_out}')
+    else: print(f'to uncategorize: {len(unc)} products (see vs_current = to_uncategorize in {a.out})')
     kit = [(r['product'], sl, r['item_code'], r['current']) for r in res if r['rule'] == 'kit_navigable_categories' and r['vs_current'] == 'would_add' for sl in sp(r['category']) if sl not in set(sp(r['current']))]
     rem = [(r['product'], sl, r['item_code'], r['category'], r['current']) for r in res if r['to_remove'] for sl in sp(r['to_remove'])]
     for path, head, data in ((a.kit_links_out, ['product', 'category_slug', 'item_code', 'current_categories'], kit), (a.remove_links_out, ['product', 'category_slug_to_remove', 'item_code', 'new_categories', 'current_categories'], rem)):
+        if not path: continue
         os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
         with open(path, 'w', encoding='utf-8', newline='') as f: w = csv.writer(f); w.writerow(head); w.writerows(data)
-    print(f'kit links to add (dry run): {len(kit)} on {len({x[0] for x in kit})} products -> {a.kit_links_out}')
-    print(f'links to remove (dry run): {len(rem)} on {len({x[0] for x in rem})} products -> {a.remove_links_out}')
+    print(f'kit links to add (dry run): {len(kit)} on {len({x[0] for x in kit})} products -> {a.kit_links_out or "(not written)"}')
+    print(f'links to remove (dry run): {len(rem)} on {len({x[0] for x in rem})} products -> {a.remove_links_out or "(not written)"}')
     add_all = [(r['product'], sl) for r in res if r['state'] in ('assigned', 'assigned_partial') and r['vs_current'] == 'would_add' for sl in sp(r['category']) if sl not in set(sp(r['current']))]
     if a.sql_out:
       q = lambda x: x.replace('\\', '\\\\').replace("'", "''")
