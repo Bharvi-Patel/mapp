@@ -11,6 +11,9 @@ Kits (optional, --kit-navcats): a kit product is the sellable item, so it takes 
 product slug) instead of the categories rolled up from its Component pieces. AMP products are masters of variant SKUs (--amp-map, from
 pim_product_masters + pim_product_variation_masters); they take the categories of their variants (--amp-mode union = every variant's, default variant first;
 default = the default variant only). A kit whose fetch failed is left to the old logic. A kit Ashley files only under parents has no usable leaf -> review.
+Follow navcats (optional, --follow-navcats-amp = every AMP master in --amp-map picked by its variants' navcats, no list needed; or --follow-navcats CSV with a master/slug column): for the products listed, where the current categories and the navcats differ, navcats win:
+the column to_remove lists the product's current LEAF categories (leaves of the pim_categories tree, parents are never listed) that its picked categories do not contain.
+It is a plan only: this script writes nothing to any database, and vs_current / the counts are unchanged by it.
 Writes reports/product_rollup.csv and prints counts, plus how often the pick is already one of the product's current categories."""
 import argparse, collections as C, csv, os, re, sqlite3, sys
 
@@ -49,8 +52,11 @@ def break_tie(slugs, code, cur):
     if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
-def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None):
+def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None, follow=None, leaf=None, follow_rules=None):
     kit_nav = kit_nav or {}
+    follow = follow or set()     # product uuids whose current LEAF links that the pick does not contain are listed in to_remove (navcats win)
+    leaf = leaf or set()
+    follow_rules = follow_rules or set()     # when given, only products picked by one of these rules are followed (e.g. kit_navigable_categories)
     approved = approved or {}    # product uuid -> categories of an explicitly approved add-batch (e.g. reports/links_to_add.csv)
     own_nav = own_nav or {}      # product uuid -> its OWN Ashley record: [usable leaf slugs], or None when the record lists no navigable categories      # product uuid -> usable leaf slugs from the kit's own Ashley categories ([] = Ashley answered, but no usable leaf)
     out = []
@@ -103,6 +109,10 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
         elif row['category'] and row['state'] != 'conflict':    # one or several categories, compared as a set: already linked only when ALL are
             row['vs_current'] = 'already_linked' if set(row['category'].split(' | ')) <= cur else ('no_links' if not cur else 'would_add')
         else: row['vs_current'] = ''
+        row['to_remove'] = ''
+        if p in follow and row['state'] == 'assigned' and row['category'] and (not follow_rules or row['rule'] in follow_rules):      # navcats win: current leaf links the pick does not have (parents are never listed)
+            pick = set(row['category'].split(' | '))
+            row['to_remove'] = ' | '.join(sorted(c for c in cur if c in leaf and c not in pick))
         out.append(row)
     return out
 
@@ -161,6 +171,8 @@ def main():
     ap.add_argument('--amp-mode', choices=['union', 'default'], default='union', help='union = every variant\'s categories, default variant first; default = the default variant only')
     ap.add_argument('--approved-links', help='CSV product,category_slug (e.g. reports/links_to_add.csv): products in an approved add-batch take those categories (rule approved_batch)')
     ap.add_argument('--own-records', help='export of the products\' own Ashley records (sku, navigableCategories, status): own categories decide; a record listing none keeps the product where it is')
+    ap.add_argument('--follow-navcats-amp', action='store_true', help="same as --follow-navcats but without a list: every AMP master in --amp-map whose pick comes from its variants' navcats (rule kit_navigable_categories) follows navcats. Works on any DB that has the maps")
+    ap.add_argument('--follow-navcats', help="CSV with a master (or product_slug / slug) column, e.g. the 66 AMP default-variant audit: for those products navcats win where they differ from the current categories; the current leaf links the pick does not contain are listed in to_remove (plan only)")
     a = ap.parse_args()
     cfg = CA.K.load_vendor_config(a.vendor)
     products = {p['uuid']: p['item_code'] for p in rows(a.dump, 'pim_products') if not p.get('deleted_at')}
@@ -179,14 +191,27 @@ def main():
     current = C.defaultdict(set)
     for r in rows(a.dump, 'pim_product_categories'):
         if r['category_id'] in slug: current[r['product_id']].add(slug[r['category_id']])
-    kit_nav = build_kit_nav(a.dump, CA.resources_from_dump(cfg, a.dump), a.kit_navcats, a.amp_map, a.amp_mode) if a.kit_navcats else None
-    own_nav = build_own_nav(a.dump, CA.resources_from_dump(cfg, a.dump), a.own_records) if a.own_records else None
+    resrc = CA.resources_from_dump(cfg, a.dump) if (a.kit_navcats or a.own_records or a.follow_navcats or a.follow_navcats_amp) else None
+    kit_nav = build_kit_nav(a.dump, resrc, a.kit_navcats, a.amp_map, a.amp_mode) if a.kit_navcats else None
+    own_nav = build_own_nav(a.dump, resrc, a.own_records) if a.own_records else None
+    slug_of = {p['uuid']: p['slug'] for p in rows(a.dump, 'pim_products')}
+    follow, follow_missing = set(), []
+    if a.follow_navcats_amp:
+        if not a.amp_map: sys.exit('--follow-navcats-amp needs --amp-map')
+        uuid_of = {sl: u for u, sl in slug_of.items()}
+        for r in CA._csv_any(a.amp_map):
+            if r['master_id'] in uuid_of: follow.add(uuid_of[r['master_id']])
+    if a.follow_navcats:
+        uuid_of = {sl: u for u, sl in slug_of.items()}
+        for r in csv.DictReader(open(a.follow_navcats, encoding='utf-8-sig', newline='')):
+            key = (r.get('master') or r.get('product_slug') or r.get('slug') or '').strip()
+            if key in uuid_of: follow.add(uuid_of[key])
+            elif key: follow_missing.append(key)
     approved = C.defaultdict(list)
     if a.approved_links:
         for r in csv.DictReader(open(a.approved_links, encoding='utf-8-sig', newline='')): approved[r['product']].append(r['category_slug'])
-    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved))
+    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved), follow, resrc.leaf if resrc else None, {'kit_navigable_categories'} if (a.follow_navcats_amp and not a.follow_navcats) else None)
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
-    slug_of = {p['uuid']: p['slug'] for p in rows(a.dump, 'pim_products')}
     res = [dict(slug=slug_of.get(r['product'], ''), **r) for r in res]       # slug first, as in the committed product_rollup_final.csv
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
         w = csv.DictWriter(f, fieldnames=list(res[0])); w.writeheader(); w.writerows(res)
@@ -199,6 +224,12 @@ def main():
     print('  against the products\' current categories:', dict(vs))
     print('by rule:', dict(C.Counter(r['rule'].split(':')[0] for r in ok).most_common()))
     print('uncategorized (Ashley lists no navigable categories):', st.get('uncategorized', 0))
+    if a.follow_navcats or a.follow_navcats_amp:
+        fol = [r for r in res if r['product'] in follow]; rem = [r for r in fol if r['to_remove']]
+        print(f'follow navcats ({a.follow_navcats or "AMP masters in --amp-map, rule kit_navigable_categories"}): {len(follow)} products found in the dump, {len(follow_missing)} not found', ('-> ' + ', '.join(follow_missing[:10])) if follow_missing else '')
+        print('  their rules:', dict(C.Counter(r['rule'].split(':')[0] or r['state'] for r in fol).most_common()), '| vs_current:', dict(C.Counter(r['vs_current'] for r in fol)))
+        print(f'  to_remove (plan only, nothing is written): {sum(len(r["to_remove"].split(" | ")) for r in rem)} leaf links on {len(rem)} products')
+        print('  by category:', dict(C.Counter(c for r in rem for c in r['to_remove'].split(' | ')).most_common()))
     print(f'wrote {a.out}')
 
 if __name__ == '__main__':
