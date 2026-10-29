@@ -56,8 +56,9 @@ def break_tie(slugs, code, cur):
     if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
-def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None, follow=None, leaf=None, follow_rules=None, amp_unmapped=None):
+def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None, follow=None, leaf=None, follow_rules=None, amp_unmapped=None, amp_default_nav=None):
     kit_nav = kit_nav or {}
+    amp_default_nav = amp_default_nav or {}  # AMP master uuid -> leaves of its own default_variant (only for masters in amp_unmapped)
     amp_unmapped = amp_unmapped or set()     # AMP master uuids with no variant map: their pieces' component rule must not decide for them
     follow = follow or set()     # product uuids whose current LEAF links that the pick does not contain are listed in to_remove (navcats win)
     leaf = leaf or set()
@@ -81,8 +82,8 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
                 only_comp = all(x.startswith(COMPONENT_PREFIX) for x in kit_nav[p])
                 row.update(state='assigned', category=' | '.join(kit_nav[p]), rule='kit_component_categories' if only_comp else 'kit_navigable_categories')
             else: row.update(state='review', rule='kit_no_usable_leaf')
-        elif p in own_nav and own_nav[p] is None:           # its own Ashley record lists nothing: keep it where it is today (decided), do not add its pieces' categories
-            row.update(state='keep_current', category=' | '.join(sorted(cur)), rule='own_record_uncategorized_keep_current')
+        elif p in own_nav and own_nav[p] is None:           # its own Ashley record lists nothing: UNCATEGORIZED (decided 2026-10-29, replaces the earlier keep-where-it-is rule)
+            row.update(state='uncategorized', category=UNCATEGORIZED, rule='own_record_uncategorized')
         elif own_nav.get(p):                                # its own Ashley record lists categories: that is where it goes, not the pieces' union
             row.update(state='assigned', category=' | '.join(own_nav[p]), rule='own_record_categories')
         elif code in package_rules:                         # no fetched Ashley record for this package: the item-code rule stays as the fallback
@@ -91,14 +92,18 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
             row['state'] = 'no_raw_item'
         else:
             ds = [decisions[r] for r in pieces if r in decisions]
-            if not ds: row['state'] = 'not_in_run'
+            if not ds and p in amp_unmapped and amp_default_nav.get(p):      # no router decision for its pieces, no variant map: its own default variant's navcats decide
+                row.update(state='assigned', category=' | '.join(amp_default_nav[p]), rule='kit_component_categories' if all(x.startswith(COMPONENT_PREFIX) for x in amp_default_nav[p]) else 'kit_navigable_categories')
+            elif not ds: row['state'] = 'not_in_run'
             else:
                 got = [(slug, rule, slist or [slug]) for outcome, slug, rule, slist in ds if outcome == 'assigned' and slug]
                 real = [g for g in got if not g[0].startswith('component-skus')] or got
                 slugs = {s for s, _, _ in real}
                 component_only = bool(got) and all(g[0].startswith('component-skus') for g in got)
                 if p in amp_unmapped and component_only:                    # AMP master, variants unknown: do not let its Component pieces decide
-                    row.update(state='review', rule='amp_master_no_variant_map')
+                    if amp_default_nav.get(p):      # no variant map, but the master's own default variant has navcats: those decide, not the Component pieces
+                        row.update(state='assigned', category=' | '.join(amp_default_nav[p]), rule='kit_component_categories' if all(x.startswith(COMPONENT_PREFIX) for x in amp_default_nav[p]) else 'kit_navigable_categories')
+                    else: row.update(state='review', rule='amp_master_no_variant_map')
                 elif keep_current_components and component_only and cur:      # OPT-IN (--keep-current-components): every piece is a Component, so keep the product's current categories
                     row.update(state='keep_current', category=' | '.join(sorted(cur)), rule='keep_current:component_only')     # so it keeps the categories it has today
                 elif any(g[1] == 'navigable_categories' or len(g[2]) > 1 for g in got):       # navigable categories, or any decision that holds several categories: a product can be in several, keep ALL
@@ -123,11 +128,16 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
         out.append(row)
     return out
 
-def build_kit_nav(dump, res, navcats_csv, amp_map_csv=None, amp_mode='union'):
+def build_kit_nav(dump, res, navcats_csv, amp_map_csv=None, amp_mode='union', amp_navcats=None):
     """{product uuid: [usable leaf slugs]} for kit products. navcats_csv = fetch_navcats.py output (rows with status ok only count)."""
     import cascade as CA
     from dumpreader import rows
-    codes = CA.load_navcats(navcats_csv)                     # sku -> codes; failed fetches are left out (unknown, not 'none')
+    codes = {}
+    for f in ([navcats_csv] if isinstance(navcats_csv, str) else navcats_csv):     # --kit-navcats is repeatable; a later file only fills SKUs the earlier ones lack
+        for k, v in CA.load_navcats(f).items(): codes.setdefault(k, v)       # sku -> codes; failed fetches are left out (unknown, not 'none')
+    var_codes = dict(codes)       # variant SKU lookups: the kit navcats first, --amp-navcats only fill SKUs they lack (so a product slug in them never becomes a kit entry)
+    for f in ([amp_navcats] if isinstance(amp_navcats, str) else (amp_navcats or [])):
+        for k, v in CA.load_navcats(f).items(): var_codes.setdefault(k, v)
     amp = C.OrderedDict()
     for f in ([amp_map_csv] if isinstance(amp_map_csv, str) else (amp_map_csv or [])):
         for r in CA._csv_any(f):          # master_id|product_slug, sku|default_variant_sku, default_variant|default_variant_sku
@@ -143,12 +153,28 @@ def build_kit_nav(dump, res, navcats_csv, amp_map_csv=None, amp_mode='union'):
         if slug in codes: out[p['uuid']] = kit_slugs(codes[slug], res) if codes[slug] else None   # [] = Ashley answered and listed nothing -> None = uncategorized
         elif slug in amp:
             variants = sorted(amp[slug], key=lambda v: v[0] != v[1])      # default variant first, so its category leads
-            ok = [(sku, codes[sku]) for sku, _ in variants if sku in codes]
+            ok = [(sku, var_codes[sku]) for sku, _ in variants if sku in var_codes]
             if amp_mode == 'default' and ok and ok[0][0] == variants[0][1]: ok = ok[:1]
             if ok and not any(c for _, c in ok): out[p['uuid']] = None                 # every variant answered and listed nothing
             elif ok:
                 leaves = list(dict.fromkeys(s for _, c in ok for s in CA.nav_slugs(c, res)))
                 out[p['uuid']] = leaves or list(dict.fromkeys(s for _, c in ok for s in kit_slugs(c, res)))
+    return out
+
+def build_amp_default_nav(dump, res, navcats_csv, have, amp_navcats=None):
+    """{master uuid: [usable leaf slugs]} for AMP masters with no variant map (not in `have`): the master's OWN default_variant (pim_products) looked up in navcats.
+    Used only where the guard would otherwise send an all-Component master to review (amp_master_no_variant_map)."""
+    import cascade as CA
+    from dumpreader import rows
+    codes = {}
+    for f in ([navcats_csv] if isinstance(navcats_csv, str) else navcats_csv) + ([amp_navcats] if isinstance(amp_navcats, str) else list(amp_navcats or [])):
+        for k, v in CA.load_navcats(f).items(): codes.setdefault(k, v)
+    out = {}
+    for p in rows(dump, 'pim_products'):
+        dv = p.get('default_variant')
+        if p.get('deleted_at') or not p['slug'].startswith('AMP') or p['uuid'] in have or not dv or dv not in codes or not codes[dv]: continue
+        leaves = CA.nav_slugs(codes[dv], res) or kit_slugs(codes[dv], res)
+        if leaves: out[p['uuid']] = leaves
     return out
 
 def build_own_nav(dump, res, own_csv):
@@ -178,12 +204,18 @@ def main():
     ap.add_argument('--db', default='reports/shadow.db'); ap.add_argument('--dump', default='dump_for_evidence.sql')
     ap.add_argument('--vendor', default='vendors/ashley.yaml'); ap.add_argument('--out', default='reports/product_rollup.csv')
     ap.add_argument('--keep-current-components', action='store_true', help="a product whose pieces are ALL Components keeps its current categories instead of taking the component-skus-* category (off by default: Ashley's navigable categories decide)")
-    ap.add_argument('--kit-navcats', help='fetch_navcats.py output for the kit products (keyed by product slug): kits take their own Ashley categories')
+    ap.add_argument('--kit-navcats', action='append', help='fetch_navcats.py output for the kit products (keyed by product slug): kits take their own Ashley categories. Repeatable: the files are merged')
+    ap.add_argument('--amp-navcats', action='append', help='extra navcats CSV used ONLY to look up the variant SKUs of AMP masters (--amp-map / default_variant); fills SKUs --kit-navcats lacks, never keys a product by its own slug')
     ap.add_argument('--amp-map', action='append', help='CSV master_id,sku,default_variant: AMP masters take the categories of their variant SKUs (looked up in --kit-navcats)')
     ap.add_argument('--amp-mode', choices=['union', 'default'], default='union', help='union = every variant\'s categories, default variant first; default = the default variant only')
     ap.add_argument('--approved-links', help='CSV product,category_slug (e.g. reports/links_to_add.csv): products in an approved add-batch take those categories (rule approved_batch)')
     ap.add_argument('--own-records', help='export of the products\' own Ashley records (sku, navigableCategories, status): own categories decide; a record listing none keeps the product where it is')
     ap.add_argument('--follow-navcats-amp', action='store_true', help="same as --follow-navcats but without a list: every AMP master in --amp-map whose pick comes from its variants' navcats (rule kit_navigable_categories) follows navcats. Works on any DB that has the maps")
+    ap.add_argument('--component-links-out', default='reports/links_to_add_components.csv', help='dry-run links file for the kit_component_categories rows that would add a component-skus-* leaf (nothing is written to any database)')
+    ap.add_argument('--kit-links-out', default='reports/links_to_add_kits.csv', help='dry-run links file: the kit_navigable_categories rows that would add leaves (same columns as apply_kit_would_add.py)')
+    ap.add_argument('--remove-links-out', default='reports/links_to_remove.csv', help='dry-run file: the leaf links navcats say to drop (to_remove, --follow-navcats / --follow-navcats-amp products only)')
+    ap.add_argument('--sql-out', default=None, help='OPT-IN, off by default: MySQL script that applies every would_add link and every to_remove link to pim_product_categories (one transaction). NOT run by this script')
+    ap.add_argument('--uncategorize-out', default='reports/links_to_uncategorize.csv', help='dry-run file: products whose Ashley record lists no categories, with the uncategorized link to add and the current links to drop')
     ap.add_argument('--follow-navcats', help="CSV with a master (or product_slug / slug) column, e.g. the 66 AMP default-variant audit: for those products navcats win where they differ from the current categories; the current leaf links the pick does not contain are listed in to_remove (plan only)")
     a = ap.parse_args()
     cfg = CA.K.load_vendor_config(a.vendor)
@@ -204,7 +236,7 @@ def main():
     for r in rows(a.dump, 'pim_product_categories'):
         if r['category_id'] in slug: current[r['product_id']].add(slug[r['category_id']])
     resrc = CA.resources_from_dump(cfg, a.dump) if (a.kit_navcats or a.own_records or a.follow_navcats or a.follow_navcats_amp) else None
-    kit_nav = build_kit_nav(a.dump, resrc, a.kit_navcats, a.amp_map, a.amp_mode) if a.kit_navcats else None
+    kit_nav = build_kit_nav(a.dump, resrc, a.kit_navcats, a.amp_map, a.amp_mode, a.amp_navcats) if a.kit_navcats else None
     own_nav = build_own_nav(a.dump, resrc, a.own_records) if a.own_records else None
     slug_of = {p['uuid']: p['slug'] for p in rows(a.dump, 'pim_products')}
     follow, follow_missing = set(), []
@@ -224,8 +256,9 @@ def main():
     approved = C.defaultdict(list)
     if a.approved_links:
         for r in csv.DictReader(open(a.approved_links, encoding='utf-8-sig', newline='')): approved[r['product']].append(r['category_slug'])
+    amp_default_nav = build_amp_default_nav(a.dump, resrc, a.kit_navcats, set(kit_nav or {}), a.amp_navcats) if a.kit_navcats else {}
     amp_unmapped = {u for u, sl in slug_of.items() if sl.startswith('AMP') and u in products and not (kit_nav and u in kit_nav)}
-    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved), follow, resrc.leaf if resrc else None, {'kit_navigable_categories'} if (a.follow_navcats_amp and not a.follow_navcats) else None, amp_unmapped)
+    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved), follow, resrc.leaf if resrc else None, {'kit_navigable_categories'} if (a.follow_navcats_amp and not a.follow_navcats) else None, amp_unmapped, amp_default_nav)
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
     res = [dict(slug=slug_of.get(r['product'], ''), **r) for r in res]       # slug first, as in the committed product_rollup_final.csv
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
@@ -245,6 +278,35 @@ def main():
         print('  their rules:', dict(C.Counter(r['rule'].split(':')[0] or r['state'] for r in fol).most_common()), '| vs_current:', dict(C.Counter(r['vs_current'] for r in fol)))
         print(f'  to_remove (plan only, nothing is written): {sum(len(r["to_remove"].split(" | ")) for r in rem)} leaf links on {len(rem)} products')
         print('  by category:', dict(C.Counter(c for r in rem for c in r['to_remove'].split(' | ')).most_common()))
+    comp = [(r['product'], sl, r['item_code'], r['current']) for r in res if r['rule'] == 'kit_component_categories' and r['vs_current'] == 'would_add'
+            for sl in (c.strip() for c in r['category'].split('|')) if sl.startswith('component-skus-') and sl not in {c.strip() for c in r['current'].split('|')}]      # add-only, component leaf only
+    os.makedirs(os.path.dirname(a.component_links_out) or '.', exist_ok=True)
+    with open(a.component_links_out, 'w', encoding='utf-8', newline='') as f:
+        w = csv.writer(f); w.writerow(['product', 'category_slug', 'item_code', 'current_categories']); w.writerows(comp)
+    print(f'component links to add (dry run, no database touched): {len(comp)} on {len({x[0] for x in comp})} products', dict(C.Counter(x[1] for x in comp).most_common()), '->', a.component_links_out)
+    sp = lambda x: [c.strip() for c in x.split('|') if c.strip()]
+    unc = [(r['product'], r['slug'], r['item_code'], r['rule'], UNCATEGORIZED, ' | '.join(c for c in sp(r['current']) if c != UNCATEGORIZED)) for r in res if r['vs_current'] == 'to_uncategorize']
+    with open(a.uncategorize_out, 'w', encoding='utf-8', newline='') as f:
+        w = csv.writer(f); w.writerow(['product', 'slug', 'item_code', 'rule', 'category_to_add', 'categories_to_remove']); w.writerows(unc)
+    print(f'to uncategorize (dry run): {len(unc)} products -> {a.uncategorize_out}')
+    kit = [(r['product'], sl, r['item_code'], r['current']) for r in res if r['rule'] == 'kit_navigable_categories' and r['vs_current'] == 'would_add' for sl in sp(r['category']) if sl not in set(sp(r['current']))]
+    rem = [(r['product'], sl, r['item_code'], r['category'], r['current']) for r in res if r['to_remove'] for sl in sp(r['to_remove'])]
+    for path, head, data in ((a.kit_links_out, ['product', 'category_slug', 'item_code', 'current_categories'], kit), (a.remove_links_out, ['product', 'category_slug_to_remove', 'item_code', 'new_categories', 'current_categories'], rem)):
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+        with open(path, 'w', encoding='utf-8', newline='') as f: w = csv.writer(f); w.writerow(head); w.writerows(data)
+    print(f'kit links to add (dry run): {len(kit)} on {len({x[0] for x in kit})} products -> {a.kit_links_out}')
+    print(f'links to remove (dry run): {len(rem)} on {len({x[0] for x in rem})} products -> {a.remove_links_out}')
+    add_all = [(r['product'], sl) for r in res if r['state'] in ('assigned', 'assigned_partial') and r['vs_current'] == 'would_add' for sl in sp(r['category']) if sl not in set(sp(r['current']))]
+    if a.sql_out:
+      q = lambda x: x.replace('\\', '\\\\').replace("'", "''")
+      os.makedirs(os.path.dirname(a.sql_out) or '.', exist_ok=True)
+      with open(a.sql_out, 'w', encoding='utf-8', newline='\n') as f:
+          f.write(f'-- generated by rollup_products.py from {a.out}: {len(add_all)} links to add, {len(rem)} links to remove. Review, then run it once on the DB that holds pim_product_categories.\n')
+          f.write('-- INSERT IGNORE: a link that already exists is skipped. A slug missing from pim_categories inserts nothing, so expect 333 new rows (fewer only if a link already exists).\nSTART TRANSACTION;\n')
+          for p, sl in add_all: f.write(f"INSERT IGNORE INTO pim_product_categories (product_id, category_id, created_at, updated_at) SELECT '{q(p)}', c.uuid, NOW(), NOW() FROM pim_categories c WHERE c.slug = '{q(sl)}';\n")
+          for p, sl, *_ in rem: f.write(f"DELETE pc FROM pim_product_categories pc JOIN pim_categories c ON c.uuid = pc.category_id WHERE pc.product_id = '{q(p)}' AND c.slug = '{q(sl)}';\n")
+          f.write('COMMIT;\n')
+      print(f'apply script (NOT run): {len(add_all)} inserts + {len(rem)} deletes -> {a.sql_out}')
     print(f'wrote {a.out}')
 
 if __name__ == '__main__':
