@@ -40,7 +40,7 @@ package_rules:
   "Outdoor Dining Package": outdoor-sets
   "Home Office Package": home-office-sets
   "Foundation Package": mattresses-and-bedding-sets
-  # "Outdoor Package": 2 products linked to slug outdoor-package, not outdoor-sets. Decide before adding.
+  "Outdoor Package": outdoor-sets     # decided: goes where the other outdoor packages go. (Today 2 products on the evidence dump are linked to outdoor-package, so outdoor-sets is added to them, add-only)
 # Known exception: 1 Bedroom Package product is linked to kids-furniture categories, not bedroom-sets.
 # The rule would send it to bedroom-sets; consider sending it to review.
 
