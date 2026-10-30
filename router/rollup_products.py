@@ -18,6 +18,7 @@ DECIDED 2026-10-29 (component products): (1) a kit Ashley files only under Compo
 the 'component-skus' parent is never linked, and no normal leaf is added. (2) The importer strips "Component SKUs", so these products already hold the room parent: that link
 is kept, rows are add-only and a kit_component_categories row never carries to_remove. (3) An AMP master takes its variants' navcats (--amp-map, repeatable); an AMP master
 with no variant map whose pieces are all Components is sent to review (amp_master_no_variant_map) instead of silently taking component-skus-*.
+--pieces-fallback (optional): order becomes approved batch -> package rule -> Ashley's own categories -> the pieces' categories (rule bundle_from_pieces:<rule>) -> uncategorized. Without it a product whose own record lists nothing is uncategorized, as before.
 Writes reports/product_rollup.csv and prints counts, plus how often the pick is already one of the product's current categories."""
 import argparse, collections as C, csv, os, re, sqlite3, sys
 
@@ -56,7 +57,7 @@ def break_tie(slugs, code, cur):
     if len(same) == 1: return same[0], 'tiebreak:current_branch'
     return None, ''
 
-def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None, follow=None, leaf=None, follow_rules=None, amp_unmapped=None, amp_default_nav=None):
+def rollup(products, raw_of, decisions, package_rules, current, keep_current_components=False, kit_nav=None, own_nav=None, approved=None, follow=None, leaf=None, follow_rules=None, amp_unmapped=None, amp_default_nav=None, pieces_fallback=False):
     kit_nav = kit_nav or {}
     amp_default_nav = amp_default_nav or {}  # AMP master uuid -> leaves of its own default_variant (only for masters in amp_unmapped)
     amp_unmapped = amp_unmapped or set()     # AMP master uuids with no variant map: their pieces' component rule must not decide for them
@@ -75,14 +76,14 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
         elif code in package_rules and ((p in kit_nav and kit_nav[p] is None) or (p in own_nav and own_nav[p] is None)):
             # DECIDED 2026-10-29: a package whose Ashley record lists nothing ('Uncategorized') follows the package rule: it keeps its set category
             row.update(state='assigned', category=package_rules[code], rule=f'package:{code}')
-        elif p in kit_nav and kit_nav[p] is None:           # Ashley's own record answered and lists no navigable categories (or only 'Uncategorized')
+        elif p in kit_nav and kit_nav[p] is None and not pieces_fallback:           # Ashley's own record answered and lists no navigable categories (or only 'Uncategorized')
             row.update(state='uncategorized', category=UNCATEGORIZED, rule='no_navigable_categories')
-        elif p in kit_nav:                                  # the kit's own categories decide, not its pieces' hidden Component ones
+        elif p in kit_nav and kit_nav[p] is not None:       # the kit's own categories decide, not its pieces' hidden Component ones
             if kit_nav[p]:      # a kit whose Ashley categories are ONLY component-skus-* gets its own rule name, so batch scripts keyed on kit_navigable_categories never pick it up by accident
                 only_comp = all(x.startswith(COMPONENT_PREFIX) for x in kit_nav[p])
                 row.update(state='assigned', category=' | '.join(kit_nav[p]), rule='kit_component_categories' if only_comp else 'kit_navigable_categories')
             else: row.update(state='review', rule='kit_no_usable_leaf')
-        elif p in own_nav and own_nav[p] is None:           # its own Ashley record lists nothing: UNCATEGORIZED (decided 2026-10-29, replaces the earlier keep-where-it-is rule)
+        elif p in own_nav and own_nav[p] is None and not pieces_fallback:           # its own Ashley record lists nothing: UNCATEGORIZED (decided 2026-10-29, replaces the earlier keep-where-it-is rule)
             row.update(state='uncategorized', category=UNCATEGORIZED, rule='own_record_uncategorized')
         elif own_nav.get(p):                                # its own Ashley record lists categories: that is where it goes, not the pieces' union
             row.update(state='assigned', category=' | '.join(own_nav[p]), rule='own_record_categories')
@@ -116,6 +117,9 @@ def rollup(products, raw_of, decisions, package_rules, current, keep_current_com
                     else: row.update(state='conflict', category=' | '.join(sorted(slugs)))
                 else:
                     row.update(state='assigned' if len(got) == len(ds) else 'assigned_partial', category=next(iter(slugs)), rule=real[0][1])
+        if pieces_fallback and ((p in kit_nav and kit_nav[p] is None) or (p in own_nav and own_nav[p] is None)) and row['rule'] and row['rule'] != 'approved_batch' \
+                and not row['rule'].startswith(('package:', 'kit_', 'own_record_categories')):
+            row['rule'] = 'bundle_from_pieces:' + row['rule']     # --pieces-fallback: Ashley's record listed nothing, so the product took its pieces' categories (new label: audit these rows)
         if row['state'] == 'keep_current': row['vs_current'] = 'kept'
         elif row['state'] == 'uncategorized': row['vs_current'] = 'already_uncategorized' if cur == {UNCATEGORIZED} else 'to_uncategorize'   # changes its links, so not an add-only row
         elif row['category'] and row['state'] != 'conflict':    # one or several categories, compared as a set: already linked only when ALL are
@@ -224,6 +228,7 @@ def main():
     ap.add_argument('--remove-links-out', default='reports/links_to_remove.csv', help='dry-run file: the leaf links navcats say to drop (to_remove, --follow-navcats / --follow-navcats-amp products only)')
     ap.add_argument('--sql-out', default=None, help='OPT-IN, off by default: MySQL script that applies every would_add link and every to_remove link to pim_product_categories (one transaction). NOT run by this script')
     ap.add_argument('--uncategorize-out', default='reports/links_to_uncategorize.csv', help='dry-run file: products whose Ashley record lists no categories, with the uncategorized link to add and the current links to drop')
+    ap.add_argument('--pieces-fallback', action='store_true', help="a product whose own Ashley record lists no navigable categories ('Uncategorized', e.g. a Room Bundle or an X2/X4 pair) and that no approved batch or package rule covers takes the categories of its PIECES instead of becoming uncategorized (rule bundle_from_pieces:<piece rule>). Uncategorized stays only when the pieces give nothing")
     ap.add_argument('--follow-navcats', help="CSV with a master (or product_slug / slug) column, e.g. the 66 AMP default-variant audit: for those products navcats win where they differ from the current categories; the current leaf links the pick does not contain are listed in to_remove (plan only)")
     pre, _ = ap.parse_known_args()
     if pre.profile: ap.set_defaults(**PROFILES[pre.profile])
@@ -269,7 +274,7 @@ def main():
         for r in csv.DictReader(open(a.approved_links, encoding='utf-8-sig', newline='')): approved[r['product']].append(r['category_slug'])
     amp_default_nav = build_amp_default_nav(a.dump, resrc, a.kit_navcats, set(kit_nav or {}), a.amp_navcats) if a.kit_navcats else {}
     amp_unmapped = {u for u, sl in slug_of.items() if sl.startswith('AMP') and u in products and not (kit_nav and u in kit_nav)}
-    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved), follow, resrc.leaf if resrc else None, {'kit_navigable_categories'} if (a.follow_navcats_amp and not a.follow_navcats) else None, amp_unmapped, amp_default_nav)
+    res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved), follow, resrc.leaf if resrc else None, {'kit_navigable_categories'} if (a.follow_navcats_amp and not a.follow_navcats) else None, amp_unmapped, amp_default_nav, pieces_fallback=a.pieces_fallback)
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
     res = [dict(slug=slug_of.get(r['product'], ''), **r) for r in res]       # slug first, as in the committed product_rollup_final.csv
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
