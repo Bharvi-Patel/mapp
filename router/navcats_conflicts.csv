@@ -1,0 +1,11 @@
+﻿sku,file,navigableCategories,status
+98105S20,navcats_kits.csv,,bad_body
+98105S20,pim_vendor_api_ingestion_202610290943.csv,"[""Living Room"", ""Living Room - Sofas and Seating"", ""Living Room - Sofas and Seating - Sectional Sofas""]",ok
+PA469-002,pim_vendor_api_ingestion_202610290943.csv,"[""Component SKUs"", ""Component SKUs - Outdoor""]",ok
+PA469-002,navcats_demo.csv,,bad_body
+PA469-003,pim_vendor_api_ingestion_202610290943.csv,"[""Component SKUs"", ""Component SKUs - Outdoor""]",ok
+PA469-003,navcats_demo.csv,,bad_body
+P790-820,pim_vendor_api_ingestion_202610290943.csv,"[""Uncategorized""]",ok
+P790-820,pim_vendor_api_ingestion_202610290943.csv,"[""Uncategorized""]",ok
+P790-820,pim_vendor_api_ingestion_202610290943.csv,"[""Uncategorized""]",ok
+P790-820,navcats_demo.csv,"[""Outdoor"", ""Outdoor - Patio Furniture"", ""Outdoor - Patio Furniture - Seating""]",ok

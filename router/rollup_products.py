@@ -201,6 +201,33 @@ def build_own_nav(dump, res, own_csv):
             if sl: out[p['uuid']] = sl
     return out
 
+ITEMCODE_SOURCE_RULES = {'navigable_categories', 'kit_navigable_categories', 'own_record_categories'}    # Ashley's OWN navigable categories only (not approved batches, packages or components)
+
+def itemcode_fallback(res, min_share=0.5):
+    """OPT-IN (--itemcode-fallback). A product whose Ashley record lists no navigable categories (rule no_navigable_categories / own_record_uncategorized)
+    and that has an item code looks that item code up: it takes the category set that most of the OTHER products with the same item code got from their own
+    Ashley navigable categories. Needs a clear winner (unique top set holding at least `min_share` of those products); otherwise it stays uncategorized.
+    A blank item code is never looked up. The rows it changes get rule itemcode_lookup:<item code>. Returns the list of changed rows."""
+    seen = C.defaultdict(C.Counter); order = {}
+    for r in res:
+        if r['state'] == 'assigned' and r['rule'].split(':')[0] in ITEMCODE_SOURCE_RULES and r['item_code'] and r['category']:
+            key = frozenset(x.strip() for x in r['category'].split('|') if x.strip())
+            seen[r['item_code']][key] += 1; order.setdefault((r['item_code'], key), r['category'])
+    changed = []
+    for r in res:
+        if r['state'] != 'uncategorized' or r['rule'] not in ('no_navigable_categories', 'own_record_uncategorized') or not r['item_code']: continue
+        top = seen.get(r['item_code'])
+        if not top: continue
+        ranked = top.most_common(2); n = sum(top.values())
+        if len(ranked) > 1 and ranked[0][1] == ranked[1][1]: continue          # tie: no clear winner
+        key, cnt = ranked[0]
+        if cnt / n < min_share: continue
+        cur = {c.strip() for c in r['current'].split('|') if c.strip()}
+        r.update(state='assigned', category=order[(r['item_code'], key)], rule=f"itemcode_lookup:{r['item_code']}")
+        r['vs_current'] = 'already_linked' if key <= cur else ('no_links' if not cur else 'would_add')
+        changed.append(r)
+    return changed
+
 PROFILES = {      # `python rollup_products.py --profile onebuild` = the whole onebuild catalog from ONE navcats file, ONE output
     'onebuild': dict(dump='onebuilddemo_for_router.sql', db='reports/shadow_fresh.db', navcats='onebuild/navcats.csv',
                      amp_map=['onebuild/amp_map.csv'], approved_links='onebuild/approved_links.csv', follow_navcats_amp=True,
@@ -230,6 +257,8 @@ def main():
     ap.add_argument('--uncategorize-out', default='reports/links_to_uncategorize.csv', help='dry-run file: products whose Ashley record lists no categories, with the uncategorized link to add and the current links to drop')
     ap.add_argument('--pieces-fallback', action='store_true', help="a product whose own Ashley record lists no navigable categories ('Uncategorized', e.g. a Room Bundle or an X2/X4 pair) and that no approved batch or package rule covers takes the categories of its PIECES instead of becoming uncategorized (rule bundle_from_pieces:<piece rule>). Uncategorized stays only when the pieces give nothing")
     ap.add_argument('--follow-navcats', help="CSV with a master (or product_slug / slug) column, e.g. the 66 AMP default-variant audit: for those products navcats win where they differ from the current categories; the current leaf links the pick does not contain are listed in to_remove (plan only)")
+    ap.add_argument('--itemcode-fallback', action='store_true', help="OPT-IN: a product whose Ashley record lists no navigable categories looks up its item code: it takes the category set most of the other products with the same item code got from their own navcats (rule itemcode_lookup:<code>). A blank item code stays uncategorized")
+    ap.add_argument('--itemcode-min-share', type=float, default=0.5, help='with --itemcode-fallback: the winning category set must hold at least this share of the other products with that item code (default 0.5); a tie never wins')
     pre, _ = ap.parse_known_args()
     if pre.profile: ap.set_defaults(**PROFILES[pre.profile])
     a = ap.parse_args()
@@ -275,6 +304,9 @@ def main():
     amp_default_nav = build_amp_default_nav(a.dump, resrc, a.kit_navcats, set(kit_nav or {}), a.amp_navcats) if a.kit_navcats else {}
     amp_unmapped = {u for u, sl in slug_of.items() if sl.startswith('AMP') and u in products and not (kit_nav and u in kit_nav)}
     res = rollup(products, raw_of, decisions, cfg.get('package_rules') or {}, current, a.keep_current_components, kit_nav, own_nav, dict(approved), follow, resrc.leaf if resrc else None, {'kit_navigable_categories'} if (a.follow_navcats_amp and not a.follow_navcats) else None, amp_unmapped, amp_default_nav, pieces_fallback=a.pieces_fallback)
+    if a.itemcode_fallback:
+        ch = itemcode_fallback(res, a.itemcode_min_share)
+        print(f'item-code lookup: {len(ch)} products with no navigable categories took the categories of their item code', dict(C.Counter(r['item_code'] for r in ch).most_common()))
     os.makedirs(os.path.dirname(a.out) or '.', exist_ok=True)
     res = [dict(slug=slug_of.get(r['product'], ''), **r) for r in res]       # slug first, as in the committed product_rollup_final.csv
     with open(a.out, 'w', newline='', encoding='utf-8-sig') as f:
